@@ -1,7 +1,21 @@
+body{
+    font-family: sans-serif;
+    background-image:url("css/fondoLogin.png") ;  
+    
+    margin:0;
+    padding:0;
+}
+
+h1{
+    margin-left: 13%;
+    color: white;
+}
+
 #mapa{
     min-height: 450px;
     height: 80%;
     width: 50%;
-    border: black 5px solid;
+    border: rgb(86, 3, 86) 8px solid;
     margin-left: 5%;
+    border-radius: 5px;
 }
