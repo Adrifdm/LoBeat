@@ -1,0 +1,7 @@
+#mapa{
+    min-height: 450px;
+    height: 80%;
+    width: 50%;
+    border: black 5px solid;
+    margin-left: 5%;
+}
