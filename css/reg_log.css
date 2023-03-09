@@ -1,12 +1,12 @@
 html {
-    height: 110%;
-    
-    
+    height: 150%;
+     
 }
 body{
     font-family: sans-serif;
     background-image:url("fondoLogin.png") ;  
-    
+    background-repeat: no-repeat;
+    background-size: cover;
     margin:0;
     padding:0;
 }
