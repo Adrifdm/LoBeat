@@ -33,6 +33,10 @@ $users = [
         "latitud" => 40.459735 + $randomX, 
         "longitud" =>  -3.689687 + $randomY,
     ],
+    [
+        "latitud" => 21.323818 + $randomX, 
+        "longitud" =>  -157.837536 + $randomY,
+    ],
 ];
 
 if ($categoria === "current_user") {

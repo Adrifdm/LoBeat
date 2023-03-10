@@ -18,7 +18,7 @@
     <main role="main" class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Conoce a gente cerca de ti</h1>
+                <h1 class="titulo">Conoce a gente cerca de ti</h1>
             </div>
             <div class="col-12">
                 <div id="mapa"></div>
