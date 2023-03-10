@@ -12,6 +12,9 @@
 
 </head>
 <body>
+    <?php
+		require("cabecera.php");
+	?>
     <main role="main" class="container-fluid">
         <div class="row">
             <div class="col-12">
