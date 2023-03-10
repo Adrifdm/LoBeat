@@ -7,7 +7,7 @@
     <title>Mapa</title>
 
     <link rel="stylesheet" href=" https://unpkg.com/openlayers@4.6.5/dist/ol.css">
-    <link rel="stylesheet" href="mapa.css">
+    <link rel="stylesheet" href="css/mapa.css">
     <script type="text/javascript" src="https://unpkg.com/openlayers@4.6.5/dist/ol.js"></script>
 
 </head>
