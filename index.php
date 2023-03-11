@@ -25,6 +25,9 @@
             </div>
         </div>
     </main>
+    <?php
+		require("rep.php");
+	?>
 
     <script type="text/javascript" src="mapa.js"></script>
     <script type="text/javascript" src="marcador.js"></script>
