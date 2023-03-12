@@ -10,33 +10,35 @@
   <div class="login-box">
    <img class ="logo"src= "img/LogoLB.png">
     <h2>Sing up</h2>
-    <form>
+    <form action="registerproc.php" method="post">
       <div class="user-box">
-        <input type="text" name="" required="">
+        <!-- <input type="text" name="" required=""> -->
+        <input type="text" id="name" name="name"><br><br>
         <label>Usuario</label>
       </div>
       <div class="user-box">
-        <input type="text" name="" required="">
+        <!-- <input type="text" name="" required="">-->
+        <input type="email" id="email" name="email">
         <label>Email</label>
       </div>
       <div class="user-box">
-        <input type="password" name="" required="">
+        <!-- <input type="password" name="" required="">-->
+        <input type="password" id="password" name="password">
         <label>Contraseña</label>
       </div>
       <div class="user-box">
-        <input type="text" name="" required="">
-        <label>Tipo de musica favorita</label>
+        <input type="password" id="repassword" name="repassword">
+        <label>Repetir Contraseña</label>
       </div>
-      <div class="user-box">
-        <input type="text" name="" required="">
-        <label>Cancion preferida</label>
-      </div>
-      <a class="sig"href="login.php">
+      
+      <a class="sig"><!-- href="login.php" -->
+          
+        <input type="submit" value="Siguiente">
+        
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-        Siguiente
       </a>
     </form>
   </div>
