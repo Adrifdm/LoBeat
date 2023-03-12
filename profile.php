@@ -27,9 +27,9 @@
         <div class="container-fluid d-flex align-items-center">
           <div class="row">
             <div class="col-lg-7 col-md-10">
-              <h1 class="display-2 profile-text">Perfil</h1>
-              <p class="profile-text mt-0 mb-5">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
-              <a href="#!" class="btn btn-info">Editar perfil</a>
+              <h1 class="display-2 profile-text fuente">Perfil</h1>
+              <p class="profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
+              <a href="#!" class="btn btn-info fuente">Editar perfil</a>
             </div>
           </div>
         </div>
@@ -59,36 +59,36 @@
                   <div class="col">
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                       <div>
-                        <span class="heading">10</span>
-                        <span class="description">Matches</span>
+                        <span class="heading fuente">10</span>
+                        <span class="description fuente">Matches</span>
                       </div>
                       <div>
-                        <span class="heading">6</span>
-                        <span class="description">Playlists</span>
+                        <span class="heading fuente">6</span>
+                        <span class="description fuente">Playlists</span>
                       </div>
                       <div>
-                        <span class="heading">7</span>
-                        <span class="description">Chats</span>
+                        <span class="heading fuente">7</span>
+                        <span class="description fuente">Chats</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="text-center">
-                  <h3>
-                    Alejandro González<span class="font-weight-light">, 27</span>
+                  <h3 class="fuente">
+                    Alejandro González<span class="font-weight-light fuente">, 27</span>
                   </h3>
-                  <div class="h5 font-weight-300">
+                  <div class="h5 font-weight-300 fuente">
                     <i class="ni location_pin mr-2"></i>Asturias, España
                   </div>
-                  <div class="h5 mt-4">
+                  <div class="h5 mt-4 fuente">
                     <i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho
                   </div>
-                  <div>
+                  <div class="fuente">
                     <i class="ni education_hat mr-2"></i>Universidad autónoma de Barcelona
                   </div>
                   <hr class="my-4">
-                  <p>No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>
-                  <a href="#">Show more</a>
+                  <p class="fuente">No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>
+                  <a href="#">Mostrar más</a>
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@
               <div class="card-header bg-white border-0">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h3 class="mb-0">Mi cuenta</h3>
+                    <h3 class="mb-0 fuente">Mi cuenta</h3>
                   </div>
                   <div class="col-4 text-right">
                     <!--<a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
@@ -107,65 +107,65 @@
               </div>
               <div class="card-body">
                 <form>
-                  <h6 class="heading-small text-muted mb-4">Información usuario</h6>
+                  <h6 class="heading-small text-muted mb-4 fuente">Información usuario</h6>
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-username">Nombre de usuario</label>
-                          <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Nombre de usuario" value="">
+                          <label class="form-control-label fuente" for="input-username">Nombre de usuario</label>
+                          <input type="text" id="input-username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario" value="">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-email">Dirección de correo</label>
-                          <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="@example.com">
+                          <label class="form-control-label fuente" for="input-email">Dirección de correo</label>
+                          <input type="email" id="input-email" class="form-control form-control-alternative fuente" placeholder="@example.com">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-first-name">Nombre</label>
-                          <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="" value="">
+                          <label class="form-control-label fuente" for="input-first-name">Nombre</label>
+                          <input type="text" id="input-first-name" class="form-control form-control-alternative fuente" placeholder="" value="">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-last-name">Apellidos</label>
-                          <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" value="">
+                          <label class="form-control-label fuente" for="input-last-name">Apellidos</label>
+                          <input type="text" id="input-last-name" class="form-control form-control-alternative fuente" placeholder="" value="">
                         </div>
                       </div>
                     </div>
                   </div>
                   <hr class="my-4">
                   <!-- Address -->
-                  <h6 class="heading-small text-muted mb-4">Información de contacto</h6>
+                  <h6 class="heading-small text-muted mb-4 fuente">Información de contacto</h6>
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-address">Dirección</label>
-                          <input id="input-address" class="form-control form-control-alternative" placeholder="Dirección" value="Calle, nº, piso, puerta" type="text">
+                          <label class="form-control-label fuente" for="input-address">Dirección</label>
+                          <input id="input-address" class="form-control form-control-alternative fuente" placeholder="Dirección" value="Calle, nº, piso, puerta" type="text">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-4">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-city">Ciudad</label>
+                          <label class="form-control-label fuente" for="input-city">Ciudad</label>
                           <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="" value="">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-country">País</label>
+                          <label class="form-control-label fuente" for="input-country">País</label>
                           <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="" value="">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-country">Código Postal</label>
+                          <label class="form-control-label fuente" for="input-country">Código Postal</label>
                           <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="">
                         </div>
                       </div>
@@ -173,11 +173,11 @@
                   </div>
                   <hr class="my-4">
                   <!-- Description -->
-                  <h6 class="heading-small text-muted mb-4">Sobre mí</h6>
+                  <h6 class="heading-small text-muted mb-4 fuente">Sobre mí</h6>
                   <div class="pl-lg-4">
                     <div class="form-group focused">
-                      <label>Sobre mí</label>
-                      <textarea rows="4" class="form-control form-control-alternative" placeholder="Unas palabras sobre tí"></textarea>
+                      <label class="fuente">Sobre mí</label>
+                      <textarea rows="4" class="form-control form-control-alternative fuente" placeholder="Unas palabras sobre tí"></textarea>
                     </div>
                   </div>
                 </form>
