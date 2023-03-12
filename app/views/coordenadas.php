@@ -41,12 +41,12 @@ $users = [
 
 if ($categoria === "current_user") {
     echo json_encode([
-        "icono" => "img/current_user.png",
+        "icono" => "../../public/assets/img/current_user.png",
         "coordenadas" => $current_user,
     ]);
 } else {
     echo json_encode([
-        "icono" => "img/persona.png",
+        "icono" => "../../public/assets/img/persona.png",
         "coordenadas" => $users,
     ]);
 }

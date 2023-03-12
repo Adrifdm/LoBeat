@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>CodePen - Responsive Mega Menu - Navigation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="css/reproc.css">
+    <link rel="stylesheet" href="../../public/assets/css/reproc.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   </head>
 
@@ -16,7 +16,7 @@
         <div class="wave1"></div>
         <div class="wave1"></div>
       </div>
-      <img src = "img/img.jpg" alt = Arcangel>
+      <img src = "../../public/assets/img/img.jpg" alt = Arcangel>
       <h5> La Jumpa
         <div class="subtitulo"> Arcangel ft Bad Bunny</div>
       </h5>

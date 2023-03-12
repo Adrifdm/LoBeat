@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="css/bootstrap-argon.css">
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="../../public/assets/css/bootstrap-argon.css">
+    <link rel="stylesheet" href="../../public/assets/css/profile.css">
 
     <script src="https://kit.fontawesome.com/dee2748eb0.js" crossorigin="anonymous"></script>
 </head>
@@ -20,7 +20,7 @@
 
     <div class="main-content">
       <!-- Introducción -->
-      <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(img/fondoLogin.png); background-size: cover; background-position: center top;">
+      <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../public/assets/img/fondoLogin.png); background-size: cover; background-position: center top;">
         <!-- Máscara -->
         <span class="mask bg-gradient-default opacity-8"></span>
         <!-- Contenido introducción -->
@@ -43,7 +43,7 @@
                 <div class="col-lg-3 order-lg-2">
                   <div class="card-profile-image">
                     <a href="#">
-                      <img src="img/profileAvatar.png" class="rounded-circle">
+                      <img src="../../public/assets/img/profileAvatar.png" class="rounded-circle">
                     </a>
                   </div>
                 </div>
