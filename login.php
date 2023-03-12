@@ -1,3 +1,4 @@
+
 <html lang="en" >
 <head>
   <title>Login</title>
@@ -10,25 +11,31 @@
   <div class="login-box">
    <img class ="logo"src= "img/LogoLB.png">
     <h2>Login</h2>
-    <form>
+    <form method="post" action="procesarLogin.php">
+
       <div class="user-box">
-        <input type="text" name="" required="">
         <label>Usuario/email</label>
+        <input type="text" name="username" required="">
       </div>
       <div class="user-box">
-        <input type="password" name="" required="">
         <label>Contraseña</label>
+        <input type="password" name="password" required="">
+        
       </div>
       <p> Si no tienes una cuenta &nbsp;<a class = "noreg" href = "register.php">Registrate </a></p>
         <br>
-     
-      <a class = "sig" href="#">
+        
+      
+
+      <a class = "sig" href="index.php">
       <span></span>
         <span></span>
         <span></span>
         <span></span>
-         Siguiente</a>
+        <input type="submit" value="Login">
+         
       </a>
+
     </form>
   </div>
 </div>
