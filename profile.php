@@ -27,8 +27,8 @@
         <div class="container-fluid d-flex align-items-center">
           <div class="row">
             <div class="col-lg-7 col-md-10">
-              <h1 class="display-2 text-black">Perfil</h1>
-              <p class="text-black mt-0 mb-5">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
+              <h1 class="display-2 profile-text">Perfil</h1>
+              <p class="profile-text mt-0 mb-5">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
               <a href="#!" class="btn btn-info">Editar perfil</a>
             </div>
           </div>
