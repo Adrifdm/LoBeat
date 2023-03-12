@@ -10,6 +10,20 @@ body{
     margin:0;
     padding:0;
 }
+
+input[type=submit]{
+  background-color: #01a0cc;
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 .fondo{
     background: linear-gradient(rgb(48, 20, 43, 0.7), rgb(161, 39, 39,0.7));
     
@@ -77,7 +91,8 @@ body{
     top: -20px;
     left: 0;
     color: #9e2657;
-    font-size: 12px;
+    font-size: 17px;
+    font-weight: bold;
   }
   .login-box form .noreg{
     color:#9e2657;
