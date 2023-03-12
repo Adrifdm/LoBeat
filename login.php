@@ -12,27 +12,23 @@
    <img class ="logo"src= "img/LogoLB.png">
     <h2>Login</h2>
     <form method="post" action="procesarLogin.php">
-
-      <div class="user-box">
+    <div class="user-box">
+        <input type="text" name="" required="">
         <label>Usuario/email</label>
-        <input type="text" name="username" required="">
       </div>
       <div class="user-box">
+        <input type="password" name="" required="">
         <label>Contraseña</label>
-        <input type="password" name="password" required="">
-        
       </div>
       <p> Si no tienes una cuenta &nbsp;<a class = "noreg" href = "register.php">Registrate </a></p>
-        <br>
-        
-      
-
       <a class = "sig" href="index.php">
+      <input type="submit"class = "next">
       <span></span>
         <span></span>
         <span></span>
         <span></span>
-        <input type="submit" value="Login">
+        
+        Login
          
       </a>
 

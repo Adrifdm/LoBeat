@@ -13,32 +13,33 @@
     <form action="registerproc.php" method="post">
       <div class="user-box">
         <!-- <input type="text" name="" required=""> -->
-        <input type="text" id="name" name="name"><br><br>
+        <input type="text" id="name" name="name" required="">
         <label>Usuario</label>
       </div>
       <div class="user-box">
         <!-- <input type="text" name="" required="">-->
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" required="">
         <label>Email</label>
       </div>
       <div class="user-box">
         <!-- <input type="password" name="" required="">-->
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="password" required="">
         <label>Contraseña</label>
       </div>
       <div class="user-box">
-        <input type="password" id="repassword" name="repassword">
+        <input type="password" id="repassword" name="repassword" required="">
         <label>Repetir Contraseña</label>
       </div>
       
-      <a class="sig"><!-- href="login.php" -->
+      <a class="sig" type= "submit"><!-- href="login.php" -->
           
-        <input type="submit" value="Siguiente">
+        <input type="submit" class = "next">
         
         <span></span>
         <span></span>
         <span></span>
         <span></span>
+         Siguiente
       </a>
     </form>
   </div>
