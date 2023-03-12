@@ -5,7 +5,7 @@ require 'vendor/autoload.php'; // incluir lo bueno de Composer
 $cliente = new MongoDB\Client("mongodb://localhost:27017");
 echo "Conexión a MongoDB realizada con exito.\n";
 //Seleccionamos la base de datos
-$db = $cliente->pruebas;
+$db = $cliente->LoBeat;
 echo "La base de datos seleccionada es: ".$db."."."\n";
 
 /* --- COLECCIONES --- */
@@ -61,4 +61,4 @@ $coleccion->updateMany(
 );
 //EN ESTE EJ SE BUSCAN TODOS AQUELLOS DOCUMENTOS CON EL CAMPO name VACÍO, Y SE ACTUALIZA SU CAMPO name A NULL
 */
-?>  
+?>
