@@ -30,7 +30,7 @@
           </ul>        
       </li>    
       <li>
-        <a href=""><i class="fa-solid fa-user"></i></a>
+        <a href="profile.php"><i class="fa-solid fa-user"></i></a>
       </li>
    
     </ul>
