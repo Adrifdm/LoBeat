@@ -9,13 +9,21 @@ class UsuarioService {
 
   public function __construct() {
     //$this->db = Conexion::conectar();   en principio conexion.php ya estaría bien asi y no habria que hacer fnciones
-    $collection = DB->usuario;
+    $this->collection = DB->usuario;
   }
 
-  public function crearUsuario($nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token) {
+  public function crearUsuario($datos) {
     $fecha_creacion = new DateTime();
     $fecha_actualizacion = new DateTime();
-    $usuario = new Usuario($nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion);
+    $usuario = new Usuario(
+      $datos['nombre'],
+      $datos['correo'],
+      $datos['contrasenya'],
+      $datos['spotify_access_token'],
+      $datos['spotify_refresh_token'],
+      $fecha_creacion,
+      $fecha_actualizacion
+    );
 
     $result = $this->collection->insertOne([
       'nombre' => $usuario->getNombre(),
@@ -50,9 +58,19 @@ class UsuarioService {
     return $usuario;
   }
 
-  public function actualizarUsuario($usuario) {
+  public function actualizarUsuario($id, $datos) {
+    $usuario = new Usuario(
+      $datos['nombre'],
+      $datos['correo'],
+      $datos['contrasenya'],
+      $datos['spotify_access_token'],
+      $datos['spotify_refresh_token'],
+      null, // la fecha de creación no se actualiza
+      new DateTime() // se actualiza la fecha de actualización con la fecha y hora actuales
+    );
+  
     $result = $this->collection->updateOne(
-      ['_id' => $usuario->getId()],
+      ['_id' => $id],
       ['$set' => [
         'nombre' => $usuario->getNombre(),
         'correo' => $usuario->getCorreo(),
@@ -62,15 +80,36 @@ class UsuarioService {
         'fecha_actualizacion' => $usuario->getFecha_actualizacion()->format('Y-m-d H:i:s')
       ]]
     );
-
+  
     return $result->getModifiedCount() > 0;
   }
+  
 
   public function eliminarUsuario($id) {
     $result = $this->collection->deleteOne(['_id' => $id]);
 
     return $result->getDeletedCount() > 0;
   }
+
+  public function listarUsuarios() {
+    $result = $this->collection->find();
+    $usuarios = [];
+    foreach ($result as $doc) {
+      $usuario = new Usuario(
+        $doc['nombre'],
+        $doc['correo'],
+        $doc['contrasenya'],
+        $doc['spotify_access_token'],
+        $doc['spotify_refresh_token'],
+        new DateTime($doc['fecha_creacion']),
+        new DateTime($doc['fecha_actualizacion'])
+      );
+      $usuario->setId($doc['_id']);
+      array_push($usuarios, $usuario);
+    }
+    return $usuarios;
+  }
+  
 }
 
 ?>

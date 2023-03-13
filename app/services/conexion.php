@@ -1,8 +1,8 @@
 <?php
 
 //cualquiera de estas 2 lineas vale
-require_once __DIR__ . '/vendor/autoload.php';
-//require 'vendor/autoload.php';
+//require_once __DIR__ . '/vendor/autoload.php';
+require 'vendor/autoload.php';
 
 //definimos la uri y el nombre de la base de datos
 $uri = "mongodb://localhost:27017";
