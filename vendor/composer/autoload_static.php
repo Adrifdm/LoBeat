@@ -15,6 +15,7 @@ class ComposerStaticInit08192a6c55c8a4a5539a023d573090ac
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
+            'SpotifyWebAPI\\' => 14,
         ),
         'M' => 
         array (
@@ -30,6 +31,10 @@ class ComposerStaticInit08192a6c55c8a4a5539a023d573090ac
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+        ),
+        'SpotifyWebAPI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src',
         ),
         'MongoDB\\' => 
         array (

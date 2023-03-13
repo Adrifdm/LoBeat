@@ -14,7 +14,7 @@ $password = $_POST['password'];
 $repassword = $_POST['repassword'];
 
 // Comprobamos si el correo ya existe
-$user = $collection->findOne(['email' => $email]);
+//$user = $collection->findOne(['email' => $email]);
 
 if ($user) {
   echo "El email introducido ya existe";
