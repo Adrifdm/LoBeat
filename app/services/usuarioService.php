@@ -1,7 +1,8 @@
 <?php
 //use MongoDB\BSON\ObjectID;
-require_once 'usuario.php';
+require_once '../models/usuario.php';
 require_once 'conexion.php';
+require_once '../../vendor/autoload.php';
 
 class UsuarioService {
 
@@ -9,7 +10,7 @@ class UsuarioService {
 
   public function __construct() {
     //$this->db = Conexion::conectar();   en principio conexion.php ya estaría bien asi y no habria que hacer fnciones
-    $this->collection = DB->usuario;
+    $this->collection = (new MongoDB\Client)->LoBeat->usuarios;
   }
 
   public function crearUsuario($datos) {

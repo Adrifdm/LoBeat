@@ -16,7 +16,7 @@
           <div class="user-box">
             <!-- <input type="text" name="" required=""> -->
             <input type="text" id="name" name="name" required="">
-            <label>Usuario</label>
+            <label>Nombre</label>
           </div>
           <div class="user-box">
             <!-- <input type="text" name="" required="">-->

@@ -1,24 +1,24 @@
 <?php
-require_once('usuarioController.php');
+require_once '../controllers/usuarioController.php';
 
 // Crear una instancia de UsuarioController
 $usuarioController = new UsuarioController();
 
 // Obtenemos la informacion introducida
-$name = $_POST['name'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$repassword = $_POST['repassword'];
+$nombre = $_POST['name'];
+$correo = $_POST['email'];
+$constrasenya = $_POST['password'];
+$reconstrasenya = $_POST['repassword'];
 
 // Comprobamos si el correo ya existe
-$usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $email);
+$usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
 if ($usuarioExistente !== null) {
   echo "El email introducido ya existe";
   exit;
 }
 
 // Comprobamos si la contraseña coincide con la del campo "Repetir contraseña"
-if ($password == $repassword){
+if ($constrasenya == $reconstrasenya){
   //$hash = password_hash($password, PASSWORD_DEFAULT);  esto esta bien pensado pero lo dejamos comentado de momento
 }
 else{
@@ -28,9 +28,9 @@ else{
 
 // Insertamos la información del nuevo usuario
 $datos = array(
-  'nombre' => $name,
-  'correo' => $email,
-  'password' => $password, // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
+  'nombre' => $nombre,
+  'correo' => $correo,
+  'password' => $constrasenya, // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
   'spotify_access_token' => '',
   'spotify_refresh_token' => '',
   'fecha_creacion' => date('Y-m-d H:i:s'),

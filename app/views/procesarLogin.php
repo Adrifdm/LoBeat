@@ -1,6 +1,6 @@
 <?php
 
-require_once "vendor/autoload.php";
+require_once '../../vendor/autoload.php';
 
 $mongoClient = new MongoDB\Client("mongodb://localhost:27017");
 
