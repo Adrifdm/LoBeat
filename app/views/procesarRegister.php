@@ -1,20 +1,23 @@
 <?php
+require_once('usuarioController.php');
+
 // Connect to MongoDB
-$mongo = new MongoDB\Client("mongodb://localhost:27017");
+//$mongo = new MongoDB\Client("mongodb://localhost:27017");
 
 // Select database and collection
-$collection = $mongo->mydb->users;
+//$collection = $mongo->mydb->users;
 
-// Get form data
+// Obtenemos la informacion introducida
 $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $repassword = $_POST['repassword'];
 
-// Check if email exists
+// Comprobamos si el correo ya existe
 $user = $collection->findOne(['email' => $email]);
+
 if ($user) {
-  echo "Email already exists";
+  echo "El email introducido ya existe";
   exit;
 }
 

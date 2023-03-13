@@ -37,3 +37,4 @@ class UsuarioController {
         echo json_encode($resultado);
     }
 }
+?>
