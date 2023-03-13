@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user) {
         
         // The user exists, redirect to the homepage
-        header('Location: index.php');
+        header('Location: pagPrincipal.php');
        
         exit;
         

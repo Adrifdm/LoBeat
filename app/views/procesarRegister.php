@@ -1,11 +1,8 @@
 <?php
 require_once('usuarioController.php');
 
-// Connect to MongoDB
-//$mongo = new MongoDB\Client("mongodb://localhost:27017");
-
-// Select database and collection
-//$collection = $mongo->mydb->users;
+// Crear una instancia de UsuarioController
+$usuarioController = new UsuarioController();
 
 // Obtenemos la informacion introducida
 $name = $_POST['name'];
@@ -14,34 +11,44 @@ $password = $_POST['password'];
 $repassword = $_POST['repassword'];
 
 // Comprobamos si el correo ya existe
-//$user = $collection->findOne(['email' => $email]);
-
-if ($user) {
+$usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $email);
+if ($usuarioExistente !== null) {
   echo "El email introducido ya existe";
   exit;
 }
 
-// Hash password
-if($password == $repassword){
-
-    $hash = password_hash($password, PASSWORD_DEFAULT);
+// Comprobamos si la contraseña coincide con la del campo "Repetir contraseña"
+if ($password == $repassword){
+  //$hash = password_hash($password, PASSWORD_DEFAULT);  esto esta bien pensado pero lo dejamos comentado de momento
 }
 else{
-    echo "Passwords are not equal";
+  echo "Las contraseñas introducidas no son iguales";
   exit;
 }
 
+// Insertamos la información del nuevo usuario
+$datos = array(
+  'nombre' => $name,
+  'correo' => $email,
+  'password' => $password, // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
+  'spotify_access_token' => '',
+  'spotify_refresh_token' => '',
+  'fecha_creacion' => date('Y-m-d H:i:s'),
+  'fecha_actualizacion' => date('Y-m-d H:i:s')
+);
+$resultado = $usuarioController->crearUsuario($datos);
 
-// Insert user data
-$result = $collection->insertOne([
-  'name' => $name,
-  'email' => $email,
-  'password' => $hash,
-]);
+if ($resultado['error'] == true) {
+  echo "Hubo un error al crear el usuario";
+  exit;
+}
 
-if ($result->getInsertedCount() > 0) {
-  echo "User registered successfully";
+// Si se ha insertado correctamente, redirigir a la página de login
+if ($resultado['resultado']) {
+  header('Location: login.php');
+  exit;
 } else {
-  echo "Error occurred while registering user";
+  echo "Ha ocurrido un error al registrar el usuario";
+  exit;
 }
 ?>
