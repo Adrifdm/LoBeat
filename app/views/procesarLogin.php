@@ -17,10 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($usuarioExistente !== null) {
 
         // Comprobamos si se ha introducido la contraseña correcta
-        $contrasenyaCorrecta = $usuarioController->obtenerUsuarioPorId($usuarioExistente->getId());
+        $contrasenyaCorrecta = $usuarioExistente->getContrasenya();
 
         if ($contrasenya != $contrasenyaCorrecta) {
             echo "La contraseña introducida no es correcta";
+            exit;
         }
 
         header('Location: pagPrincipal.php');       
