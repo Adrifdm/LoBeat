@@ -14,14 +14,17 @@
         <h2>Sing up</h2>
         <form action="procesarRegister.php" method="post">
           <div class="user-box">
+            <!-- <input type="text" name="" required=""> -->
             <input type="text" id="name" name="name" required="">
-            <label>Nombre</label>
+            <label>Usuario</label>
           </div>
           <div class="user-box">
+            <!-- <input type="text" name="" required="">-->
             <input type="email" id="email" name="email" required="">
             <label>Email</label>
           </div>
           <div class="user-box">
+            <!-- <input type="password" name="" required="">-->
             <input type="password" id="password" name="password" required="">
             <label>Contraseña</label>
           </div>
@@ -30,8 +33,9 @@
             <label>Repetir Contraseña</label>
           </div>
           
-          <a class="sig" type= "submit">
+          <a class="sig" type= "submit"><!-- href="login.php" -->
             <input type="submit" class = "next">
+            
             <span></span>
             <span></span>
             <span></span>
