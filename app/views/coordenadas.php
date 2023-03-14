@@ -20,7 +20,7 @@ $current_user = [
     ],
 ];
 #estas son las posiciones que se muestran
-$users = [
+$hombre = [
     [
         "latitud" => 40.424312 + $randomX,
         "longitud" => -3.712700 + $randomY,
@@ -39,14 +39,28 @@ $users = [
     ],
 ];
 
+$mujer = [
+    [
+        "latitud" => 40.46861111 + $randomX,
+        "longitud" => -3.70555556 + $randomY,
+    ],
+    
+];
+
+
 if ($categoria === "current_user") {
     echo json_encode([
         "icono" => "../../public/assets/img/current_user.png",
         "coordenadas" => $current_user,
     ]);
-} else {
+} else if($categoria === "hombre"){
     echo json_encode([
-        "icono" => "../../public/assets/img/persona.png",
-        "coordenadas" => $users,
+        "icono" => "../../public/assets/img/hombre.png",
+        "coordenadas" => $hombre,
+    ]);
+} else if($categoria === "mujer"){
+    echo json_encode([
+        "icono" => "../../public/assets/img/mujer.png",
+        "coordenadas" => $mujer,
     ]);
 }
