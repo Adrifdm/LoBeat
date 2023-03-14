@@ -4,7 +4,7 @@ require_once '../controllers/usuarioController.php';
 // Crear una instancia de UsuarioController
 $usuarioController = new UsuarioController();
 
-// Comprobamos si el formulario ha sido enviado
+// Check if the form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // Obtenemos la informacion introducida
