@@ -1,33 +1,36 @@
 <?php
+require_once '../controllers/usuarioController.php';
 
-require_once "vendor/autoload.php";
-
-$mongoClient = new MongoDB\Client("mongodb://localhost:27017");
-
-// Select the database and collection
-$collection = $mongoClient->mydb->users;
+// Crear una instancia de UsuarioController
+$usuarioController = new UsuarioController();
 
 // Check if the form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
-    // Get the username and password from the form
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    // Obtenemos la informacion introducida
+    $correo = $_POST['email'];
+    $contrasenya = $_POST['password'];
 
-    // Check if the user exists in the database
-    $user = $collection->findOne(['username' => $username, 'password' => $password]);
+    // Comprobamos si existe algún usuario con ese correo
+    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
+    
+    if ($usuarioExistente !== null) {
 
-    if ($user) {
-        
-        // The user exists, redirect to the homepage
-        header('Location: index.php');
-       
+        // Comprobamos si se ha introducido la contraseña correcta
+        $contrasenyaCorrecta = $usuarioExistente->getContrasenya();
+
+        if ($contrasenya != $contrasenyaCorrecta) {
+            echo "La contraseña introducida no es correcta";
+            exit;
+        }
+
+        header('Location: pagPrincipal.php');       
         exit;
-        
+
     } else {
-        
-        // The user doesn't exist, display an error message
-        echo "Invalid username or password";
+        echo "El correo es inválido";
+        exit;        
     }
+
 }
 ?>

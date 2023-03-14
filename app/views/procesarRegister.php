@@ -1,47 +1,63 @@
 <?php
-require_once('usuarioController.php');
+require_once '../controllers/usuarioController.php';
 
-// Connect to MongoDB
-//$mongo = new MongoDB\Client("mongodb://localhost:27017");
+// Crear una instancia de UsuarioController
+$usuarioController = new UsuarioController();
 
-// Select database and collection
-//$collection = $mongo->mydb->users;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-// Obtenemos la informacion introducida
-$name = $_POST['name'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$repassword = $_POST['repassword'];
+    // Obtenemos la informacion introducida
+    $nombre = $_POST['name'];
+    $correo = $_POST['email'];
+    $constrasenya = $_POST['password'];
+    $reconstrasenya = $_POST['repassword'];
 
-// Comprobamos si el correo ya existe
-//$user = $collection->findOne(['email' => $email]);
+    // Comprobamos si existe algún usuario con ese correo
+    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
+    
+    if ($usuarioExistente !== null) {
 
-if ($user) {
-  echo "El email introducido ya existe";
-  exit;
+        echo "El email introducido ya existe";
+        exit;
+
+    }
+
+    // Comprobamos si la contraseña coincide con la del campo "Repetir contraseña"
+    if ($constrasenya == $reconstrasenya){
+
+        //$hash = password_hash($password, PASSWORD_DEFAULT);  esto esta bien pensado pero lo dejamos comentado de momento
+
+    } else {
+
+        echo "Las contraseñas introducidas no son iguales";
+        exit;
+
+    }
+
+    // Insertamos la información del nuevo usuario
+    $datos = array(
+    'nombre' => $nombre,
+    'correo' => $correo,
+    'contrasenya' => $constrasenya, // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
+    'spotify_access_token' => '',
+    'spotify_refresh_token' => '',
+    'fecha_creacion' => date('Y-m-d H:i:s'),
+    'fecha_actualizacion' => date('Y-m-d H:i:s')
+    );
+    $resultado = $usuarioController->crearUsuario($datos);
+
+    // Si se ha insertado correctamente, redirigir a la página de login
+    if ($resultado !== null) {
+
+        header('Location: login.php');
+        exit;
+
+    } else {
+
+        echo "Ha ocurrido un error al registrar el usuario";
+        exit;
+
+    }
 }
 
-// Hash password
-if($password == $repassword){
-
-    $hash = password_hash($password, PASSWORD_DEFAULT);
-}
-else{
-    echo "Passwords are not equal";
-  exit;
-}
-
-
-// Insert user data
-$result = $collection->insertOne([
-  'name' => $name,
-  'email' => $email,
-  'password' => $hash,
-]);
-
-if ($result->getInsertedCount() > 0) {
-  echo "User registered successfully";
-} else {
-  echo "Error occurred while registering user";
-}
 ?>
