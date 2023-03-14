@@ -61,6 +61,19 @@ class UsuarioController {
         }
     }
 
+    public function obtenerUsuarioPorId($id) {
+        try {
+            // llamar al método de obtener usuario por id del servicio
+            $usuarioEncontrado = $this->usuarioService->obtenerUsuarioPorId($id);
+            // devolver la respuesta en formato JSON
+            echo json_encode($usuarioEncontrado);
+            return $usuarioEncontrado;
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
     public function buscarUsuarioPorCampo($campo, $valor) {
         try {
             // llamar al método de buscar usuario por campo del servicio

@@ -1,5 +1,5 @@
 <?php
-
+/*
 //cualquiera de estas 2 lineas vale
 require_once '../../vendor/autoload.php';
 //require 'vendor/autoload.php';
@@ -21,5 +21,5 @@ define('ColeccionUsuarios', $client->LoBeat->usuario);
 //     'authSource' => 'admin',
 // ];
 // $client = new MongoDB\Client($uri, $options);
-
+*/
 ?>
