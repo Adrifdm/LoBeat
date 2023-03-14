@@ -1,7 +1,8 @@
 <?php
 //use MongoDB\BSON\ObjectID;
-require_once 'usuario.php';
-require_once 'conexion.php';;
+require_once '../models/usuario.php';
+require_once 'conexion.php';
+require_once '../../vendor/autoload.php';
 
 class UsuarioService {
 
@@ -9,7 +10,7 @@ class UsuarioService {
 
   public function __construct() {
     //$this->db = Conexion::conectar();   en principio conexion.php ya estaría bien asi y no habria que hacer fnciones
-    $this->collection = DB->usuario;
+    $this->collection = (new MongoDB\Client)->LoBeat->usuarios;
   }
 
   public function crearUsuario($datos) {
@@ -38,26 +39,6 @@ class UsuarioService {
     return $result->getInsertedId();
   }
 
-  public function obtenerUsuarioPorId($id) {
-    $result = $this->collection->findOne(['_id' => $id]);
-    if (!$result) {
-      return null;
-    }
-
-    $usuario = new Usuario(
-      $result['nombre'],
-      $result['correo'],
-      $result['contrasenya'],
-      $result['spotify_access_token'],
-      $result['spotify_refresh_token'],
-      new DateTime($result['fecha_creacion']),
-      new DateTime($result['fecha_actualizacion'])
-    );
-    $usuario->setId($result['_id']);
-
-    return $usuario;
-  }
-
   public function actualizarUsuario($id, $datos) {
     $usuario = new Usuario(
       $datos['nombre'],
@@ -84,7 +65,6 @@ class UsuarioService {
     return $result->getModifiedCount() > 0;
   }
   
-
   public function eliminarUsuario($id) {
     $result = $this->collection->deleteOne(['_id' => $id]);
 
@@ -110,6 +90,44 @@ class UsuarioService {
     return $usuarios;
   }
   
+  public function obtenerUsuarioPorId($id) {
+    $result = $this->collection->findOne(['_id' => $id]);
+    if (!$result) {
+      return null;
+    }
+
+    $usuario = new Usuario(
+      $result['nombre'],
+      $result['correo'],
+      $result['contrasenya'],
+      $result['spotify_access_token'],
+      $result['spotify_refresh_token'],
+      new DateTime($result['fecha_creacion']),
+      new DateTime($result['fecha_actualizacion'])
+    );
+    $usuario->setId($result['_id']);
+
+    return $usuario;
+  }
+
+  public function buscarUsuarioPorCampo($campo, $valor) {
+    $resultado = $this->collection->findOne([$campo => $valor]);
+    if ($resultado) {
+        return new Usuario(
+            $resultado['nombre'],
+            $resultado['correo'],
+            $resultado['contrasenya'],
+            $resultado['spotify_access_token'],
+            $resultado['spotify_refresh_token'],
+            new DateTime($resultado['fecha_creacion']),
+            new DateTime($resultado['fecha_actualizacion'])
+        );
+    } else {
+        return null;
+    }
+  }
+
+
 }
 
 ?>
