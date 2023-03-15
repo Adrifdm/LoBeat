@@ -24,7 +24,15 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
    
+    <?php
+    require_once '../controllers/usuarioController.php';
 
+    // Crear una instancia de UsuarioController
+    $usuarioController = new UsuarioController();
+
+    // Comprobamos si existe algún usuario con ese correo
+    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["SesionEmail"]);
+    ?>
 
     <div class="main-content">
     
@@ -85,21 +93,24 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <h3 class="fuente">
-                    Alejandro González<span class="font-weight-light fuente">, 27</span>
+                  <h3 class="fuente"> 
+                    <?php
+                    echo $usuarioExistente->getNombre();
+                    ?>
+                  <!--<span class="font-weight-light fuente">, 27</span>-->
                   </h3>
                   <div class="h5 font-weight-300 fuente">
-                    <i class="ni location_pin mr-2"></i>Asturias, España
+                    <!--<i class="ni location_pin mr-2"></i>Asturias, España-->
                   </div>
                   <div class="h5 mt-4 fuente">
-                    <i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho
+                    <!--<i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho-->
                   </div>
                   <div class="fuente">
-                    <i class="ni education_hat mr-2"></i>Universidad autónoma de Barcelona
+                    <!--<i class="ni education_hat mr-2"></i>Universidad autónoma de Barcelona-->
                   </div>
                   <hr class="my-4">
-                  <p class="fuente">No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>
-                  <a href="#">Mostrar más</a>
+                  <!--<p class="fuente">No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>-->
+                  <!--<a href="#">Mostrar más</a>-->
                 </div>
               </div>
             </div>
@@ -124,13 +135,21 @@
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label fuente" for="input-username">Nombre de usuario</label>
-                          <input type="text" id="input-username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario" value="">
+                          <label id="input-username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario">
+                            <?php
+                            echo $usuarioExistente->getNombre();
+                            ?>
+                          </label>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label fuente" for="input-email">Dirección de correo</label>
-                          <input type="email" id="input-email" class="form-control form-control-alternative fuente" placeholder="@example.com">
+                          <label id="input-email" class="form-control form-control-alternative fuente" placeholder="@example.com">
+                            <?php
+                            echo $usuarioExistente->getCorreo();
+                            ?>
+                          </label>
                         </div>
                       </div>
                     </div>
@@ -138,7 +157,11 @@
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label fuente" for="input-first-name">Nombre</label>
-                          <input type="text" id="input-first-name" class="form-control form-control-alternative fuente" placeholder="" value="">
+                          <label id="input-first-name" class="form-control form-control-alternative fuente" placeholder="">
+                            <?php
+                            echo $usuarioExistente->getNombre();
+                            ?>
+                          </label>
                         </div>
                       </div>
                       <div class="col-lg-6">
