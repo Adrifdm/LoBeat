@@ -8,7 +8,6 @@
   </head>
 
   <body>
-    <div class= "fondo">
       <div class="login-box">
         <img class ="logo"src= "../../public/assets/img/LogoLB.png">
         <h2>Login</h2>
@@ -32,7 +31,7 @@
           </a>
         </form>
       </div>
-    </div>
+      
   </body>
 
 </html>

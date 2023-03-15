@@ -1,3 +1,20 @@
+<style>
+.error{
+  display:flex;
+  position:absolute;
+  min-width: 300px;
+  min-height: 30px;
+  border-radius: 10px;
+  padding: 10px 15px;
+  bottom: 70px;
+  right: 30px;
+  background: #ff6860;
+  border: 2px solid #dc1818;
+  color: #3d0818;
+}
+
+</style>
+
 <?php
 require_once '../controllers/usuarioController.php';
 
@@ -17,10 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
     
     if ($usuarioExistente !== null) {
-
-        echo "El email introducido ya existe";
+        ?>
+        <div class = "error">
+             <p> El email introducido ya existe </p>
+        </div>
+        <?php
         exit;
-
     }
 
     // Comprobamos si la contraseña coincide con la del campo "Repetir contraseña"
@@ -29,8 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //$hash = password_hash($password, PASSWORD_DEFAULT);  esto esta bien pensado pero lo dejamos comentado de momento
 
     } else {
-
-        echo "Las contraseñas introducidas no son iguales";
+        ?>
+        <div class = "error">
+            <p> Las contraseñas introducidas no son iguales</p>
+        </div>
+        <?php
         exit;
 
     }
@@ -49,13 +71,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Si se ha insertado correctamente, redirigir a la página de login
     if ($resultado !== null) {
+        ?>
+        <div class = "success">
+            <p> El registro ha sido completado con exito</p>
+        </div>
+        <?php
 
         header('Location: login.php');
         exit;
 
     } else {
-
-        echo "Ha ocurrido un error al registrar el usuario";
+        ?>
+        <div class = "error">
+            <p> Ha ocurrido un error al registrar el usuario </p> 
+        </div>       
+       <?php
         exit;
 
     }

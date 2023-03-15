@@ -1,3 +1,19 @@
+<style>
+.error{
+  display:flex;
+  position:absolute;
+  min-width: 300px;
+  min-height: 30px;
+  border-radius: 10px;
+  padding: 10px 15px;
+  bottom: 70px;
+  right: 30px;
+  background: #ff6860;
+  border: 2px solid #dc1818;
+  color: #3d0818;
+}
+
+</style>
 <?php
 require_once '../controllers/usuarioController.php';
 
@@ -20,7 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $contrasenyaCorrecta = $usuarioExistente->getContrasenya();
 
         if ($contrasenya != $contrasenyaCorrecta) {
-            echo "La contraseña introducida no es correcta";
+            ?>
+            <div class = "error">
+                <p>La contraseña introducida no es correcta </p>
+            </div>
+            <?php
             exit;
         }
 
@@ -28,7 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
 
     } else {
-        echo "El correo es inválido";
+        ?>
+        <div class = "error">
+            <p> El correo es inválido</p>
+        </div>
+            <?php
         exit;        
     }
 

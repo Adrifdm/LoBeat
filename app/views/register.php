@@ -8,11 +8,10 @@
   </head>
 
   <body>
-    <div class= fondo>
       <div class="login-box">
         <img class ="logo" src= "../../public/assets/img/LogoLB.png"></img>
         <h2>Sing up</h2>
-        <form action="procesarRegister.php" method="post">
+        <form  method="post">
           <div class="user-box">
             <input type="text" id="name" name="name" required="">
             <label>Nombre</label>
@@ -40,7 +39,9 @@
           </a>
         </form>
       </div>
-    </div>
+      <?php
+          include("procesarRegister.php")
+        ?>
   </body>
 
 </html>
