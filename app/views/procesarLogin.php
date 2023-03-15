@@ -1,19 +1,13 @@
-<style>
-.error{
-  display:flex;
-  position:absolute;
-  min-width: 300px;
-  min-height: 30px;
-  border-radius: 10px;
-  padding: 10px 15px;
-  bottom: 70px;
-  right: 30px;
-  background: #ff6860;
-  border: 2px solid #dc1818;
-  color: #3d0818;
-}
+<html lang="en" >
 
-</style>
+  <head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="../../public/assets/css/reg_log.css" rel="stylesheet">
+  </head>
+
+  <body>
 <?php
 
 session_start();
@@ -71,3 +65,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
 ?>
+</body>
+</html>
