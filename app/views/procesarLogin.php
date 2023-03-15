@@ -42,14 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit;
         }
 
+        //CONFIGURACION DE VARIABLES DE SESION  
+
         //para ver si el usuario esta logeado durante el resto de la aplicacion
         $_SESSION["login"] = true;
     
         //lo que vamos a usar durante el resto de la aplicacion para buscar info del usuario loggeado
         $_SESSION["SesionEmail"] = $correo;
 
-        //falta por ver cmo hacemos para que una persona se logee como administrador
-        //$_SESSION["isAdmin"] 
+        //para ver si el usuario puede acceder a pestañas dedicadas de roles especiales
+        $_SESSION["role"] = $usuarioExistente->getRole();
 
         header('Location: pagPrincipal.php');       
         exit;

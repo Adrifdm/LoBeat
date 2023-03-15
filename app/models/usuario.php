@@ -8,9 +8,11 @@ class Usuario {
   private $spotify_refresh_token;
   private $fecha_creacion;
   private $fecha_actualizacion;
+  private $role;
+  private $genero;
   
 
-  public function __construct($nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion) {
+  public function __construct($nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero) {
     $this->nombre = $nombre;
     $this->correo = $correo;
     $this->contrasenya = $contrasenya;
@@ -18,6 +20,26 @@ class Usuario {
     $this->spotify_refresh_token = $spotify_refresh_token;
     $this->fecha_creacion = $fecha_creacion;
     $this->fecha_actualizacion = $fecha_actualizacion;
+    $this->role = $role;
+    $this->genero = $genero;
+
+  }
+
+  
+  public function getGenero() {
+    return $this->genero;
+  }
+
+  public function setGenero($genero) {
+    $this->genero = $genero;
+  }
+
+  public function getRole() {
+    return $this->role;
+  }
+
+  public function setRole($role) {
+    $this->role = $role;
   }
 
   public function getId() {
