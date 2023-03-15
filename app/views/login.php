@@ -11,7 +11,7 @@
       <div class="login-box">
         <img class ="logo"src= "../../public/assets/img/LogoLB.png">
         <h2>Login</h2>
-        <form method="post" action="procesarLogin.php">
+        <form method="post">
           <div class="user-box">
             <input type="email" name="email" required="">
             <label>Email</label>
@@ -31,7 +31,9 @@
           </a>
         </form>
       </div>
-      
+      <?php
+          include("procesarLogin.php")
+        ?>
   </body>
 
 </html>

@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     'contrasenya' => $constrasenya, // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
     'spotify_access_token' => '',
     'spotify_refresh_token' => '',
-    'fecha_creacion' => date('Y-m-d H:i:s'),
+    'fsa_creacion' => date('Y-m-d H:i:s'),
     'fecha_actualizacion' => date('Y-m-d H:i:s')
     );
     $resultado = $usuarioController->crearUsuario($datos);

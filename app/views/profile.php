@@ -7,21 +7,21 @@
     <title>Profile</title>
     <link rel="stylesheet" href="../../public/assets/css/bootstrap-argon.css">
     <link rel="stylesheet" href="../../public/assets/css/profile.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/dee2748eb0.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+   
 
-    <?php
-      require("cabecera.php");
-    ?>
 
     <div class="main-content">
+    
       <!-- Introducción -->
       <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../public/assets/img/fondoLogin.png); background-size: cover; background-position: center top;">
         <!-- Máscara -->
+       
         <span class="mask bg-gradient-default opacity-8"></span>
         <!-- Contenido introducción -->
         <div class="container-fluid d-flex align-items-center">
@@ -30,6 +30,7 @@
               <h1 class="display-2 profile-text fuente">Perfil</h1>
               <p class="profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
               <a href="#!" class="btn btn-info fuente">Editar perfil</a>
+              <a href="login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Log Out</a>
             </div>
           </div>
         </div>
@@ -139,7 +140,7 @@
                     </div>
                   </div>
                   <hr class="my-4">
-                  <!-- Address -->
+                  <!-- Address
                   <h6 class="heading-small text-muted mb-4 fuente">Información de contacto</h6>
                   <div class="pl-lg-4">
                     <div class="row">
@@ -172,6 +173,7 @@
                     </div>
                   </div>
                   <hr class="my-4">
+                   -->
                   <!-- Description -->
                   <h6 class="heading-small text-muted mb-4 fuente">Sobre mí</h6>
                   <div class="pl-lg-4">
