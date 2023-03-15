@@ -15,9 +15,13 @@
 
 </style>
 <?php
+
+session_start();
+
 require_once '../controllers/usuarioController.php';
 
 // Crear una instancia de UsuarioController
+
 $usuarioController = new UsuarioController();
 
 // Comprobamos si el formulario ha sido enviado
@@ -43,6 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php
             exit;
         }
+
+        //para ver si el usuario esta logeado durante el resto de la aplicacion
+        $_SESSION["login"] = true;
+    
+        //lo que vamos a usar durante el resto de la aplicacion para buscar info del usuario loggeado
+        $_SESSION["SesionEmail"] = $correo;
+
+        //falta por ver cmo hacemos para que una persona se logee como administrador
+        //$_SESSION["isAdmin"] 
 
         header('Location: pagPrincipal.php');       
         exit;

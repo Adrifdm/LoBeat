@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -12,6 +16,7 @@
 </head>
 <body>
     <?php
+
 		require("cabecera.php");
 	?>
     <main role="main" class="container-fluid">
