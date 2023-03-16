@@ -20,9 +20,25 @@
             <input type="email" id="email" name="email" required="">
             <label>Email</label>
           </div>
-          <div class="user-box">
-            <input type="role" id="role" name="role" required="">
-            <label>Rol</label>
+          
+           <div class="user-box">
+
+            <label for="role">Select a user role:</label>
+
+            <select name="role" id="role">
+
+            <option value="admin">Administrator</option>
+
+            <option value="user">User</option>
+
+            <option value="empresa">Enterprise</option>
+
+            </select>
+
+            <!-- <input type="role" id="role" name="role" required=""> 
+
+            <label>Rol</label>-->
+
           </div>
           <div class="user-box">
             <input type="genero" id="genero" name="genero" required="">

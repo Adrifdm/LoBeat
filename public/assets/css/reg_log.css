@@ -11,6 +11,7 @@ body{
     padding:0;
 }
 
+
 .next{
   position: absolute;
   width: 100%;
@@ -59,13 +60,44 @@ body{
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;
   background: transparent;
 }
+
+.login-box .user-box select {
+  
+  width: 40%;
+  padding: 10px 0px;
+  
+  align-self: flex-end;
+  font-size: 16px;
+  color: #ffffff;
+
+  margin-left: 190px;
+  margin-bottom: 30px;
+  border: none;
+
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent !important;
+
+}
+
+.login-box .user-box select option{
+  color: black;
+  background: rgba(235, 155, 155, 0.521);
+}
+
+.login-box .user-box select option:hover{
+  
+  background: rgba(255, 255, 255, 0.521)!important;
+}
+
+
 .login-box .user-box label {
   position: absolute;
   top:0;
