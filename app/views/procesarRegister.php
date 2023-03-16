@@ -23,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $correo = $_POST['email'];
     $constrasenya = $_POST['password'];
     $reconstrasenya = $_POST['repassword'];
+    $role = $_POST['role'];
+    $genero = $_POST['genero'];
 
     // Comprobamos si existe algún usuario con ese correo
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
@@ -51,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     }
 
+    //----------------------------------------------------------------------------
     // Insertamos la información del nuevo usuario
     $datos = array(
     'nombre' => $nombre,
@@ -59,7 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     'spotify_access_token' => '',
     'spotify_refresh_token' => '',
     'fsa_creacion' => date('Y-m-d H:i:s'),
-    'fecha_actualizacion' => date('Y-m-d H:i:s')
+    'fecha_actualizacion' => date('Y-m-d H:i:s'),
+    'role' => $role,
+    'genero' => $genero
     );
     $resultado = $usuarioController->crearUsuario($datos);
 

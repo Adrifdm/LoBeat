@@ -21,6 +21,14 @@
             <label>Email</label>
           </div>
           <div class="user-box">
+            <input type="role" id="role" name="role" required="">
+            <label>Rol</label>
+          </div>
+          <div class="user-box">
+            <input type="genero" id="genero" name="genero" required="">
+            <label>Género</label>
+          </div>
+          <div class="user-box">
             <input type="password" id="password" name="password" required="">
             <label>Contraseña</label>
           </div>
