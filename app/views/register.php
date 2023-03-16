@@ -19,7 +19,50 @@
           <div class="user-box">
             <input type="email" id="email" name="email" required="">
             <label>Email</label>
+
           </div>
+          
+           <div class="user-box">
+
+            <label for="role">Select a user role:</label>
+
+            <select name="role" id="role" required="">
+
+            <option value="admin">Administrator</option>
+
+            <option value="user">User</option>
+
+            <option value="empresa">Enterprise</option>
+
+            </select>
+
+            <!-- <input type="role" id="role" name="role" required=""> 
+
+            <label>Rol</label>-->
+
+          </div>
+          
+           <div class="user-box">
+
+            <label for="genero">Select gender:</label>
+
+            <select name="genero" id="genero" required="">
+
+            <option value="female">Male</option>
+
+            <option value="male">Female</option>
+
+            <option value="other">Other</option>
+
+            </select>
+
+           </div>
+
+          <!--<div class="user-box">
+            <input type="genero" id="genero" name="genero" required="">
+            <label>Género</label>
+          </div>
+          -->
           <div class="user-box">
             <input type="password" id="password" name="password" required="">
             <label>Contraseña</label>

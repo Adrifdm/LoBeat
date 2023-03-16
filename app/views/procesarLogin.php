@@ -9,9 +9,13 @@
 
   <body>
 <?php
+
+session_start();
+
 require_once '../controllers/usuarioController.php';
 
 // Crear una instancia de UsuarioController
+
 $usuarioController = new UsuarioController();
 
 // Comprobamos si el formulario ha sido enviado
@@ -37,6 +41,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php
             exit;
         }
+
+        //CONFIGURACION DE VARIABLES DE SESION  
+
+        //para ver si el usuario esta logeado durante el resto de la aplicacion
+        $_SESSION["login"] = true;
+    
+        //lo que vamos a usar durante el resto de la aplicacion para buscar info del usuario loggeado
+        $_SESSION["SesionEmail"] = $correo;
+
+        //para ver si el usuario puede acceder a pestañas dedicadas de roles especiales
+        $_SESSION["role"] = $usuarioExistente->getRole();
 
         header('Location: pagPrincipal.php');       
         exit;
