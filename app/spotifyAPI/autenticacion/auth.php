@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 $session = new SpotifyWebAPI\Session(
     'CLIENT_ID',

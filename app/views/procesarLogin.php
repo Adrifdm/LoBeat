@@ -8,19 +8,19 @@
   </head>
 
   <body>
-<?php
 
+<?php
 session_start();
 
 require_once '../controllers/usuarioController.php';
 
-// Crear una instancia de UsuarioController
-
-$usuarioController = new UsuarioController();
 
 // Comprobamos si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
+    // Crear una instancia de UsuarioController
+    $usuarioController = new UsuarioController();
+
     // Obtenemos la informacion introducida
     $correo = $_POST['email'];
     $contrasenya = $_POST['password'];

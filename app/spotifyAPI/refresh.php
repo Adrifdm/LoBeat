@@ -1,6 +1,6 @@
 <?php
 // Requiere el archivo autoload.php que carga las clases necesarias para usar la API web de Spotify
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 // Crea una instancia de la clase Session con los datos del cliente
 $session = new SpotifyWebAPI\Session(
@@ -39,5 +39,5 @@ $accessTokenNuevo = $session->getAccessToken();
 $refreshTokenNuevo = $session->getRefreshToken();
 
 // Guardamos los nuevos tokens en la base de datos, en el usuario correspondiente (mediante una llamada a una función externa)
-updateUserTokens($userId, $accessTokenNuevo, $refreshTokenNuevo);
+actulizar($userId, $accessTokenNuevo, $refreshTokenNuevo);
 ?>

@@ -54,8 +54,6 @@ class UsuarioService {
       $datos['spotify_refresh_token'],
       null, // la fecha de creación no se actualiza
       new DateTime(), // se actualiza la fecha de actualización con la fecha y hora actuales
-      //$datos['role'],
-      //$datos['genero'],
       null, // el rol no se actualiza
       null// el genero no se actualiza
     );
@@ -78,6 +76,65 @@ class UsuarioService {
     return $result->getModifiedCount() > 0;
   }
   
+  //esta función es la misma que actualizarUsuario pero solo actualiza aquellos campos que $datos tenga, por lo que datos ya no tiene porque definir
+  //todos los campos. Lo suyo es que esta sea la función buena de actualizar, pero dejo la antigua por si acaso
+  public function actualizarSOLOALGUNOSCAMPOSDEUsuario($id, $datos) {
+    
+    // Comprobamos campo a campo si $datos lo tiene
+    // Aunque no tenga mucho sentido, en $datos podemos definir una fecha_creacion y fecha_actualizacion concretas (para forzar unas fechas concretas podrías ser útil)
+    // Por eso sigue estando el if. Sin embargo, en fecha_actualizacion existe un else que en caso de no haber nada en datos, siempre añadirá una nueva fecha
+    if (isset($datos['nombre'])) {
+      $set['nombre'] = $datos['nombre'];
+    }
+
+    if (isset($datos['correo'])) {
+      $set['correo'] = $datos['correo'];
+    }
+
+    if (isset($datos['contrasenya'])) {
+      $set['contrasenya'] = $datos['contrasenya'];
+    }
+
+    if (isset($datos['spotify_access_token'])) {
+      $set['spotify_access_token'] = $datos['spotify_access_token'];
+    }
+
+    if (isset($datos['spotify_refresh_token'])) {
+      $set['spotify_refresh_token'] = $datos['spotify_refresh_token'];
+    }
+
+    if (isset($datos['fecha_creacion'])) {
+      $set['fecha_creacion'] = $datos['fecha_creacion'];
+    }
+
+    if (isset($datos['fecha_actualizacion'])) {
+      $set['spotify_refresh_token'] = $datos['spotify_refresh_token'];
+    } else {
+      $fecha_actualizacion = new DateTime();
+      $set['fecha_actualizacion'] = $fecha_actualizacion->format('Y-m-d H:i:s');
+    }
+
+    if (isset($datos['role'])) {
+      $set['role'] = $datos['role'];
+    }
+
+    if (isset($datos['genero'])) {
+      $set['genero'] = $datos['genero'];
+    }
+
+    // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
+    $result = $this->collection->updateOne(
+      ['_id' => $id],
+      [
+        '$set' => $set,
+      ],
+      //['upsert' => true] esta opcion hace que si no se encuentra el usuario que hay que actualizar, se crea uno nuevo (mejor no lo activamos)
+    );
+
+    return $result->getModifiedCount() > 0;
+  }
+
+
   public function eliminarUsuario($id) {
     $result = $this->collection->deleteOne(['_id' => $id]);
 
