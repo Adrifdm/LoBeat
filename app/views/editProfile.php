@@ -122,21 +122,17 @@
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label fuente" for="input-username">Nombre de usuario</label>
-                          <input type="text" id="input-username" name="username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario" value="
-                          <?php
+                          <input type="text" id="input-username" name="username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario" value="<?php
                             echo $usuarioExistente->getNombre();
-                            ?>
-                          ">
+                            ?>">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label fuente" for="input-email">Dirección de correo</label>
-                          <input type="text" id="input-email" name="email" class="form-control form-control-alternative fuente" placeholder="@example.com" value="
-                          <?php
+                          <input type="text" id="input-email" name="email" class="form-control form-control-alternative fuente" placeholder="@example.com" value="<?php
                             echo $usuarioExistente->getCorreo();
-                            ?>
-                          ">
+                            ?>">
                         </div>
                       </div>
                     </div>
@@ -144,11 +140,9 @@
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label fuente" for="input-first-name">Nombre</label>
-                          <input type="text" id="input-first-name" name="name" class="form-control form-control-alternative fuente" placeholder="" value="
-                          <?php
+                          <input type="text" id="input-first-name" name="name" class="form-control form-control-alternative fuente" placeholder="" value="<?php
                             echo $usuarioExistente->getNombre();
-                            ?>
-                          ">
+                            ?>">
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -203,12 +197,10 @@
                     </div>
                   </div>
 
-                  <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                    <div class="d-flex justify-content-between">
-                        <a class="btn btn-sm btn-info mr-4" href="profile.php">
-                            <input type="submit">
-                        </a>
-                    </div>
+                  <div class="d-flex justify-content-between">
+                    <a type="submit">
+                        <input type="submit" class="btn btn-sm btn-info mr-4" value="Guardar">
+                    </a>
                   </div>
                 </form>
               </div>

@@ -9,7 +9,6 @@
 
   <body>
 <?php
-
 require_once '../controllers/usuarioController.php';
 
 // Crear una instancia de UsuarioController
@@ -33,13 +32,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $datos = array(
                 'nombre' => $nombre,
                 'correo' => $correo,
-                'fecha_actualizacion' => date('Y-m-d H:i:s')
-                );
+                'contrasenya' => $usuarioExistente->getContrasenya(), // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
+                'spotify_access_token' => $usuarioExistente->getSpotify_access_token(),
+                'spotify_refresh_token' => $usuarioExistente->getSpotify_refresh_token(),
+                'fsa_creacion' => $usuarioExistente->getFecha_creacion(),
+                'fecha_actualizacion' => date('Y-m-d H:i:s'),
+                'role' => $usuarioExistente->getRole(),
+                'genero' => $usuarioExistente->getGenero()
+            );
             
             $resultado = $usuarioController->actualizarUsuarioPorCorreo($correo, $datos);
 
+            // Si se ha insertado correctamente, redirigir a la página de login
+            if ($resultado !== null) {
+                ?>
+                    <div class = "success">
+                        <p> El registro ha sido completado con exito</p>
+                    </div>
+                <?php
+
+                header('Location: login.php');
+                exit;
+
+            } else {
+                ?>
+                    <div class = "error">
+                        <p> Ha ocurrido un error al registrar el usuario </p> 
+                    </div>       
+                <?php
+                exit;
+            }
+
             //header('Location: profile.php');
-            exit;
+            //exit;
         }
         else{
             ?>

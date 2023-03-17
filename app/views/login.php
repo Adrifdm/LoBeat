@@ -22,7 +22,7 @@
             <label>Contraseña</label>
           </div>
           <p> Si no tienes una cuenta &nbsp;<a class = "noreg" href = "register.php">Registrate </a></p>
-          <a class = "sig" href="index.php">
+          <a class = "sig" href="pagPrincipal.php">
             <input type="submit"class = "next">
             <span></span>
             <span></span>
