@@ -1,13 +1,3 @@
-<?php
-	session_start();
-
-  if($_SESSION["login"] !== true){
-    
-    header('Location: login.php');       
-    exit;
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,17 +12,19 @@
 </head>
 <body>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-   
     <?php
-    require_once '../controllers/usuarioController.php';
+        require_once '../controllers/usuarioController.php';
 
-    // Crear una instancia de UsuarioController
-    $usuarioController = new UsuarioController();
+        session_start();
 
-    // Comprobamos si existe algún usuario con ese correo
-    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["SesionEmail"]);
+        // Crear una instancia de UsuarioController
+        $usuarioController = new UsuarioController();
+
+        // Comprobamos si existe algún usuario con ese correo
+        $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["SesionEmail"]);
     ?>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
     <div class="main-content">
     
@@ -47,7 +39,7 @@
             <div class="col-lg-7 col-md-10">
               <h1 class="display-2 profile-text fuente">Perfil</h1>
               <p class="profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
-              <a href="editProfile.php" class="btn btn-info fuente">Editar perfil</a>
+              <a href="#!" class="btn btn-info fuente">Editar perfil</a>
               <a href="login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Log Out</a>
             </div>
           </div>
@@ -93,12 +85,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <h3 class="fuente"> 
-                    <?php
-                    echo $usuarioExistente->getNombre();
-                    ?>
-                  <!--<span class="font-weight-light fuente">, 27</span>-->
-                  </h3>
+                  <h3 class="fuente"> </h3>
                   <div class="h5 font-weight-300 fuente">
                     <!--<i class="ni location_pin mr-2"></i>Asturias, España-->
                   </div>
@@ -128,28 +115,28 @@
                 </div>
               </div>
               <div class="card-body">
-                <form>
+                <form method="post">
                   <h6 class="heading-small text-muted mb-4 fuente">Información usuario</h6>
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label fuente" for="input-username">Nombre de usuario</label>
-                          <label id="input-username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario">
-                            <?php
+                          <input type="text" id="input-username" name="username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario" value="
+                          <?php
                             echo $usuarioExistente->getNombre();
                             ?>
-                          </label>
+                          ">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label fuente" for="input-email">Dirección de correo</label>
-                          <label id="input-email" class="form-control form-control-alternative fuente" placeholder="@example.com">
-                            <?php
+                          <input type="text" id="input-email" name="email" class="form-control form-control-alternative fuente" placeholder="@example.com" value="
+                          <?php
                             echo $usuarioExistente->getCorreo();
                             ?>
-                          </label>
+                          ">
                         </div>
                       </div>
                     </div>
@@ -157,11 +144,11 @@
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label fuente" for="input-first-name">Nombre</label>
-                          <label id="input-first-name" class="form-control form-control-alternative fuente" placeholder="">
-                            <?php
+                          <input type="text" id="input-first-name" name="name" class="form-control form-control-alternative fuente" placeholder="" value="
+                          <?php
                             echo $usuarioExistente->getNombre();
                             ?>
-                          </label>
+                          ">
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -215,12 +202,24 @@
                       <textarea rows="4" class="form-control form-control-alternative fuente" placeholder="Unas palabras sobre tí"></textarea>
                     </div>
                   </div>
+
+                  <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-info mr-4" href="profile.php">
+                            <input type="submit">
+                        </a>
+                    </div>
+                  </div>
                 </form>
               </div>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
+    <?php
+        include("processProfile.php")
+    ?>
 </body>
 </html>

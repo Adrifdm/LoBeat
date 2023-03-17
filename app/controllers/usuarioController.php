@@ -86,6 +86,19 @@ class UsuarioController {
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+
+    public function actualizarUsuarioPorCorreo($correo, $datos) {
+        try {
+            // llamar al método de actualizar usuario del servicio
+            $resultado = $this->usuarioService->actualizarUsuarioPorCorreo($correo, $datos);
+            // devolver la respuesta en formato JSON
+            echo json_encode($resultado);
+            return $resultado;
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
     
 }
 ?>

@@ -146,6 +146,39 @@ class UsuarioService {
     }
   }
 
+  public function actualizarUsuarioPorCorreo($correo, $datos) {
+    $usuario = new Usuario(
+      $datos['nombre'],
+      $datos['correo'],
+      $datos['contrasenya'],
+      $datos['spotify_access_token'],
+      $datos['spotify_refresh_token'],
+      null, // la fecha de creación no se actualiza
+      new DateTime(), // se actualiza la fecha de actualización con la fecha y hora actuales
+      //$datos['role'],
+      //$datos['genero'],
+      null, // el rol no se actualiza
+      null// el genero no se actualiza
+    );
+  
+    //....................................
+    $result = $this->collection->updateOne(
+      ['correo' => $correo],
+      ['$set' => [
+        'nombre' => $usuario->getNombre(),
+        'correo' => $usuario->getCorreo(),
+        'contrasenya' => $usuario->getContrasenya(),
+        'spotify_access_token' => $usuario->getSpotify_access_token(),
+        'spotify_refresh_token' => $usuario->getSpotify_refresh_token(),
+        'fecha_actualizacion' => $usuario->getFecha_actualizacion()->format('Y-m-d H:i:s'),
+        'role' => $usuario->getRole(),
+        'genero' => $usuario->getGenero()
+      ]]
+    );
+  
+    return $result->getModifiedCount() > 0;
+  }
+
 
 }
 
