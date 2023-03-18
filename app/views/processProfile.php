@@ -51,7 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 <?php
 
-                header('Location: login.php');
+                //header('Location: login.php');
+                echo "<script>window.location='profile.php';</script>";
                 exit;
 
             } else {
