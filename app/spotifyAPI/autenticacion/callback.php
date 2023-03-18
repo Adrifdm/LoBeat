@@ -1,23 +1,29 @@
 <?php
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
+require_once 'auth.php';
 
+/* Como hemos hecho un require_once de auth.php, en principio podemos utilizar la $session de auth.php
 $session = new SpotifyWebAPI\Session(
     'CLIENT_ID',
     'CLIENT_SECRET',
     'REDIRECT_URI'
 );
+*/
 
-// Request a access token using the code from Spotify
+
+// Usando el código que no devuelve Spotify, solicitamos un accessToken y refreshToken
 $session->requestAccessToken($_GET['code']);
 
 $accessToken = $session->getAccessToken();
 $refreshToken = $session->getRefreshToken();
 
-// Store the access and refresh tokens somewhere. In a session for example
-
-
+// Los almacenamos en una sesión
+session_start();
+$_SESSION['spotify_access_token'] = $accessToken;
+$_SESSION['spotify_refresh_token'] = $refreshToken;
 
 // Send the user along and fetch some data!
-header('Location: ejemplo_de_uso.php');
+//header('Location: ejemplo_de_uso.php');
+
 die();
 ?>
