@@ -16,7 +16,7 @@ $accessToken = $session->getAccessToken();
 $refreshToken = $session->getRefreshToken();
 
 // Los almacenamos en una sesión
-//session_start();
+session_start();
 $_SESSION['spotify_access_token'] = $accessToken;
 $_SESSION['spotify_refresh_token'] = $refreshToken;
 $registered = true;
