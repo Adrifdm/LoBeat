@@ -1,7 +1,7 @@
 <html lang="en">
 
   <head>
-    <title>Register</title>
+    <title>Registro</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="../../public/assets/css/reg_log.css" rel="stylesheet">
@@ -10,7 +10,7 @@
   <body>
       <div class="login-box">
         <img class ="logo" src= "../../public/assets/img/LogoLB.png"></img>
-        <h2>Sing up</h2>
+        <h2>Regístrate</h2>
         <form  method="post">
           <div class="user-box">
             <input type="text" id="name" name="name" required="">
@@ -24,15 +24,15 @@
           
            <div class="user-box">
 
-            <label for="role">Select a user role:</label>
+            <label for="role">Selecciona un rol de usuario:</label>
 
             <select name="role" id="role" required="">
 
-            <option value="admin">Administrator</option>
+            <option value="admin">Administrador</option>
 
-            <option value="user">User</option>
+            <option value="user">Usuario</option>
 
-            <option value="empresa">Enterprise</option>
+            <option value="empresa">Empresa</option>
 
             </select>
 
@@ -44,15 +44,15 @@
           
            <div class="user-box">
 
-            <label for="genero">Select gender:</label>
+            <label for="genero">Selecciona un sexo:</label>
 
             <select name="genero" id="genero" required="">
 
-            <option value="female">Male</option>
+            <option value="female">Hombre</option>
 
-            <option value="male">Female</option>
+            <option value="male">Mujer</option>
 
-            <option value="other">Other</option>
+            <option value="other">Otro</option>
 
             </select>
 
