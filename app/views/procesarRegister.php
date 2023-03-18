@@ -42,9 +42,7 @@
 
             // Comprobamos si la contraseña coincide con la del campo "Repetir contraseña"
             if ($constrasenya == $reconstrasenya){
-
                 //$hash = password_hash($password, PASSWORD_DEFAULT);  esto esta bien pensado pero lo dejamos comentado de momento
-
             } else {
                 ?>
                 <div class = "error">
@@ -60,18 +58,17 @@
             $accessToken = $tokensUsuario[0];
             $refreshToken = $tokensUsuario[1];
 
-            //----------------------------------------------------------------------------
             // Insertamos la información del nuevo usuario
             $datos = array(
-            'nombre' => $nombre,
-            'correo' => $correo,
-            'contrasenya' => $constrasenya,         // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
-            'spotify_access_token' => $accessToken,
-            'spotify_refresh_token' => $refreshToken,
-            'fsa_creacion' => date('Y-m-d H:i:s'),
-            'fecha_actualizacion' => date('Y-m-d H:i:s'),
-            'role' => $role,
-            'genero' => $genero
+                'nombre' => $nombre,
+                'correo' => $correo,
+                'contrasenya' => $constrasenya,         // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
+                'spotify_access_token' => $accessToken,
+                'spotify_refresh_token' => $refreshToken,
+                'fsa_creacion' => date('Y-m-d H:i:s'),
+                'fecha_actualizacion' => date('Y-m-d H:i:s'),
+                'role' => $role,
+                'genero' => $genero
             );
             $resultado = $usuarioController->crearUsuario($datos);
 
