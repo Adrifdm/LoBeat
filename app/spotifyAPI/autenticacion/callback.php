@@ -13,7 +13,7 @@ $session = new SpotifyWebAPI\Session(
 $session->requestAccessToken($_GET['code']);
 
 $accessToken = $session->getAccessToken();
-$refreshToken = $session->getRefreshToken();
+$refreshToken = $session->getRefreshToken();    
 
 // Los almacenamos en una sesión
 session_start();

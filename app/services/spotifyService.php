@@ -55,10 +55,50 @@ class SpotifyService {
     }
     
     public function refrescarTokens($id) {
-        // Almacenamos en una sesión el $id del usuario a refrescar, y en refresh.php lo recuperamos
-        session_start();
-        $_SESSION['user_id'] = $id;
-        header("Location: refresh.php");
-        exit;
+        
+        // Crea una instancia de la clase Session con los datos del cliente
+        $session = new SpotifyWebAPI\Session(
+            '8d2d98d239094241afabe8ead302c625',
+            '0b8c3b77a6b448158ecdf7e3b045cbda'
+        );
+
+        // Obtenemos el accessToken y refreshToken actuales de un determinado usuario (utilizando spotifyController)
+        // Esta función debe devolver un array asociativo con las claves 'accessToken' y 'refreshToken'
+        $userTokens = $this->obtenerTokensUsuario($id);
+        $accessTokenActual = $userTokens['accessToken'];
+        $refreshTokenActual = $userTokens['refreshToken'];
+
+        // Si el accessToken sigue siendo válido, seteamos tanto ese accessToken como el refreshToken a la session directamente
+        if ($accessTokenActual) {
+            $session->setAccessToken($accessTokenActual);
+            $session->setRefreshToken($refreshTokenActual);
+        }
+        // En caso contrario, tenemos que generar un nuevo accessToken válido. Lo hacemos con la función refreshAccessToken, que necesita el refreshToken como entrada
+        else {
+            $session->refreshAccessToken($refreshTokenActual);
+        }
+
+        // Crea una instancia de la clase SpotifyWebAPI ($api) con la opción auto_refresh activada.
+        //$api estará lista para ser usada por otros ficheros y realizar peticiones
+        $options = [
+            'auto_refresh' => true,
+        ];
+        $api = new SpotifyWebAPI\SpotifyWebAPI($options, $session);
+
+        // Establece la sesión en la instancia de la clase SpotifyWebAPI
+        $api->setSession($session);
+
+        // Obtenemos los nuevos tokens que pueden haber sido actualizados por la opción auto_refresh
+        $accessTokenNuevo = $session->getAccessToken();
+        $refreshTokenNuevo = $session->getRefreshToken();
+
+        // Guardamos los nuevos tokens en la base de datos, en el usuario correspondiente (mediante una llamada a una función externa)
+        $datos = array(
+            'spotify_access_token' => $accessTokenNuevo,
+            'spotify_refresh_token' => $refreshTokenNuevo
+        );
+
+        $this->usuarioController->actualizarUsuario($id, $datos);
+
     }
 }
