@@ -1,8 +1,8 @@
 <?php
 //use MongoDB\BSON\ObjectID;
-require_once '../models/usuario.php';
-require_once 'conexion.php';
+//require_once 'conexion.php';
 require_once '../../vendor/autoload.php';
+require_once '../models/usuario.php';
 
 class UsuarioService {
 
@@ -45,7 +45,7 @@ class UsuarioService {
     return $result->getInsertedId();
   }
 
-  public function actualizarUsuario($id, $datos) {
+  public function actualizarUsuarioANTIGUO($id, $datos) {
     $usuario = new Usuario(
       $datos['nombre'],
       $datos['correo'],
@@ -76,9 +76,9 @@ class UsuarioService {
     return $result->getModifiedCount() > 0;
   }
   
-  //esta función es la misma que actualizarUsuario pero solo actualiza aquellos campos que $datos tenga, por lo que datos ya no tiene porque definir
-  //todos los campos. Lo suyo es que esta sea la función buena de actualizar, pero dejo la antigua por si acaso
-  public function actualizarSOLOALGUNOSCAMPOSDEUsuario($id, $datos) {
+  //esta función es la misma que actualizarUsuarioANTIGUO pero solo actualiza aquellos campos que $datos tenga, por lo que datos ya no tiene porque definir
+  //todos los campos. Dejo la antigua en este fichero por si acaso
+  public function actualizarUsuario($id, $datos) {
     
     // Comprobamos campo a campo si $datos lo tiene
     // Aunque no tenga mucho sentido, en $datos podemos definir una fecha_creacion y fecha_actualizacion concretas (para forzar unas fechas concretas podrías ser útil)
@@ -133,7 +133,6 @@ class UsuarioService {
 
     return $result->getModifiedCount() > 0;
   }
-
 
   public function eliminarUsuario($id) {
     $result = $this->collection->deleteOne(['_id' => $id]);

@@ -4,7 +4,7 @@ require '../../vendor/autoload.php';
 $session = new SpotifyWebAPI\Session(
     'CLIENT_ID',
     'CLIENT_SECRET',
-    'REDIRECT_URI'
+    'REDIRECT_URI'      //poner aqui que hay que llamar a callback: 'localhost...blabla..../callback.php'
 );
 
 /*

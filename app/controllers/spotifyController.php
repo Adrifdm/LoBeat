@@ -8,15 +8,46 @@ class SpotifyController {
         $this->spotifyService = new SpotifyService();
     }
 
-    public function getAuthUrl() {
-        return $this->spotifyService->getAuthUrl();
+    public function autentificarUsuario() {
+        try {
+            // llamar al método de obtener los tokens de usuario por id del servicio
+            $this->spotifyService->autentificarUsuario();
+            // Obtenemos el accessToken y refreshToken asignados al usuario (en callback.php)
+            session_start();
+            $accessToken = $_SESSION['spotify_access_token'];
+            $refreshToken = $_SESSION['spotify_refresh_token'];
+            $resultado = [$accessToken, $refreshToken];
+            session_destroy();
+
+            // devolver la respuesta en formato JSON
+            echo json_encode($resultado);
+            return $resultado;
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
     }
 
-    public function getTokens($code) {
-        return $this->spotifyService->getTokens($code);
+    public function obtenerTokensUsuario($id) {
+        try {
+            // llamar al método de obtener los tokens de usuario por id del servicio
+            $resultado = $this->spotifyService->obtenerTokensUsuario($id);
+            // devolver la respuesta en formato JSON
+            echo json_encode($resultado);
+            return $resultado;
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
     }
 
-    public function refreshTokens($id) {
-        return $this->spotifyService->refreshTokens($id);
+    public function refrescarTokens($id) {
+        try {
+            // llamamos al método refrescarTokens del servicio
+            $this->spotifyService->refrescarTokens($id);
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
     }
 }

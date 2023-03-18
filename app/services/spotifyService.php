@@ -1,74 +1,41 @@
 <?php
+require_once 'SpotifyAPI/autenticacion/auth.php';
+require_once '../controllers/usuarioController.php';
+
 class SpotifyService {
-    private $client_id = "TU_CLIENT_ID";
-    private $client_secret = "TU_CLIENT_SECRET";
-    private $redirect_uri = "TU_REDIRECT_URI";
+    private $client_id;
+    private $client_secret;
+    private $redirect_uri;
+    private $usuarioController;
 
     public function __construct() {
         session_start();
+        $this->client_id = "TU_CLIENT_ID";
+        $this->client_secret = "TU_CLIENT_SECRET";
+        $this->redirect_uri = "TU_REDIRECT_URI";
+        $this->usuarioController = new UsuarioController();
     }
 
-    public function getAuthUrl() {
-        $scopes = array(
-            'user-read-private',
-            'user-read-email',
-            'playlist-read-private',
-            'playlist-modify-public',
-            'playlist-modify-private'
-        );
-        $url = 'https://accounts.spotify.com/authorize?response_type=code&client_id=' . $this->client_id . '&scope=' . implode('%20', $scopes) . '&redirect_uri=' . urlencode($this->redirect_uri);
-        return $url;
+    public function autentificarUsuario() {
+        header('Location: ../spotifyAPI/autenticacion/auth.php');
+        exit;
     }
 
-    public function getTokens($code) {
-        $url = 'https://accounts.spotify.com/api/token';
-        $data = array(
-            'grant_type' => 'authorization_code',
-            'code' => $code,
-            'redirect_uri' => $this->redirect_uri,
-            'client_id' => $this->client_id,
-            'client_secret' => $this->client_secret
-        );
-        $options = array(
-            'http' => array(
-                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
-        $context = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-        $tokens = json_decode($result, true);
-        $_SESSION['access_token'] = $tokens['access_token'];
-        $_SESSION['refresh_token'] = $tokens['refresh_token'];
-        return $tokens;
+    public function obtenerTokensUsuario($id) {
+        // Obtener el usuario por su ID
+        $usuario = $this->usuarioController->obtenerUsuarioPorId($id);
+        // Devolver el accessToken y refreshToken del usuario en un arreglo
+        return [
+            'accessToken' => $usuario->getSpotify_access_token(),
+            'refreshToken' => $usuario->getSpotify_refresh_token()
+        ];
     }
-
-    public function refreshTokens($id) {
-        $tokens = $this->getUserTokens($id);
-        $url = 'https://accounts.spotify.com/api/token';
-        $data = array(
-            'grant_type' => 'refresh_token',
-            'refresh_token' => $tokens['refresh_token'],
-            'client_id' => $this->client_id,
-            'client_secret' => $this->client_secret
-        );
-        $options = array(
-            'http' => array(
-                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
-        $context = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-        $tokens = json_decode($result, true);
-        $_SESSION['access_token'] = $tokens['access_token'];
-        $_SESSION['refresh_token'] = $tokens['refresh_token'];
-        return $tokens;
-    }
-
-    public function getUserTokens($id) {
-        // Implementar esta función
+    
+    public function refrescarTokens($id) {
+        // Almacenamos en una sesión el $id del usuario a refrescar, y en refresh.php lo recuperamos
+        session_start();
+        $_SESSION['user_id'] = $id;
+        header("Location: refresh.php");
+        exit;
     }
 }

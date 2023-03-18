@@ -11,12 +11,14 @@
 
         <?php
         require_once '../controllers/usuarioController.php';
+        require_once '../controllers/spotifyController.php';
 
         // Comprobamos si el formulario ha sido enviado
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            // Crear una instancia de UsuarioController
+            // Creamos instancias de los controladores que vamos a usar
             $usuarioController = new UsuarioController();
+            $spotifyController = new SpotifyController();
 
             // Obtenemos la informacion introducida
             $nombre = $_POST['name'];
@@ -54,13 +56,9 @@
             }
 
             // Antes de añadir la cuenta a la bd hay que hacer que primero el usuario se autentifique también en spotify
-            header('Location: ../../auth.php');
-
-            // Obtenemos el accessToken y refreshToken asignados al usuario (en callback.php)
-            session_start();
-            $accessToken = $_SESSION['spotify_access_token'];
-            $refreshToken = $_SESSION['spotify_refresh_token'];
-            session_destroy();
+            $tokensUsuario = $spotifyController->autentificarUsuario();
+            $accessToken = $tokensUsuario[0];
+            $refreshToken = $tokensUsuario[1];
 
             //----------------------------------------------------------------------------
             // Insertamos la información del nuevo usuario
