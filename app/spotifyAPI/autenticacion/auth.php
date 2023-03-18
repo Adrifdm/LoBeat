@@ -1,10 +1,10 @@
 <?php
-require '../../vendor/autoload.php';
+require '../../../vendor/autoload.php';
 
 $session = new SpotifyWebAPI\Session(
-    'CLIENT_ID',
-    'CLIENT_SECRET',
-    'REDIRECT_URI'      //poner aqui que hay que llamar a callback: 'localhost...blabla..../callback.php'
+    '8d2d98d239094241afabe8ead302c625',
+    '0b8c3b77a6b448158ecdf7e3b045cbda',
+    'http://localhost:80/LoBeat/app/spotifyAPI/autenticacion/callback.php'
 );
 
 /*

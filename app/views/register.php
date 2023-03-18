@@ -83,8 +83,8 @@
         </form>
       </div>
       <?php
-          include("procesarRegister.php")
-        ?>
+        include("procesarRegister.php")
+      ?>
   </body>
 
 </html>
