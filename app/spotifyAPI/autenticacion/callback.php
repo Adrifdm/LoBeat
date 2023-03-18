@@ -16,11 +16,11 @@ $accessToken = $session->getAccessToken();
 $refreshToken = $session->getRefreshToken();
 
 // Los almacenamos en una sesión
-session_start();
+//session_start();
 $_SESSION['spotify_access_token'] = $accessToken;
 $_SESSION['spotify_refresh_token'] = $refreshToken;
-
+$registered = true;
 // Send the user along and fetch some data!
-header('Location: ../../views/procesarRegister.php');
+header('Location: ../../views/procesarRegister.php?registered=' . $registered);
 die();
 ?>

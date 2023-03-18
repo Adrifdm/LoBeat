@@ -10,24 +10,35 @@
     <body>
 
         <?php
+        session_start();
+        if (isset($_GET['registered'])){
+            if($_GET['registered'] === "1"){
+                $registered = true;
+            } else{
+                $registered = false;
+            }
+        } else {
+            $registered = false;
+        }
         require_once '../controllers/usuarioController.php';
         require_once '../controllers/spotifyController.php';
 
         // Creamos instancias de los controladores que vamos a usar
         $usuarioController = new UsuarioController();
         $spotifyController = new SpotifyController();
+        //global $nombre, $correo, $constrasenya, $reconstrasenya, $role, $genero, $registered; 
+
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Obtenemos la informacion introducida
-            $nombre = $_POST['name'];
-            $correo = $_POST['email'];
-            $constrasenya = $_POST['password'];
-            $reconstrasenya = $_POST['repassword'];
-            $role = $_POST['role'];
-            $genero = $_POST['genero'];
-
+            $_SESSION['nombre'] = $_POST['name'];
+            $_SESSION['correo'] = $_POST['email'];
+            $_SESSION['constrasenya'] = $_POST['password'];
+            $_SESSION['reconstrasenya'] = $_POST['repassword'];
+            $_SESSION['role'] = $_POST['role'];
+            $_SESSION['genero'] = $_POST['genero'];
             // Comprobamos si existe algún usuario con ese correo
-            $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
+            $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION['correo']);
             
             if ($usuarioExistente !== null) {
                 ?>
@@ -39,7 +50,7 @@
             }
 
             // Comprobamos si la contraseña coincide con la del campo "Repetir contraseña"
-            if ($constrasenya == $reconstrasenya){
+            if ($_SESSION['constrasenya'] == $_SESSION['reconstrasenya']){
                 //$hash = password_hash($password, PASSWORD_DEFAULT);  esto esta bien pensado pero lo dejamos comentado de momento
             } else {
                 ?>
@@ -54,25 +65,22 @@
             // Antes de añadir la cuenta a la bd hay que hacer que primero el usuario se autentifique también en spotify
             $spotifyController->autenticarUsuario();
         }
-        else {
-            session_start();
+        else if ($registered === true){
+
             $accessToken = $_SESSION['spotify_access_token'];
             $refreshToken = $_SESSION['spotify_refresh_token'];
 
-            //$accessToken = $tokensUsuario[0];
-            //$refreshToken = $tokensUsuario[1];
-
             // Insertamos la información del nuevo usuario
             $datos = array(
-                'nombre' => $nombre,
-                'correo' => $correo,
-                'contrasenya' => $constrasenya,         // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
+                'nombre' => $_SESSION['nombre'],
+                'correo' => $_SESSION['correo'] ,
+                'contrasenya' => $_SESSION['constrasenya'], 
                 'spotify_access_token' => $accessToken,
                 'spotify_refresh_token' => $refreshToken,
                 'fsa_creacion' => date('Y-m-d H:i:s'),
                 'fecha_actualizacion' => date('Y-m-d H:i:s'),
-                'role' => $role,
-                'genero' => $genero
+                'role' => $_SESSION['role'],
+                'genero' => $_SESSION['genero']
             );
             $resultado = $usuarioController->crearUsuario($datos);
 
