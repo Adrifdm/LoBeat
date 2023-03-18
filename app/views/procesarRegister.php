@@ -13,52 +13,49 @@
         require_once '../controllers/usuarioController.php';
         require_once '../controllers/spotifyController.php';
 
-        session_start();
-        // Comprobamos si el formulario ha sido enviado
-        if (($_SERVER['REQUEST_METHOD'] == 'POST') || ($_SESSION['token_flag'] === true)) {
+        // Creamos instancias de los controladores que vamos a usar
+        $usuarioController = new UsuarioController();
+        $spotifyController = new SpotifyController();
 
-            // Creamos instancias de los controladores que vamos a usar
-            $usuarioController = new UsuarioController();
-            $spotifyController = new SpotifyController();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Obtenemos la informacion introducida
+            $nombre = $_POST['name'];
+            $correo = $_POST['email'];
+            $constrasenya = $_POST['password'];
+            $reconstrasenya = $_POST['repassword'];
+            $role = $_POST['role'];
+            $genero = $_POST['genero'];
 
-            if (($_SESSION['token_flag'] !== "true")) {
-                // Obtenemos la informacion introducida
-                $nombre = $_POST['name'];
-                $correo = $_POST['email'];
-                $constrasenya = $_POST['password'];
-                $reconstrasenya = $_POST['repassword'];
-                $role = $_POST['role'];
-                $genero = $_POST['genero'];
-
-                // Comprobamos si existe algún usuario con ese correo
-                $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
-                
-                if ($usuarioExistente !== null) {
-                    ?>
-                    <div class = "error">
-                        <p> El email introducido ya existe </p>
-                    </div>
-                    <?php
-                    exit;
-                }
-
-                // Comprobamos si la contraseña coincide con la del campo "Repetir contraseña"
-                if ($constrasenya == $reconstrasenya){
-                    //$hash = password_hash($password, PASSWORD_DEFAULT);  esto esta bien pensado pero lo dejamos comentado de momento
-                } else {
-                    ?>
-                    <div class = "error">
-                        <p> Las contraseñas introducidas no son iguales</p>
-                    </div>
-                    <?php
-                    exit;
-
-                }
-
-                // Antes de añadir la cuenta a la bd hay que hacer que primero el usuario se autentifique también en spotify
-                $spotifyController->autentificarUsuario();
-            }
+            // Comprobamos si existe algún usuario con ese correo
+            $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
             
+            if ($usuarioExistente !== null) {
+                ?>
+                <div class = "error">
+                    <p> El email introducido ya existe </p>
+                </div>
+                <?php
+                exit;
+            }
+
+            // Comprobamos si la contraseña coincide con la del campo "Repetir contraseña"
+            if ($constrasenya == $reconstrasenya){
+                //$hash = password_hash($password, PASSWORD_DEFAULT);  esto esta bien pensado pero lo dejamos comentado de momento
+            } else {
+                ?>
+                <div class = "error">
+                    <p> Las contraseñas introducidas no son iguales</p>
+                </div>
+                <?php
+                exit;
+
+            }
+
+            // Antes de añadir la cuenta a la bd hay que hacer que primero el usuario se autentifique también en spotify
+            $spotifyController->autenticarUsuario();
+        }
+        else {
+            session_start();
             $accessToken = $_SESSION['spotify_access_token'];
             $refreshToken = $_SESSION['spotify_refresh_token'];
 

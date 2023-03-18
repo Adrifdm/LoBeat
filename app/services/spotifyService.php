@@ -9,7 +9,7 @@ class SpotifyService {
         $this->usuarioController = new UsuarioController();
     }
 
-    public function autentificarUsuario() {
+    public function autenticarUsuario() {
 
         $session = new SpotifyWebAPI\Session(
             '8d2d98d239094241afabe8ead302c625',

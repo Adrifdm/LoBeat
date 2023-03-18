@@ -8,10 +8,10 @@ class SpotifyController {
         $this->spotifyService = new SpotifyService();
     }
 
-    public function autentificarUsuario() {
+    public function autenticarUsuario() {
         try {
             // llamar al método de obtener los tokens de usuario por id del servicio
-            $this->spotifyService->autentificarUsuario();
+            $this->spotifyService->autenticarUsuario();
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente
             echo json_encode(['error' => $e->getMessage()]);
