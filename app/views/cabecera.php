@@ -34,7 +34,7 @@
       <li>
         <a href="profile.php"><i class="bi bi-person-fill"></i></a>
 
-        <a href="logout.php"><i class="fa fa-power-off"></i>
+        <a href="logout.php"><i class="fa fa-power-off"></i></a>
 
       </li>
     
