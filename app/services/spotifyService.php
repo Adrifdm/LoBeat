@@ -3,16 +3,9 @@
 require_once '../controllers/usuarioController.php';
 
 class SpotifyService {
-    private $client_id;
-    private $client_secret;
-    private $redirect_uri;
     private $usuarioController;
 
     public function __construct() {
-        session_start();
-        $this->client_id = "TU_CLIENT_ID";
-        $this->client_secret = "TU_CLIENT_SECRET";
-        $this->redirect_uri = "TU_REDIRECT_URI";
         $this->usuarioController = new UsuarioController();
     }
 
@@ -49,10 +42,6 @@ class SpotifyService {
         
         header('Location: ' . $session->getAuthorizeUrl($options));
         die();
-
-        //-------------------------------------------------
-        //header('Location: ../spotifyAPI/autenticacion/auth.php');
-        //exit;
     }
 
     public function obtenerTokensUsuario($id) {

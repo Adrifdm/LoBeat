@@ -83,6 +83,8 @@
         </form>
       </div>
       <?php
+        session_start();
+        $_SESSION['token_flag'] = false;
         include("procesarRegister.php")
       ?>
   </body>
