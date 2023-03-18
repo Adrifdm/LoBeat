@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //para ver si el usuario puede acceder a pestañas dedicadas de roles especiales
         $_SESSION["role"] = $usuarioExistente->getRole();
 
-        //header('Location: pagPrincipal.php');       
-        echo "<script>window.location='pagPrincipal.php';</script>";
+        header('Location: pagPrincipal.php');       
+        //echo "<script>window.location='pagPrincipal.php';</script>";
         exit;
 
     } else {

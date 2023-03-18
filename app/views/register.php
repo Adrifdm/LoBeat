@@ -48,9 +48,9 @@
 
             <select name="genero" id="genero" required="">
 
-            <option value="female">Hombre</option>
+            <option value="female">Mujer</option>
 
-            <option value="male">Mujer</option>
+            <option value="male">Hombre</option>
 
             <option value="other">Otro</option>
 
