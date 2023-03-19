@@ -140,18 +140,21 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-lg-6">
+                      <div class="col-lg-6"> 
                         <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-first-name">Nombre</label>
-                          <input type="text" id="input-first-name" name="name" class="form-control form-control-alternative fuente" placeholder="" value="<?php
-                            echo $usuarioExistente->getNombre();
+                          <label class="form-control-label fuente" for="input-first-name">Rol</label>
+                          <input type="text" id="input-first-name" name="name" class="form-control form-control-alternative fuente" placeholder="" value="<?php 
+                            echo $usuarioExistente->getRole();
                             ?>">
                         </div>
-                      </div>
+                      </div> 
                       <div class="col-lg-6">
-                        <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-last-name">Apellidos</label>
-                          <input type="text" id="input-last-name" class="form-control form-control-alternative fuente" placeholder="" value="">
+                        <div class="form-group focused"> 
+                          <label class="form-control-label fuente" for="input-last-name">Género</label> 
+                          <input type="text" id="input-last-name" class="form-control form-control-alternative fuente" placeholder="" value="<?php
+                            echo $usuarioExistente->getGenero(); 
+                            ?>">
+
                         </div>
                       </div>
                     </div>

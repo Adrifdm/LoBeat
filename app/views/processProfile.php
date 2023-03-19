@@ -15,18 +15,19 @@ require_once '../controllers/usuarioController.php';
 
 $usuarioController = new UsuarioController();
 
-// Comprobamos si el formulario ha sido enviado
+// Comprobamos si el formulario ha sido enviado 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // Obtenemos la informacion introducida
     $nombre = $_POST['username'];
 
     //El correo lo cojo de la sesión para que no me deje cambiarlo porque no he puesto control para ver si el correo ya existe
-    $correo = $_SESSION["SesionEmail"];
+    $correo = $_SESSION["logged_user_email"];
 
     if (isset($nombre) && isset($correo)){
         // Comprobamos si existe algún usuario con ese correo
-        $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["SesionEmail"]);
+        //TODO cambiar la busqueda por id cuando funcione
+        $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
 
         if ($usuarioExistente !== null){
             $datos = array(
@@ -41,7 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'genero' => $usuarioExistente->getGenero()
             );
             
-            $resultado = $usuarioController->actualizarUsuarioPorCorreo($correo, $datos);
+            //TODO actualizar por id, comentado para que no pete
+            $resultado = $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $datos);
+            //$resultado = $usuarioController->actualizarUsuarioPorCorreo($correo, $datos);
 
             // Si se ha insertado correctamente, redirigir a la página de login
             if ($resultado !== null) {
@@ -57,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             } else {
                 ?>
-                    <div class = "error">
+                    <div class = "error"> 
                         <p> Ha ocurrido un error al registrar el usuario </p> 
                     </div>       
                 <?php
