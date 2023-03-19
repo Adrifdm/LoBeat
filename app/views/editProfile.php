@@ -21,10 +21,12 @@
         $usuarioController = new UsuarioController();
 
         // Comprobamos si existe algún usuario con ese correo
-        $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["SesionEmail"]);
+        //TODO cuando funciona el id en login cambiar esto a buscar por id con la variable de sesion logged_user_id
+
+        $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
     ?>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"> 
 
     <div class="main-content">
     
@@ -32,7 +34,7 @@
       <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../public/assets/img/fondoLogin.png); background-size: cover; background-position: center top;">
         <!-- Máscara -->
        
-        <span class="mask bg-gradient-default opacity-8"></span>
+        <span class="mask bg-gradient-default opacity-8"></span> 
         <!-- Contenido introducción -->
         <div class="container-fluid d-flex align-items-center">
           <div class="row">
@@ -45,7 +47,7 @@
           </div>
         </div>
       </div>
-      <!-- Page content -->
+      <!-- Page content --> 
       <div class="container-fluid mt--7">
         <div class="row">
           <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
@@ -123,6 +125,7 @@
                         <div class="form-group focused">
                           <label class="form-control-label fuente" for="input-username">Nombre de usuario</label>
                           <input type="text" id="input-username" name="username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario" value="<?php
+                            
                             echo $usuarioExistente->getNombre();
                             ?>">
                         </div>

@@ -6,7 +6,7 @@ class Usuario {
   private $contrasenya;
   private $spotify_access_token;
   private $spotify_refresh_token;
-  private $fecha_creacion;
+  private $fecha_creacion; 
   private $fecha_actualizacion;
   private $role;
   private $genero;
@@ -17,8 +17,8 @@ class Usuario {
     $this->nombre = $nombre;
     $this->correo = $correo;
     $this->contrasenya = $contrasenya;
-    $this->spotify_access_token = $spotify_access_token;
-    $this->spotify_refresh_token = $spotify_refresh_token;
+    $this->spotify_access_token = $spotify_access_token; 
+    $this->spotify_refresh_token = $spotify_refresh_token; 
     $this->fecha_creacion = $fecha_creacion;
     $this->fecha_actualizacion = $fecha_actualizacion;
     $this->role = $role;

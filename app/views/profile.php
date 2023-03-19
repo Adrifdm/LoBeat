@@ -1,18 +1,18 @@
 <?php
 	session_start();
 
-  if($_SESSION["login"] !== true){
+  if($_SESSION["is_logged"] !== true){
     
-    header('Location: login.php');       
+    header('Location: login.php'); 
     exit;
-  }
-?>
+  } 
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="../../public/assets/css/bootstrap-argon.css">
@@ -21,7 +21,7 @@
     <script src="https://kit.fontawesome.com/dee2748eb0.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
+ 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
    
     <?php
@@ -31,17 +31,18 @@
     $usuarioController = new UsuarioController();
 
     // Comprobamos si existe algún usuario con ese correo
-    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["SesionEmail"]);
+    //mas adelante se cambiara por el id
+    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
     ?>
 
     <div class="main-content">
     
-      <!-- Introducción -->
+      <!-- Introducción --> 
       <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../public/assets/img/fondoLogin.png); background-size: cover; background-position: center top;">
         <!-- Máscara -->
        
         <span class="mask bg-gradient-default opacity-8"></span>
-        <!-- Contenido introducción -->
+        <!-- Contenido introducción --> 
         <div class="container-fluid d-flex align-items-center">
           <div class="row">
             <div class="col-lg-7 col-md-10">
@@ -50,13 +51,13 @@
               <a href="editProfile.php" class="btn btn-info fuente">Editar perfil</a>
               <a href="login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Log Out</a>
             </div>
-          </div>
+          </div>  
         </div>
       </div>
       <!-- Page content -->
       <div class="container-fluid mt--7">
         <div class="row">
-          <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+          <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0"> 
             <div class="card card-profile shadow">
               <div class="row justify-content-center">
                 <div class="col-lg-3 order-lg-2">
@@ -64,24 +65,24 @@
                     <a href="#">
                       <img src="../../public/assets/img/profileAvatar.png" class="rounded-circle">
                     </a>
-                  </div>
+                  </div> 
                 </div>
               </div>
               <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
                   <!--<a href="#" class="btn btn-sm btn-info mr-4">Connect</a>-->
-                  <!--<a href="#" class="btn btn-sm btn-default float-right">Message</a>-->
+                  <!--<a href="#" class="btn btn-sm btn-default float-right">Message</a>--> 
                 </div>
               </div>
               <div class="card-body pt-0 pt-md-4">
-                <div class="row">
+                <div class="row"> 
                   <div class="col">
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                       <div>
                         <span class="heading fuente">10</span>
                         <span class="description fuente">Matches</span>
                       </div>
-                      <div>
+                      <div> 
                         <span class="heading fuente">6</span>
                         <span class="description fuente">Playlists</span>
                       </div>
@@ -95,8 +96,9 @@
                 <div class="text-center">
                   <h3 class="fuente"> 
                     <?php
-                    echo $usuarioExistente->getNombre();
+                    echo $usuarioExistente->getNombre(); 
                     ?>
+
                   <!--<span class="font-weight-light fuente">, 27</span>-->
                   </h3>
                   <div class="h5 font-weight-300 fuente">
@@ -104,32 +106,33 @@
                   </div>
                   <div class="h5 mt-4 fuente">
                     <!--<i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho-->
-                  </div>
+                  </div> 
                   <div class="fuente">
                     <!--<i class="ni education_hat mr-2"></i>Universidad autónoma de Barcelona-->
                   </div>
                   <hr class="my-4">
                   <!--<p class="fuente">No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>-->
-                  <!--<a href="#">Mostrar más</a>-->
+                  <!--<a href="#">Mostrar más</a>--> 
+
                 </div>
               </div>
-            </div>
+            </div> 
           </div>
-          <div class="col-xl-8 order-xl-1">
+          <div class="col-xl-8 order-xl-1"> 
             <div class="card bg-secondary shadow">
               <div class="card-header bg-white border-0">
                 <div class="row align-items-center">
                   <div class="col-8">
                     <h3 class="mb-0 fuente">Mi cuenta</h3>
                   </div>
-                  <div class="col-4 text-right">
+                  <div class="col-4 text-right"> 
                     <!--<a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <form>
-                  <h6 class="heading-small text-muted mb-4 fuente">Información usuario</h6>
+                  <h6 class="heading-small text-muted mb-4 fuente">Información usuario</h6> 
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-lg-6">
@@ -137,8 +140,8 @@
                           <label class="form-control-label fuente" for="input-username">Nombre de usuario</label>
                           <label id="input-username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario">
                             <?php
-                            echo $usuarioExistente->getNombre();
-                            ?>
+                            echo $usuarioExistente->getNombre(); 
+                            ?> 
                           </label>
                         </div>
                       </div>
@@ -159,7 +162,7 @@
                           <label class="form-control-label fuente" for="input-first-name">Nombre</label>
                           <label id="input-first-name" class="form-control form-control-alternative fuente" placeholder="">
                             <?php
-                            echo $usuarioExistente->getNombre();
+                            echo $usuarioExistente->getNombre(); 
                             ?>
                           </label>
                         </div>
@@ -169,10 +172,11 @@
                           <label class="form-control-label fuente" for="input-last-name">Apellidos</label>
                           <input type="text" id="input-last-name" class="form-control form-control-alternative fuente" placeholder="" value="">
                         </div>
-                      </div>
+                      </div> 
                     </div>
                   </div>
                   <hr class="my-4">
+
                   <!-- Address
                   <h6 class="heading-small text-muted mb-4 fuente">Información de contacto</h6>
                   <div class="pl-lg-4">
@@ -208,6 +212,7 @@
                   <hr class="my-4">
                    -->
                   <!-- Description -->
+
                   <h6 class="heading-small text-muted mb-4 fuente">Sobre mí</h6>
                   <div class="pl-lg-4">
                     <div class="form-group focused">

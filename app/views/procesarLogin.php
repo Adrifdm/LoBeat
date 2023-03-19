@@ -40,6 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //lo que vamos a usar durante el resto de la aplicacion para buscar info del usuario loggeado
         $_SESSION["logged_user_id"] = $usuarioExistente->getId();       // hasta que no arreglemos el TODO de arriba, esto será null
 
+        //esta variable la vamos a usar mientras el id de null, luego lo cambiaremos y solo quedara la variable del id y esta se eliminará
+
+        $_SESSION["logged_user_email"] = $correo;
+
         //para ver si el usuario puede acceder a pestañas dedicadas de roles especiales
         $_SESSION["logged_user_role"] = $usuarioExistente->getRole();
 
