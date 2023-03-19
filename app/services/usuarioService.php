@@ -1,5 +1,5 @@
 <?php
-//use MongoDB\BSON\ObjectID;
+use MongoDB\BSON\ObjectID;
 //require_once 'conexion.php';
 require_once '../../vendor/autoload.php';
 require_once '../models/usuario.php';
@@ -17,6 +17,7 @@ class UsuarioService {
     $fecha_creacion = new DateTime();
     $fecha_actualizacion = new DateTime();
     $usuario = new Usuario(
+      "",
       $datos['nombre'],
       $datos['correo'],
       $datos['contrasenya'],
@@ -28,8 +29,6 @@ class UsuarioService {
       $datos['genero']
     );
 
-
-    //...........................
     $result = $this->collection->insertOne([
       'nombre' => $usuario->getNombre(),
       'correo' => $usuario->getCorreo(),
@@ -47,6 +46,7 @@ class UsuarioService {
 
   public function actualizarUsuarioANTIGUO($id, $datos) {
     $usuario = new Usuario(
+      $datos['_id'],
       $datos['nombre'],
       $datos['correo'],
       $datos['contrasenya'],
@@ -124,7 +124,7 @@ class UsuarioService {
 
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
     $result = $this->collection->updateOne(
-      ['_id' => $id],
+      ['_id' => new MongoDB\BSON\ObjectId($id)],
       [
         '$set' => $set,
       ],
@@ -145,29 +145,31 @@ class UsuarioService {
     $usuarios = [];
     foreach ($result as $doc) {
       $usuario = new Usuario(
+        $doc['_id']->__toString(),          //mirar si lo del _id aqui funciona
         $doc['nombre'],
         $doc['correo'],
         $doc['contrasenya'],
         $doc['spotify_access_token'],
         $doc['spotify_refresh_token'],
-        $doc['role'],
-        $doc['genero'],
         new DateTime($doc['fecha_creacion']),
-        new DateTime($doc['fecha_actualizacion'])
+        new DateTime($doc['fecha_actualizacion']),
+        $doc['role'],
+        $doc['genero']
       );
-      $usuario->setId($doc['_id']);
+      $usuario->setId($doc['_id']->__toString());   //mirar si lo del _id aqui funciona
       array_push($usuarios, $usuario);
     }
     return $usuarios;
   }
   
   public function obtenerUsuarioPorId($id) {
-    $result = $this->collection->findOne(['_id' => $id]);
+    $result = $this->collection->findOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
     if (!$result) {
       return null;
     }
 
     $usuario = new Usuario(
+      $result['_id']->__toString(),   //mirar si lo del _id aqui funciona,
       $result['nombre'],
       $result['correo'],
       $result['contrasenya'],
@@ -178,7 +180,7 @@ class UsuarioService {
       new DateTime($result['fecha_creacion']),
       new DateTime($result['fecha_actualizacion'])
     );
-    $usuario->setId($result['_id']);
+    $usuario->setId($result['_id']->__toString());    //mirar si lo del _id aqui funciona,
 
     return $usuario;
   }
@@ -186,56 +188,22 @@ class UsuarioService {
   public function buscarUsuarioPorCampo($campo, $valor) {
     $resultado = $this->collection->findOne([$campo => $valor]);
     if ($resultado) {
-        return new Usuario(
-            $resultado['nombre'],
-            $resultado['correo'],
-            $resultado['contrasenya'],
-            $resultado['spotify_access_token'],
-            $resultado['spotify_refresh_token'],
-            $resultado['role'],
-            $resultado['genero'],
-            new DateTime($resultado['fecha_creacion']),
-            new DateTime($resultado['fecha_actualizacion'])
-        );
+      return new Usuario(
+        $resultado['_id']->__toString(),
+        $resultado['nombre'],
+        $resultado['correo'],
+        $resultado['contrasenya'],
+        $resultado['spotify_access_token'],
+        $resultado['spotify_refresh_token'],
+        new DateTime($resultado['fecha_creacion']),
+        new DateTime($resultado['fecha_actualizacion']),
+        $resultado['role'],
+        $resultado['genero']
+      );
     } else {
-        return null;
+      return null;
     }
   }
-
-  public function actualizarUsuarioPorCorreo($correo, $datos) {
-    $usuario = new Usuario(
-      $datos['nombre'],
-      $datos['correo'],
-      $datos['contrasenya'],
-      $datos['spotify_access_token'],
-      $datos['spotify_refresh_token'],
-      null, // la fecha de creación no se actualiza
-      new DateTime(), // se actualiza la fecha de actualización con la fecha y hora actuales
-      //$datos['role'],
-      //$datos['genero'],
-      null, // el rol no se actualiza
-      null// el genero no se actualiza
-    );
-  
-    //....................................
-    $result = $this->collection->updateOne(
-      ['correo' => $correo],
-      ['$set' => [
-        'nombre' => $usuario->getNombre(),
-        'correo' => $usuario->getCorreo(),
-        'contrasenya' => $usuario->getContrasenya(),
-        'spotify_access_token' => $usuario->getSpotify_access_token(),
-        'spotify_refresh_token' => $usuario->getSpotify_refresh_token(),
-        'fecha_actualizacion' => $usuario->getFecha_actualizacion()->format('Y-m-d H:i:s'),
-        'role' => $usuario->getRole(),
-        'genero' => $usuario->getGenero()
-      ]]
-    );
-  
-    return $result->getModifiedCount() > 0;
-  }
-
-
 }
 
 ?>

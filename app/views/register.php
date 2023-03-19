@@ -12,28 +12,27 @@
         <img class ="logo" src= "../../public/assets/img/LogoLB.png"></img>
         <h2>Regístrate</h2>
         <form  method="post">
+
           <div class="user-box">
             <input type="text" id="name" name="name" required="">
             <label>Nombre</label>
           </div>
+
           <div class="user-box">
             <input type="email" id="email" name="email" required="">
             <label>Email</label>
-
           </div>
           
-           <div class="user-box">
+          <div class="user-box">
 
             <label for="role">Selecciona un rol de usuario:</label>
 
+            <br><br>
+
             <select name="role" id="role" required="">
-
-            <option value="admin">Administrador</option>
-
-            <option value="user">Usuario</option>
-
-            <option value="empresa">Empresa</option>
-
+              <option value="admin">Administrador</option>
+              <option value="user">Usuario</option>
+              <option value="empresa">Empresa</option>
             </select>
 
             <!-- <input type="role" id="role" name="role" required=""> 
@@ -42,31 +41,31 @@
 
           </div>
           
-           <div class="user-box">
+          <div class="user-box">
 
             <label for="genero">Selecciona un sexo:</label>
 
+            <br><br>
+
             <select name="genero" id="genero" required="">
-
-            <option value="female">Mujer</option>
-
-            <option value="male">Hombre</option>
-
-            <option value="other">Otro</option>
-
+              <option value="female">Mujer</option>
+              <option value="male">Hombre</option>
+              <option value="other">Otro</option>
             </select>
 
-           </div>
+          </div>
 
           <!--<div class="user-box">
             <input type="genero" id="genero" name="genero" required="">
             <label>Género</label>
           </div>
           -->
+
           <div class="user-box">
             <input type="password" id="password" name="password" required="">
             <label>Contraseña</label>
           </div>
+
           <div class="user-box">
             <input type="password" id="repassword" name="repassword" required="">
             <label>Repetir Contraseña</label>

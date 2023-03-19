@@ -16,7 +16,6 @@
 </head>
 <body>
     <?php
-
 		require("cabecera.php");
 	?>
     <main role="main" class="container-fluid">

@@ -1,22 +1,22 @@
-
 <?php
-
 session_start();
 
 require_once '../controllers/usuarioController.php';
+require_once '../controllers/spotifyController.php';
 
 // Comprobamos si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
-    // Crear una instancia de UsuarioController
+    // Creamos instancias de los controladores que vamos a usar
     $usuarioController = new UsuarioController();
+    $spotifyController = new SpotifyController();
 
     // Obtenemos la informacion introducida
     $correo = $_POST['email'];
     $contrasenya = $_POST['password'];
 
     // Comprobamos si existe algún usuario con ese correo
-    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
+    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);       //TODO: usuarioExistente y en general las funciones de usuarioService.php devuelven null como id, hay que arreglar eso
     
     if ($usuarioExistente !== null) {
 
@@ -35,16 +35,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //CONFIGURACION DE VARIABLES DE SESION  
 
         //para ver si el usuario esta logeado durante el resto de la aplicacion
-        $_SESSION["login"] = true;
+        $_SESSION["is_logged"] = true;
     
         //lo que vamos a usar durante el resto de la aplicacion para buscar info del usuario loggeado
-        $_SESSION["SesionEmail"] = $correo;
+        $_SESSION["logged_user_id"] = $usuarioExistente->getId();       // hasta que no arreglemos el TODO de arriba, esto será null
 
         //para ver si el usuario puede acceder a pestañas dedicadas de roles especiales
-        $_SESSION["role"] = $usuarioExistente->getRole();
+        $_SESSION["logged_user_role"] = $usuarioExistente->getRole();
 
-        header('Location: pagPrincipal.php');       
-        //echo "<script>window.location='pagPrincipal.php';</script>";
+        // Refrescamos tokens
+        $spotifyController->refrescarTokens($usuarioExistente->getId());
+
+        header('Location: pagPrincipal.php');
         exit;
 
     } else {
@@ -55,6 +57,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php
         exit;        
     }
-
 }
 ?>

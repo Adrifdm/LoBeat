@@ -12,7 +12,8 @@ class Usuario {
   private $genero;
   
 
-  public function __construct($nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero) {
+  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero) {
+    $this->id = $id;
     $this->nombre = $nombre;
     $this->correo = $correo;
     $this->contrasenya = $contrasenya;
@@ -22,24 +23,6 @@ class Usuario {
     $this->fecha_actualizacion = $fecha_actualizacion;
     $this->role = $role;
     $this->genero = $genero;
-
-  }
-
-  
-  public function getGenero() {
-    return $this->genero;
-  }
-
-  public function setGenero($genero) {
-    $this->genero = $genero;
-  }
-
-  public function getRole() {
-    return $this->role;
-  }
-
-  public function setRole($role) {
-    $this->role = $role;
   }
 
   public function getId() {
@@ -104,6 +87,22 @@ class Usuario {
 
   public function setFecha_actualizacion($fecha_actualizacion) {
     $this->fecha_actualizacion = $fecha_actualizacion;
+  }
+
+  public function getRole() {
+    return $this->role;
+  }
+
+  public function setRole($role) {
+    $this->role = $role;
+  }
+
+  public function getGenero() {
+    return $this->genero;
+  }
+
+  public function setGenero($genero) {
+    $this->genero = $genero;
   }
 }
 ?>

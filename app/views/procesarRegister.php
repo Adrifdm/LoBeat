@@ -14,8 +14,7 @@ require_once '../controllers/spotifyController.php';
 
 // Creamos instancias de los controladores que vamos a usar
 $usuarioController = new UsuarioController();
-$spotifyController = new SpotifyController();
-//global $nombre, $correo, $constrasenya, $reconstrasenya, $role, $genero, $registered; 
+$spotifyController = new SpotifyController(); 
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
