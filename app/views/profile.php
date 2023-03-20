@@ -159,18 +159,22 @@
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-first-name">Nombre</label>
+                          <label class="form-control-label fuente" for="input-first-name">Rol</label>
                           <label id="input-first-name" class="form-control form-control-alternative fuente" placeholder="">
                             <?php
-                            echo $usuarioExistente->getNombre(); 
+                            echo $usuarioExistente->getRole(); 
                             ?>
                           </label>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-last-name">Apellidos</label>
-                          <input type="text" id="input-last-name" class="form-control form-control-alternative fuente" placeholder="" value="">
+                          <label class="form-control-label fuente" for="input-last-name">Género</label>
+                          <label id="input-last-name" class="form-control form-control-alternative fuente" placeholder="">
+                            <?php
+                            echo $usuarioExistente->getGenero();
+                            ?>
+                          </label>
                         </div>
                       </div> 
                     </div>
