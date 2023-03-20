@@ -10,20 +10,33 @@ class Usuario {
   private $fecha_actualizacion;
   private $role;
   private $genero;
-  
 
-  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero) {
+  //para el "sobre mi" de la pestaña de usuario   
+  private $descripcion;
+  
+ 
+  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion) {
     $this->id = $id;
     $this->nombre = $nombre;
     $this->correo = $correo;
     $this->contrasenya = $contrasenya;
-    $this->spotify_access_token = $spotify_access_token; 
+    $this->spotify_access_token = $spotify_access_token;  
     $this->spotify_refresh_token = $spotify_refresh_token; 
     $this->fecha_creacion = $fecha_creacion;
     $this->fecha_actualizacion = $fecha_actualizacion;
     $this->role = $role;
     $this->genero = $genero;
+    $this->descripcion = $descripcion;
   }
+
+  public function getDescripcion() {
+    return $this->descripcion;
+  }
+  
+  public function setDescripcion($descripcion) {
+    $this->descripcion = $descripcion;
+  }
+
 
   public function getId() {
     return $this->id;
