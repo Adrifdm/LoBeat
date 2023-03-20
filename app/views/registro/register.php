@@ -4,12 +4,12 @@
     <title>Registro</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="../../public/assets/css/reg_log.css" rel="stylesheet">
+    <link href="../../../public/assets/css/reg_log.css" rel="stylesheet">
   </head>
 
   <body>
       <div class="login-box">
-        <img class ="logo" src= "../../public/assets/img/LogoLB.png"></img>
+        <img class ="logo" src= "../../../public/assets/img/LogoLB.png"></img>
         <h2>Regístrate</h2>
         <form  method="post">
 

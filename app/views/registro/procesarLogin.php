@@ -1,8 +1,7 @@
 <?php
 session_start();
-
-require_once '../controllers/usuarioController.php';
-require_once '../controllers/spotifyController.php';
+require_once '../../controllers/usuarioController.php';
+require_once '../../controllers/spotifyController.php';
 
 // Comprobamos si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -50,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Refrescamos tokens
         $spotifyController->refrescarTokens($usuarioExistente->getId());
 
-        header('Location: pagPrincipal.php');
+        header('Location: ../principal/pagPrincipal.php');
         exit;
 
     } else {

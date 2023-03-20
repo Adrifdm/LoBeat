@@ -10,13 +10,13 @@
     <title>Mapa</title>
 
     <link rel="stylesheet" href=" https://unpkg.com/openlayers@4.6.5/dist/ol.css">
-    <link rel="stylesheet" href="../../public/assets/css/mapa.css">
+    <link rel="stylesheet" href="../../../public/assets/css/mapa.css">
     <script type="text/javascript" src="https://unpkg.com/openlayers@4.6.5/dist/ol.js"></script>
 
 </head>
 <body>
     <?php
-		require("cabecera.php");
+		require("../comun/cabecera.php");
 	?>
     <main role="main" class="container-fluid">
         <div class="row">
@@ -29,10 +29,10 @@
         </div>
     </main>
     <?php
-		require("rep.php");
+		require("../comun/rep.php");
 	?>
 
-    <script type="text/javascript" src="../../public/assets/js/mapa.js"></script>
-    <script type="text/javascript" src="../../public/assets/js/marcador.js"></script>
+    <script type="text/javascript" src="../../../public/assets/js/mapa.js"></script>
+    <script type="text/javascript" src="../../../public/assets/js/marcador.js"></script>
 </body>
 </html>

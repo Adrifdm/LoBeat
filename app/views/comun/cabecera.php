@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>CodePen - Responsive Mega Menu - Navigation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="../../public/assets/css/cabecera.css">
+<link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 <script src="https://kit.fontawesome.com/e2e2d067dc.js" crossorigin="anonymous"></script>
 
@@ -14,7 +14,7 @@
 <!-- partial:index.partial.html -->
 <div id="header">
   <div class="logo">
-    <img class ="logo"src= "../../public/assets/img/logo.png">
+    <img class ="logo"src= "../../../public/assets/img/logo.png">
   </div>  
   <nav>
     
@@ -32,9 +32,9 @@
       </li>
           
       <li>
-        <a href="profile.php"><i class="bi bi-person-fill"></i></a>
+        <a href="../perfil/profile.php"> <i class="bi bi-person-fill"></i></a>
 
-        <a href="logout.php"><i class="fa fa-power-off"></i></a>
+        <a href="../perfil/logout.php"><i class="fa fa-power-off"></i></a>
 
       </li>
     
