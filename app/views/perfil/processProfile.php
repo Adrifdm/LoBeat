@@ -9,7 +9,7 @@
 
   <body>
 <?php
-require_once '../controllers/usuarioController.php';
+require_once '../../controllers/usuarioController.php';
 
 // Crear una instancia de UsuarioController
 

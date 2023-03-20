@@ -1,6 +1,5 @@
 <?php
 require '../../../vendor/autoload.php';
-//require_once 'auth.php';
 
 // Como hemos hecho un require_once de auth.php, en principio podemos utilizar la $session de auth.php
 $session = new SpotifyWebAPI\Session(
@@ -21,6 +20,6 @@ $_SESSION['spotify_access_token'] = $accessToken;
 $_SESSION['spotify_refresh_token'] = $refreshToken;
 $registered = true;
 // Send the user along and fetch some data!
-header('Location: ../../views/procesarRegister.php?registered=' . $registered);
+header('Location: ../../views/registro/procesarRegister.php?registered=' . $registered);
 die();
 ?>

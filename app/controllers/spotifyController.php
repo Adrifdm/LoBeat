@@ -1,5 +1,6 @@
 <?php
-require_once '../services/spotifyService.php';
+
+require_once '../../../app/services/spotifyService.php';
 
 class SpotifyController {
     private $spotifyService;

@@ -1,4 +1,7 @@
 <?php
+require_once '../../../app/controllers/usuarioController.php';
+require_once '../../../app/controllers/spotifyController.php';
+
 session_start();
 if (isset($_GET['registered'])){
     if($_GET['registered'] === "1"){
@@ -9,8 +12,6 @@ if (isset($_GET['registered'])){
 } else {
     $registered = false;
 }
-require_once '../controllers/usuarioController.php';
-require_once '../controllers/spotifyController.php';
 
 // Creamos instancias de los controladores que vamos a usar
 $usuarioController = new UsuarioController();

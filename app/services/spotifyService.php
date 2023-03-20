@@ -1,6 +1,6 @@
 <?php
-//require_once '../SpotifyAPI/autenticacion/auth.php';
-require_once '../controllers/usuarioController.php';
+
+require_once '../../../app/controllers/usuarioController.php';
 
 class SpotifyService {
     private $usuarioController;
