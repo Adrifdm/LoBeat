@@ -2,8 +2,8 @@
 session_start();
 $dir_base = dirname(dirname(__DIR__));
 
-require_once $dir_base. '\controllers\usuarioController.php';
-require_once $dir_base. '\controllers\spotifyController.php';
+include $dir_base. '\controllers\usuarioController.php';
+include $dir_base. '\controllers\spotifyController.php';
 //require_once __DIR__.'C:\Apache24\htdocs\LoBeat\app\controllers\usuarioController.php';
 //require_once $dir_base . '\controllers\spotifyController.php';
 //require_once 'C:\Apache24\htdocs\LoBeat\app\controllers\spotifyController.php';

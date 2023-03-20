@@ -1,6 +1,6 @@
 <?php
-//require_once '../SpotifyAPI/autenticacion/auth.php';
-require_once '../controllers/usuarioController.php';
+$dir_base = dirname(__DIR__);
+require_once $dir_base .'/controllers/usuarioController.php';
 
 class SpotifyService {
     private $usuarioController;
@@ -14,7 +14,7 @@ class SpotifyService {
         $session = new SpotifyWebAPI\Session(
             '8d2d98d239094241afabe8ead302c625',
             '0b8c3b77a6b448158ecdf7e3b045cbda',
-            'http://localhost:4444/LoBeat/app/spotifyAPI/autenticacion/callback.php'
+            'http://localhost:80/LoBeat/app/spotifyAPI/autenticacion/callback.php'
         );
         
         /*

@@ -1,6 +1,7 @@
 <?php
 // incluir el archivo usuarioService.php
-require_once '../services/usuarioService.php';
+$dir_base = dirname(__DIR__);
+require_once $dir_base .'/services/usuarioService.php';
 
 class UsuarioController {
     private $usuarioService;

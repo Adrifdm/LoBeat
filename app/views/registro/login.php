@@ -33,7 +33,7 @@
         </form>
       </div>
       <?php
-          require_once("procesarLogin.php")
+          include("procesarLogin.php")
         ?>
   </body>
 
