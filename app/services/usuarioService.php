@@ -27,7 +27,7 @@ class UsuarioService {
       $fecha_actualizacion,
       $datos['role'],
       $datos['genero'],
-      $datos['descripcion']
+      //$datos['descripcion']
     );
 
     $result = $this->collection->insertOne([
@@ -40,7 +40,7 @@ class UsuarioService {
       'fecha_actualizacion' => $usuario->getFecha_actualizacion()->format('Y-m-d H:i:s'),
       'role' => $usuario->getRole(),
       'genero' => $usuario->getGenero(),
-      'descripcion' => $usuario->getDescripcion()
+      //'descripcion' => $usuario->getDescripcion()
     ]);
 
     return $result->getInsertedId();
@@ -58,7 +58,7 @@ class UsuarioService {
       new DateTime(), // se actualiza la fecha de actualización con la fecha y hora actuales
       null, // el rol no se actualiza
       null,// el genero no se actualiza
-      $datos['descripcion']
+      //$datos['descripcion']
 
     );
   
@@ -74,7 +74,7 @@ class UsuarioService {
         'fecha_actualizacion' => $usuario->getFecha_actualizacion()->format('Y-m-d H:i:s'),
         'role' => $usuario->getRole(),
         'genero' => $usuario->getGenero(),
-        'descripcion' => $usuario->getDescripcion()
+        //'descripcion' => $usuario->getDescripcion()
 
       ]]
     );
@@ -128,11 +128,11 @@ class UsuarioService {
       $set['genero'] = $datos['genero'];
     }
 
-    
+    /*
     if (isset($datos['descripcion'])) {
       $set['descripcion'] = $datos['descripcion'];
     }
-
+    */
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
     $result = $this->collection->updateOne(
       ['_id' => new MongoDB\BSON\ObjectId($id)],
@@ -166,7 +166,7 @@ class UsuarioService {
         new DateTime($doc['fecha_actualizacion']),
         $doc['role'],
         $doc['genero'],
-        $doc['descripcion']
+      //  $doc['descripcion']
 
       );
       $usuario->setId($doc['_id']->__toString());   //mirar si lo del _id aqui funciona
@@ -190,7 +190,7 @@ class UsuarioService {
       $result['spotify_refresh_token'],
       $result['role'],
       $result['genero'],
-      $result['descripcion'],
+      //$result['descripcion'],
       new DateTime($result['fecha_creacion']),
       new DateTime($result['fecha_actualizacion'])
       
@@ -214,7 +214,7 @@ class UsuarioService {
         new DateTime($resultado['fecha_actualizacion']),
         $resultado['role'],
         $resultado['genero'],
-        $resultado['descripcion']
+        //$resultado['descripcion']
       );
     } else {
       return null;

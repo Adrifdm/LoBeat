@@ -22,7 +22,7 @@
             <label>Contraseña</label>
           </div>
           <p> Si no tienes una cuenta &nbsp;<a class = "noreg" href = "register.php">Registrate </a></p>
-          <a class = "sig" href="../principal/pagPrincipal.php">
+          <a class = "sig">
             <input type="submit"class = "next">
             <span></span>
             <span></span>
@@ -33,7 +33,7 @@
         </form>
       </div>
       <?php
-          include("procesarLogin.php")
+          require_once("procesarLogin.php")
         ?>
   </body>
 
