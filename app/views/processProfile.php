@@ -23,11 +23,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //El correo lo cojo de la sesión para que no me deje cambiarlo porque no he puesto control para ver si el correo ya existe
     $correo = $_SESSION["logged_user_email"];
+    $genero = $_POST['genero'];
 
     if (isset($nombre) && isset($correo)){
         // Comprobamos si existe algún usuario con ese correo
         //TODO cambiar la busqueda por id cuando funcione
         $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
+        if($usuarioExistente->getRole() == 'admin'){
+            $role = $_POST['role'];
+        }
+        else{
+            $role = $usuarioExistente->getRole();
+            ?>
+                    <div class = "error"> 
+                        <p> No puedes cambiar el rol si no eres Administrador </p> 
+                    </div>       
+            <?php
+
+        }
 
         if ($usuarioExistente !== null){
             $datos = array(
@@ -38,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'spotify_refresh_token' => $usuarioExistente->getSpotify_refresh_token(),
                 'fsa_creacion' => $usuarioExistente->getFecha_creacion(),
                 'fecha_actualizacion' => date('Y-m-d H:i:s'),
-                'role' => $usuarioExistente->getRole(),
-                'genero' => $usuarioExistente->getGenero()
+                'role' => $role,
+                'genero' => $genero
             );
             
             //TODO actualizar por id, comentado para que no pete

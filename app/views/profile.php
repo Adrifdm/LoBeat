@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="../../public/assets/css/profile.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/dee2748eb0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/vendor/select2/dist/css/select2.min.css">
+    <script src="assets/vendor/select2/dist/js/select2.min.js"></script>
 </head>
 <body>
  
@@ -102,7 +104,9 @@
                   <!--<span class="font-weight-light fuente">, 27</span>-->
                   </h3>
                   <div class="h5 font-weight-300 fuente">
-                    <!--<i class="ni location_pin mr-2"></i>Asturias, España-->
+                  <?php
+                    echo $usuarioExistente->getCorreo(); 
+                    ?>
                   </div>
                   <div class="h5 mt-4 fuente">
                     <!--<i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho-->

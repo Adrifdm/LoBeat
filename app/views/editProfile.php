@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../../public/assets/css/bootstrap-argon.css">
     <link rel="stylesheet" href="../../public/assets/css/profile.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <script src="https://kit.fontawesome.com/dee2748eb0.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -143,17 +142,23 @@
                       <div class="col-lg-6"> 
                         <div class="form-group focused">
                           <label class="form-control-label fuente" for="input-first-name">Rol</label>
-                          <input type="text" id="input-first-name" name="name" class="form-control form-control-alternative fuente" placeholder="" value="<?php 
-                            echo $usuarioExistente->getRole();
-                            ?>">
+                          <br> 
+                          <select  class="form-control" name="role" id="role" required="">
+                            <option value="Admin">Administrador</option>
+                            <option value="User">Usuario</option>
+                            <option value="Empresa">Empresa</option>
+                          </select>
                         </div>
                       </div> 
                       <div class="col-lg-6">
                         <div class="form-group focused"> 
                           <label class="form-control-label fuente" for="input-last-name">Género</label> 
-                          <input type="text" id="input-last-name" class="form-control form-control-alternative fuente" placeholder="" value="<?php
-                            echo $usuarioExistente->getGenero(); 
-                            ?>">
+                          <br>
+                            <select  class="form-control" name="genero" id="genero" required="">
+                            <option value="Mujer">Mujer</option>
+                            <option value="Hombre">Hombre</option>
+                           <option value="Otro">Otro</option>
+                          </select>
 
                         </div>
                       </div>

@@ -30,9 +30,9 @@
             <br><br>
 
             <select name="role" id="role" required="">
-              <option value="admin">Administrador</option>
-              <option value="user">Usuario</option>
-              <option value="empresa">Empresa</option>
+              <option value="Admin">Administrador</option>
+              <option value="User">Usuario</option>
+              <option value="Empresa">Empresa</option>
             </select>
 
             <!-- <input type="role" id="role" name="role" required=""> 
@@ -48,9 +48,9 @@
             <br><br>
 
             <select name="genero" id="genero" required="">
-              <option value="female">Mujer</option>
-              <option value="male">Hombre</option>
-              <option value="other">Otro</option>
+                <option value="Mujer">Mujer</option>
+                <option value="Hombre">Hombre</option>
+                <option value="Otro">Otro</option>
             </select>
 
           </div>
