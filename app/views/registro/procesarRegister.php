@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'../../../controllers/usuarioController.php';
-require_once __DIR__.'../../../controllers/spotifyController.php';
+require_once '../../../app/controllers/usuarioController.php';
+require_once '../../../app/controllers/spotifyController.php';
 
 session_start();
 if (isset($_GET['registered'])){

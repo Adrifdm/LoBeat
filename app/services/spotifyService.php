@@ -1,6 +1,6 @@
 <?php
-$dir_base = dirname(__DIR__);
-require_once $dir_base .'/controllers/usuarioController.php';
+
+require_once '../../../app/controllers/usuarioController.php';
 
 class SpotifyService {
     private $usuarioController;

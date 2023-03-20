@@ -1,9 +1,9 @@
 <?php
 use MongoDB\BSON\ObjectID;
 //require_once 'conexion.php';
-$dir_base = dirname(dirname(__DIR__));
-require_once $dir_base . '/vendor/autoload.php';
-require_once $dir_base . '/app/models/usuario.php';
+
+require_once '../../../vendor/autoload.php';
+require_once '../../../app/models/usuario.php';
 
 class UsuarioService {
 

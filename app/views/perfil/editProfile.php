@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="../../public/assets/css/bootstrap-argon.css">
-    <link rel="stylesheet" href="../../public/assets/css/profile.css">
+    <link rel="stylesheet" href="../../../public/assets/css/bootstrap-argon.css">
+    <link rel="stylesheet" href="../../../public/assets/css/profile.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
@@ -30,7 +30,7 @@
     <div class="main-content">
     
       <!-- Introducción -->
-      <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../public/assets/img/fondoLogin.png); background-size: cover; background-position: center top;">
+      <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../../public/assets/img/fondoLogin.png); background-size: cover; background-position: center top;">
         <!-- Máscara -->
        
         <span class="mask bg-gradient-default opacity-8"></span> 
@@ -41,7 +41,7 @@
               <h1 class="display-2 profile-text fuente">Perfil</h1>
               <p class="profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
               <a href="#!" class="btn btn-info fuente">Editar perfil</a>
-              <a href="login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Log Out</a>
+              <a href="../registro/login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Log Out</a>
             </div>
           </div>
         </div>
@@ -51,11 +51,11 @@
         <div class="row">
           <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
             <div class="card card-profile shadow">
-              <div class="row justify-content-center">
+              <div class="row justify-content-center">s
                 <div class="col-lg-3 order-lg-2">
                   <div class="card-profile-image">
                     <a href="#">
-                      <img src="../../public/assets/img/profileAvatar.png" class="rounded-circle">
+                      <img src="../../../public/assets/img/profileAvatar.png" class="rounded-circle">
                     </a>
                   </div>
                 </div>

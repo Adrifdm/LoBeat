@@ -1,9 +1,7 @@
 <?php
 session_start();
-$dir_base = dirname(dirname(__DIR__));
-
-include $dir_base. '\controllers\usuarioController.php';
-include $dir_base. '\controllers\spotifyController.php';
+require_once '../../../app/controllers/usuarioController.php';
+require_once '../../../app/controllers/spotifyController.php';
 //require_once __DIR__.'C:\Apache24\htdocs\LoBeat\app\controllers\usuarioController.php';
 //require_once $dir_base . '\controllers\spotifyController.php';
 //require_once 'C:\Apache24\htdocs\LoBeat\app\controllers\spotifyController.php';
@@ -54,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Refrescamos tokens
         $spotifyController->refrescarTokens($usuarioExistente->getId());
 
-        header('Location: principal/pagPrincipal.php');
+        header('Location: ../principal/pagPrincipal.php');
         exit;
 
     } else {

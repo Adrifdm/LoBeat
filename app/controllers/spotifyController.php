@@ -1,6 +1,6 @@
 <?php
-$dir_base = dirname(__DIR__);
-require_once $dir_base .'/services/spotifyService.php';
+
+require_once '../../../app/services/spotifyService.php';
 
 class SpotifyController {
     private $spotifyService;

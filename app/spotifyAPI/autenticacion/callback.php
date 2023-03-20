@@ -1,7 +1,6 @@
 <?php
 require '../../../vendor/autoload.php';
-//require_once 'auth.php';
-echo "1";
+
 // Como hemos hecho un require_once de auth.php, en principio podemos utilizar la $session de auth.php
 $session = new SpotifyWebAPI\Session(
     '8d2d98d239094241afabe8ead302c625',
