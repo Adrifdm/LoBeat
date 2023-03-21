@@ -1,4 +1,22 @@
 
+<?php
+	session_start();
+
+    //limpiamos variables de sesion
+    //tambien hay que hacelo aunque sea la pagina de login
+
+    $_SESSION["is_logged"] = false;
+
+    $_SESSION["logged_user_email"] = null;
+
+    $_SESSION["logged_user_id"] = null;
+    $_SESSION["logged_user_role"] = null;
+
+  //antes de empezar una nueva sesion destruimos por si acaso
+  session_destroy();      
+    
+?>
+
 <html lang="en" >
 
   <head>

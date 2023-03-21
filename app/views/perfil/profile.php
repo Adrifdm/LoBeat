@@ -3,7 +3,8 @@
 
   if($_SESSION["is_logged"] !== true){
     
-    header('Location: login.php'); 
+    header('Location: logout.php'); 
+    
     exit;
   } 
 ?> 

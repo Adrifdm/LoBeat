@@ -16,6 +16,13 @@
 
         session_start();
 
+        if($_SESSION["is_logged"] !== true){
+    
+          header('Location: logout.php'); 
+          
+          exit;
+        } 
+
         // Crear una instancia de UsuarioController
         $usuarioController = new UsuarioController();
 

@@ -1,5 +1,12 @@
 <?php
 	session_start();
+
+    if($_SESSION["is_logged"] != true){
+    
+        header('Location: ../perfil/logout.php'); 
+        
+        exit;
+    } 
 ?>
 
 <!doctype html>
