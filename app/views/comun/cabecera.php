@@ -23,7 +23,7 @@
         <a href=""><i class="bi bi-list"></i></a>
           <ul>
             <li><a href="#">Canciones</a></li>
-            <li><a href="#">MatchList</a></li>
+            <li><a href="../../spotifyAPI/llamadas/playlistsUsuario.php">MatchList</a></li>
           </ul>        
       </li>
       <li>
