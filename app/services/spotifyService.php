@@ -65,18 +65,18 @@ class SpotifyService {
         // Obtenemos el accessToken y refreshToken actuales de un determinado usuario (utilizando spotifyController)
         // Esta función debe devolver un array asociativo con las claves 'accessToken' y 'refreshToken'
         $userTokens = $this->obtenerTokensUsuario($id);
-        $accessTokenActual = $userTokens['accessToken'];
+        //$accessTokenActual = $userTokens['accessToken'];
         $refreshTokenActual = $userTokens['refreshToken'];
-
         // Si el accessToken sigue siendo válido, seteamos tanto ese accessToken como el refreshToken a la session directamente
+       /*
         if ($accessTokenActual) {
             $session->setAccessToken($accessTokenActual);
             $session->setRefreshToken($refreshTokenActual);
         }
+        */
         // En caso contrario, tenemos que generar un nuevo accessToken válido. Lo hacemos con la función refreshAccessToken, que necesita el refreshToken como entrada
-        else {
-            $session->refreshAccessToken($refreshTokenActual);
-        }
+      
+        $session->refreshAccessToken($refreshTokenActual);
 
         // Crea una instancia de la clase SpotifyWebAPI ($api) con la opción auto_refresh activada.
         //$api estará lista para ser usada por otros ficheros y realizar peticiones

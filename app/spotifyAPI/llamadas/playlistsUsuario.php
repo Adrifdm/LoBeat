@@ -8,6 +8,7 @@ $result = $collection->findOne([
 ]);
 // Fetch the saved access token from somewhere. A session for example.
 $api->setAccessToken($result['spotify_access_token']);
+
 $usuario = $api->me();
 $playlists = $api->getUserPlaylists($usuario->id);
 // It's now possible to request data about the currently authenticated user

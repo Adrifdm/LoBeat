@@ -2,9 +2,6 @@
 session_start();
 require_once '../../../app/controllers/usuarioController.php';
 require_once '../../../app/controllers/spotifyController.php';
-//require_once __DIR__.'C:\Apache24\htdocs\LoBeat\app\controllers\usuarioController.php';
-//require_once $dir_base . '\controllers\spotifyController.php';
-//require_once 'C:\Apache24\htdocs\LoBeat\app\controllers\spotifyController.php';
 
 // Comprobamos si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
