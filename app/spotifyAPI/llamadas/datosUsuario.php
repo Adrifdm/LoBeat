@@ -1,10 +1,17 @@
 <?php
-// Incluye el fichero refresh.php que crea la variable $api
-require_once '../refresh.php';
+require '../../../vendor/autoload.php';
+session_start();
+$api = new SpotifyWebAPI\SpotifyWebAPI();
+$collection = (new MongoDB\Client)->LoBeat->usuarios;
+$result = $collection->findOne([
+    '_id' => new MongoDB\BSON\ObjectID($_SESSION['logged_user_id'])
+]);
+// Fetch the saved access token from somewhere. A session for example.
+$api->setAccessToken($result['spotify_access_token']);
 
-// Usa la variable $api para acceder a la API web de Spotify
-$me = $_SESSION['spotifyAPI']->me();
+// It's now possible to request data about the currently authenticated user
+print_r(
+    $api->me()
+);
 
-// Haz lo que quieras con los datos del usuario
-echo 'Hola ' . $me->display_name;
 ?>
