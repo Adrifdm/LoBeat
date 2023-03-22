@@ -9,10 +9,8 @@ class Usuario {
   private $fecha_creacion; 
   private $fecha_actualizacion;
   private $role;
-  private $genero;
-
-  //para el "sobre mi" de la pestaña de usuario   
-  private $descripcion;
+  private $genero;   
+  private $descripcion;   //de momento no lo usamos
   
  
   public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, /*$descripcion*/) {

@@ -8,7 +8,7 @@ $session = new SpotifyWebAPI\Session(
     'http://localhost:80/LoBeat/app/spotifyAPI/autenticacion/callback.php'
 );
 
-// Usando el código que no devuelve Spotify, solicitamos un accessToken y refreshToken
+// Usando el código que nos devuelve Spotify, solicitamos un accessToken y refreshToken
 $session->requestAccessToken($_GET['code']);
 
 $accessToken = $session->getAccessToken();
