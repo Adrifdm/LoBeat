@@ -46,3 +46,13 @@
   .fuente{
     font-family: 'Poppins', sans-serif;
   }
+
+  textarea.fuente {
+    background-color: #ffffff;
+    color: #8898aa;
+  }
+
+  textarea.fuente:disabled{
+    background-color: #ffffff;
+    color: #8898aa;
+  }

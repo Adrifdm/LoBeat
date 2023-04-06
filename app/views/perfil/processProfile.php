@@ -24,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //El correo lo cojo de la sesión para que no me deje cambiarlo porque no he puesto control para ver si el correo ya existe
     $correo = $_SESSION["logged_user_email"];
     $genero = $_POST['genero'];
+    
+    $sobreMi = $_POST['descripcion'];
 
     if (isset($nombre) && isset($correo)){
         // Comprobamos si existe algún usuario con ese correo
@@ -52,7 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'fsa_creacion' => $usuarioExistente->getFecha_creacion(),
                 'fecha_actualizacion' => date('Y-m-d H:i:s'),
                 'role' => $role,
-                'genero' => $genero
+                'genero' => $genero,
+                'descripcion' => $sobreMi
             );
             
             //TODO actualizar por id, comentado para que no pete

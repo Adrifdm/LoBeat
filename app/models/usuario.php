@@ -13,7 +13,7 @@ class Usuario {
   private $descripcion;   //de momento no lo usamos
   
  
-  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, /*$descripcion*/) {
+  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion) {
     $this->id = $id;
     $this->nombre = $nombre;
     $this->correo = $correo;
@@ -24,9 +24,9 @@ class Usuario {
     $this->fecha_actualizacion = $fecha_actualizacion;
     $this->role = $role;
     $this->genero = $genero;
-    //$this->descripcion = $descripcion;
+    $this->descripcion = $descripcion;
   }
-/*
+
   public function getDescripcion() {
     return $this->descripcion;
   }
@@ -35,7 +35,7 @@ class Usuario {
     $this->descripcion = $descripcion;
   }
 
-*/
+
   public function getId() {
     return $this->id;
   }

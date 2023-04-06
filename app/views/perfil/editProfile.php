@@ -211,7 +211,9 @@
                   <div class="pl-lg-4">
                     <div class="form-group focused">
                       <label class="fuente">Sobre mí</label>
-                      <textarea rows="4" class="form-control form-control-alternative fuente" placeholder="Unas palabras sobre tí"></textarea>
+                      <textarea rows="4" class="form-control form-control-alternative fuente" name="descripcion" placeholder="Unas palabras sobre tí"><?php
+                      echo $usuarioExistente->getDescripcion();
+                      ?></textarea>
                     </div>
                   </div>
 

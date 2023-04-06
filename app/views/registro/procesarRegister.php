@@ -69,7 +69,8 @@ else if ($registered === true){
         'fsa_creacion' => date('Y-m-d H:i:s'),
         'fecha_actualizacion' => date('Y-m-d H:i:s'),
         'role' => $_SESSION['role'],
-        'genero' => $_SESSION['genero']
+        'genero' => $_SESSION['genero'],
+        'descripcion' => 'Unas palabras sobre tí'
     );
     $resultado = $usuarioController->crearUsuario($datos);
 
