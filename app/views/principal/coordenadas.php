@@ -50,17 +50,17 @@ $mujer = [
 
 if ($categoria === "current_user") {
     echo json_encode([
-        "icono" => "../../public/assets/img/current_user.png",
+        "icono" => "../../../public/assets/img/current_user.png",
         "coordenadas" => $current_user,
     ]);
 } else if($categoria === "hombre"){
     echo json_encode([
-        "icono" => "../../public/assets/img/hombre.png",
+        "icono" => "../../../public/assets/img/hombre.png",
         "coordenadas" => $hombre,
     ]);
 } else if($categoria === "mujer"){
     echo json_encode([
-        "icono" => "../../public/assets/img/mujer.png",
+        "icono" => "../../../public/assets/img/mujer.png",
         "coordenadas" => $mujer,
     ]);
 }
