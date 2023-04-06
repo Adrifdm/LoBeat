@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Refrescamos tokens
         $spotifyController->refrescarTokens($usuarioExistente->getId());
 
-        header('Location: ../principal/pagPrincipal.php');
+        header('Location: ../principal/Ubicacion.php');
         exit;
 
     } else {

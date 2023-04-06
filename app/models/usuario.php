@@ -14,8 +14,10 @@ class Usuario {
 
   private $fotoPerfil; //nombre de la foto
   
+  private $latitud;  
+  private $longitud;  
  
-  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil) {
+  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud) {
     $this->id = $id;
     $this->nombre = $nombre;
     $this->correo = $correo;
@@ -28,6 +30,8 @@ class Usuario {
     $this->genero = $genero;
     $this->descripcion = $descripcion;
     $this->fotoPerfil = $fotoPerfil;
+    $this->latitud = $latitud;
+    $this->longitud = $longitud;
   }
 
   public function getFotoPerfil(){
@@ -37,7 +41,21 @@ class Usuario {
   public function setFotoPerfil($fotoPerfil){
     $this->fotoPerfil = $fotoPerfil;
   }
+  public function getLatitud() {
+    return $this->latitud;
+  }
+  
+  public function setLatitud($latitud) {
+    $this->latitud = $latitud;
+  }
 
+  public function getLongitud() {
+    return $this->longitud;
+  }
+  
+  public function setLongitud($longitud) {
+    $this->longitud = $longitud;
+  }
   public function getDescripcion() {
     return $this->descripcion;
   }

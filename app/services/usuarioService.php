@@ -29,7 +29,10 @@ class UsuarioService {
       $datos['role'],
       $datos['genero'],
       $datos['descripcion'],
-      $datos['fotoPerfil']
+      $datos['fotoPerfil'],
+      $datos['latitud'] ?? null,
+      $datos['longitud'] ?? null
+      
     );
 
     $result = $this->collection->insertOne([
@@ -43,7 +46,8 @@ class UsuarioService {
       'role' => $usuario->getRole(),
       'genero' => $usuario->getGenero(),
       'descripcion' => $usuario->getDescripcion(),
-      'fotoPerfil' => $usuario->getFotoPerfil()
+      'fotoPerfil' => $usuario->getFotoPerfil(),
+      
     ]);
 
     return $result->getInsertedId();
@@ -60,7 +64,9 @@ class UsuarioService {
       null, // la fecha de creación no se actualiza
       new DateTime(), // se actualiza la fecha de actualización con la fecha y hora actuales
       null, // el rol no se actualiza
-      null,// el genero no se actualiza
+      null,
+      null
+      // el genero no se actualiza
       //$datos['descripcion']
 
     );
@@ -139,6 +145,14 @@ class UsuarioService {
     if (isset($datos['fotoPerfil'])) {
       $set['fotoPerfil'] = $datos['fotoPerfil'];
     }
+
+    if (isset($datos['latitud'])) {
+      $set['latitud'] = $datos['latitud'];
+    }
+
+    if (isset($datos['longitud'])) {
+      $set['longitud'] = $datos['longitud'];
+    }
     
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
     $result = $this->collection->updateOne(
@@ -174,7 +188,8 @@ class UsuarioService {
         $doc['role'],
         $doc['genero'],
         $doc['descripcion'],
-        $doc['fotoPerfil']
+        $doc['fotoPerfil'],
+        
 
       );
       $usuario->setId($doc['_id']->__toString());   //mirar si lo del _id aqui funciona
@@ -201,7 +216,9 @@ class UsuarioService {
       $result['descripcion'],
       $result['fotoPerfil'],
       new DateTime($result['fecha_creacion']),
-      new DateTime($result['fecha_actualizacion'])
+      new DateTime($result['fecha_actualizacion']),
+      $result['latitud'] ?? null,
+      $result['longitud'] ?? null
       
     );
     $usuario->setId($result['_id']->__toString());    //mirar si lo del _id aqui funciona,
@@ -224,7 +241,9 @@ class UsuarioService {
         $resultado['role'],
         $resultado['genero'],
         $resultado['descripcion'],
-        $resultado['fotoPerfil']
+        $resultado['fotoPerfil'],
+        $resultado['latitud'] ?? null,
+        $resultado['longitud'] ?? null
       );
     } else {
       return null;
