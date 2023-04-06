@@ -70,7 +70,8 @@ else if ($registered === true){
         'fecha_actualizacion' => date('Y-m-d H:i:s'),
         'role' => $_SESSION['role'],
         'genero' => $_SESSION['genero'],
-        'descripcion' => 'Unas palabras sobre tí'
+        'descripcion' => 'Unas palabras sobre tí',
+        'fotoPerfil' => 'mujer.png'
     );
     $resultado = $usuarioController->crearUsuario($datos);
 

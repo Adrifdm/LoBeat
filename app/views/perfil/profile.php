@@ -66,7 +66,7 @@
                 <div class="col-lg-3 order-lg-2">
                   <div class="card-profile-image">
                     <a href="#">
-                      <img src="../../../public/assets/img/profileAvatar.png" class="rounded-circle">
+                      <img src=<?php echo "../../../public/assets/img/profilePhotos/".$usuarioExistente->getFotoPerfil(); ?> class="rounded-circle">
                     </a>
                   </div> 
                 </div>

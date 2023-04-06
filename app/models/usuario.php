@@ -11,9 +11,11 @@ class Usuario {
   private $role;
   private $genero;   
   private $descripcion;   //de momento no lo usamos
+
+  private $fotoPerfil; //nombre de la foto
   
  
-  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion) {
+  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil) {
     $this->id = $id;
     $this->nombre = $nombre;
     $this->correo = $correo;
@@ -25,6 +27,15 @@ class Usuario {
     $this->role = $role;
     $this->genero = $genero;
     $this->descripcion = $descripcion;
+    $this->fotoPerfil = $fotoPerfil;
+  }
+
+  public function getFotoPerfil(){
+    return $this->fotoPerfil;
+  }
+
+  public function setFotoPerfil($fotoPerfil){
+    $this->fotoPerfil = $fotoPerfil;
   }
 
   public function getDescripcion() {

@@ -28,7 +28,8 @@ class UsuarioService {
       $fecha_actualizacion,
       $datos['role'],
       $datos['genero'],
-      $datos['descripcion']
+      $datos['descripcion'],
+      $datos['fotoPerfil']
     );
 
     $result = $this->collection->insertOne([
@@ -41,7 +42,8 @@ class UsuarioService {
       'fecha_actualizacion' => $usuario->getFecha_actualizacion()->format('Y-m-d H:i:s'),
       'role' => $usuario->getRole(),
       'genero' => $usuario->getGenero(),
-      'descripcion' => $usuario->getDescripcion()
+      'descripcion' => $usuario->getDescripcion(),
+      'fotoPerfil' => $usuario->getFotoPerfil()
     ]);
 
     return $result->getInsertedId();
@@ -133,6 +135,10 @@ class UsuarioService {
     if (isset($datos['descripcion'])) {
       $set['descripcion'] = $datos['descripcion'];
     }
+
+    if (isset($datos['fotoPerfil'])) {
+      $set['fotoPerfil'] = $datos['fotoPerfil'];
+    }
     
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
     $result = $this->collection->updateOne(
@@ -167,7 +173,8 @@ class UsuarioService {
         new DateTime($doc['fecha_actualizacion']),
         $doc['role'],
         $doc['genero'],
-        $doc['descripcion']
+        $doc['descripcion'],
+        $doc['fotoPerfil']
 
       );
       $usuario->setId($doc['_id']->__toString());   //mirar si lo del _id aqui funciona
@@ -192,6 +199,7 @@ class UsuarioService {
       $result['role'],
       $result['genero'],
       $result['descripcion'],
+      $result['fotoPerfil'],
       new DateTime($result['fecha_creacion']),
       new DateTime($result['fecha_actualizacion'])
       
@@ -215,7 +223,8 @@ class UsuarioService {
         new DateTime($resultado['fecha_actualizacion']),
         $resultado['role'],
         $resultado['genero'],
-        $resultado['descripcion']
+        $resultado['descripcion'],
+        $resultado['fotoPerfil']
       );
     } else {
       return null;

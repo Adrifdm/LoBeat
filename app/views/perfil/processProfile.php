@@ -27,6 +27,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $sobreMi = $_POST['descripcion'];
 
+    //Comprobamos que se ha cogido bien la foto
+    if (isset($_FILES['foto'])){
+        // Cogemos la información de la imagen
+        $nombreFoto = $_FILES['foto']['name'];
+        $tipoFoto = $_FILES['foto']['type'];
+        $tamanoFoto = $_FILES['foto']['size'];
+        $tempFoto = $_FILES['foto']['tmp_name'];
+
+        //Comprobamos que la imagen es válida
+        if (($tipoFoto == 'image/jpeg' || $tipoFoto == 'image/png' || $tipoFoto == 'image/gif') && $tamanoFoto <= 5000000) {
+            // Movemos la foto a la carpeta con todas las fotos de perfiles
+            $ruta = $_SERVER['DOCUMENT_ROOT'].'/LoBeat/public/assets/img/profilePhotos/'.$nombreFoto;
+            move_uploaded_file($tempFoto, $ruta);
+            chmod($ruta, 0644); // Establece permisos de lectura y escritura para el propietario y solo permisos de lectura para los demás usuarios
+        }
+
+    }else{
+        ?>
+            <div class = "error">
+                <p> La foto no se ha guardado bien  </p> 
+            </div>       
+        <?php
+        exit;
+    }
+
     if (isset($nombre) && isset($correo)){
         // Comprobamos si existe algún usuario con ese correo
         //TODO cambiar la busqueda por id cuando funcione
@@ -55,7 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'fecha_actualizacion' => date('Y-m-d H:i:s'),
                 'role' => $role,
                 'genero' => $genero,
-                'descripcion' => $sobreMi
+                'descripcion' => $sobreMi,
+                'foto' => $nombreFoto
             );
             
             //TODO actualizar por id, comentado para que no pete

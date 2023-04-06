@@ -58,14 +58,15 @@
         <div class="row">
           <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
             <div class="card card-profile shadow">
-              <div class="row justify-content-center">s
+              <div class="row justify-content-center">
                 <div class="col-lg-3 order-lg-2">
                   <div class="card-profile-image">
                     <a href="#">
-                      <img src="../../../public/assets/img/profileAvatar.png" class="rounded-circle">
+                      <img src=<?php echo "../../../public/assets/img/profilePhotos/".$usuarioExistente->getFotoPerfil(); ?> class="rounded-circle">
                     </a>
-                  </div>
+                  </div> 
                 </div>
+                
               </div>
               <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
@@ -123,7 +124,7 @@
                 </div>
               </div>
               <div class="card-body">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                   <h6 class="heading-small text-muted mb-4 fuente">Información usuario</h6>
                   <div class="pl-lg-4">
                     <div class="row">
@@ -216,6 +217,8 @@
                       ?></textarea>
                     </div>
                   </div>
+
+                  <input type="file" name="foto">
 
                   <div class="d-flex justify-content-between">
                     <a type="submit">
