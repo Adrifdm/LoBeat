@@ -40,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Movemos la foto a la carpeta con todas las fotos de perfiles
             $ruta = $_SERVER['DOCUMENT_ROOT'].'/LoBeat/public/assets/img/profilePhotos/'.$nombreFoto;
             move_uploaded_file($tempFoto, $ruta);
-            chmod($ruta, 0644); // Establece permisos de lectura y escritura para el propietario y solo permisos de lectura para los demás usuarios
         }
 
     }else{
@@ -81,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'role' => $role,
                 'genero' => $genero,
                 'descripcion' => $sobreMi,
-                'foto' => $nombreFoto
+                'fotoPerfil' => $nombreFoto
             );
             
             //TODO actualizar por id, comentado para que no pete

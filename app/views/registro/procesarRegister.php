@@ -71,7 +71,7 @@ else if ($registered === true){
         'role' => $_SESSION['role'],
         'genero' => $_SESSION['genero'],
         'descripcion' => 'Unas palabras sobre tí',
-        'fotoPerfil' => 'mujer.png'
+        'fotoPerfil' => 'profileAvatar.png'
     );
     $resultado = $usuarioController->crearUsuario($datos);
 
