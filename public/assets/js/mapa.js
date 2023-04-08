@@ -1,9 +1,9 @@
-const LATITUD_CENTRO = 40.45290426742626,
-LONGITUD_CENTRO = -3.7335220308310118,
-    ZOOM = 15;
+const LATITUD_CENTRO = LATITUD;
+const LONGITUD_CENTRO = LONGITUD;
+ZOOM = 15;
 
 const mapa = new ol.Map({
-    target: 'mapa', // el id del elemento en donde se monta
+    target: 'mapa',
     layers: [
         new ol.layer.Tile({
             source: new ol.source.OSM()
