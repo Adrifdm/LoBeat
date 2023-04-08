@@ -13,8 +13,7 @@ class UsuarioController {
         try {
             // llamar al método de crear usuario del servicio
             $resultado = $this->usuarioService->crearUsuario($datos);
-            // devolver la respuesta en formato JSON
-            echo json_encode($resultado);
+                        
             return $resultado;
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente
@@ -53,7 +52,7 @@ class UsuarioController {
             // llamar al método de listar usuarios del servicio
             $usuarios = $this->usuarioService->listarUsuarios();
             // devolver la lista de usuarios en formato JSON
-            echo json_encode($usuarios);
+            
             return $usuarios;
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente

@@ -16,8 +16,6 @@ if (isset($_GET["latitud"]) && isset($_GET["longitud"])) {
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
     $id = $usuarioExistente->getId();
 
-    $long = floatval($longitud);
-    $lat = floatval($latitud);
     
     $datos = array(
         'latitud' => $latitud,
@@ -26,8 +24,8 @@ if (isset($_GET["latitud"]) && isset($_GET["longitud"])) {
 
     $usuarioController->actualizarUsuario($id, $datos);
     
-    $_SESSION["logged_latitud"] = $lat;
-    $_SESSION["logged_longitud"] = $long;
+    $_SESSION["logged_latitud"] = $latitud;
+    $_SESSION["logged_longitud"] = $longitud;
 
     header('Location: pagPrincipal.php');
     exit;

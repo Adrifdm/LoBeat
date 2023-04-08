@@ -1,55 +1,63 @@
 <?php
 
+require_once '../../../app/controllers/usuarioController.php';
+
 session_start();
+
+$usuarioController = new UsuarioController();
 
 if (empty($_GET["categoria"])) {
     exit("No hay categoría");
 }
 
-//generamos dos numeros aleatorios entre 0 y 0.01 para generar coordenadas aleatorias dentro de un rango de maximo 1,11km de 
-//distancia de la ubicacion real de los usuarios, tanto en el eje x como en el y
+
 mt_srand (time());
 $randomX = mt_rand(0,10) / 1000;
 $randomY = mt_rand(0,10) / 1000;
 
 $categoria = $_GET["categoria"];
 
-
 if ($categoria === "current_user") {
     $current_user = [
         [
-            "latitud" => $_SESSION["logged_latitud"],
-            "longitud" => $_SESSION["logged_longitud"],
+            "latitud" => $_SESSION["logged_latitud"] + $randomX,
+            "longitud" => $_SESSION["logged_longitud"] + $randomY,
         ],
-    ];
-
-    echo json_encode([
-        "icono" => "../../../public/assets/img/current_user.png",
-        "coordenadas" => $current_user,
-    ]);
-} else if($categoria === "hombre"){
-    $hombre = [
-        [
-            "latitud" => 40.424312,
-            "longitud" => -3.712700,
-        ],
-        
-    ];
-    echo json_encode([
-        "icono" => "../../../public/assets/img/hombre.png",
-        "coordenadas" => $hombre,
-    ]);
-} else if($categoria === "mujer"){
-    $mujer = [
-        [
-            "latitud" => 40.46861111,
-            "longitud" => -3.70555556,
-        ],
-        
     ];
     
     echo json_encode([
-        "icono" => "../../../public/assets/img/mujer.png",
-        "coordenadas" => $mujer,
+        "icono" => "../../../public/assets/img/yo.png",
+        "coordenadas" => $current_user,
     ]);
-}
+} 
+
+if($categoria === "resto"){
+    $resultado = $usuarioController->listarUsuarios();
+    $usuarios = [];
+
+    foreach ($resultado as $usuario) {
+        if ($usuario->getId() != $_SESSION["logged_user_id"]) {
+            if($usuario->getGenero() === "Mujer"){
+                $icono = "mujer.png";
+            }
+            else if($usuario->getGenero() === "Hombre"){
+                $icono = "hombre.png";
+            }
+            else{
+                $icono = "neutral.png";
+            }
+            $coordenadas = [
+                [
+                    "latitud" => $usuario->getLatitud() + $randomX,
+                    "longitud" => $usuario->getLongitud() + $randomY,
+                ],
+            ];
+            $usuarios[] = [
+                "icono" => "../../../public/assets/img/" . $icono,
+                "coordenadas" => $coordenadas,
+            ];
+        }
+    }
+    echo json_encode($usuarios);
+} 
+        
