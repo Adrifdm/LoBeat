@@ -1,7 +1,4 @@
 <?php
-use MongoDB\BSON\ObjectID;
-//require_once 'conexion.php';
-
 require_once '../../../vendor/autoload.php';
 require_once '../../../app/models/usuario.php';
 
@@ -10,7 +7,6 @@ class UsuarioService {
   private $collection;
 
   public function __construct() {
-    //$this->db = Conexion::conectar();   en principio conexion.php ya estaría bien asi y no habria que hacer fnciones
     $this->collection = (new MongoDB\Client)->LoBeat->usuarios;
   }
 
@@ -31,8 +27,8 @@ class UsuarioService {
       $datos['descripcion'],
       $datos['fotoPerfil'],
       $datos['latitud'] ?? null,
-      $datos['longitud'] ?? null
-      
+      $datos['longitud'] ?? null,
+      $datos['spotify_ID']
     );
 
     $result = $this->collection->insertOne([
@@ -47,52 +43,12 @@ class UsuarioService {
       'genero' => $usuario->getGenero(),
       'descripcion' => $usuario->getDescripcion(),
       'fotoPerfil' => $usuario->getFotoPerfil(),
-      
+      'spotify_ID' => $usuario->getSpotifyID(),
     ]);
 
     return $result->getInsertedId();
   }
 
-  public function actualizarUsuarioANTIGUO($id, $datos) {
-    $usuario = new Usuario(
-      $datos['_id'],
-      $datos['nombre'],
-      $datos['correo'],
-      $datos['contrasenya'],
-      $datos['spotify_access_token'],
-      $datos['spotify_refresh_token'],
-      null, // la fecha de creación no se actualiza
-      new DateTime(), // se actualiza la fecha de actualización con la fecha y hora actuales
-      null, // el rol no se actualiza
-      null,
-      null
-      // el genero no se actualiza
-      //$datos['descripcion']
-
-    );
-  
-    //....................................
-    $result = $this->collection->updateOne(
-      ['_id' => $id],
-      ['$set' => [
-        'nombre' => $usuario->getNombre(),
-        'correo' => $usuario->getCorreo(),
-        'contrasenya' => $usuario->getContrasenya(),
-        'spotify_access_token' => $usuario->getSpotify_access_token(),
-        'spotify_refresh_token' => $usuario->getSpotify_refresh_token(),
-        'fecha_actualizacion' => $usuario->getFecha_actualizacion()->format('Y-m-d H:i:s'),
-        'role' => $usuario->getRole(),
-        'genero' => $usuario->getGenero(),
-        //'descripcion' => $usuario->getDescripcion()
-
-      ]]
-    );
-  
-    return $result->getModifiedCount() > 0;
-  }
-  
-  //esta función es la misma que actualizarUsuarioANTIGUO pero solo actualiza aquellos campos que $datos tenga, por lo que datos ya no tiene porque definir
-  //todos los campos. Dejo la antigua en este fichero por si acaso
   public function actualizarUsuario($id, $datos) {
     
     // Comprobamos campo a campo si $datos lo tiene
@@ -137,7 +93,6 @@ class UsuarioService {
       $set['genero'] = $datos['genero'];
     }
 
-    
     if (isset($datos['descripcion'])) {
       $set['descripcion'] = $datos['descripcion'];
     }
@@ -152,6 +107,10 @@ class UsuarioService {
 
     if (isset($datos['longitud'])) {
       $set['longitud'] = $datos['longitud'];
+    }
+
+    if (isset($datos['spotify_ID'])) {
+      $set['spotify_ID'] = $datos['spotify_ID'];
     }
     
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
@@ -189,8 +148,9 @@ class UsuarioService {
         $doc['genero'],
         $doc['descripcion'],
         $doc['fotoPerfil'],
-        
-
+        $doc['latitud'],
+        $doc['longitud'],
+        $doc['spotify_ID'],
       );
       $usuario->setId($doc['_id']->__toString());   //mirar si lo del _id aqui funciona
       array_push($usuarios, $usuario);
@@ -218,8 +178,8 @@ class UsuarioService {
       new DateTime($result['fecha_creacion']),
       new DateTime($result['fecha_actualizacion']),
       $result['latitud'] ?? null,
-      $result['longitud'] ?? null
-      
+      $result['longitud'] ?? null,
+      $result['spotify_ID']   //nose si hará falta poner aqui un toString o algo
     );
     $usuario->setId($result['_id']->__toString());    //mirar si lo del _id aqui funciona,
 
@@ -243,7 +203,8 @@ class UsuarioService {
         $resultado['descripcion'],
         $resultado['fotoPerfil'],
         $resultado['latitud'] ?? null,
-        $resultado['longitud'] ?? null
+        $resultado['longitud'] ?? null,
+        $resultado['spotify_ID'],
       );
     } else {
       return null;

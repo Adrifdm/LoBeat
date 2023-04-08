@@ -9,15 +9,14 @@ class Usuario {
   private $fecha_creacion; 
   private $fecha_actualizacion;
   private $role;
-  private $genero;   
-  private $descripcion;   //de momento no lo usamos
+  private $genero;
+  private $descripcion;
+  private $fotoPerfil;
+  private $latitud; 
+  private $longitud;
+  private $spotify_ID;
 
-  private $fotoPerfil; //nombre de la foto
-  
-  private $latitud;  
-  private $longitud;  
- 
-  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud) {
+  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID) {
     $this->id = $id;
     $this->nombre = $nombre;
     $this->correo = $correo;
@@ -32,6 +31,7 @@ class Usuario {
     $this->fotoPerfil = $fotoPerfil;
     $this->latitud = $latitud;
     $this->longitud = $longitud;
+    $this->spotify_ID = $spotify_ID;
   }
 
   public function getFotoPerfil(){
@@ -143,6 +143,14 @@ class Usuario {
 
   public function setGenero($genero) {
     $this->genero = $genero;
+  }
+
+  public function getSpotifyID() {
+    return $this->spotify_ID;
+  }
+
+  public function setSpotifyID($spotify_ID) {
+    $this->spotify_ID = $spotify_ID;
   }
 }
 ?>

@@ -71,7 +71,8 @@ else if ($registered === true){
         'role' => $_SESSION['role'],
         'genero' => $_SESSION['genero'],
         'descripcion' => 'Unas palabras sobre tí',
-        'fotoPerfil' => 'profileAvatar.png'
+        'fotoPerfil' => 'profileAvatar.png',
+        'spotify_ID' => ''  //TODO: recopilar el spotify_ID del user
     );
     $resultado = $usuarioController->crearUsuario($datos);
 
