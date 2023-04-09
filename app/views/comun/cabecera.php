@@ -19,25 +19,51 @@
   <nav>
     
     <ul>
+    <li>
+        <a class="tooltip" href="../principal/pagPrincipal.php">
+          
+          <i class="fa fa-home"></i>
+          <span class= "tooltip-box">Inicio</span>
+      
+        </a>
+
+    </li>
+
     <li class="dropdown">
         <a href=""><i class="bi bi-list"></i></a>
           <ul>
-            <li><a href="../../spotifyAPI/llamadas/datosUsuario.php"">Canciones</a></li>
+            <li><a href="../../spotifyAPI/llamadas/datosUsuario.php">Canciones</a></li>
             <li><a href="../../spotifyAPI/llamadas/playlistsUsuario.php">MatchList</a></li>
           </ul>        
       </li>
       <li>
-        <a href=""><i class="bi bi-bell-fill"></i></a>
+        <a class="tooltip" href="">
+          
+          <i class="bi bi-bell-fill"></i>
+          <span class= "tooltip-box">Notificaciones</span>
+      
+        </a>
 
       </li>
           
       <li>
-        <a href="../perfil/profile.php"> <i class="bi bi-person-fill"></i></a>
+      
+        <a class="tooltip" href="../perfil/profile.php"> 
 
-        <a href="../perfil/logout.php"><i class="fa fa-power-off"></i></a>
+          <i class="bi botperfil bi-person-fill"> </i>
+          <span class= "tooltip-box">Perfil</span>
+
+        </a>
+    
+
+        <a class="tooltip" href="../perfil/logout.php">
+          
+          <i class="fa botlogout fa-power-off"></i>
+          <span class= "tooltip-box">Cerrar sesión</span>
+
+        </a>
 
       </li>
-    
    
     </ul>
     
