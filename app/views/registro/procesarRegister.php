@@ -72,7 +72,10 @@ else if ($registered === true){
         'genero' => $_SESSION['genero'],
         'descripcion' => 'Unas palabras sobre tí',
         'fotoPerfil' => 'profileAvatar.png',
-        'spotify_ID' => ''      // Inicialmente el spotifyID de la base de datos se inicializa vacío
+        'spotify_ID' => '' ,     // Inicialmente el spotifyID de la base de datos se inicializa vacío
+        'nChats' => 0,
+        'nMatches' => 0,
+        'nPlaylists' => 0
     );
 
     // Creamos el usuarios con la información anterior

@@ -36,6 +36,7 @@
     // Comprobamos si existe algún usuario con ese correo
     //mas adelante se cambiara por el id
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
+    
     ?>
 
     <?php

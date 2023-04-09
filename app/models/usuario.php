@@ -16,7 +16,11 @@ class Usuario {
   private $longitud;
   private $spotify_ID;
 
-  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID) {
+  private $nMatches;
+  private $nChats;
+  private $nPlaylists;
+
+  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID, $nChats, $nPlaylists, $nMatches) {
     $this->id = $id;
     $this->nombre = $nombre;
     $this->correo = $correo;
@@ -32,6 +36,35 @@ class Usuario {
     $this->latitud = $latitud;
     $this->longitud = $longitud;
     $this->spotify_ID = $spotify_ID;
+    
+    $this->nMatches = $nMatches;
+    $this->nPlaylists = $nPlaylists;
+    $this->nChats = $nChats;
+  
+  }
+
+  public function getnMatches(){
+    return $this->nMatches;
+  }
+
+  public function setnMatches($nMatches){
+    $this->nMatches = $nMatches;
+  }
+
+  public function getnPlaylists(){
+    return $this->nPlaylists;
+  }
+
+  public function setnPlaylists($nPlaylists){
+    $this->nPlaylists = $nPlaylists;
+  }
+
+  public function getnChats(){
+    return $this->nChats;
+  }
+
+  public function setnChats($nChats){
+    $this->nChats = $nChats;
   }
 
   public function getFotoPerfil(){

@@ -28,7 +28,11 @@ class UsuarioService {
       $datos['fotoPerfil'],
       $datos['latitud'] ?? null,
       $datos['longitud'] ?? null,
-      $datos['spotify_ID']
+      $datos['spotify_ID'],
+
+      $datos['nMatches'],
+      $datos['nPlaylists'],
+      $datos['nChats']
     );
 
     $result = $this->collection->insertOne([
@@ -44,6 +48,11 @@ class UsuarioService {
       'descripcion' => $usuario->getDescripcion(),
       'fotoPerfil' => $usuario->getFotoPerfil(),
       'spotify_ID' => $usuario->getSpotifyID(),
+
+      'nMatches' => $usuario->getnMatches(),
+      'nPlaylists' => $usuario->getnPlaylists(),
+      'nChats' => $usuario->getnChats(),
+
     ]);
 
     return $result->getInsertedId();
@@ -112,6 +121,18 @@ class UsuarioService {
     if (isset($datos['spotify_ID'])) {
       $set['spotify_ID'] = $datos['spotify_ID'];
     }
+
+    if (isset($datos['nMatches'])) {
+      $set['nMatches'] = $datos['nMatches'];
+    }
+
+    if (isset($datos['nPlaylists'])) {
+      $set['nPlaylists'] = $datos['nPlaylists'];
+    }
+
+    if (isset($datos['nChats'])) {
+      $set['nChats'] = $datos['nChats'];
+    }
     
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
     $result = $this->collection->updateOne(
@@ -151,6 +172,11 @@ class UsuarioService {
         $doc['latitud'],
         $doc['longitud'],
         $doc['spotify_ID'],
+
+        $doc['nMatches'], 
+        $doc['nPlaylists'], 
+        $doc['nChats'],
+        
       );
       $usuario->setId($doc['_id']->__toString());   //mirar si lo del _id aqui funciona
       array_push($usuarios, $usuario);
@@ -179,7 +205,11 @@ class UsuarioService {
       new DateTime($result['fecha_actualizacion']),
       $result['latitud'] ?? null,
       $result['longitud'] ?? null,
-      $result['spotify_ID']   //nose si hará falta poner aqui un toString o algo
+      $result['spotify_ID'],   //nose si hará falta poner aqui un toString o algo
+
+      $result['nMatches'], 
+      $result['nPlaylists'], 
+      $result['nChats'] 
     );
     $usuario->setId($result['_id']->__toString());    //mirar si lo del _id aqui funciona,
 
@@ -205,6 +235,10 @@ class UsuarioService {
         $resultado['latitud'] ?? null,
         $resultado['longitud'] ?? null,
         $resultado['spotify_ID'],
+
+        $resultado['nMatches'], 
+        $resultado['nPlaylists'], 
+        $resultado['nChats'],
       );
     } else {
       return null;
