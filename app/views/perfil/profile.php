@@ -94,9 +94,9 @@
                 </div>
               </div>
               <div class="card-body pt-0 pt-md-4">
-                <div class="row"> 
+                <div class="col"> 
                   <!-- <div class="col"> -->
-                    <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                    <div class="card-profile-stats d-flex justify-content-center mt-md-5 contt">
 
                       <div class="rib">
                         <ribbon>
@@ -105,42 +105,45 @@
                         </ribbon>
                       </div>
 
-                      <div> 
-                        <span class="heading fuente">6</span>
-                        <span class="description fuente">Playlists</span>
+                      <div class="rib2">
+                        <ribbon2>
+                          <span class="heading fuente inside">6 Playlists</span>
+                          <!--<span class="description fuente">Playlists</span>-->
+                        </ribbon2>
                       </div>
 
-                      <div>
-                        <span class="heading fuente">7</span>
-                        <span class="description fuente">Chats</span>
+                      <div class="rib3">
+                        <ribbon3>
+                          <span class="heading fuente inside">7 Chat</span>
+                          <!--<span class="description fuente">Chats</span>-->
+                        </ribbon3>
                       </div>
+                      
+                      <div class="text-center ">
+                        <h3 class="fuente"> 
+                          <?php
+                          echo $usuarioExistente->getNombre(); 
+                          ?>
 
+                        <!--<span class="font-weight-light fuente">, 27</span>-->
+                        </h3>
+                        <div class="h5 font-weight-300 fuente">
+                        <?php
+                          echo $usuarioExistente->getCorreo(); 
+                          ?>
+                        </div>
+                        <div class="h5 mt-4 fuente">
+                          <!--<i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho-->
+                        </div> 
+                        <div class="fuente">
+                          <!--<i class="ni education_hat mr-2"></i>Universidad autónoma de Barcelona-->
+                        </div>
+                        <hr class="my-4">
+                        <!--<p class="fuente">No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>-->
+                        <!--<a href="#">Mostrar más</a>--> 
+                      </div>
+                      <!--</div>-->
                     </div>
-                   <!--</div>-->
-                </div>
-                <div class="text-center">
-                  <h3 class="fuente"> 
-                    <?php
-                    echo $usuarioExistente->getNombre(); 
-                    ?>
-
-                  <!--<span class="font-weight-light fuente">, 27</span>-->
-                  </h3>
-                  <div class="h5 font-weight-300 fuente">
-                  <?php
-                    echo $usuarioExistente->getCorreo(); 
-                    ?>
-                  </div>
-                  <div class="h5 mt-4 fuente">
-                    <!--<i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho-->
-                  </div> 
-                  <div class="fuente">
-                    <!--<i class="ni education_hat mr-2"></i>Universidad autónoma de Barcelona-->
-                  </div>
-                  <hr class="my-4">
-                  <!--<p class="fuente">No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>-->
-                  <!--<a href="#">Mostrar más</a>--> 
-
                 </div>
               </div>
             </div> 
