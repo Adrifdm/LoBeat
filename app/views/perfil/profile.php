@@ -41,7 +41,7 @@
     <?php
       require("../comun/cabecera.php");
     ?> 
-    
+
     <div class="main-content">
     
       <!-- Introducción --> 
@@ -56,7 +56,7 @@
               <h1 class="display-2 profile-text fuente">Perfil</h1>
               <p class="profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
               <a href="editProfile.php" class="btn btn-info fuente">Editar perfil</a>
-              <a href="../registro/login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Log Out</a>
+              <a href="../registro/login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesion</a>
             </div>
           </div>  
         </div>

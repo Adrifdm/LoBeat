@@ -52,9 +52,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (isset($nombre) && isset($correo)){
+
         // Comprobamos si existe algún usuario con ese correo
-        //TODO cambiar la busqueda por id cuando funcione
-        $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
+        //cambiar la busqueda por id cuando funcione
+
+        $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
+        //$usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
+        
         if($usuarioExistente->getRole() == 'admin'){
             $role = $_POST['role'];
         }
@@ -83,7 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'fotoPerfil' => $nombreFoto
             );
             
-            //TODO actualizar por id, comentado para que no pete
+            //actualizar por id
+
             $resultado = $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $datos);
             //$resultado = $usuarioController->actualizarUsuarioPorCorreo($correo, $datos);
 

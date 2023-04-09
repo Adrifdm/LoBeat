@@ -65,7 +65,7 @@
   /*cuando pasas el cursor por encima 
   cambia la zombra y se desplaza un poco hacia arriba 
   */
-  
+
   .tarjeta{
 
     border-radius: 10px !important;
@@ -73,6 +73,7 @@
 
     transition: all 400ms ease !important;
 
+    
   }
 
   .tarjeta:hover{

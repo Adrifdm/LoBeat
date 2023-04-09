@@ -15,7 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $contrasenya = $_POST['password'];
 
     // Comprobamos si existe algún usuario con ese correo
-    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);       //TODO: usuarioExistente y en general las funciones de usuarioService.php devuelven null como id, hay que arreglar eso
+
+    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);       //usuarioExistente y en general las funciones de usuarioService.php devuelven null como id, hay que arreglar eso
     
     if ($usuarioExistente !== null) {
 
@@ -40,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION["logged_user_id"] = $usuarioExistente->getId();       // hasta que no arreglemos el TODO de arriba, esto será null
 
         //esta variable la vamos a usar mientras el id de null, luego lo cambiaremos y solo quedara la variable del id y esta se eliminará
+        
         $_SESSION["logged_user_email"] = $correo;
 
         //para ver si el usuario puede acceder a pestañas dedicadas de roles especiales
