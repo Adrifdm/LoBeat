@@ -52,18 +52,18 @@
         <!-- Contenido introducción --> 
         <div class="container-fluid d-flex align-items-center">
           <div class="row">
-            <div class="col-lg-7 col-md-10">
+            <div class="col-lg-7 col-md-10 toppart">
               <h1 class="display-2 profile-text fuente">Perfil</h1>
-              <p class=" normaltxt2 profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
-              <a href="editProfile.php" class="btn btn-info fuente normaltxt2">Editar perfil</a>
-              <a href="../registro/login.php" class="btn btn-info fuente normaltxt2"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesion</a>
+              <p class="fuente f2">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
+              <a href="editProfile.php" class="btn btn-info fuente normaltxt2 bt">Editar perfil</a>
+              <a href="../registro/login.php" class="btn btn-info fuente normaltxt2 bt"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesion</a>
             </div>
           </div>  
         </div>
       </div>
       <!-- Page content -->
-      <div class="container-fluid mt--7">
-        <div class="row">
+      <div class="container-fluid mt--7 ">
+        <div class="row midpart">
 
           <!-- tarjeta pequeña-->
 
@@ -97,50 +97,53 @@
                 <div class="col"> 
                   <!-- <div class="col"> -->
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5 contt">
-
-                      <div class="rib">
-                        <ribbon>
-                          <span class="heading inside fuente">10 Matches</span>
-                          <!--<span class="description fuente">Matches</span>-->
-                        </ribbon>
-                      </div>
-
-                      <div class="rib2">
-                        <ribbon2>
-                          <span class="heading fuente inside">6 Playlists</span>
-                          <!--<span class="description fuente">Playlists</span>-->
-                        </ribbon2>
-                      </div>
-
-                      <div class="rib3">
-                        <ribbon3>
-                          <span class="heading fuente inside">7 Chat</span>
-                          <!--<span class="description fuente">Chats</span>-->
-                        </ribbon3>
-                      </div>
                       
-                      <div class="text-center ">
-                        <h3 class="fuente"> 
-                          <?php
-                            echo $usuarioExistente->getNombre(); 
-                          ?>
+                        <div class="rib">
+                          <ribbon>
+                            <span class="heading inside fuente">10 Matches</span>
+                            <!--<span class="description fuente">Matches</span>-->
+                          </ribbon>
+                        </div>
 
-                          <!--<span class="font-weight-light fuente">, 27</span>-->
-                        </h3>
-                        <div class="h5 font-weight-300 fuente">
-                          <?php
-                            echo $usuarioExistente->getCorreo(); 
-                          ?>
+                        <div class="rib2 ">
+                          <ribbon2>
+                            <span class="heading fuente inside">6 Playlists</span>
+                            <!--<span class="description fuente">Playlists</span>-->
+                          </ribbon2>
                         </div>
-                        <div class="h5 mt-4 fuente">
-                          <!--<i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho-->
-                        </div> 
-                        <div class="fuente">
-                          <!--<i class="ni education_hat mr-2"></i>Universidad autónoma de Barcelona-->
+
+                        <div class="rib3">
+                          <ribbon3>
+                            <span class="heading fuente inside">7 Chat</span>
+                            <!--<span class="description fuente">Chats</span>-->
+                          </ribbon3>
                         </div>
-                        <hr class="my-4">
-                          <!--<p class="fuente">No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>-->
-                          <!--<a href="#">Mostrar más</a>--> 
+                        
+                        <div class="text-center txtalign">
+                          <h3 class="fuente th1"> 
+                            <?php
+                              echo $usuarioExistente->getNombre(); 
+                            ?>
+
+                            <!--<span class="font-weight-light fuente">, 27</span>-->
+                          </h3>
+                          <!--<div class="h5 font-weight-300 fuente">-->
+                          <div class="th2">
+                            <?php
+                              echo $usuarioExistente->getCorreo(); 
+                            ?>
+                          </div>
+                          <!--</div>-->
+                          <!--<div class="h5 mt-4 fuente">-->
+                            <!--<i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho-->
+                          <!--</div> 
+                          <div class="fuente">-->
+                            <!--<i class="ni education_hat mr-2"></i>Universidad autónoma de Barcelona-->
+                          <!--</div>
+                          <hr class="my-4">-->
+                            <!--<p class="fuente">No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>-->
+                            <!--<a href="#">Mostrar más</a>--> 
+      
                       </div>
                      
                     </div>

@@ -61,6 +61,19 @@
 
   .fuente{
     font-family: 'Poppins', sans-serif;
+
+  }
+
+  .bt{
+    margin-top: 20px;
+    font-size: 20px !important;
+  }
+
+  .f2{
+
+    color: white;
+    padding: 30px;
+    font-size: 25px;
   }
 
   textarea.fuente {
@@ -85,6 +98,14 @@
     margin-right: 90px !important;
   }
 
+  .toppart{
+    top: -78px;
+  }
+
+  .midpart{
+    bottom: 500px;
+  }
+
   .margen{
 
     margin: 30px !important;
@@ -94,7 +115,8 @@
   }
 
   .contt{
-    height: 300px !important;
+    width: 350px;
+    height: 320px !important;
   }
 
   /*cuando pasas el cursor por encima 
@@ -117,9 +139,35 @@
   }
 
   .txtalign{
-    position: absolute !important;
-    top: -200px !important;
-    z-index: 1100 !important;
+
+    position: relative !important;
+    top: 80px !important;
+
+    /*left: 100px;*/
+    right: -154px;
+    
+    height: 110px;
+    font-weight: bold;
+    
+
+    /*background:rgba(128, 53, 114, 0.694);*/
+    border-radius: 20px;
+
+    padding: 0px;
+  }
+
+  .th1{
+
+    font-size: 30px;
+    padding-bottom: 30px;
+
+    color: black;
+  }
+
+  .th2{
+
+    font-size: 20px;
+    color: black;
   }
 
 /*
@@ -131,7 +179,7 @@
   .inside{
     margin-top: 15px !important;
     color: white !important;
-    font-weight: normal !important;
+    font-weight: 700 !important;
   }
 
   .rib{
@@ -148,7 +196,7 @@
     width: 280px;
     height: 50px;
     
-    left: -233px;
+    left: -82px;
     background: #890a81;
     border-radius: 30px;
     
@@ -202,7 +250,7 @@
     width: 280px;
     height: 50px;
     
-    left: -277px;
+    left: -126px;
     background: #2f9470;
     border-radius: 30px;
     
@@ -255,7 +303,7 @@
     width: 280px;
     height: 50px;
     
-    left: -321px;
+    left: -170px;
     background: #5a34ca;
     border-radius: 30px;
     
