@@ -41,7 +41,7 @@
     <?php
       require("../comun/cabecera.php");
     ?> 
-    
+
     <div class="main-content">
     
       <!-- Introducción --> 
@@ -54,9 +54,9 @@
           <div class="row">
             <div class="col-lg-7 col-md-10">
               <h1 class="display-2 profile-text fuente">Perfil</h1>
-              <p class="profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
-              <a href="editProfile.php" class="btn btn-info fuente">Editar perfil</a>
-              <a href="../registro/login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Log Out</a>
+              <p class=" normaltxt2 profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
+              <a href="editProfile.php" class="btn btn-info fuente normaltxt2">Editar perfil</a>
+              <a href="../registro/login.php" class="btn btn-info fuente normaltxt2"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesion</a>
             </div>
           </div>  
         </div>
@@ -64,13 +64,25 @@
       <!-- Page content -->
       <div class="container-fluid mt--7">
         <div class="row">
-          <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0"> 
-            <div class="card tarjeta card-profile shadow">
+
+          <!-- tarjeta pequeña-->
+
+          <div class=" tam col-xl-4 order-xl-2 mb-5 mb-xl-0"> 
+            <div class=" margen card tarjeta card-profile shadow">
               <div class="row justify-content-center">
                 <div class="col-lg-3 order-lg-2">
                   <div class="card-profile-image">
                     <a href="#">
-                      <img src=<?php echo "../../../public/assets/img/profilePhotos/".$usuarioExistente->getFotoPerfil(); ?> class="rounded-circle">
+                      <img src=<?php 
+                        if($usuarioExistente->getFotoPerfil() != null){
+                          
+                          echo "../../../public/assets/img/profilePhotos/".$usuarioExistente->getFotoPerfil();
+                        }
+                        else{
+                         
+                          echo "../../../public/assets/img/profilePhotos/profileAvatar.png";
+                        }
+                        ?> class="rounded-circle">
                     </a>
                   </div> 
                 </div>
@@ -83,22 +95,28 @@
               </div>
               <div class="card-body pt-0 pt-md-4">
                 <div class="row"> 
-                  <div class="col">
+                  <!-- <div class="col"> -->
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5">
-                      <div>
-                        <span class="heading fuente">10</span>
-                        <span class="description fuente">Matches</span>
+
+                      <div class="rib">
+                        <ribbon>
+                          <span class="heading inside fuente">10 Matches</span>
+                          <!--<span class="description fuente">Matches</span>-->
+                        </ribbon>
                       </div>
+
                       <div> 
                         <span class="heading fuente">6</span>
                         <span class="description fuente">Playlists</span>
                       </div>
+
                       <div>
                         <span class="heading fuente">7</span>
                         <span class="description fuente">Chats</span>
                       </div>
+
                     </div>
-                  </div>
+                   <!--</div>-->
                 </div>
                 <div class="text-center">
                   <h3 class="fuente"> 
@@ -128,11 +146,11 @@
             </div> 
           </div>
           <div class="col-xl-8 order-xl-1"> 
-            <div class="card sombra bg-secondary shadow">
+            <div class="card margenes sombra bg-secondary shadow">
               <div class="card-header bg-white border-0">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h3 class="mb-0 fuente">Mi cuenta</h3>
+                    <h3 class="mb-0 fuente tit">Mi cuenta</h3>
                   </div>
                   <div class="col-4 text-right"> 
                     <!--<a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
@@ -141,13 +159,13 @@
               </div>
               <div class="card-body">
                 <form>
-                  <h6 class="heading-small text-muted mb-4 fuente">Información usuario</h6> 
+                  <h6 class="heading-small text-muted mb-4 fuente normaltxt">Información usuario</h6> 
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-username">Nombre de usuario</label>
-                          <label id="input-username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario">
+                          <label class="form-control-label fuente normaltxt2" for="input-username normaltxt">Nombre de usuario</label>
+                          <label id="input-username" class="form-control form-control-alternative fuente normaltxt" placeholder="Nombre de usuario">
                             <?php
                             echo $usuarioExistente->getNombre(); 
                             ?> 
@@ -156,8 +174,8 @@
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label fuente" for="input-email">Dirección de correo</label>
-                          <label id="input-email" class="form-control form-control-alternative fuente" placeholder="@example.com">
+                          <label class="form-control-label fuente normaltxt2" for="input-email normaltxt">Dirección de correo</label>
+                          <label id="input-email" class="form-control form-control-alternative fuente normaltxt" placeholder="@example.com">
                             <?php
                             echo $usuarioExistente->getCorreo();
                             ?>
@@ -168,8 +186,8 @@
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-first-name">Rol</label>
-                          <label id="input-first-name" class="form-control form-control-alternative fuente" placeholder="">
+                          <label class="form-control-label fuente normaltxt2" for="input-first-name normaltxt">Rol</label>
+                          <label id="input-first-name" class="form-control form-control-alternative fuente normaltxt" placeholder="">
                             <?php
                             echo $usuarioExistente->getRole(); 
                             ?>
@@ -178,8 +196,8 @@
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-last-name">Género</label>
-                          <label id="input-last-name" class="form-control form-control-alternative fuente" placeholder="">
+                          <label class="form-control-label fuente normaltxt2" for="input-last-name normaltxt">Género</label>
+                          <label id="input-last-name" class="form-control form-control-alternative fuente normaltxt" placeholder="">
                             <?php
                             echo $usuarioExistente->getGenero();
                             ?>
@@ -226,11 +244,11 @@
                    -->
                   <!-- Description -->
 
-                  <h6 class="heading-small text-muted mb-4 fuente">Sobre mí</h6>
+                  <h6 class="heading-small text-muted mb-4 fuente normaltxt">Sobre mí</h6>
                   <div class="pl-lg-4">
                     <div class="form-group focused">
-                      <label class="fuente">Sobre mí</label>
-                      <textarea rows="4" id="descriptionLabel" class="form-control form-control-alternative fuente" disabled><?php
+                      <!-- <label class="fuente">Sobre mí</label> -->
+                      <textarea rows="4" id="descriptionLabel" class="form-control form-control-alternative fuente normaltxt" disabled><?php
                           echo $usuarioExistente->getDescripcion();
                         ?>
                       </textarea>
