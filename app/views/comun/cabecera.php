@@ -19,6 +19,16 @@
   <nav>
     
     <ul>
+    <li>
+        <a class="tooltip" href="../principal/pagPrincipal.php">
+          
+          <i class="fa fa-home"></i>
+          <span class= "tooltip-box">Inicio</span>
+      
+        </a>
+
+    </li>
+
     <li class="dropdown">
         <a href=""><i class="bi bi-list"></i></a>
           <ul>

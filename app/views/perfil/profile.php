@@ -24,7 +24,7 @@
     <script src="assets/vendor/select2/dist/js/select2.min.js"></script>
 </head>
 <body>
- 
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
    
     <?php
@@ -38,6 +38,10 @@
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
     ?>
 
+    <?php
+      require("../comun/cabecera.php");
+    ?> 
+    
     <div class="main-content">
     
       <!-- Introducción --> 
