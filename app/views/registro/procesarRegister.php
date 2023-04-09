@@ -72,9 +72,18 @@ else if ($registered === true){
         'genero' => $_SESSION['genero'],
         'descripcion' => 'Unas palabras sobre tí',
         'fotoPerfil' => 'profileAvatar.png',
-        'spotify_ID' => ''  //TODO: recopilar el spotify_ID del user
+        'spotify_ID' => ''      // Inicialmente el spotifyID de la base de datos se inicializa vacío
     );
+
+    // Creamos el usuarios con la información anterior
     $resultado = $usuarioController->crearUsuario($datos);
+
+    // Ahora que el usuario ha sido creado, ya tendrá un spotifyID. Tendremos que obtener y actualizar el usuario en la base de datos
+    $_SESSION["logged_user_id"] = $resultado;
+    $datos = array(
+        'spotify_ID' => $spotifyController->obtenerSpotifyID()
+    );
+    $usuarioController->actualizarUsuario($resultado, $datos);
 
     session_destroy();
 

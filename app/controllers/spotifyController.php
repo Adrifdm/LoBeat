@@ -11,7 +11,7 @@ class SpotifyController {
 
     public function autenticarUsuario() {
         try {
-            // llamar al método de obtener los tokens de usuario por id del servicio
+            // llamar al método de autenticación de usuario
             $this->spotifyService->autenticarUsuario();
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente
@@ -24,7 +24,7 @@ class SpotifyController {
             // llamar al método de obtener los tokens de usuario por id del servicio
             $resultado = $this->spotifyService->obtenerTokensUsuario($id);
             // devolver la respuesta en formato JSON
-            echo json_encode($resultado);
+            //echo json_encode($resultado);
             return $resultado;
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente
@@ -41,4 +41,15 @@ class SpotifyController {
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+
+    public function obtenerSpotifyID() {
+        try {
+            // llamar al método de obtención del Spotify ID
+            return $this->spotifyService->obtenerSpotifyID();
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
 }

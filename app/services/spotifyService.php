@@ -101,4 +101,10 @@ class SpotifyService {
         $this->usuarioController->actualizarUsuario($id, $datos);
 
     }
+
+    public function obtenerSpotifyID() {
+        $datosUsuario = require('../../../app/spotifyAPI/llamadas/datosUsuario.php');
+        return $datosUsuario['id'];
+    }
+
 }

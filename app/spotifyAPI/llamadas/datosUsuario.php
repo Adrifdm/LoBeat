@@ -10,8 +10,20 @@ $result = $collection->findOne([
 $api->setAccessToken($result['spotify_access_token']);
 
 // It's now possible to request data about the currently authenticated user
-print_r(
-    $api->me()
+$me = $api->me();
+
+// Format the data and store it in an array
+$user_data = array(
+    'id' => $me->id,
+    'display_name' => $me->display_name,
+    'email' => $me->email,
+    'uri' => $me->uri,
+    'images' => $me->images,
+    'country' => $me->country,
+    'product' => $me->product
 );
+
+// Return the array
+return $user_data;
 
 ?>
