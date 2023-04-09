@@ -2,7 +2,9 @@
 
 a{
   text-decoration:none;
-  color:#fff}
+  color:#fff;
+  z-index: 1000;
+}
 #header{
   background:rgb(0,0,0,0.7);
   width:100%;
@@ -123,3 +125,68 @@ nav li li a:hover{
   #header nav ul li li a:before{content:"- "}
   .mega-col{width:100%}
 }
+
+
+
+/*
+diseño texto al pasar el cursor de perfil
+
+*/
+
+.tooltip{
+
+  font-weight: normal;
+  color: white;
+  text-decoration: none;
+  position: relative;
+
+}
+
+.tooltip:hover{
+
+  text-decoration: underline;
+
+}
+
+.tooltip:hover .tooltip-box{
+
+  opacity: 1;
+  transition: 0.8s;
+}
+
+.tooltip-box {
+
+  
+  opacity: 0;
+  position:absolute;
+
+  background: rgba(0, 0, 0, 0.61);
+  line-height: 20px;
+  z-index: 500;
+  text-align: center;
+  color: white;
+
+  font-size: 24px;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  margin-left: 30px;
+  left: 0;
+  top: 165px;
+
+
+}
+
+.tooltip-box::after{
+  
+  content: "";
+  display: block;
+  border-bottom: 11px solid rgba(0, 0, 0, 0.61);
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+
+  position: absolute;
+  top: -10px;
+  left: calc(50% - 11px);
+}
+
