@@ -54,9 +54,9 @@
           <div class="row">
             <div class="col-lg-7 col-md-10">
               <h1 class="display-2 profile-text fuente">Perfil</h1>
-              <p class="profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
-              <a href="editProfile.php" class="btn btn-info fuente">Editar perfil</a>
-              <a href="../registro/login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesion</a>
+              <p class=" normaltxt2 profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
+              <a href="editProfile.php" class="btn btn-info fuente normaltxt2">Editar perfil</a>
+              <a href="../registro/login.php" class="btn btn-info fuente normaltxt2"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesion</a>
             </div>
           </div>  
         </div>
@@ -64,8 +64,11 @@
       <!-- Page content -->
       <div class="container-fluid mt--7">
         <div class="row">
-          <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0"> 
-            <div class="card tarjeta card-profile shadow">
+
+          <!-- tarjeta pequeña-->
+
+          <div class=" tam col-xl-4 order-xl-2 mb-5 mb-xl-0"> 
+            <div class=" margen card tarjeta card-profile shadow">
               <div class="row justify-content-center">
                 <div class="col-lg-3 order-lg-2">
                   <div class="card-profile-image">
@@ -92,22 +95,28 @@
               </div>
               <div class="card-body pt-0 pt-md-4">
                 <div class="row"> 
-                  <div class="col">
+                  <!-- <div class="col"> -->
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5">
-                      <div>
-                        <span class="heading fuente">10</span>
-                        <span class="description fuente">Matches</span>
+
+                      <div class="rib">
+                        <ribbon>
+                          <span class="heading inside fuente">10 Matches</span>
+                          <!--<span class="description fuente">Matches</span>-->
+                        </ribbon>
                       </div>
+
                       <div> 
                         <span class="heading fuente">6</span>
                         <span class="description fuente">Playlists</span>
                       </div>
+
                       <div>
                         <span class="heading fuente">7</span>
                         <span class="description fuente">Chats</span>
                       </div>
+
                     </div>
-                  </div>
+                   <!--</div>-->
                 </div>
                 <div class="text-center">
                   <h3 class="fuente"> 
