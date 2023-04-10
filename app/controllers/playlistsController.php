@@ -51,9 +51,9 @@ class PlaylistsController {
         }
     }
 
-    public function buscarPlaylistPorCampo($campo, $valor) {
+    public function buscarPlaylistsPorCampo($campo, $valor) {
         try {
-            // llamar al método de buscar usuario por campo del servicio
+            // llamar al método de buscar playlist por campo del servicio
             $playlistEncontrada = $this->playlistService->buscarPlaylistsPorCampo($campo, $valor);
             // devolver la respuesta en formato JSON
             //echo json_encode($usuarioEncontrado);
@@ -64,10 +64,15 @@ class PlaylistsController {
         }
     }   
 
-    public function refrescarPlaylists() {
+    public function refrescarPlaylists($idUsuario) {
         try {
-            // llamar al método de buscar usuario por campo del servicio
-            $playlistRefrescadas = $this->playlistService->refrescarPlaylists();
+            // llamar al método de buscar playlist por campo del servicio
+            $playlists = $this->buscarPlaylistsPorCampo('usuarioId', $idUsuario);
+            foreach($playlists as $doc){
+                $this->eliminarPlaylist($doc->getId());
+            }
+            $datosPlaylistsRefrescadas = $this->playlistService->refrescarPlaylists($idUsuario);
+            $this->crearPlaylist($datosPlaylistsRefrescadas);
             // devolver la respuesta en formato JSON
             //echo json_encode($usuarioEncontrado);
             return $playlistRefrescadas;
@@ -76,5 +81,18 @@ class PlaylistsController {
             echo json_encode(['error' => $e->getMessage()]);
         }
     }  
+
+    public function eliminarPlaylist($id) {
+        try {
+            // llamar al método de eliminar playlist del servicio
+            $resultado = $this->playlistService->eliminarPlaylist($id);
+            // devolver la respuesta en formato JSON
+            //echo json_encode($resultado);
+            return $resultado;
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
 }
 ?>

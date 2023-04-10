@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Refrescamos tokens
         $spotifyController->refrescarTokens($usuarioExistente->getId());
-        $playlistsController->refrescarPlaylists();
+        $playlistsController->refrescarPlaylists($usuarioExistente->getSpotifyID());
 
         header('Location: ../principal/Ubicacion.php');
         exit;

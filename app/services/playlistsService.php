@@ -31,7 +31,7 @@ class PlaylistService {
       'url' => $playlist->getPlaylistUrl(),
       'images' => $playlist->getPlaylistImages(),
       'duration' => $playlist->getPlaylistDuration(),
-      'ownner_name' => $playlist->getPlaylistOwnerName(),
+      'owner_name' => $playlist->getPlaylistOwnerName(),
       'usuarioId' => $playlist->getPlaylistOwnerId(),
       'canciones' => $playlist->getPlaylistTracks()
     ]);
@@ -103,18 +103,24 @@ class PlaylistService {
     }
   }
 
-  public function refrescarPlaylists() {
+  public function refrescarPlaylists($idUsuario) {
     try {
         // llamar al método de buscar usuario por campo del servicio
-        $datosUsuarioPlaylists = require('../../../app/spotifyAPI/llamadas/playlistsUsuario.php');
+        $datosPlaylistsRefrescadas = require('../../../app/spotifyAPI/llamadas/playlistsUsuario.php');
         // devolver la respuesta en formato JSON
         //echo json_encode($usuarioEncontrado);
-        return $datosUsuarioPlaylists;
+        return $datosPlaylistsRefrescadas;
     } catch (Exception $e) {
         // capturar cualquier excepción y devolver un mensaje de error al cliente
         echo json_encode(['error' => $e->getMessage()]);
     }
   }  
+
+  public function eliminarPlaylist($id) {
+    $result = $this->collection->deleteOne(['spotifyId' => $id]);
+
+    return $result->getDeletedCount() > 0;
+  }
 }
 
 ?>
