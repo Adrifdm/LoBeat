@@ -89,11 +89,9 @@ else if ($registered === true){
     );
     $usuarioController->actualizarUsuario($resultado, $datos);
 
-    $datosUsuarioPlaylists = require('../../../app/spotifyAPI/llamadas/datosUsuario.php');
+    $datosUsuarioPlaylists = require('../../../app/spotifyAPI/llamadas/playlistsUsuario.php');
 
     $playlistsController->crearPlaylist($datosUsuarioPlaylists);
-
-
 
     session_destroy();
 

@@ -2,6 +2,7 @@
 session_start();
 require_once '../../../app/controllers/usuarioController.php';
 require_once '../../../app/controllers/spotifyController.php';
+require_once '../../../app/controllers/playlistsController.php';
 
 // Comprobamos si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -9,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Creamos instancias de los controladores que vamos a usar
     $usuarioController = new UsuarioController();
     $spotifyController = new SpotifyController();
+    $playlistsController = new PlaylistsController();
 
     // Obtenemos la informacion introducida
     $correo = $_POST['email'];
@@ -49,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Refrescamos tokens
         $spotifyController->refrescarTokens($usuarioExistente->getId());
+        $playlistsController->refrescarPlaylists();
 
         header('Location: ../principal/Ubicacion.php');
         exit;

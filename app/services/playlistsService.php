@@ -11,6 +11,7 @@ class PlaylistService {
   }
 
   public function crearPlaylist($datos) {
+
     $playlist = new Playlist(
       $datos['playlist_spotifyId'],
       $datos['playlist_name'],
@@ -20,20 +21,19 @@ class PlaylistService {
       $datos['playlist_duration'],
       $datos['playlist_owner_name'],
       $datos['playlist_owner_id'],
-      $datos['playlist_tracks'],
       $datos['playlist_tracks']
     );
 
     $result = $this->collection->insertOne([
       'spotifyId' =>  $playlist->getId(),
-      'nombre' => $playlist->getNombre(),
-      'descripcion' => $playlist->getDescripcion(),
+      'nombre' => $playlist->getPlaylistName(),
+      'descripcion' => $playlist->getPlaylistDescription(),
       'url' => $playlist->getPlaylistUrl(),
       'images' => $playlist->getPlaylistImages(),
       'duration' => $playlist->getPlaylistDuration(),
       'ownner_name' => $playlist->getPlaylistOwnerName(),
-      'usuarioId' => $playlist->getUsuarioId(),
-      'canciones' => $playlist->getCanciones()
+      'usuarioId' => $playlist->getPlaylistOwnerId(),
+      'canciones' => $playlist->getPlaylistTracks()
     ]);
 
     return $result->getInsertedId();
@@ -106,7 +106,7 @@ class PlaylistService {
   public function refrescarPlaylists() {
     try {
         // llamar al método de buscar usuario por campo del servicio
-        $datosUsuarioPlaylists = require('../../../app/spotifyAPI/llamadas/datosUsuario.php');
+        $datosUsuarioPlaylists = require('../../../app/spotifyAPI/llamadas/playlistsUsuario.php');
         // devolver la respuesta en formato JSON
         //echo json_encode($usuarioEncontrado);
         return $datosUsuarioPlaylists;

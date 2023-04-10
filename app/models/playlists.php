@@ -8,26 +8,26 @@ class Playlist {
   private $playlist_owner_name;
   private $playlist_owner_id;
   private $playlist_tracks;
-  private $id;
+  private $playlist_spotifyId;
 
   public function __construct($id, $name, $description, $url, $images, $duration, $owner_name, $owner_id, $tracks) {
-    $this->id = $id;
-    $this->name = $name;
-    $this->description = $description;
-    $this->url = $url;
-    $this->images = $images;
-    $this->duration = $duration;
-    $this->owner_name = $owner_name;
-    $this->owner_id = $owner_id;
-    $this->tracks = $tracks;
+    $this->playlist_spotifyId = $id;
+    $this->playlist_name = $name;
+    $this->playlist_description = $description;
+    $this->playlist_url = $url;
+    $this->playlist_images = $images;
+    $this->playlist_duration = $duration;
+    $this->playlist_owner_name = $owner_name;
+    $this->playlist_owner_id = $owner_id;
+    $this->playlist_tracks = $tracks;
   }
 
   public function getId() {
-    return $this->id;
+    return $this->playlist_spotifyId;
   }
 
   public function setId($id) {
-    $this->id = $id;
+    $this->playlist_spotifyId = $id;
   }
 
   public function getPlaylistName() {

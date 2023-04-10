@@ -12,8 +12,12 @@ class PlaylistsController {
     public function crearPlaylist($datos) {
         try {
             // llamar al método de crear playlist del servicio
-            $resultado = $this->playlistService->crearPlaylist($datos);
-            //echo json_encode($resultado);            
+            $resultado = 0;
+            foreach($datos as $playlist){
+                $this->playlistService->crearPlaylist($playlist);
+                $resultado++;
+                //echo json_encode($resultado);            
+            }
             return $resultado;
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente

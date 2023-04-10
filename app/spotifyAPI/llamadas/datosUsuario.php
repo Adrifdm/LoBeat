@@ -1,6 +1,8 @@
 <?php
 require '../../../vendor/autoload.php';
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}  
 $api = new SpotifyWebAPI\SpotifyWebAPI();
 $collection = (new MongoDB\Client)->LoBeat->usuarios;
 $result = $collection->findOne([

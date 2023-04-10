@@ -1,6 +1,8 @@
 <?php
 require '../../../vendor/autoload.php';
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}  
 $api = new SpotifyWebAPI\SpotifyWebAPI();
 $collection = (new MongoDB\Client)->LoBeat->usuarios;
 $result = $collection->findOne([
@@ -21,52 +23,55 @@ foreach ($playlists->items as $playlist) {
     // Obtener la playlist mediante la API de Spotify
     $playlist = $api->getPlaylist($playlist->id);
 
-    // id de la playlist
-    $playlist_data_array['playlist_spotifyId'] = $playlist->id;
-    
-    // Nombre de la playlist
-    $playlist_data_array['playlist_name'] = $playlist->name;
-    
-    // Descripción de la playlist
-    $playlist_data_array['playlist_description'] = $playlist->description;
-    
-    // URL externa de la playlist
-    $playlist_data_array['playlist_url'] = $playlist->external_urls->spotify;
-    
-    // Imágenes de la playlist
-    $playlist_images = array();
-    foreach ($playlist->images as $image) {
-        $playlist_images[] = $image->url;
-    }
-    $playlist_data_array['playlist_images'] = $playlist_images;
-    
-    // Duración total de la playlist
-    $playlist_duration = 0;
-    foreach ($playlist->tracks->items as $track) {
-        $playlist_duration += $track->track->duration_ms;
-    }
-    $playlist_data_array['playlist_duration'] = $playlist_duration;
-    
-    // Propietario de la playlist
-    $playlist_data_array['playlist_owner_name'] = $playlist->owner->display_name;
-    $playlist_data_array['playlist_owner_id'] = $playlist->owner->id;
-    
-    // Listado de canciones de la playlist
-    $playlist_tracks = array();
-    foreach ($playlist->tracks->items as $track) {
-        $playlist_tracks[] = array(
-            'name' => $track->track->name,
-            'artists' => $track->track->artists,
-            'album' => $track->track->album,
-            'duration_ms' => $track->track->duration_ms,
-            'popularity' => $track->track->popularity,
-            'external_urls' => $track->track->external_urls->spotify
-        );
-    }
+    if ($playlist->owner->id == $usuario->id){
 
-    $playlist_data_array['playlist_tracks'] =  $playlist_tracks;
+        // id de la playlist
+        $playlist_data_array['playlist_spotifyId'] = $playlist->id;
+        
+        // Nombre de la playlist
+        $playlist_data_array['playlist_name'] = $playlist->name;
+        
+        // Descripción de la playlist
+        $playlist_data_array['playlist_description'] = $playlist->description;
+        
+        // URL externa de la playlist
+        $playlist_data_array['playlist_url'] = $playlist->external_urls->spotify;
+        
+        // Imágenes de la playlist
+        $playlist_images = array();
+        foreach ($playlist->images as $image) {
+            $playlist_images[] = $image->url;
+        }
+        $playlist_data_array['playlist_images'] = $playlist_images;
+        
+        // Duración total de la playlist
+        $playlist_duration = 0;
+        foreach ($playlist->tracks->items as $track) {
+            $playlist_duration += $track->track->duration_ms;
+        }
+        $playlist_data_array['playlist_duration'] = $playlist_duration;
+        
+        // Propietario de la playlist
+        $playlist_data_array['playlist_owner_name'] = $playlist->owner->display_name;
+        $playlist_data_array['playlist_owner_id'] = $playlist->owner->id;
+        
+        // Listado de canciones de la playlist
+        $playlist_tracks = array();
+        foreach ($playlist->tracks->items as $track) {
+            $playlist_tracks[] = array(
+                'name' => $track->track->name,
+                'artists' => $track->track->artists,
+                'album' => $track->track->album,
+                'duration_ms' => $track->track->duration_ms,
+                'popularity' => $track->track->popularity,
+                'external_urls' => $track->track->external_urls->spotify
+            );
+        }
 
-    $playlists_data_array[] = $playlist_data_array;
+        $playlist_data_array['playlist_tracks'] =  $playlist_tracks;
+
+        $playlists_data_array[] = $playlist_data_array;
+    }
 }
 
 return $playlists_data_array;
