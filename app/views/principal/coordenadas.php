@@ -18,16 +18,22 @@ $randomY = mt_rand(0,10) / 1000;
 $categoria = $_GET["categoria"];
 
 if ($categoria === "current_user") {
+    $usuario = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
     $current_user = [
         [
             "latitud" => $_SESSION["logged_latitud"] + $randomX,
             "longitud" => $_SESSION["logged_longitud"] + $randomY,
         ],
     ];
-    
+    $nombre = $usuario->getNombre();
+    $genero = $usuario->getGenero();
+    $descripcion = $usuario->getDescripcion();
     echo json_encode([
         "icono" => "../../../public/assets/img/yo.png",
         "coordenadas" => $current_user,
+        "nombre" => $nombre,
+        "genero" => $genero,
+        "descripcion" => $descripcion,
     ]);
 } 
 
@@ -46,6 +52,9 @@ if($categoria === "resto"){
             else{
                 $icono = "neutral.png";
             }
+            $nombre = $usuario->getNombre();
+            $genero = $usuario->getGenero();
+            $descripcion = $usuario->getDescripcion();
             $coordenadas = [
                 [
                     "latitud" => $usuario->getLatitud() + $randomX,
@@ -55,6 +64,9 @@ if($categoria === "resto"){
             $usuarios[] = [
                 "icono" => "../../../public/assets/img/" . $icono,
                 "coordenadas" => $coordenadas,
+                "nombre" => $nombre,
+                "genero" => $genero,
+                "descripcion" => $descripcion,
             ];
         }
     }

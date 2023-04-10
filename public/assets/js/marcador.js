@@ -22,7 +22,9 @@ const refrescarMapaConCategoria = categoria => {
 
 const dibujarMarcadoresEnMapa = coordenadasConIcono => {
 
-    const { icono, coordenadas } = coordenadasConIcono;
+    const { icono, coordenadas, nombre, genero, descripcion } = coordenadasConIcono;
+
+    let capa; 
 
     const marcadores = [];
 
@@ -37,8 +39,16 @@ const dibujarMarcadoresEnMapa = coordenadasConIcono => {
                 src: icono,
             }))
         }));
+
+        marcador.setProperties({
+            'nombre': nombre,
+            'genero' : genero,
+            'descripcion' : descripcion,
+        });
+
         marcadores.push(marcador);
     });
+
     capa = new ol.layer.Vector({
         source: new ol.source.Vector({
             features: marcadores,
@@ -52,7 +62,7 @@ const dibujarMarcadoresEnMapaResto = coordenadasConIcono => {
     const marcadores = [];
 
     coordenadasConIcono.forEach(usuario => {
-        const { icono, coordenadas } = usuario;
+        const { icono, coordenadas, nombre, genero, descripcion } = usuario;
 
         coordenadas.forEach(coordenada => {
             let marcador = new ol.Feature({
@@ -67,19 +77,52 @@ const dibujarMarcadoresEnMapaResto = coordenadasConIcono => {
                 })
             }));
 
+            marcador.setProperties({
+                'nombre': nombre,
+                'genero' : genero,
+                'descripcion' : descripcion,
+            });
+            
             marcadores.push(marcador);
         });
     });
 
-    capa = new ol.layer.Vector({
-        source: new ol.source.Vector({
-            features: marcadores,
-        }),
+    const sourceMarcadores = new ol.source.Vector({
+        features: marcadores,
     });
-    mapa.addLayer(capa);
+
+    const capaMarcadores = new ol.layer.Vector({
+        source: sourceMarcadores,
+        style: function(feature) {
+            return new ol.style.Style({
+                image: new ol.style.Icon({
+                    src: feature.get('icono'),
+                }),
+            });
+        },
+    });
+    mapa.addLayer(capaMarcadores);
+    
+    
 };
 
+mapa.on('click', function(evt) {
+    var feature = mapa.forEachFeatureAtPixel(evt.pixel, function(feature) {
+        return feature;
+    });
+    if (feature) {
+        var propiedades = feature.getProperties();
+        const contenido = `<p>Nombre: ${propiedades.nombre}</p>
+        <p>Género: ${propiedades.genero}</p>
+        <p>Descripción: ${propiedades.descripcion}</p>`;
 
-  
+        Swal.fire({
+            iconHtml: '<i class="fa fa-user-circle" aria-hidden="true"></i>',            
+            title: 'Información del usuario',
+            html: contenido,
+            confirmButtonText: 'OK'
+        });
+    }
+});
 
 refrescarMapaConCategoria();
