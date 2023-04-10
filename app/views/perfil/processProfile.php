@@ -69,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <p> No puedes cambiar el rol si no eres Administrador </p> 
                     </div>       
             <?php
-            exit;
         }
 
         if ($usuarioExistente !== null){

@@ -152,9 +152,9 @@
                           <label class="form-control-label fuente" for="input-first-name">Rol</label>
                           <br> 
                           <select  class="form-control" name="role" id="role" required="">
-                            <option value="Admin">Administrador</option>
-                            <option value="User">Usuario</option>
-                            <option value="Empresa">Empresa</option>
+                            <option value="Admin" <?php if ($usuarioExistente->getRole() == "Admin") echo " selected"; ?>>Administrador</option>
+                            <option value="User" <?php if ($usuarioExistente->getRole() == "User") echo " selected"; ?>>Usuario</option>
+                            <option value="Empresa" <?php if ($usuarioExistente->getRole() == "Empresa") echo " selected"; ?>>Empresa</option>
                           </select>
                         </div>
                       </div> 
@@ -163,9 +163,9 @@
                           <label class="form-control-label fuente" for="input-last-name">Género</label> 
                           <br>
                             <select  class="form-control" name="genero" id="genero" required="">
-                            <option value="Mujer">Mujer</option>
-                            <option value="Hombre">Hombre</option>
-                           <option value="Otro">Otro</option>
+                            <option value="Mujer" <?php if ($usuarioExistente->getGenero() == "Mujer") echo " selected"; ?>>Mujer</option>
+                            <option value="Hombre" <?php if ($usuarioExistente->getGenero() == "Hombre") echo " selected"; ?>>Hombre</option>
+                           <option value="Otro" <?php if ($usuarioExistente->getGenero() == "Otro") echo " selected"; ?>>Otro</option>
                           </select>
 
                         </div>
