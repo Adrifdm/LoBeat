@@ -11,18 +11,14 @@ if (empty($_GET["categoria"])) {
 }
 
 
-mt_srand (time());
-$randomX = mt_rand(0,10) / 1000;
-$randomY = mt_rand(0,10) / 1000;
-
 $categoria = $_GET["categoria"];
 
 if ($categoria === "current_user") {
     $usuario = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
     $current_user = [
         [
-            "latitud" => $_SESSION["logged_latitud"] + $randomX,
-            "longitud" => $_SESSION["logged_longitud"] + $randomY,
+            "latitud" => $_SESSION["logged_latitud"],
+            "longitud" => $_SESSION["logged_longitud"],
         ],
     ];
     $nombre = $usuario->getNombre();
@@ -57,8 +53,8 @@ if($categoria === "resto"){
             $descripcion = $usuario->getDescripcion();
             $coordenadas = [
                 [
-                    "latitud" => $usuario->getLatitud() + $randomX,
-                    "longitud" => $usuario->getLongitud() + $randomY,
+                    "latitud" => $usuario->getLatitud(),
+                    "longitud" => $usuario->getLongitud(),
                 ],
             ];
             $usuarios[] = [

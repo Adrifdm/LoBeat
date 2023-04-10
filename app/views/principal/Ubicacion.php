@@ -10,8 +10,13 @@ $usuarioController = new UsuarioController();
 
 
 if (isset($_GET["latitud"]) && isset($_GET["longitud"])) {
-    $latitud = $_GET['latitud'];
-    $longitud = $_GET['longitud'];
+
+    mt_srand (time());
+    $randomX = mt_rand(0,10) / 1000;
+    $randomY = mt_rand(0,10) / 1000;
+
+    $latitud = $_GET['latitud'] + $randomX;
+    $longitud = $_GET['longitud'] + $randomY;
     $correo = $_SESSION['logged_user_email'];
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $correo);
     $id = $usuarioExistente->getId();
@@ -19,7 +24,7 @@ if (isset($_GET["latitud"]) && isset($_GET["longitud"])) {
     
     $datos = array(
         'latitud' => $latitud,
-        'longitud' => $longitud
+        'longitud' => $longitud 
     );
 
     $usuarioController->actualizarUsuario($id, $datos);
