@@ -1,6 +1,6 @@
 <?php
 require_once '../../../vendor/autoload.php';
-require_once '../../../app/models/playlist.php';
+require_once '../../../app/models/playlists.php';
 
 class PlaylistService {
 
