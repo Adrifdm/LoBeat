@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
         //$usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
         
-        if($usuarioExistente->getRole() == 'admin'){
+        if($usuarioExistente->getRole() == 'Admin'){
             $role = $_POST['role'];
         }
         else{
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <p> No puedes cambiar el rol si no eres Administrador </p> 
                     </div>       
             <?php
-
+            exit;
         }
 
         if ($usuarioExistente !== null){
