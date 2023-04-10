@@ -1,6 +1,7 @@
 <?php
 require_once '../../../app/controllers/usuarioController.php';
 require_once '../../../app/controllers/spotifyController.php';
+require_once '../../../app/controllers/playlistsController.php';
 
 session_start();
 if (isset($_GET['registered'])){
@@ -16,7 +17,7 @@ if (isset($_GET['registered'])){
 // Creamos instancias de los controladores que vamos a usar
 $usuarioController = new UsuarioController();
 $spotifyController = new SpotifyController(); 
-
+$playlistsController = new PlaylistsController();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Obtenemos la informacion introducida
@@ -84,6 +85,12 @@ else if ($registered === true){
         'spotify_ID' => $spotifyController->obtenerSpotifyID()
     );
     $usuarioController->actualizarUsuario($resultado, $datos);
+
+    $datosUsuarioPlaylists = require('../../../app/spotifyAPI/llamadas/datosUsuario.php');
+
+    $playlistsController->crearPlaylist($datosUsuarioPlaylists);
+
+
 
     session_destroy();
 
