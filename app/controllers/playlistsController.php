@@ -3,7 +3,7 @@
 require_once '../../../app/services/playlistsService.php';
 
 class PlaylistsController {
-    private $playlistsService;
+    private $playlistService;
 
     public function __construct() {
         $this->playlistService = new PlaylistService();
@@ -41,7 +41,7 @@ class PlaylistsController {
     public function obtenerPlaylistPorId($id) {
         try {
             // llamar al método de obtener playlist por id del servicio
-            $playlistEncontrada = $this->playlistService->obtenerPlaylistPorId($id);
+            $playlistEncontrada = $this->playlistService->obtenerPlaylist($id);
             // devolver la respuesta en formato JSON
             //echo json_encode($usuarioEncontrado);
             return $playlistEncontrada;
@@ -75,7 +75,7 @@ class PlaylistsController {
             $this->crearPlaylist($datosPlaylistsRefrescadas);
             // devolver la respuesta en formato JSON
             //echo json_encode($usuarioEncontrado);
-            return $playlistRefrescadas;
+            return $datosPlaylistsRefrescadas;
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente
             echo json_encode(['error' => $e->getMessage()]);
