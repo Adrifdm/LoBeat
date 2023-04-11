@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+	*{
+		margin: 0;
+		padding: 0;
+        
+		box-sizing: border-box;
+		font-family: sans-serif;
+	}
+
+    .p12{
+        color: white;
+        font-size: 20px;
+        font-family: sans-serif;
+        margin-top: 10px;
+    }
+
+    .tit{
+        font-size: 30px !important;
+        color: #fff;
+        
+        margin: 30px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #c7c7c7;
+
+    }
+
+    .tablaCanciones{
+
+    }
+
+    table{
+        
+        font-family: sans-serif !important;
+        color: white !important;
+        font-size: 40px;
+        table-layout: fixed !important;
+        border-collapse: collapse !important;
+    }
+
+    thead{
+        background: rgba(243, 140, 210, 0.2) !important;
+        font-size: 25px !important;
+
+    }
+
+    th{
+        padding: 20px 175px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        text-align: left !important;
+    }
+
+    td{
+
+        padding: 15px !important;
+        border-bottom: solid 1px  rgba(243, 140, 210, 0.2) !important;
+    }
+
+    tbody{
+        font-size: 20px !important;
+    }
+
+    tbody tr:hover{
+        background: rgba(243, 103, 199, 0.4);
+    }
+
+    .infoPlaylist{
+        display: flexbox;
+        height: fit-content;
+        width: fit-content;
+        position: relative;
+
+        margin-left: 400px;
+        margin-right: 100px;
+        margin-top: 100px;
+        margin-bottom: 100px;
+
+    }
+
+    .butP{
+        margin-top: 60px !important;
+        margin-bottom: 20px !important;
+        margin-left: 30px !important;
+
+        
+    }
+
+    .butP .btn{
+        color: black !important;
+        font-size: 20px !important
+    }
+
+    .nameP{
+        width: fit-content !important;
+        font-size: 40px;
+        color: white;
+
+        margin-top: 60px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .col{
+        width: 600px !important;
+    }
+
+    .infoPlaylist .row11{
+        background-color: pink;
+        height: 50px;
+    }
+
+    .imgPLL{
+
+        height: 250px;
+        width: 250px;
+        margin-bottom: 100px !important;
+        margin-right: 20px;
+    }
+
+    /*-------------------------------------------------------------------------*/
+
+	body{
+		
+		background-color: rgb(27, 18, 82) !important;
+	}
+
+	.container{
+		width: 90%;
+		max-width: 1200px;
+		margin: 30px;
+	}
+	.container .btn-menu label{
+		color: #fff;
+		font-size: 25px;
+		cursor: pointer;
+	}
+
+    
+	.container .menu{
+		float: left;
+		line-height: 100px;
+	}
+	.container .menu a{
+		display: inline-block;
+		padding: 15px;
+		line-height: normal;
+		text-decoration: none;
+		color: #fff;
+		transition: all 0.3s ease;
+		border-bottom: 2px solid transparent;
+		font-size: 15px;
+		margin-right: 5px;
+	}
+	.container .menu a:hover{
+		border-bottom: 2px solid #c7c7c7;
+		padding-bottom: 5px;
+	}
+	/*Fin de Estilos para el encabezado*/
+
+	/*Menù lateral
+
+	#btn-menu{
+		display: none;
+	}
+    */
+	.container-menu{
+		position: absolute;
+		/*background: rgba(0,0,0,0.5);*/
+		width: 100%;
+		height: 100vh;
+		top: 127px;
+        left: 0;
+		
+        /*
+        transition: all 500ms ease;
+		opacity: 0;
+		visibility: hidden;*/
+	}
+    /*
+	#btn-menu:checked ~ .container-menu{
+		opacity: 1;
+		visibility: visible;
+	}*/
+	.cont-menu{
+		width: 100%;
+		max-width: 250px;
+        padding-top: 20px;
+		background: #1c1c1c;
+		height: 100vh;
+		position: relative;
+        /*
+		transition: all 500ms ease;
+		transform: translateX(-100%);*/
+	}
+	#btn-menu:checked ~ .container-menu .cont-menu{
+		transform: translateX(0%);
+	}
+	.cont-menu nav{
+		transform: translateY(15%);
+	}
+	.cont-menu nav a{
+		display: block;
+		text-decoration: none;
+		padding: 20px;
+		color: #c7c7c7;
+		border-left: 5px solid transparent;
+		transition: all 400ms ease;
+	}
+	.cont-menu nav a:hover{
+		border-left: 5px solid #c7c7c7;
+		background: #1f1f1f;
+	}
+	.cont-menu label{
+		position: absolute;
+		right: 5px;
+		top: 10px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+	}
+	/*Fin menu*/
+
+

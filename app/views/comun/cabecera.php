@@ -48,6 +48,7 @@
           <ul>
             <li><a href="../../spotifyAPI/llamadas/datosUsuario.php">Canciones</a></li>
             <li><a href="../../spotifyAPI/llamadas/playlistsUsuario.php">MatchList</a></li>
+            <li><a href="../../views/playlists/playlistMenu.php">Playlists</a></li>
           </ul>        
       </li>
       <li class="dropdown">
