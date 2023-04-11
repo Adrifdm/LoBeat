@@ -75,7 +75,7 @@ class PlaylistsController {
             $this->crearPlaylist($datosPlaylistsRefrescadas);
             // devolver la respuesta en formato JSON
             //echo json_encode($usuarioEncontrado);
-            return $playlistRefrescadas;
+            return $datosPlaylistsRefrescadas;
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente
             echo json_encode(['error' => $e->getMessage()]);
