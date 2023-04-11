@@ -6,11 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="../../../public/assets/css/notifications.css">
+
 <script src="https://kit.fontawesome.com/e2e2d067dc.js" crossorigin="anonymous"></script>
 
 
 </head>
 <body>
+  <?php
+    require_once '../../controllers/usuarioController.php';
+
+    // Crear una instancia de UsuarioController
+    $usuarioController = new UsuarioController();
+
+    // Comprobamos si existe algún usuario con ese correo
+    //mas adelante se cambiara por el id
+    $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
+    
+  ?>
+
 <!-- partial:index.partial.html -->
 <div id="header">
   <div class="logo">
@@ -36,14 +50,31 @@
             <li><a href="../../spotifyAPI/llamadas/playlistsUsuario.php">MatchList</a></li>
           </ul>        
       </li>
-      <li>
-        <a class="tooltip" href="">
-          
-          <i class="bi bi-bell-fill"></i>
-          <span class= "tooltip-box">Notificaciones</span>
-      
-        </a>
+      <li class="dropdown">
+        <a href=""><i class="bi bi-bell-fill"></i></a>
+          <ul>
+            <?php
 
+            foreach($usuarioExistente->getNotifications() as $notification){
+              echo "<li>
+                <div>
+                  <div class='notification'>
+                    <div class='icon-container'>
+                        <img src= '../../../public/assets/img/".$notification["icono"]."' alt='Icono de notificación'>
+                    </div>
+                    <div class='info-container'>
+                        <p class='sender'>".$notification['nombre']."</p>
+                        <p class='type'>".$notification["descripcion"]."</p>
+                    </div>
+                    <div class='button-container'>
+                        <button class='view-button'>Marcar como vista</button>
+                    </div>
+                  </div>
+                </div>
+              </li>";
+            }
+            ?>
+          </ul>        
       </li>
           
       <li>
@@ -78,7 +109,6 @@ $('#header').prepend('<div id="menu-icon"><span class="first"></span><span class
     $("nav").slideToggle();
     $(this).toggleClass("active");
 });
-
 
   </script>
    

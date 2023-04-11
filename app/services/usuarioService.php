@@ -32,7 +32,9 @@ class UsuarioService {
 
       $datos['nMatches'],
       $datos['nPlaylists'],
-      $datos['nChats']
+      $datos['nChats'],
+
+      $datos['notifications']
     );
 
     $result = $this->collection->insertOne([
@@ -52,6 +54,8 @@ class UsuarioService {
       'nMatches' => $usuario->getnMatches(),
       'nPlaylists' => $usuario->getnPlaylists(),
       'nChats' => $usuario->getnChats(),
+
+      'notifications' => $usuario->getNotifications(),
 
     ]);
 
@@ -133,6 +137,10 @@ class UsuarioService {
     if (isset($datos['nChats'])) {
       $set['nChats'] = $datos['nChats'];
     }
+
+    if (isset($datos['notifications'])) {
+      $set['notifications'] = $datos['notifications'];
+    }
     
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
     $result = $this->collection->updateOne(
@@ -176,6 +184,7 @@ class UsuarioService {
         $doc['nMatches'], 
         $doc['nPlaylists'], 
         $doc['nChats'],
+        $doc['notifications']->__toString(),
         
       );
       $usuario->setId($doc['_id']->__toString());   //mirar si lo del _id aqui funciona
@@ -209,7 +218,8 @@ class UsuarioService {
 
       $result['nMatches'], 
       $result['nPlaylists'], 
-      $result['nChats'] 
+      $result['nChats'],
+      $result['notifications'],
     );
     $usuario->setId($result['_id']->__toString());    //mirar si lo del _id aqui funciona,
 
@@ -239,6 +249,7 @@ class UsuarioService {
         $resultado['nMatches'], 
         $resultado['nPlaylists'], 
         $resultado['nChats'],
+        $resultado['notifications'],
       );
     } else {
       return null;

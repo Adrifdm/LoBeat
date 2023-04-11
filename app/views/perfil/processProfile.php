@@ -83,7 +83,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'role' => $role,
                 'genero' => $genero,
                 'descripcion' => $sobreMi,
-                'fotoPerfil' => $nombreFoto
+                'fotoPerfil' => $nombreFoto,
+                'notifications' => array(
+                    array(
+                        'nombre' => 'Pedro',
+                        'icono' => 'logoLB.png',
+                        'descripcion' => 'Nuevo match'
+                    ),
+                    array(
+                        'nombre' => 'Manolo',
+                        'icono' => 'yo.png',
+                        'descripcion' => 'Nueva petición de chat'
+                    )
+                )
             );
             
             //actualizar por id

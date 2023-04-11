@@ -76,7 +76,8 @@ else if ($registered === true){
         'spotify_ID' => '' ,     // Inicialmente el spotifyID de la base de datos se inicializa vacío
         'nChats' => 0,
         'nMatches' => 0,
-        'nPlaylists' => 0
+        'nPlaylists' => 0,
+        'notifications' => ''
     );
 
     // Creamos el usuarios con la información anterior
