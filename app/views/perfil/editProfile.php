@@ -79,15 +79,27 @@
                   <div class="col">
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                       <div>
-                        <span class="heading fuente">10</span>
+                        <span class="heading fuente">
+                            <?php
+                              echo $usuarioExistente->getnMatches(); 
+                            ?>
+                        </span>
                         <span class="description fuente">Matches</span>
                       </div>
                       <div>
-                        <span class="heading fuente">6</span>
+                        <span class="heading fuente">
+                            <?php
+                              echo $usuarioExistente->getnPlaylists(); 
+                            ?>
+                        </span>
                         <span class="description fuente">Playlists</span>
                       </div>
                       <div>
-                        <span class="heading fuente">7</span>
+                        <span class="heading fuente">
+                            <?php
+                              echo $usuarioExistente->getnChats(); 
+                            ?>
+                        </span>
                         <span class="description fuente">Chats</span>
                       </div>
                     </div>
