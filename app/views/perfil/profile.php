@@ -99,27 +99,41 @@
                   <!-- <div class="col"> -->
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5 contt">
                       
+
                         <div class="rib">
-                          <ribbon>
-                            <span class="heading inside fuente">10 Matches</span>
-                            <!--<span class="description fuente">Matches</span>-->
-                          </ribbon>
+                         <ribbon>
+                          <span class="heading fuente inside">
+                            <?php
+                              echo $usuarioExistente->getnMatches().' Matches'; 
+                            ?>
+                          </span>
+                         </ribbon>
                         </div>
 
-                        <div class="rib2 ">
-                          <ribbon2>
-                            <span class="heading fuente inside">6 Playlists</span>
-                            <!--<span class="description fuente">Playlists</span>-->
-                          </ribbon2>
+
+
+                        <div class="rib2">
+                         <ribbon2>
+                          <span class="heading fuente inside">
+                            <?php
+                              echo $usuarioExistente->getnPlaylists().' Playlists'; 
+                            ?>
+                          </span>
+                         </ribbon2>
                         </div>
+
 
                         <div class="rib3">
-                          <ribbon3>
-                            <span class="heading fuente inside">7 Chat</span>
-                            <!--<span class="description fuente">Chats</span>-->
-                          </ribbon3>
+                         <ribbon3>
+                          <span class="heading fuente inside">
+                            <?php
+                              echo $usuarioExistente->getnChats().' Chats'; 
+                            ?>
+                          </span>
+                         </ribbon3>
                         </div>
-                        
+
+ 
                         <div class="text-center txtalign">
                           <h3 class="fuente th1"> 
                             <?php
