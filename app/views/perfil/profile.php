@@ -151,34 +151,6 @@
                           </span>
                          </ribbon3>
                         </div>
-
- 
-                        <div class="text-center txtalign">
-                          <h3 class="fuente th1"> 
-                            <?php
-                              echo $usuarioExistente->getNombre(); 
-                            ?>
-
-                            <!--<span class="font-weight-light fuente">, 27</span>-->
-                          </h3>
-                          <!--<div class="h5 font-weight-300 fuente">-->
-                          <div class="th2">
-                            <?php
-                              echo $usuarioExistente->getCorreo(); 
-                            ?>
-                          </div>
-                          <!--</div>-->
-                          <!--<div class="h5 mt-4 fuente">-->
-                            <!--<i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho-->
-                          <!--</div> 
-                          <div class="fuente">-->
-                            <!--<i class="ni education_hat mr-2"></i>Universidad autónoma de Barcelona-->
-                          <!--</div>
-                          <hr class="my-4">-->
-                            <!--<p class="fuente">No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>-->
-                            <!--<a href="#">Mostrar más</a>--> 
-      
-                      </div>
                      
                     </div>
                    <!--</div>-->
