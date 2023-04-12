@@ -10,20 +10,19 @@ body {
 
 .left-section {
     background-color: #e41111;
-    left: 0;
-    top: 0;
-    bottom: 0;
     width: 250px;
     float: left;
     height: 100vh;
-    padding: 24px;
+    padding: 24px
 }
 
 .right-section {
     background-color: #1778d8;
-    /*width: calc(100% - 250px);
+    /*width: calc(100% - 250px);*/
     /*float: right;*/
     height: 100vh;
+    padding: 24px;
+    padding-left: 322px;
 }
 
 .lista-playlists {

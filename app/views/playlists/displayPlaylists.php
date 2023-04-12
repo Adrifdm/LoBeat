@@ -48,6 +48,18 @@
                             <span> PLAYLIST 2 </span>
                             </a>
                         </li>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 
@@ -55,7 +67,7 @@
 
             <!-- Sección derecha de la página -->
             <div class="right-section">
-                <p>Contenido de la sección derecha</p>
+                <p>Contenido de la sección izquierda</p>
                 <p>Contenido de la sección izquierda</p>
                 <p>Contenido de la sección izquierda</p>
                 <p>Contenido de la sección izquierda</p>
