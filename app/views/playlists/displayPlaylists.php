@@ -24,7 +24,7 @@
     <body>
 
         <?php
-            require("../comun/cabecera.php");
+            //require("../comun/cabecera.php");
         ?>
 
         <div class="main-container">
@@ -42,18 +42,189 @@
                                 <span> PLAYLIST 1 </span>
                             </a>
                         </li>
+                        <br>
                         <li>
                             <a href="#">
                             <span class=""></span>
-                            <span> PLAYLIST 2 </span>
+                            <span> PLAYLIST 2222222222222222222222222222222222222 </span>
                             </a>
                         </li>
+                        <br>
                         <li>
                             <a href="#">
                             <span class=""></span>
                             <span> PLAYLIST 3 </span>
                             </a>
                         </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 4 </span>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#">
+                            <span class=""></span>
+                            <span> PLAYLIST 3 </span>
+                            </a>
+                        </li>
+                        <br>
                         <li>
                             <a href="#">
                             <span class=""></span>

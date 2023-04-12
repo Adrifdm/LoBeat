@@ -13,18 +13,26 @@ body {
     width: 250px;
     float: left;
     height: 100vh;
-    padding: 24px
+    padding: 24px;
 }
 
 .right-section {
     background-color: #1778d8;
     /*width: calc(100% - 250px);*/
     /*float: right;*/
-    height: 100vh;
-    padding: 24px;
+    height: 90vh;
+    
     padding-left: 322px;
+    padding-right: 24px;
 }
 
 .lista-playlists {
     background-color: rgb(215, 22, 218);
+    padding: 10px;
+    white-space: nowrap; /* para que el texto no se divida en varias líneas */
+    overflow: hidden; /* para ocultar el contenido que sobrepasa el límite */
+
+    /*max-height: 570px; /* tamaño máximo para la sección rosa */
+    height: 80vh;
+    overflow-y: initial; /* agregar barra de desplazamiento vertical cuando se necesita */
 }
