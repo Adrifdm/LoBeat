@@ -33,6 +33,12 @@
     // Crear una instancia de UsuarioController
     $usuarioController = new UsuarioController();
 
+    //----------------------------------------------------------------------------------------------------------------
+    require_once '../../controllers/playlistsController.php';
+
+    $prueba = new PlaylistsController();
+    //----------------------------------------------------------------------------------------------------------------
+
     // Comprobamos si existe algún usuario con ese correo
     //mas adelante se cambiara por el id
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
@@ -116,6 +122,19 @@
                          <ribbon2>
                           <span class="heading fuente inside">
                             <?php
+
+                              $numListas = 0;
+                              $id = $usuarioExistente->getSpotifyID();
+                              $listas = $prueba->listarPlaylists();
+
+                              foreach($listas as $x){
+                                if($id == $x->getPlaylistOwnerId()){
+                                  $numListas++;
+                                }
+                              }
+
+                              $usuarioExistente->setnPlaylists($numListas);
+
                               echo $usuarioExistente->getnPlaylists().' Playlists'; 
                             ?>
                           </span>
