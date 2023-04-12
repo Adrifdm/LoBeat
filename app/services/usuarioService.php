@@ -1,13 +1,16 @@
 <?php
 require_once '../../../vendor/autoload.php';
 require_once '../../../app/models/usuario.php';
+require_once '../../../app/controllers/playlistsController.php';
 
 class UsuarioService {
 
   private $collection;
+  private $playlistsController;
 
   public function __construct() {
     $this->collection = (new MongoDB\Client)->LoBeat->usuarios;
+    $this->playlistsController = new PlaylistsController();
   }
 
   public function crearUsuario($datos) {
@@ -155,6 +158,8 @@ class UsuarioService {
   }
 
   public function eliminarUsuario($id) {
+    $spotifyIDUsuarioActual = $this->obtenerUsuarioPorId($id)->getSpotifyID();
+    $this->playlistsController->eliminarPlaylist($spotifyIDUsuarioActual);
     $result = $this->collection->deleteOne(['_id' => $id]);
 
     return $result->getDeletedCount() > 0;
