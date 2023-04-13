@@ -67,7 +67,7 @@
                         <p class='type'>".$notification["descripcion"]."</p>
                     </div>
                     <div class='button-container'>
-                        <button class='view-button'>Marcar como vista</button>
+                      <button onclick='deleteNotification()' class='view-button'>Marcar como vista</button>
                     </div>
                   </div>
                 </div>
@@ -109,6 +109,10 @@ $('#header').prepend('<div id="menu-icon"><span class="first"></span><span class
     $("nav").slideToggle();
     $(this).toggleClass("active");
 });
+
+  function deleteNotification(){
+
+  }
 
   </script>
    

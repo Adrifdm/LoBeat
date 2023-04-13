@@ -77,7 +77,8 @@ else if ($registered === true){
         'nChats' => 0,
         'nMatches' => 0,
         'nPlaylists' => 0,
-        'notifications' => ''
+        'notifications' => '',
+        'notifications' => array()
     );
 
     // Creamos el usuarios con la información anterior

@@ -1,255 +1,197 @@
 <?php
+
+    require_once '../../controllers/spotifyController.php';
+    require_once '../../controllers/usuarioController.php';
+    require_once '../../controllers/playlistsController.php';
+
+    $playlistController = new PlaylistsController();
+    $usuarioController = new UsuarioController();
+    $spotifyController = new SpotifyController();
+
 	session_start();
 
-  if($_SESSION["is_logged"] != true){
-  
-    header('Location: ../perfil/logout.php'); 
+    if($_SESSION["is_logged"] != true){
     
-    exit;
-  } 
+        header('Location: ../perfil/logout.php'); 
+        
+        exit;
+    } 
+
+    if(isset($_GET["idPlaylist"])){
+        $nombre = $_GET["idPlaylist"];
+    }
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en" >
-  
-  <head>
+<head>
+  <meta charset="UTF-8">
+  <title>playlistMenu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="../../../public/assets/css/playlistMenu.css">
+<link rel="stylesheet" href="../../../public/assets/css/bootstrap-argon.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="../../../public/assets/css/notifications.css">
 
-    <meta charset="UTF-8">
-    <title>playlistMenu</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> -->
+<script src="https://kit.fontawesome.com/e2e2d067dc.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../../../public/assets/css/playlistMenu.css">
-    <!-- <link rel="stylesheet" href="../../../public/assets/css/bootstrap-argon.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"> -->
 
-    <script src="https://kit.fontawesome.com/e2e2d067dc.js" crossorigin="anonymous"></script>
-
-  </head>
-
-  <body>
+</head>
+<body>
+    
+    <body>
 
     <?php
-      require("../comun/cabecera.php");
-    ?>
+		require("../comun/cabecera.php");
+	?>
 
-    <!-- Panel izquierdo de la página -->
-    <div class="container-menu">
-      <div class="cont-menu">
-        <div class="tit">Mis playlists</div>
-          <nav>    
-            <a href="#"> playlist2 </a>
-            <a href="#"> playlist2 </a>
-            <a href="#"> playlist3 </a>
-            <a href="#"> playlist4 </a>
-            <a href="#"> playlist5 </a>
-            <a href="#"> playlist6 </a>
-            <a href="#"> playlist7 </a>
-            <a href="#"> playlist8 </a>
-            <a href="#"> playlist9 </a>
-            <a href="#"> playlist10 </a>
-          </nav>
+	<header class="header">
+		<div class="container">
+		<div class="btn-menu">
+			<!--<label for="btn-menu">☰</label>-->
         </div>
-      </div>
+	</header>
+	
+<!--<input type="checkbox" id="btn-menu">	--------------->
 
-      <!-- Panel derecho de la página -->
-      <div class="infoPlaylist">
+<div class="container-menu">
+	<div class="cont-menu">
+        <div class="tit">Mis playlists</div>
+		<nav>  
+            
+            <?php
+            
+                $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
+                $id = $usuarioExistente->getSpotifyID();
+                $listas = $playlistController->listarPlaylists();
+
+                foreach($listas as $x){
+                    if($id == $x->getPlaylistOwnerId()){
+                      ?>
+
+                      <a href="playlistMenu.php?idPlaylist=<?php echo$x->getId()?>">
+                        <?php
+                           echo $x->getPlaylistName();
+                        ?>
+                      </a>
+
+                      <?php
+                    }
+                  }
+
+            ?>
+
+		</nav>
+	</div>
+</div>
+
+<!--contenido--------------->
+   <div class="infoPlaylist">
 
         <div class="row">
+            <div class="col">
+                <img src=<?php 
+                    //foto de la playlist
+                    echo "../../../public/assets/img/profilePhotos/profileAvatar.png";
+                ?> class="imgPLL">
+            </div>
 
-          <div class="col">
-            <img src=<?php  
-              //Imagen playlist
-              echo "../../../public/assets/img/profilePhotos/profileAvatar.png";
-            ?> class="imgPLL">
-          </div>
+           <div class="col-lg-7 col-md-10">
+                <p class="nameP">
+                    <?php
+                        $lista = $playlistController->buscarPlaylistsPorCampo('spotifyId', $nombre);
+                        echo $lista[0]->getPlaylistName();
+                    ?>
+                </p>
+                <p class="p12">
+                    <?php
+                        $lista = $playlistController->buscarPlaylistsPorCampo('spotifyId', $nombre);
+                        echo $lista[0]->getPlaylistDescription();
+                    ?>
+                </p>
 
-          <div class="col-lg-7 col-md-10">
-            <p class="nameP"> Nombre Playlist </p>
-            <p class="p12"> Descripcion de la playlist </p>
-          </div>
+           </div>
 
-          <div class="col butP">
-            <a href="marcarMatchlist.php" class="btn btn-info fuente normaltxt2 bt">Marcar como matchlist</a>
-          </div>
+           <div class="col butP">
+                <a href="marcarMatchlist.php" class="btn btn-info fuente normaltxt2 bt">Marcar como matchlist</a>
+           </div>
 
         </div>
 
         <table class="tablaCanciones">
-          <thead>
-            <tr>
-              <th>
-                Nombre
-              </th>
-              <th>
-                Artista
-              </th>
-              <th>
-                Album
-              </th>
-              <th>
-                Duracion
-              </th>
-            </tr>
-          </thead>
-              
-          <tbody class="infoscroll">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Artista
+                    </th>
+                    <th>
+                        Album
+                    </th>
+                    <th>
+                        Duracion
+                    </th>
+                </tr>
+            </thead>
+            
+            <tbody class="infoscroll">
 
-            <!-- Cada tr es un a fila de la tabla -->
-            <!-- La iteracion por cada cancion va antes de aqui y tiene que crear un tr -->
-
-            <tr>
-              <!-- Los td son los campos de la fila (uno por cada titutlo del header de la tabla) -->
-              <td>
-                nombre1
-              </td>
-              <td>
-                artista1
-              </td>
-              <td>
-                album1
-              </td>
-              <td>
-                3 mins 10segs
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                nombre2
-              </td>
-              <td>
-                artista2
-              </td>
-              <td>
-                album2
-              </td>
-              <td>
-                3 mins 10segs
-              </td>
-            </tr>
+                <!--cada tr es un a fila de la tabla------->
+                <!--la iteracion por cada cancion va antes de aqui y tiene que crear un tr-->
+                
+                    <!--los td son los campos de la fila (uno por cada titutlo del header de la tabla)---->
                     
-            <tr>
-              <td>
-                nombr3
-              </td>
-              <td>
-                artista3
-              </td>
-              <td>
-                album3
-              </td>
-              <td>
-                3 mins 10segs
-              </td>
-            </tr>
+                    <?php
+                        $canciones = $spotifyController->obtenerCancionesPlaylist($nombre, $usuarioExistente->getId());
 
-            <tr>
-              <td>
-                nombr3
-              </td>
-              <td>
-                artista3
-              </td>
-              <td>
-                album3
-              </td>
-              <td>
-                3 mins 10segs
-              </td>
-            </tr>
+                        $i = 0;
 
-            <tr>
-              <td>
-                nombr3
-              </td>
-              <td>
-                artista3
-              </td>
-              <td>
-                album3
-              </td>
-              <td>
-                3 mins 10segs
-              </td>
-            </tr>
+                        while( !empty($canciones[$i]) ){
 
-            <tr>
-              <td>
-                nombr3
-              </td>
-              <td>
-                artista3
-              </td>
-              <td>
-                album3
-              </td>
-              <td>
-                3 mins 10segs
-              </td>
-            </tr>
+                            $cancion = $canciones[$i];
 
-            <tr>
-              <td>
-                nombr3
-              </td>
-              <td>
-                artista3
-              </td>
-              <td>
-                album3
-              </td>
-              <td>
-                3 mins 10segs
-              </td>
-            </tr>
+                            $nombre = $cancion['titulo'];
+                            $artista = $cancion['artista'];
+                            $album = $cancion['album'];
+                            $duracion = $cancion['duracion'];
 
-            <tr>
-              <td>
-                nombr3
-              </td>
-              <td>
-                artista3
-              </td>
-              <td>
-                album3
-              </td>
-              <td>
-                3 mins 10segs
-              </td>
-            </tr>
+                            ?>
+                            <tr>
+                            <td>
+                                <?php echo $nombre?> 
+                            </td>
+    
+                            <td>
+                                <?php echo $artista?> 
+                            </td>
+    
+                            <td>
+                                <?php echo $album?> 
+                            </td>
+                            
+                            <td>
+                                <?php echo $duracion?>
+                            </td> 
 
-            <tr>
-              <td>
-                nombr3
-              </td>
-              <td>
-                artista3
-              </td>
-              <td>
-                album3
-              </td>
-              <td>
-                3 mins 10segs
-              </td>
-            </tr>
+                            </tr>
+                            <?php
 
-            <tr>
-              <td>
-                nombr3
-              </td>
-              <td>
-                artista3
-              </td>
-              <td>
-                album3
-              </td>
-              <td>
-                3 mins 10segs
-              </td>
-            </tr>
+                            $i++;
+                               
+                        }
 
-          </tbody>
+
+                    ?>
+                         
+                    
+
+            </tbody>
+
         </table>
-    </div>
-  </body>
+   </div>
+</body>
 </html>
