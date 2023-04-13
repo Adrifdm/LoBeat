@@ -32,6 +32,7 @@
             <!-- Sección izquierda de la página -->
             <div class="left-section">
 
+                <br>
                 <p> Mis playlists <p>
                 <br><hr><br>
                 <div class="lista-playlists">
@@ -53,7 +54,7 @@
                         <li>
                             <a href="#">
                             <span class=""></span>
-                            <span> PLAYLIST 3 </span>
+                            <span> PLAYLIST 3 34534 thrt fhrth rthrth rthrt rhr rhrh </span>
                             </a>
                         </li>
                         <br>
