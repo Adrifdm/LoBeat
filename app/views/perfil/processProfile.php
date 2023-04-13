@@ -71,6 +71,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php
         }
 
+        $finalNotifications = [];
+        $newNotification = array(
+            'nombre' => 'Manolo',
+            'icono' => 'logoLB.png',
+            'descripcion' => 'Está cerca de tí'
+        );
+    
+        foreach($usuarioExistente->getNotifications() as $not){
+            array_push($finalNotifications, $not);
+        }
+        array_push($finalNotifications, $newNotification);
+
+
         if ($usuarioExistente !== null){
             $datos = array(
                 'nombre' => $nombre,
@@ -84,18 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'genero' => $genero,
                 'descripcion' => $sobreMi,
                 'fotoPerfil' => $nombreFoto,
-                'notifications' => array(
-                    array(
-                        'nombre' => 'Pedro',
-                        'icono' => 'logoLB.png',
-                        'descripcion' => 'Nuevo match'
-                    ),
-                    array(
-                        'nombre' => 'Manolo',
-                        'icono' => 'yo.png',
-                        'descripcion' => 'Nueva petición de chat'
-                    )
-                )
+                'notifications' => $finalNotifications
             );
             
             //actualizar por id
