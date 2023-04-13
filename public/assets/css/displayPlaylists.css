@@ -1,21 +1,28 @@
 * {
     padding: 0;
     margin: 0;
+
+    /*Esto es para que al utilizar padding en cualquier div, el tamaño no cambie*/
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+
 }
 
 body {
     background-color: #00ff48;
     font-family: 'Montserrat', sans-serif;
-  }
+    overflow: hidden;       /*ESTO ELIMINA EL PROBLEMA DE LA BARRA QUE APARECE POR LA CARA AL USAR LA CABECERA*/
+}
 
 .left-section {
     background-color: #e41111;
-    width: 250px;
+    width: 280px;
     float: left;
     height: 100vh;
 
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .right-section {
@@ -32,8 +39,8 @@ body {
     white-space: nowrap; /* para que el texto no se divida en varias líneas */
     overflow: hidden; /* para ocultar el contenido que sobrepasa el límite */
 
-    /*max-height: 570px; /* tamaño máximo para la sección rosa */
-    height: calc(80vh - 25px);
+    max-height: 3000px; /* tamaño máximo para la sección rosa */
+    height: calc(68vh - 25px);
     overflow-y: auto; /* agregar barra de desplazamiento vertical cuando se necesita */
 }
 
@@ -46,19 +53,42 @@ body {
 
 .playlist-info-left{
     background-color: #e02424;
-    width: 300px;
+    width: 230px;
+    height: 230px;
     float: left;
 }
 
-
 .playlist-info-left img {
-    width: 250px;
+    width: 230px;
     height: auto;
 }
 
 .playlist-info-right{
     background-color: rgb(126, 226, 67);
-    margin-left: 310px;
+    margin-left: 240px;
+    height: 230px;
+    overflow: hidden;
+}
+
+.titulo {
+    background-color: #366ba1;
+    height: 120px;
+    padding-left: 20px;
+    padding-top: 50px;
+}
+
+.descripcion {
+    background-color: aqua;
+    height: 70px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.info-adicional {
+    background-color: aquamarine;
+    height: 40px;
+    padding-left: 20px;
+    padding-top: 10px;
 }
 
 .playlist-contenido {

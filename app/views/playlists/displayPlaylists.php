@@ -239,18 +239,31 @@
 
             <!-- Sección derecha de la página -->
             <div class="right-section">
-                <br><br>
+                <br>
                 <div class="playlist-info">
 
                     <div class="playlist-info-left">
                         <img src="../../../public/assets/img/img.jpg" alt="Título de la Playlist">
                     </div>
                     <div class="playlist-info-right">
-                        <h2>Título de la Playlist</h2>
-                        <p> Descripción de la Playlist </p>
-                        <p> 32 canciones </p>
-                        <p> Duración total </p>
+                        <div class="titulo">
+                            <h1>Título de la Playlist</h1>
+                        </div>
+                        <div class="descripcion">
+                            <p> Descripción de la Playlist </p>
+                        </div>
+                        <div class="info-adicional">
+                            <p> Usuario - 32 canciones, 10 min 2 s </p>
+                        </div>
+                        
+
+                        
                     </div>
+                </div>
+                <br><br>
+                <div class="botones">
+                    <p>PLAY</p>
+                    <p>MARCAR COMO MATCHLIST</p>
                 </div>
                 <br><br>
                 <div class="playlist-contenido">
