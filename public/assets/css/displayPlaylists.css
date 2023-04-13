@@ -1,0 +1,139 @@
+* {
+    padding: 0;
+    margin: 0;
+
+    /*Esto es para que al utilizar padding en cualquier div, el tamaño no cambie*/
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: #00ff48;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;       /*ESTO ELIMINA EL PROBLEMA DE LA BARRA QUE APARECE POR LA CARA AL USAR LA CABECERA*/
+}
+
+.left-section {
+    background-color: #e41111;
+    width: 280px;
+    float: left;
+    height: 100vh;
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.right-section {
+    background-color: #1778d8;
+    height: 100vh;
+    overflow-y: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.lista-playlists {
+    background-color: rgb(215, 22, 218);
+    padding: 10px;
+    white-space: nowrap; /* para que el texto no se divida en varias líneas */
+    overflow: hidden; /* para ocultar el contenido que sobrepasa el límite */
+
+    max-height: 3000px;
+    height: calc(72vh - 25px);
+    overflow-y: auto; /* agregar barra de desplazamiento vertical cuando se necesita */
+}
+
+.playlist-info {    
+    background-color: #ffcc00;
+    padding: 10px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.playlist-info-left{
+    background-color: #e02424;
+    width: 230px;
+    height: 230px;
+    float: left;
+}
+
+.playlist-info-left img {
+    width: 230px;
+    height: auto;
+}
+
+.playlist-info-right{
+    background-color: rgb(126, 226, 67);
+    margin-left: 240px;
+    height: 230px;
+    overflow: hidden;
+}
+
+.titulo {
+    background-color: #366ba1;
+    height: 120px;
+    padding-left: 20px;
+    padding-top: 45px;
+    overflow: hidden;
+}
+
+.descripcion {
+    background-color: aqua;
+    height: 70px;
+    padding-left: 20px;
+    padding-top: 15px;
+    overflow: hidden;
+}
+
+.info-adicional {
+    background-color: aquamarine;
+    height: 40px;
+    padding-left: 20px;
+    padding-top: 20px;
+    overflow: hidden;  
+}
+
+.boton-play {
+    background-color: #e02492;
+    width: 180px;
+    float: left;
+    height: 50px;
+    padding-left: 10px;
+    overflow: hidden; 
+}
+
+.boton-play img{
+    width: 50px;
+    height: auto;
+    float: left;
+}
+
+.boton-play p{
+    padding-top: 15px;
+    padding-left: 70px;
+}
+
+.boton-matchlist {
+    background-color: #590879;
+    height: 50px;
+    padding-left: 10px;
+    overflow: hidden; 
+}
+
+.boton-matchlist img{
+    width: 50px;
+    height: auto;
+    float: left;
+}
+
+.boton-matchlist p{
+    padding-top: 15px;
+    padding-left: 70px;
+}
+
+.playlist-contenido {
+    background-color: aqua;
+    overflow: hidden;
+    
+}

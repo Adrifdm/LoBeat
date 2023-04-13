@@ -117,7 +117,7 @@ class PlaylistService {
   }  
 
   public function eliminarPlaylist($id) {
-    $result = $this->collection->deleteOne(['spotifyId' => $id]);
+    $result = $this->collection->deleteMany(['spotifyId' => $id]);
 
     return $result->getDeletedCount() > 0;
   }
