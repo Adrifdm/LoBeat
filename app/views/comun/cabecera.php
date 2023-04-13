@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Responsive Mega Menu - Navigation</title>
-  <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">COMENTO ESTO DE MOMENTO -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 <link rel="stylesheet" href="../../../public/assets/css/notifications.css">
@@ -47,7 +46,9 @@
     <li class="dropdown">
         <a href=""><i class="bi bi-list"></i></a>
           <ul>
-            <li><a href="../../views/playlists/displayPlaylists.php">Playlists</a></li>
+            <li><a href="../../spotifyAPI/llamadas/datosUsuario.php">Canciones</a></li>
+            <li><a href="../../spotifyAPI/llamadas/playlistsUsuario.php">MatchList</a></li>
+            <li><a href="../../views/playlists/playlistMenu.php">Playlists</a></li>
           </ul>        
       </li>
       <li class="dropdown">
@@ -67,7 +68,7 @@
                         <p class='type'>".$notification["descripcion"]."</p>
                     </div>
                     <div class='button-container'>
-                      <button onclick='deleteNotification()' class='view-button'>Marcar como vista</button>
+                        <button onclick='deleteNotification()' class='view-button'>Marcar como vista</button>
                     </div>
                   </div>
                 </div>

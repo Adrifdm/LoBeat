@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'icono' => 'logoLB.png',
             'descripcion' => 'Está cerca de tí'
         );
-
+    
         foreach($usuarioExistente->getNotifications() as $not){
             array_push($finalNotifications, $not);
         }

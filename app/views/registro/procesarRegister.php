@@ -77,7 +77,6 @@ else if ($registered === true){
         'nChats' => 0,
         'nMatches' => 0,
         'nPlaylists' => 0,
-        'notifications' => '',
         'notifications' => array()
     );
 

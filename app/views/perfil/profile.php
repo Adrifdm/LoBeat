@@ -121,8 +121,8 @@
                         <div class="rib2">
                          <ribbon2>
                           <span class="heading fuente inside">
-                            <?
-                            
+                            <?php
+
                               $numListas = 0;
                               $id = $usuarioExistente->getSpotifyID();
                               $listas = $prueba->listarPlaylists();
