@@ -36,3 +36,18 @@ body {
     height: calc(80vh - 25px);
     overflow-y: auto; /* agregar barra de desplazamiento vertical cuando se necesita */
 }
+
+.playlist-info {
+    background-color: #ffcc00;
+
+}
+
+.playlist-info img{
+    width: 250px;
+    height: auto;
+}
+
+.playlist-contenido {
+    background-color: aqua;
+    
+}

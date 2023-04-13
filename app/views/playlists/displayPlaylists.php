@@ -239,18 +239,54 @@
 
             <!-- Sección derecha de la página -->
             <div class="right-section">
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
-                <p>Contenido de la sección izquierda</p>
+                <br><br>
+                <div class="playlist-info">
+                    <img src="../../../public/assets/img/img.jpg" alt="Título de la Playlist">
+                    <h2>Título de la Playlist</h2>
+                    <p>Descripción de la Playlist</p>
+                </div>
+                <br><br>
+                <div class="playlist-contenido">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Portada</th>
+                                <th>Título</th>
+                                <th>Artista</th>
+                                <th>Álbum</th>
+                                <th>Duración</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><img src="" alt="Portada de la Canción 1"></td>
+                                <td>Título de la Canción 1</td>
+                                <td>Artista de la Canción 1</td>
+                                <td>Álbum de la Canción 1</td>
+                                <td>3:45</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
+                                <td>Título de la Canción 1</td>
+                                <td>Artista de la Canción 1</td>
+                                <td>Álbum de la Canción 1</td>
+                                <td>3:45</td>
+                            </tr>
+                            <!-- Aquí puedes agregar las 19 filas restantes de la tabla -->
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+
+
+
                 <!--
                 <div class="row">
                     
