@@ -24,7 +24,7 @@
     <body>
 
         <?php
-            //require("../comun/cabecera.php");
+            require("../comun/cabecera.php");
         ?>
 
         <div class="main-container">
@@ -241,9 +241,16 @@
             <div class="right-section">
                 <br><br>
                 <div class="playlist-info">
-                    <img src="../../../public/assets/img/img.jpg" alt="Título de la Playlist">
-                    <h2>Título de la Playlist</h2>
-                    <p>Descripción de la Playlist</p>
+
+                    <div class="playlist-info-left">
+                        <img src="../../../public/assets/img/img.jpg" alt="Título de la Playlist">
+                    </div>
+                    <div class="playlist-info-right">
+                        <h2>Título de la Playlist</h2>
+                        <p> Descripción de la Playlist </p>
+                        <p> 32 canciones </p>
+                        <p> Duración total </p>
+                    </div>
                 </div>
                 <br><br>
                 <div class="playlist-contenido">

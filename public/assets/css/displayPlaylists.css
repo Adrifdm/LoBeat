@@ -37,17 +37,32 @@ body {
     overflow-y: auto; /* agregar barra de desplazamiento vertical cuando se necesita */
 }
 
-.playlist-info {
+.playlist-info {    
     background-color: #ffcc00;
-
+    padding: 10px;
+    height: 250px;
+    overflow: hidden;
 }
 
-.playlist-info img{
+.playlist-info-left{
+    background-color: #e02424;
+    width: 300px;
+    float: left;
+}
+
+
+.playlist-info-left img {
     width: 250px;
     height: auto;
 }
 
+.playlist-info-right{
+    background-color: rgb(126, 226, 67);
+    margin-left: 310px;
+}
+
 .playlist-contenido {
     background-color: aqua;
+    overflow: hidden;
     
 }
