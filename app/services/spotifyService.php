@@ -107,4 +107,47 @@ class SpotifyService {
         return $datosUsuario['id'];
     }
 
+    public function obtenerCancionesPlaylist($idPlayList, $idUsuario){
+
+        $usuario = $this->usuarioController->obtenerUsuarioPorId($idUsuario);
+
+        // Obtener un token de acceso a la API de Spotify
+        $access_token = $usuario->getSpotify_access_token();
+
+        // ID de la playlist de la que quieres obtener las canciones
+        $playlist_id = $idPlayList;
+
+        // Hacer una solicitud GET a la API de Spotify para obtener la información de la playlist
+        $url = "https://api.spotify.com/v1/playlists/$playlist_id/tracks";
+        $options = array(
+        'http' => array(
+            'header'  => "Authorization: Bearer $access_token",
+            'method'  => 'GET',
+        ),
+        );
+        $context  = stream_context_create($options);
+        $response = file_get_contents($url, false, $context);
+
+    // Decodificar la respuesta de la API y extraer las canciones
+        $data = json_decode($response, true);
+        $canciones = array();
+        foreach ($data['items'] as $item) {
+            $duracion_seg = $item['track']['duration_ms'];
+            $minutos = floor($duracion_seg / 60000);
+            $segundos = floor(($duracion_seg % 60000) / 1000);
+
+            $cancion = array(
+                'titulo' => $item['track']['name'],
+                'artista' => $item['track']['artists'][0]['name'],
+                'album' => $item['track']['album']['name'],
+                'duracion' => sprintf('%02d:%02d', $minutos, $segundos),
+            );
+            $canciones[] = $cancion;
+        }
+
+        // Imprimir las canciones almacenadas en el array
+        return $canciones;
+
+    }
+
 }

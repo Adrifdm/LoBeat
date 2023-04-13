@@ -52,4 +52,17 @@ class SpotifyController {
         }
     }
 
+    public function obtenerCancionesPlaylist($idPlayList, $idUsuario) {
+        try {
+            // llamar al método de buscar playlist por campo del servicio
+            $canciones = $this->spotifyService->obtenerCancionesPlaylist($idPlayList, $idUsuario);
+            // devolver la respuesta en formato JSON
+            //echo json_encode($usuarioEncontrado);
+            return $canciones;
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
 }
