@@ -1,4 +1,3 @@
-<?php
 require '../../../vendor/autoload.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -121,13 +120,11 @@ $user_data_array['product'] = $user_data->product;
 $user_data_array['type'] = $user_data->type;
 
 /*  uri : string
-   The Spotify URI for the user.
+The Spotify URI for the user.
 */
 $user_data_array['uri'] = $user_data->uri;
 
 //--------------------------------------------------------------------------------------------------------------------
 
 // Devolvemos el array con toda la información
-return $user_data_array;
-
-?>
+return $user_data_array['id']; //TODO: aqui devolver todo el array, y ya desde fuera pillamos lo que nos convenga

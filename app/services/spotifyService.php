@@ -3,12 +3,15 @@
 require_once '../../../app/controllers/usuarioController.php';
 
 class SpotifyService {
+    // Atributos ---------------------------------------
     private $usuarioController;
 
+    // Constructor -------------------------------------
     public function __construct() {
         $this->usuarioController = new UsuarioController();
     }
 
+    // Funciones Core ----------------------------------
     public function autenticarUsuario() {
 
         $session = new SpotifyWebAPI\Session(
@@ -102,12 +105,96 @@ class SpotifyService {
 
     }
 
-    public function obtenerSpotifyID() {
-        $datosUsuario = require('../../../app/spotifyAPI/llamadas/datosUsuario.php');
-        return $datosUsuario['id'];
+    // Llamadas -----------------------------------------
+
+    // Funciones que realizan llamadas a la API para obtener información sobre USUARIOS
+
+    public function obtenerUsuarioActual() {
+        require '../../../vendor/autoload.php';
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }  
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $collection = (new MongoDB\Client)->LoBeat->usuarios;
+        $result = $collection->findOne([
+            '_id' => new MongoDB\BSON\ObjectID($_SESSION['logged_user_id'])
+        ]);
+        // Fetch the saved access token from somewhere. A session for example.
+        $api->setAccessToken($result['spotify_access_token']);
+
+        // Utilizamos el endpoint "Get Current User's Profile" o "me()" para solicitar información sobre el usuario actual
+        $user_data = $api->me();
+
+        return $user_data;
     }
 
-    public function obtenerCancionesPlaylist($idPlayList, $idUsuario){
+    public function obtenerUsuarioPorID($userSpotifyID) {
+        //TODO: igual que la de arriba pero la llamada a la api no es sobre el current user sino sobre uno cualquiera (según si spotifyID)
+    }
+
+    // Funciones que realizan llamadas a la API para obtener información sobre PLAYLISTS
+
+    public function obtenerPlaylistsUsuarioActual() {
+        require '../../../vendor/autoload.php';
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }  
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $collection = (new MongoDB\Client)->LoBeat->usuarios;
+        $result = $collection->findOne([
+            '_id' => new MongoDB\BSON\ObjectID($_SESSION['logged_user_id'])
+        ]);
+        // Fetch the saved access token from somewhere. A session for example.
+        $api->setAccessToken($result['spotify_access_token']);
+
+        // Utilizamos el endpoint "Get Current User's Playlists" para solicitar información sobre las playlists del usuario actual
+        $playlists_data = $api->getMyPlaylists();
+
+        return $playlists_data;
+    }
+
+    public function obtenerPlaylistsPorUsuario($userSpotifyID) {
+        require '../../../vendor/autoload.php';
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }  
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $collection = (new MongoDB\Client)->LoBeat->usuarios;
+        $result = $collection->findOne([
+            '_id' => new MongoDB\BSON\ObjectID($_SESSION['logged_user_id'])
+        ]);
+        // Fetch the saved access token from somewhere. A session for example.
+        $api->setAccessToken($result['spotify_access_token']);
+
+        // Utilizamos el endpoint "Get Current User's Playlists" para solicitar información sobre las playlists de un determinado usuario
+        $playlists_data = $api->getUserPlaylists($userSpotifyID);
+
+        return $playlists_data;
+    }
+
+    public function obtenerPlaylist($playlistSpotifyID) {
+        require '../../../vendor/autoload.php';
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }  
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $collection = (new MongoDB\Client)->LoBeat->usuarios;
+        $result = $collection->findOne([
+            '_id' => new MongoDB\BSON\ObjectID($_SESSION['logged_user_id'])
+        ]);
+        // Fetch the saved access token from somewhere. A session for example.
+        $api->setAccessToken($result['spotify_access_token']);
+
+        // Utilizamos el endpoint "Get Playlist" para solicitar información sobre una determinada playlist
+        $playlist_data = $api->getPlaylist($playlistSpotifyID);
+
+        return $playlist_data;
+    }
+
+    // Funciones que realizan llamadas a la API para obtener información sobre TRACKS
+
+    /*
+    public function obtenerCancionesPlaylist($idPlayList, $idUsuario) {
 
         $usuario = $this->usuarioController->obtenerUsuarioPorId($idUsuario);
 
@@ -128,7 +215,7 @@ class SpotifyService {
         $context  = stream_context_create($options);
         $response = file_get_contents($url, false, $context);
 
-    // Decodificar la respuesta de la API y extraer las canciones
+        // Decodificar la respuesta de la API y extraer las canciones
         $data = json_decode($response, true);
         $canciones = array();
         foreach ($data['items'] as $item) {
@@ -149,5 +236,6 @@ class SpotifyService {
         return $canciones;
 
     }
+    */
 
 }

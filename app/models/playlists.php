@@ -5,20 +5,18 @@ class Playlist {
   private $playlist_url;
   private $playlist_images;
   private $playlist_duration;
-  private $playlist_owner_name;
-  private $playlist_owner_id;
+  private $playlist_owner;
   private $playlist_tracks;
   private $playlist_spotifyId;
 
-  public function __construct($id, $name, $description, $url, $images, $duration, $owner_name, $owner_id, $tracks) {
+  public function __construct($id, $name, $description, $url, $images, $duration, $owner, $tracks) {
     $this->playlist_spotifyId = $id;
     $this->playlist_name = $name;
     $this->playlist_description = $description;
     $this->playlist_url = $url;
     $this->playlist_images = $images;
     $this->playlist_duration = $duration;
-    $this->playlist_owner_name = $owner_name;
-    $this->playlist_owner_id = $owner_id;
+    $this->playlist_owner = $owner;
     $this->playlist_tracks = $tracks;
   }
 
@@ -70,20 +68,12 @@ class Playlist {
       $this->playlist_duration = $playlist_duration;
   }
 
-  public function getPlaylistOwnerName() {
-      return $this->playlist_owner_name;
+  public function getPlaylistOwner() {
+      return $this->playlist_owner;
   }
 
-  public function setPlaylistOwnerName($playlist_owner_name) {
-      $this->playlist_owner_name = $playlist_owner_name;
-  }
-
-  public function getPlaylistOwnerId() {
-      return $this->playlist_owner_id;
-  }
-
-  public function setPlaylistOwnerId($playlist_owner_id) {
-      $this->playlist_owner_id = $playlist_owner_id;
+  public function setPlaylistOwner($playlist_owner) {
+      $this->playlist_owner = $playlist_owner;
   }
 
   public function getPlaylistTracks() {

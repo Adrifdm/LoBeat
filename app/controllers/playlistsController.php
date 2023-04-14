@@ -1,23 +1,51 @@
 <?php
-// incluir el archivo playlistService.php
 require_once '../../../app/services/playlistsService.php';
+require_once '../../../app/controllers/spotifyController.php';
 
 class PlaylistsController {
     private $playlistService;
+    private $spotifyController;
 
     public function __construct() {
         $this->playlistService = new PlaylistService();
+        $this->spotifyController = new SpotifyController();
     }
 
-    public function crearPlaylist($datos) {
+    public function crearPlaylist($datosPlaylists) {
         try {
-            // llamar al método de crear playlist del servicio
             $resultado = 0;
-            foreach($datos as $playlist){
-                $this->playlistService->crearPlaylist($playlist);
-                $resultado++;
-                //echo json_encode($resultado);            
+            foreach($datosPlaylists->items as $playlist){
+                
+                // Obtenemos el id de la playlist y con él obtenemos todos sus tracks
+                $playlistID = $playlist->id;
+                $datosTracks = $this->spotifyController->obtenerPlaylist($playlistID);
+
+                // Recorremos todos los tracks para ir almacenandolos en un array. También vamos sumando sus duraciones para saber la duración de la playlist
+                $tracksArray = array();
+                $duracionTotal_ms = 0;
+                foreach($datosTracks->tracks->items as $infoTrack) {
+                    $duracionTotal_ms = $duracionTotal_ms + $infoTrack->track->duration_ms;
+                    array_push($tracksArray, $infoTrack);
+                }
+
+                // Construimos la playlist a insertar en nuestra base de datos
+                $playlistBaseDeDatos = array(
+                    'playlist_id' => $playlistID,
+                    'playlist_name' => $playlist->name,
+                    'playlist_description' => $playlist->description,
+                    'playlist_url' => $playlist->external_urls,
+                    'playlist_images' => $playlist->images,
+                    'playlist_duration' => $duracionTotal_ms,
+                    'playlist_owner' => $playlist->owner,
+                    'playlist_tracks' => $tracksArray
+                );
+
+                // La insertamos
+                $this->playlistService->crearPlaylist($playlistBaseDeDatos);
+                $resultado++;            
             }
+
+            //echo json_encode($resultado);
             return $resultado;
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente
@@ -67,7 +95,7 @@ class PlaylistsController {
     public function refrescarPlaylists($idUsuario) {
         try {
             // llamar al método de buscar playlist por campo del servicio
-            $playlists = $this->buscarPlaylistsPorCampo('usuarioId', $idUsuario);
+            $playlists = $this->buscarPlaylistsPorCampo('owner.id', $idUsuario);
             foreach($playlists as $doc){
                 $this->eliminarPlaylist($doc->getId());
             }

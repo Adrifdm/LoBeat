@@ -42,16 +42,48 @@ class SpotifyController {
         }
     }
 
-    public function obtenerSpotifyID() {
+    public function obtenerSpotifyIDUsuarioActual() {
         try {
             // llamar al método de obtención del Spotify ID
-            return $this->spotifyService->obtenerSpotifyID();
+            $usuario = $this->spotifyService->obtenerUsuarioActual();
+            return $usuario->id; 
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
 
+    public function obtenerPlaylistsUsuarioActual() {
+        try {
+            // llamar al método de obtención de playlists
+            return $this->spotifyService->obtenerPlaylistsUsuarioActual();
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function obtenerPlaylistsPorUsuario($userSpotifyID) {
+        try {
+            // llamar al método de obtención de playlists
+            return $this->spotifyService->obtenerPlaylistsPorUsuario($userSpotifyID);
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function obtenerPlaylist($playlistSpotifyID) {
+        try {
+            // llamar al método de obtención de playlist
+            return $this->spotifyService->obtenerPlaylist($playlistSpotifyID);
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    /*
     public function obtenerCancionesPlaylist($idPlayList, $idUsuario) {
         try {
             // llamar al método de buscar playlist por campo del servicio
@@ -64,5 +96,6 @@ class SpotifyController {
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+    */
 
 }

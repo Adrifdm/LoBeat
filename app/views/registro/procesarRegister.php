@@ -73,27 +73,28 @@ else if ($registered === true){
         'genero' => $_SESSION['genero'],
         'descripcion' => 'Unas palabras sobre tí',
         'fotoPerfil' => 'profileAvatar.png',
-        'spotify_ID' => '' ,     // Inicialmente el spotifyID de la base de datos se inicializa vacío
+        'spotify_ID' => '',     // Inicialmente el spotifyID de la base de datos se inicializa vacío (al llamar a obtenerSpotifyID necesitamos $_SESSION["logged_user_id"], y no podemos inicializarlo hasta crear el usuario en la bd)
         'nChats' => 0,
         'nMatches' => 0,
         'nPlaylists' => 0,
         'notifications' => array()
     );
 
-    // Creamos el usuarios con la información anterior
+    // Creamos el usuario con la información anterior
     $resultado = $usuarioController->crearUsuario($datos);
 
-    // Ahora que el usuario ha sido creado, ya tendrá un spotifyID. Tendremos que obtener y actualizar el usuario en la base de datos
+    // Ahora que el usuario ha sido creado, ya podemos guardar su id, que utilizaremos para obtener el spotifyID del usuario. Lo actualizamos en la base de datos
     $_SESSION["logged_user_id"] = $resultado;
     $datos = array(
-        'spotify_ID' => $spotifyController->obtenerSpotifyID()
+        'spotify_ID' => $spotifyController->obtenerSpotifyIDUsuarioActual()
     );
     $usuarioController->actualizarUsuario($resultado, $datos);
 
-    $datosUsuarioPlaylists = require('../../../app/spotifyAPI/llamadas/playlistsUsuario.php');
+    // A continuación vamos a obtener las playlists del usuario actual y las guardaremos en la base de datos
+    $datosPlaylists = $spotifyController->obtenerPlaylistsUsuarioActual();
+    $playlistsController->crearPlaylist($datosPlaylists);
 
-    $playlistsController->crearPlaylist($datosUsuarioPlaylists);
-
+    
     session_destroy();
 
     // Si se ha insertado correctamente, redirigir a la página de login

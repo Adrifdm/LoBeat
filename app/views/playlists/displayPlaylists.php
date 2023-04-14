@@ -1,4 +1,13 @@
 <?php
+
+    require_once '../../controllers/spotifyController.php';
+    require_once '../../controllers/usuarioController.php';
+    require_once '../../controllers/playlistsController.php';
+
+    $playlistController = new PlaylistsController();
+    $usuarioController = new UsuarioController();
+    $spotifyController = new SpotifyController();
+
     session_start();
 
     if($_SESSION["is_logged"] != true){
