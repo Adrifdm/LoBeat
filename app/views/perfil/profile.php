@@ -117,18 +117,6 @@
                          <ribbon2>
                           <span class="heading fuente inside">
                             <?php
-
-                              $numListas = 0;
-                              $id = $usuarioExistente->getSpotifyID();
-                              $listas = $prueba->listarPlaylists();
-
-                              foreach($listas as $x){
-                                if($id == $x->getPlaylistOwnerId()){
-                                  $numListas++;
-                                }
-                              }
-
-                              $usuarioExistente->setnPlaylists($numListas);
                               echo $usuarioExistente->getnPlaylists().' Playlists'; 
                             ?>
                           </span>
