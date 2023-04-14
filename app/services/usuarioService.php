@@ -184,7 +184,7 @@ class UsuarioService {
         $doc['nMatches'], 
         $doc['nPlaylists'], 
         $doc['nChats'],
-        $doc['notifications']->__toString(),
+        $doc['notifications'],
         
       );
       $usuario->setId($doc['_id']->__toString());   //mirar si lo del _id aqui funciona
