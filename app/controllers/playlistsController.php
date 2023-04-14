@@ -5,10 +5,12 @@ require_once '../../../app/controllers/spotifyController.php';
 class PlaylistsController {
     private $playlistService;
     private $spotifyController;
+    private $usuarioController;
 
     public function __construct() {
         $this->playlistService = new PlaylistService();
         $this->spotifyController = new SpotifyController();
+        $this->usuarioController = new UsuarioController();
     }
 
     public function crearPlaylist($datosPlaylists) {
@@ -100,6 +102,11 @@ class PlaylistsController {
                 $this->eliminarPlaylist($doc->getId());
             }
             $datosPlaylistsRefrescadas = $this->playlistService->refrescarPlaylists($idUsuario);
+            $datos = array(
+                'nPlaylists' => $datosPlaylistsRefrescadas->total
+            );
+            $this->usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $datos);
+
             $this->crearPlaylist($datosPlaylistsRefrescadas);
             // devolver la respuesta en formato JSON
             //echo json_encode($usuarioEncontrado);

@@ -82,11 +82,9 @@
                     <a href="#">
                       <img src=<?php 
                         if($usuarioExistente->getFotoPerfil() != null){
-                          
                           echo "../../../public/assets/img/profilePhotos/".$usuarioExistente->getFotoPerfil();
                         }
                         else{
-                         
                           echo "../../../public/assets/img/profilePhotos/profileAvatar.png";
                         }
                         ?> class="rounded-circle">
@@ -104,7 +102,6 @@
                 <div class="col"> 
                   <!-- <div class="col"> -->
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5 contt">
-                      
 
                         <div class="rib">
                          <ribbon>
@@ -115,8 +112,6 @@
                           </span>
                          </ribbon>
                         </div>
-
-
 
                         <div class="rib2">
                          <ribbon2>
@@ -134,7 +129,6 @@
                               }
 
                               $usuarioExistente->setnPlaylists($numListas);
-
                               echo $usuarioExistente->getnPlaylists().' Playlists'; 
                             ?>
                           </span>

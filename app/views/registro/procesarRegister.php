@@ -92,6 +92,10 @@ else if ($registered === true){
 
     // A continuación vamos a obtener las playlists del usuario actual y las guardaremos en la base de datos
     $datosPlaylists = $spotifyController->obtenerPlaylistsUsuarioActual();
+    $datos = array(
+        'nPlaylists' => $datosPlaylists->total
+    );
+    $usuarioController->actualizarUsuario($resultado, $datos);
     $playlistsController->crearPlaylist($datosPlaylists);
 
     
