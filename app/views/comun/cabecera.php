@@ -116,7 +116,7 @@ $('#header').prepend('<div id="menu-icon"><span class="first"></span><span class
   //La función pasa el id con ajax para que desde readNotification.php se modifique el campo "leido" y se deje de ver la notificación
   function deleteNotification(id){
     $.ajax({
-      url: '../principal/readNotification.php',
+      url: '../comun/readNotification.php',
       type: 'POST',
       data: {id: id},
       success: function(response) {
