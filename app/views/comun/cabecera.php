@@ -55,23 +55,26 @@
           <ul>
             <?php
 
+            //Se muestra cada notificación con los datos de la base de datos y solo mostrando las que no están leídas ya
             foreach($usuarioExistente->getNotifications() as $notification){
-              echo "<li>
-                <div>
-                  <div class='notification'>
-                    <div class='icon-container'>
-                        <img src= '../../../public/assets/img/".$notification["icono"]."' alt='Icono de notificación'>
-                    </div>
-                    <div class='info-container'>
-                        <p class='sender'>".$notification['nombre']."</p>
-                        <p class='type'>".$notification["descripcion"]."</p>
-                    </div>
-                    <div class='button-container'>
-                        <button onclick='deleteNotification()' class='view-button'>Marcar como vista</button>
+              if (!$notification["leido"]){
+                echo "<li>
+                  <div>
+                    <div class='notification'>
+                      <div class='icon-container'>
+                          <img src= '../../../public/assets/img/".$notification["icono"]."' alt='Icono de notificación'>
+                      </div>
+                      <div class='info-container'>
+                          <p class='sender'>".$notification['nombre']."</p>
+                          <p class='type'>".$notification["descripcion"]."</p>
+                      </div>
+                      <div class='button-container'>
+                          <button onclick='deleteNotification(".$notification["id"].")' class='view-button'>Marcar como vista</button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </li>";
+                </li>";
+              }
             }
             ?>
           </ul>        
@@ -110,8 +113,16 @@ $('#header').prepend('<div id="menu-icon"><span class="first"></span><span class
     $(this).toggleClass("active");
 });
 
-  function deleteNotification(){
-
+  //La función pasa el id con ajax para que desde readNotification.php se modifique el campo "leido" y se deje de ver la notificación
+  function deleteNotification(id){
+    $.ajax({
+      url: '../principal/readNotification.php',
+      type: 'POST',
+      data: {id: id},
+      success: function(response) {
+        location.reload();
+      }
+    });
   }
 
   </script>

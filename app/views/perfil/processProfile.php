@@ -73,9 +73,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $finalNotifications = [];
         $newNotification = array(
+            'id' => rand(),
             'nombre' => 'Manolo',
             'icono' => 'logoLB.png',
-            'descripcion' => 'Está cerca de tí'
+            'descripcion' => 'Está cerca de tí',
+            'leido' => false
         );
     
         foreach($usuarioExistente->getNotifications() as $not){
