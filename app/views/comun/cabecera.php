@@ -46,8 +46,8 @@
     <li class="dropdown">
         <a href=""><i class="bi bi-list"></i></a>
           <ul>
-            <li><a href="../../views/playlists/displayPlaylists.php">Playlists</a></li>
-          </ul>        
+            <li><a href="../../views/playlists/procesarDisplayPlaylists.php">Playlists</a></li>
+          </ul>
       </li>
       <li class="dropdown">
         <a href=""><i class="bi bi-bell-fill"></i></a>

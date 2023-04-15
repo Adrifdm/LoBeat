@@ -1,9 +1,14 @@
 <?php
+    require_once '../../controllers/playlistsController.php';
+
     session_start();
 
     if($_SESSION["is_logged"] != true){
         header('Location: ../perfil/logout.php'); 
         exit;
+    }
+    else {
+        $playlists = $_SESSION['playlistsUsuarioActual'];
     }
 ?>
 
@@ -17,7 +22,6 @@
 
         <link rel="stylesheet" href="../../../public/assets/css/displayPlaylists.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">-->
         <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="../../../public/assets/css/notifications.css">
@@ -44,78 +48,14 @@
                 
                 <div class="lista-playlists">
                     <ul>
+                        <?php foreach ($playlists as $playlist): ?>
                         <li>
                             <a class = "playlist_enlaces" href="#">
-                                <h4 class = "active"> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 1</h4>
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i><?php echo $playlist->getPlaylistName() ?></h4>
                             </a>
                         </li>
                         <br>
-                        <li>
-                            <a class = "playlist_enlaces" href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 2222222222222222222222222222222222222</h4>
-                            </a>
-                        </li>
-                        <br>
-                        <li>
-                            <a class = "playlist_enlaces"href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 3 34534 thrt fhrth rthrth rthrt rhr rhr</h4>
-                            </a>
-                        </li>
-                        <br>
-                        <li>
-                            <a class = "playlist_enlaces" href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 1</h4>
-                            </a>
-                        </li>
-                        <br>
-                        <li>
-                            <a class = "playlist_enlaces" href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 2222222222222222222222222222222222222</h4>
-                            </a>
-                        </li>
-                        <br>
-                        <li>
-                            <a class = "playlist_enlaces"href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 3 34534 thrt fhrth rthrth rthrt rhr rhr</h4>
-                            </a>
-                        </li>
-                        <br>
-                        <li>
-                            <a class = "playlist_enlaces" href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 1</h4>
-                            </a>
-                        </li>
-                        <br>
-                        <li>
-                            <a class = "playlist_enlaces" href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 2222222222222222222222222222222222222</h4>
-                            </a>
-                        </li>
-                        <br>
-                        <li>
-                            <a class = "playlist_enlaces"href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 3 34534 thrt fhrth rthrth rthrt rhr rhr</h4>
-                            </a>
-                        </li>
-                        <br>
-                        <li>
-                            <a class = "playlist_enlaces" href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 1</h4>
-                            </a>
-                        </li>
-                        <br>
-                        <li>
-                            <a class = "playlist_enlaces" href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 2222222222222222222222222222222222222</h4>
-                            </a>
-                        </li>
-                        <br>
-                        <li>
-                            <a class = "playlist_enlaces"href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 3 34534 thrt fhrth rthrth rthrt rhr rhr</h4>
-                            </a>
-                        </li>
-                        <br>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
 
