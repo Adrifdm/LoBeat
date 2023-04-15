@@ -11,13 +11,13 @@
 }
 
 body {
-    background-color: #00ff48;
+    background-color: #131312;
     font-family: 'Poppins', sans-serif;
     overflow: hidden;       /*ESTO ELIMINA EL PROBLEMA DE LA BARRA QUE APARECE POR LA CARA AL USAR LA CABECERA*/
 }
 
 .left-section {
-    background-color: #e41111;
+    background-color: #263254;
     width: 280px;
     float: left;
     height: 100vh;
@@ -34,7 +34,7 @@ body {
 }
 
 .right-section {
-    background-color: #1778d8;
+    background-color: #172244;
     height: 100vh;
     overflow-y: auto;
     padding-left: 24px;
@@ -42,7 +42,7 @@ body {
 }
 
 .lista-playlists {
-    background-color: rgb(254, 222, 255);
+    background-color: #263254;
     margin: 20px 0px 0px 0px;
     padding: 10px;
     white-space: nowrap; /* para que el texto no se divida en varias líneas */
@@ -55,14 +55,14 @@ body {
 
 .lista-playlists .playlist_enlaces h4{
     font-size: 15px;
-    color:#8675AB;
+    color:#d0baff;
     font-weight: 500;
     transition: .3s linear;
     align-items: center;
 }
 
 .lista-playlists .playlist_enlaces h4:hover{
-    color:#FFF;
+    color:#ffffff;
 }
 
 .lista-playlists .playlist_enlaces span{
@@ -76,7 +76,7 @@ body {
     display: none;
 }
 .lista-playlists .playlist_enlaces .active{
-    color: #36e2ec;
+    color: #21f4ff;
 }
 .lista-playlists .playlist_enlaces .active span{
     display: none;
@@ -87,14 +87,12 @@ body {
 }
 
 .playlist-info {    
-    background-color: #ffcc00;
     padding: 10px;
     height: 250px;
     overflow: hidden;
 }
 
 .playlist-info-left{
-    background-color: #e02424;
     width: 230px;
     height: 230px;
     float: left;
@@ -106,14 +104,12 @@ body {
 }
 
 .playlist-info-right{
-    background-color: rgb(126, 226, 67);
     margin-left: 240px;
     height: 230px;
     overflow: hidden;
 }
 
 .titulo {
-    background-color: #366ba1;
     height: 120px;
     padding-left: 20px;
     padding-top: 30px;
@@ -127,8 +123,7 @@ body {
 }
 
 .descripcion {
-    background-color: aqua;
-    color: #8675AB;
+    color: #ffffff;
     height: 70px;
     padding-left: 20px;
     padding-top: 20px;
@@ -136,8 +131,7 @@ body {
 }
 
 .info-adicional {
-    background-color: aquamarine;
-    color: #4C4262;
+    color: #ffffff;
     height: 40px;
     padding-left: 20px;
     padding-top: 15px;
@@ -149,7 +143,6 @@ body {
 }
 
 .boton-play {
-    background-color: #e02492;
     width: 70px;
     float: left;
     height: 65px;
@@ -159,11 +152,10 @@ body {
 
 .boton-play i{
     font-size: 45px;
-    color: #1ce35e;
+    color: #e31c8d;
 }
 
 .boton-matchlist {
-    background-color: #590879;
     height: 65px;
     padding-left: 10px;
     overflow: hidden;
@@ -243,7 +235,6 @@ input:checked + .slider:before {
 /* Estilo general de la tabla */
 
 .playlist-contenido {
-    background-color: aqua;
     overflow: hidden;
     width: 100%;
     color:white;
@@ -252,13 +243,11 @@ input:checked + .slider:before {
 /* Estilos sobre el encabezado de la tabla */
 
 .tabla-encabezado {
-    background-color: #590879;
     font-size: 25px;
     overflow: hidden;
 }
 
 .tabla-encabezado .tabla-num{
-    background-color: rgb(94, 221, 94);
     float: left;
     height: 40px;
     width: 70px;
@@ -267,7 +256,6 @@ input:checked + .slider:before {
 }
 
 .tabla-encabezado .tabla-titulo{
-    background-color: green;
     float: left;
     height: 40px;
     width: 600px;
@@ -276,7 +264,6 @@ input:checked + .slider:before {
 }
 
 .tabla-encabezado .tabla-album{
-    background-color: rgb(125, 128, 40);
     float: left;
     height: 40px;
     width: 400px;
@@ -285,7 +272,6 @@ input:checked + .slider:before {
 }
 
 .tabla-encabezado .tabla-duracion{
-    background-color: rgb(222, 6, 175);
     height: 40px;
     padding: 0px 0px 0px 0px;
     overflow: hidden;
@@ -295,14 +281,12 @@ input:checked + .slider:before {
 /* Estilos sobre cada fila o canción de la tabla */
 
 .tabla-filas {
-    background-color: #8675AB;
     font-size: 18px;
     padding: 15px 0px 0px 0px;
     overflow: hidden;
 }
 
 .num-fila{
-    background-color: rgb(22, 243, 22);
     float: left;
     height: 50px;
     width: 70px;
@@ -312,7 +296,6 @@ input:checked + .slider:before {
 }
 
 .imagen-fila{
-    background-color: rgb(209, 102, 25);
     float: left;
     height: 50px;
     width: 70px;
@@ -326,7 +309,6 @@ input:checked + .slider:before {
 }
 
 .titulo-fila{
-    background-color: green;
     float: left;
     height: 50px;
     width: 530px;
@@ -336,12 +318,11 @@ input:checked + .slider:before {
 
 .titulo-fila .subtitulo{
     font-size: 11px;
-    color: rgb(219, 57, 57);
+    color: #ffbae1;
     overflow: hidden;
 }
 
 .album-fila{
-    background-color: rgb(125, 128, 40);
     float: left;
     height: 50px;
     width: 400px;
@@ -350,7 +331,6 @@ input:checked + .slider:before {
 }
 
 .duracion-fila{
-    background-color: rgb(222, 6, 175);
     height: 50px;
     padding: 10px 0px 0px 20px;
     overflow: hidden;
