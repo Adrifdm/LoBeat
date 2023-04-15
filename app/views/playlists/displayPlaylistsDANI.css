@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+
+    /*Esto es para que al utilizar padding en cualquier div, el tamaÃ±o no cambie*/
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: #131312 ;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;       /*ESTO ELIMINA EL PROBLEMA DE LA BARRA QUE APARECE POR LA CARA AL USAR LA CABECERA*/
+}
+
+.left-section {
+    background-color: #111727;
+    width: 500px;
+    float: left;
+    height: 100vh;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.left-section h1{
+    font-size: 40px;
+    margin: 20px 0px 35px 20px;
+    font-weight:500;
+    
+}
+
+.right-section {
+    background-color: #090f1f;
+    height: 100vh;
+    overflow-y: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.lista-playlists {
+    margin: 40px 0px 0px 15px;
+    padding: 10px;
+    white-space: nowrap; /* para que el texto no se divida en varias lÃ­neas */
+    overflow: hidden; /* para ocultar el contenido que sobrepasa el lÃ­mite */
+
+    max-height: 3000px;
+    height: calc(72vh - 25px);
+    overflow-y: auto; /* agregar barra de desplazamiento vertical cuando se necesita */
+}
+.lista-playlists .playlist_enlaces h4{
+    font-size: 25px;
+    color:#8675AB;
+    font-weight: 400;
+    transition: .3s linear;
+    align-items: center;
+}
+.lista-playlists .playlist_enlaces h4:hover{
+    color:#FFF;
+    
+}
+.lista-playlists .playlist_enlaces span{
+    position: relative;
+    margin-right: 35px;
+    
+}
+
+.lista-playlists .playlist_enlaces h4:hover span::before{
+    border: 2px solid #fff;
+}
+.lista-playlists .playlist_enlaces h4 .bi{
+    display: none;
+}
+.lista-playlists .playlist_enlaces .active{
+    color: #36e2ec;
+}
+.lista-playlists .playlist_enlaces .active span{
+    display: none;
+}
+.lista-playlists .playlist_enlaces .active .bi{
+    display:-webkit-inline-box;
+    margin-right: 20px;
+}
+
+
+
+.playlist-info {    
+    
+    padding: 10px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.playlist-info-left{
+   
+    width: 320px;
+    height: 320px;
+    float: left;
+}
+
+.playlist-info-left img {
+    width: 320px;
+    height: auto;
+}
+
+.playlist-info-right{
+    
+    margin-left: 240px;
+    height: 320px;
+    overflow: hidden;
+}
+
+.titulo {
+    
+    height: 140px;
+    padding-left: 20px;
+    padding-top: 45px;
+    overflow: hidden;
+    
+}
+.titulo h1{
+    color: white;
+    font-weight: bold;
+    font-size: 60px
+
+}
+.descripcion {
+   
+    height: 120px;
+    padding-left: 20px;
+    padding-top: 15px;
+    overflow: hidden;
+    color: #8675AB
+}
+
+.info-adicional {
+    color: #4C4262;
+    height: 60px;
+    padding-left: 20px;
+    padding-top: 20px;
+    overflow: hidden;  
+}
+.info-adicional p .bi{
+    margin-left: 20px;
+}
+.boton-play {
+    float: left;
+    height: 140px;
+    width:140px;
+    padding-left: 10px;
+    overflow: hidden; 
+    margin-bottom: 50px;
+}
+
+.boton-play img{
+    width: 50px;
+    height: auto;
+    float: left;
+}
+
+.boton-play i{
+    font-size: 100px;
+    color: #36e2ec;
+}
+
+.boton-matchlist {
+   
+   height: 140px;
+    padding-left: 10px;
+    overflow: hidden; 
+    margin-bottom: 50px;
+    display:flex;
+    align-items: center;
+}
+.boton-matchlist h5 {
+    font-size: 26px;
+    margin-left:50px;
+    margin-right:50px;
+    color:white;
+}
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 100px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 90px;
+    width: 90px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #36e2ec;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #36e2ec;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(200px);
+    -ms-transform: translateX(200px);
+    transform: translateX(200px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 50px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+.boton-matchlist img{
+    width: 50px;
+    height: auto;
+    float: left;
+}
+
+.boton-matchlist p{
+    padding-top: 15px;
+    padding-left: 70px;
+}
+
+.playlist-contenido {
+   
+    width: 100%;
+    height: 320px;
+    color:white;
+    
+}
+.playlist-contenido li {
+    list-style-type: none;
+    padding: 5px 0px 5px 20px;
+    display: flex;
+    align-items: center;
+    
+}
+.playlist-contenido li span {
+    font-size: 30px;
+    font-weight: 600;
+    color: #4c5262
+    
+}
+.playlist-contenido li img {
+    width: 100px;
+    height: 100px;
+    margin-left: 50px;
+    
+}
+.playlist-contenido li .oculto {
+    width: 100px;
+    height: 100px;
+    margin-left: 50px;
+    display:hidden;
+}
+.playlist-contenido li h5 {
+    font-size: 26px;
+    margin-left:150px;
+    
+}
+.playlist-contenido li .album_duracion {
+    font-size: 26px;
+    margin-left: 400px;
+    
+}
+.playlist-contenido li h5 .subtitule {
+    font-size: 22px;
+    color: #4c5262
+    
+}
+.playlist-contenido li h5 .subtitule_oculto {
+    font-size: 22px;
+    color: transparent;
+    display: hidden;
+}
+

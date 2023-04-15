@@ -18,6 +18,7 @@
     <title>Profile</title>
     <link rel="stylesheet" href="../../../public/assets/css/bootstrap-argon.css">
     <link rel="stylesheet" href="../../../public/assets/css/profile.css">
+    <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/dee2748eb0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/vendor/select2/dist/css/select2.min.css">

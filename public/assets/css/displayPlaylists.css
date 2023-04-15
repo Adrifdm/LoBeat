@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -11,7 +12,7 @@
 
 body {
     background-color: #00ff48;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     overflow: hidden;       /*ESTO ELIMINA EL PROBLEMA DE LA BARRA QUE APARECE POR LA CARA AL USAR LA CABECERA*/
 }
 
@@ -20,9 +21,16 @@ body {
     width: 280px;
     float: left;
     height: 100vh;
-
+    color: white;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.left-section h1{
+    font-size: 40px;
+    margin: 0px 0px 0px 0px; 
+    font-weight:500;
+    
 }
 
 .right-section {
@@ -34,14 +42,48 @@ body {
 }
 
 .lista-playlists {
-    background-color: rgb(215, 22, 218);
+    background-color: rgb(254, 222, 255);
+    margin: 20px 0px 0px 0px;
     padding: 10px;
     white-space: nowrap; /* para que el texto no se divida en varias líneas */
     overflow: hidden; /* para ocultar el contenido que sobrepasa el límite */
 
     max-height: 3000px;
-    height: calc(72vh - 25px);
+    height: calc(65vh - 25px);
     overflow-y: auto; /* agregar barra de desplazamiento vertical cuando se necesita */
+}
+
+.lista-playlists .playlist_enlaces h4{
+    font-size: 15px;
+    color:#8675AB;
+    font-weight: 500;
+    transition: .3s linear;
+    align-items: center;
+}
+
+.lista-playlists .playlist_enlaces h4:hover{
+    color:#FFF;
+}
+
+.lista-playlists .playlist_enlaces span{
+    position: relative;
+}
+
+.lista-playlists .playlist_enlaces h4:hover span::before{
+    border: 2px solid #fff;
+}
+.lista-playlists .playlist_enlaces h4 .bi{
+    display: none;
+}
+.lista-playlists .playlist_enlaces .active{
+    color: #36e2ec;
+}
+.lista-playlists .playlist_enlaces .active span{
+    display: none;
+}
+.lista-playlists .playlist_enlaces .active .bi{
+    display:-webkit-inline-box;
+    margin-right: 15px;
 }
 
 .playlist-info {    
@@ -74,66 +116,242 @@ body {
     background-color: #366ba1;
     height: 120px;
     padding-left: 20px;
-    padding-top: 45px;
+    padding-top: 30px;
     overflow: hidden;
+}
+
+.titulo h1{
+    color: white;
+    font-weight: bold;
+    font-size: 50px
 }
 
 .descripcion {
     background-color: aqua;
+    color: #8675AB;
     height: 70px;
     padding-left: 20px;
-    padding-top: 15px;
+    padding-top: 20px;
     overflow: hidden;
 }
 
 .info-adicional {
     background-color: aquamarine;
+    color: #4C4262;
     height: 40px;
     padding-left: 20px;
-    padding-top: 20px;
+    padding-top: 15px;
     overflow: hidden;  
+}
+
+.info-adicional p .bi{
+    margin-left: 20px;
 }
 
 .boton-play {
     background-color: #e02492;
-    width: 180px;
+    width: 70px;
     float: left;
-    height: 50px;
+    height: 65px;
     padding-left: 10px;
     overflow: hidden; 
 }
 
-.boton-play img{
-    width: 50px;
-    height: auto;
-    float: left;
-}
-
-.boton-play p{
-    padding-top: 15px;
-    padding-left: 70px;
+.boton-play i{
+    font-size: 45px;
+    color: #1ce35e;
 }
 
 .boton-matchlist {
     background-color: #590879;
-    height: 50px;
+    height: 65px;
     padding-left: 10px;
-    overflow: hidden; 
+    overflow: hidden;
+    display:flex;
+    align-items: center;
 }
 
-.boton-matchlist img{
-    width: 50px;
-    height: auto;
-    float: left;
+.boton-matchlist h5 {
+    font-size: 20px;
+    margin-left:0px;
+    margin-right:20px;
+    color:white;
 }
 
-.boton-matchlist p{
-    padding-top: 15px;
-    padding-left: 70px;
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
 }
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position:absolute;
+    cursor: pointer;
+    top: 0%;
+    left: 0%;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    width: 25px;
+    height: 25px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #36e2ec;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #36e2ec;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 50px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Estilo general de la tabla */
 
 .playlist-contenido {
     background-color: aqua;
     overflow: hidden;
-    
+    width: 100%;
+    color:white;
+}
+
+/* Estilos sobre el encabezado de la tabla */
+
+.tabla-encabezado {
+    background-color: #590879;
+    font-size: 25px;
+    overflow: hidden;
+}
+
+.tabla-encabezado .tabla-num{
+    background-color: rgb(94, 221, 94);
+    float: left;
+    height: 40px;
+    width: 70px;
+    padding: 0px 0px 0px 25px;
+    overflow: hidden;
+}
+
+.tabla-encabezado .tabla-titulo{
+    background-color: green;
+    float: left;
+    height: 40px;
+    width: 600px;
+    padding: 0px 0px 0px 10px;
+    overflow: hidden;
+}
+
+.tabla-encabezado .tabla-album{
+    background-color: rgb(125, 128, 40);
+    float: left;
+    height: 40px;
+    width: 400px;
+    padding: 0px 0px 0px 10px;
+    overflow: hidden;
+}
+
+.tabla-encabezado .tabla-duracion{
+    background-color: rgb(222, 6, 175);
+    height: 40px;
+    padding: 0px 0px 0px 0px;
+    overflow: hidden;
+}
+
+
+/* Estilos sobre cada fila o canción de la tabla */
+
+.tabla-filas {
+    background-color: #8675AB;
+    font-size: 18px;
+    padding: 15px 0px 0px 0px;
+    overflow: hidden;
+}
+
+.num-fila{
+    background-color: rgb(22, 243, 22);
+    float: left;
+    height: 50px;
+    width: 70px;
+    padding: 10px 0px 0px 25px;
+    font-size: 25px;
+    overflow: hidden;
+}
+
+.imagen-fila{
+    background-color: rgb(209, 102, 25);
+    float: left;
+    height: 50px;
+    width: 70px;
+    padding: 0px 0px 0px 10px;
+    overflow: hidden;
+}
+
+.imagen-fila img{
+    width: 50px;
+    height: auto;
+}
+
+.titulo-fila{
+    background-color: green;
+    float: left;
+    height: 50px;
+    width: 530px;
+    padding: 2px 0px 0px 10px;
+    overflow: hidden;
+}
+
+.titulo-fila .subtitulo{
+    font-size: 11px;
+    color: rgb(219, 57, 57);
+    overflow: hidden;
+}
+
+.album-fila{
+    background-color: rgb(125, 128, 40);
+    float: left;
+    height: 50px;
+    width: 400px;
+    padding: 10px 0px 0px 10px;
+    overflow: hidden;
+}
+
+.duracion-fila{
+    background-color: rgb(222, 6, 175);
+    height: 50px;
+    padding: 10px 0px 0px 20px;
+    overflow: hidden;
 }

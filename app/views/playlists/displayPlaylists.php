@@ -1,13 +1,4 @@
 <?php
-
-    require_once '../../controllers/spotifyController.php';
-    require_once '../../controllers/usuarioController.php';
-    require_once '../../controllers/playlistsController.php';
-
-    $playlistController = new PlaylistsController();
-    $usuarioController = new UsuarioController();
-    $spotifyController = new SpotifyController();
-
     session_start();
 
     if($_SESSION["is_logged"] != true){
@@ -25,7 +16,15 @@
         <title> Display playlists </title>
 
         <link rel="stylesheet" href="../../../public/assets/css/displayPlaylists.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">-->
+        <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../../../public/assets/css/notifications.css">
 
+        <script src="https://kit.fontawesome.com/e2e2d067dc.js" crossorigin="anonymous"></script>
+
+        
     </head>
 
     <body>
@@ -40,27 +39,83 @@
             <div class="left-section">
 
                 <br>
-                <p> Mis playlists <p>
-                <br><hr><br>
+                <h1>Mis playlists</h1>
+                <hr>
+                
                 <div class="lista-playlists">
                     <ul>
                         <li>
-                            <a href="#">
-                                <span> PLAYLIST 1 </span>
+                            <a class = "playlist_enlaces" href="#">
+                                <h4 class = "active"> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 1</h4>
                             </a>
                         </li>
                         <br>
                         <li>
-                            <a href="#">
-                            <span> PLAYLIST 2222222222222222222222222222222222222 </span>
+                            <a class = "playlist_enlaces" href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 2222222222222222222222222222222222222</h4>
                             </a>
                         </li>
                         <br>
                         <li>
-                            <a href="#">
-                            <span> PLAYLIST 3 34534 thrt fhrth rthrth rthrt rhr rhrh </span>
+                            <a class = "playlist_enlaces"href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 3 34534 thrt fhrth rthrth rthrt rhr rhr</h4>
                             </a>
                         </li>
+                        <br>
+                        <li>
+                            <a class = "playlist_enlaces" href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 1</h4>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a class = "playlist_enlaces" href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 2222222222222222222222222222222222222</h4>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a class = "playlist_enlaces"href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 3 34534 thrt fhrth rthrth rthrt rhr rhr</h4>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a class = "playlist_enlaces" href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 1</h4>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a class = "playlist_enlaces" href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 2222222222222222222222222222222222222</h4>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a class = "playlist_enlaces"href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 3 34534 thrt fhrth rthrth rthrt rhr rhr</h4>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a class = "playlist_enlaces" href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 1</h4>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a class = "playlist_enlaces" href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 2222222222222222222222222222222222222</h4>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a class = "playlist_enlaces"href="#">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>PLAYLIST 3 34534 thrt fhrth rthrth rthrt rhr rhr</h4>
+                            </a>
+                        </li>
+                        <br>
                     </ul>
                 </div>
 
@@ -68,12 +123,14 @@
 
             <!-- Sección derecha de la página -->
             <div class="right-section">
+
                 <br>
                 <div class="playlist-info">
 
                     <div class="playlist-info-left">
                         <img src="../../../public/assets/img/img.jpg" alt="Título de la Playlist">
                     </div>
+
                     <div class="playlist-info-right">
                         <div class="titulo">
                             <h1>Título de la Playlist overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden; overflow: hidden;overflow: hidden;overflow: hidden;</h1>
@@ -82,151 +139,232 @@
                             <p> Descripción de la : esto es una dexripcion fwe ewf eg erergerg errge gergerg egrge egrg egrgregeg ert45t egr 45y45yy4dhre erherht erhhe 45y45yy4dhre erherht erhh45y45yy4dhre erherht erhh45y45yy4dhre erherht erhh SE ACABA LA LINEA LINEA LINEA LINEA LINEA AAAA SIGUEE 45y45yy4dhre erherht erhh45y45yy4dhre erherht erhh45y45yy4dhre erherht erhh45y45yy4dhre erherht erhh 4dhre erherht er 4dhre erherht er 4dhre erherht er 4dhre erherht er</p>
                         </div>
                         <div class="info-adicional">
-                            <p> Usuario - 32 canciones, 10 min 2 s  4dhre erherht er4dhre erherht er4dhre erherht er 4dhre erherht er4dhre erherht er4dhre erherht er4dhre erherht er4dhre erherht er4dhre erherht erv</p>
+                            <p> Usuario propietario
+                                <i class="bi bi-heart-fill"></i> 1234 
+                                <i class="bi bi-clock"></i> 1:36
+                            </p>
                         </div>
-                        
-
-                        
                     </div>
+
                 </div>
                 <br>
+
                 <div class="boton-play">
-                    <img src="../../../public/assets/img/img.jpg" alt="PLAY">
-                    <p>Reproducir</p>
+                    <i class="bi bi-play-circle-fill"></i>
                 </div>
+
                 <div class="boton-matchlist">
-                    <img src="../../../public/assets/img/img.jpg" alt="MARCAR MATCHLIST">
-                    <p>MARCAR COMO MATCHLIST</p>
+                    <h5>
+                        Marcar como Matchlist
+                    </h5>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
                 </div>
+
                 <br>
                 <div class="playlist-contenido">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Portada</th>
-                                <th>Título</th>
-                                <th>Artista</th>
-                                <th>Álbum</th>
-                                <th>Duración</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
+                    <!-- Tabla encabezado -->
+                    <div class="tabla-encabezado">
+                        <div class="tabla-num">
+                            <h5>#</h5>
+                        </div>
+                        
+                        <div class="tabla-titulo">
+                            <h5>Título</h5>
+                        </div>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
+                        <div class="tabla-album">
+                            <h5>Álbum</h5>
+                        </div>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
+                        <div class="tabla-duracion">
+                            &nbsp;&nbsp;&nbsp;<i class="bi bi-clock"></i>
+                        </div>
+                    </div>
+                    <hr>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
+                    <!-- Tabla filas -->
+                    <div class="tabla-filas">
+                        <div class="fila">
+                            <div class="num-fila">
+                                <h5>01</h5>
+                            </div>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/img.jpg" alt="Imagen track">
+                            </div>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
+                            <div class="titulo-fila">
+                                <h5>
+                                    Callaita
+                                    <div class="subtitulo">Bad Bunny, Anuel AA</div>
+                                </h5>
+                            </div>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
+                            <div class="album-fila">
+                                <h5 class= "album_duracion">
+                                    Cositas
+                                </h5>
+                            </div>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
+                            <div class="duracion-fila">
+                                <h5 class= "album_duracion">
+                                    3:45
+                                </h5>
+                                
+                            </div>
+                        </div>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
+                        <div class="fila">
+                            <div class="num-fila">
+                                <h5>01</h5>
+                            </div>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="Portada de la Canción 1"></td>
-                                <td>Título de la Canción 1</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/img.jpg" alt="Imagen track">
+                            </div>
 
-                            <tr>
-                                <td>2</td>
-                                <td><img src="ruta_de_la_imagen_de_la_cancion_1.jpg" alt="ULTIMAAA CANCION"></td>
-                                <td>ULTIMAAA CANCION</td>
-                                <td>Artista de la Canción 1</td>
-                                <td>Álbum de la Canción 1</td>
-                                <td>3:45</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <div class="titulo-fila">
+                                <h5>
+                                    Callaita
+                                    <div class="subtitulo">Bad Bunny, Anuel AA</div>
+                                </h5>
+                            </div>
+
+                            <div class="album-fila">
+                                <h5 class= "album_duracion">
+                                    Cositas
+                                </h5>
+                            </div>
+
+                            <div class="duracion-fila">
+                                <h5 class= "album_duracion">
+                                    3:45
+                                </h5>
+                                
+                            </div>
+                        </div>
+
+                        <div class="fila">
+                            <div class="num-fila">
+                                <h5>01</h5>
+                            </div>
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/img.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Callaita
+                                    <div class="subtitulo">Bad Bunny, Anuel AA</div>
+                                </h5>
+                            </div>
+
+                            <div class="album-fila">
+                                <h5 class= "album_duracion">
+                                    Cositas
+                                </h5>
+                            </div>
+
+                            <div class="duracion-fila">
+                                <h5 class= "album_duracion">
+                                    3:45
+                                </h5>
+                                
+                            </div>
+                        </div>
+
+                        <div class="fila">
+                            <div class="num-fila">
+                                <h5>01</h5>
+                            </div>
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/img.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Callaita
+                                    <div class="subtitulo">Bad Bunny, Anuel AA</div>
+                                </h5>
+                            </div>
+
+                            <div class="album-fila">
+                                <h5 class= "album_duracion">
+                                    Cositas
+                                </h5>
+                            </div>
+
+                            <div class="duracion-fila">
+                                <h5 class= "album_duracion">
+                                    3:45
+                                </h5>
+                                
+                            </div>
+                        </div>
+
+                        <div class="fila">
+                            <div class="num-fila">
+                                <h5>01</h5>
+                            </div>
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/img.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    ULTIMAAAAAA
+                                    <div class="subtitulo">Bad Bunny, Anuel AA</div>
+                                </h5>
+                            </div>
+
+                            <div class="album-fila">
+                                <h5 class= "album_duracion">
+                                    Cositas
+                                </h5>
+                            </div>
+
+                            <div class="duracion-fila">
+                                <h5 class= "album_duracion">
+                                    3:45
+                                </h5>
+                                
+                            </div>
+                        </div>
+                    
+                    <br><br>
+
+                    </div>
+                    
                 </div>
-                <br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br>
 
             </div>
         </div>
 
     </body>
+    <script>
+        const links = document.querySelectorAll('.playlist_enlaces');
+        
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+            event.preventDefault(); // para prevenir el comportamiento por defecto del enlace
+            
+            // eliminar la clase "active" de todos los enlaces
+            links.forEach(link => {
+                link.querySelector('h4').classList.remove('active');
+            });
+            
+            // agregar la clase "active" al enlace que se ha hecho clic
+            this.querySelector('h4').classList.add('active');
+            });
+        });
+    </script>
 
 </html>
