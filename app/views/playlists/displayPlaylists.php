@@ -9,6 +9,13 @@
     }
     else {
         $playlists = $_SESSION['playlistsUsuarioActual'];
+
+        // Comprobar si el parámetro "playlist" está presente en la URL
+        if (isset($_GET['playlist'])) {
+            $indicePlaylistSeleccionada = $_GET['playlist'];
+        } else {
+           //no esta
+        }
     }
 ?>
 
@@ -48,10 +55,20 @@
                 
                 <div class="lista-playlists">
                     <ul>
-                        <?php foreach ($playlists as $playlist): ?>
+                        <?php foreach ($playlists as $index => $playlist): ?>
                         <li>
-                            <a class = "playlist_enlaces" href="#">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i><?php echo $playlist->getPlaylistName() ?></h4>
+                            <a class = "playlist_enlaces" href="displayPlaylists.php?playlist=<?php echo $index ?>">
+                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>
+                                    <?php
+                                    $titulo = $playlist->getPlaylistName();
+                                    if ($titulo != null) {
+                                        echo $titulo;
+                                    }
+                                    else {
+                                        echo "SIN TITULO";
+                                    }
+                                    ?>
+                                </h4>
                             </a>
                         </li>
                         <br>
@@ -68,20 +85,49 @@
                 <div class="playlist-info">
 
                     <div class="playlist-info-left">
-                        <img src="../../../public/assets/img/img.jpg" alt="Título de la Playlist">
+                        <img src="<?php echo $playlists[$indicePlaylistSeleccionada]->getPlaylistImages()[0]->url; ?>" alt="<?php echo $playlists[$indicePlaylistSeleccionada]->getPlaylistName(); ?>">
                     </div>
 
                     <div class="playlist-info-right">
                         <div class="titulo">
-                            <h1>Título de la Playlist overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden;overflow: hidden; overflow: hidden;overflow: hidden;overflow: hidden;</h1>
+                            <h1>
+                                <?php
+                                $titulo = $playlists[$indicePlaylistSeleccionada]->getPlaylistName();
+                                if ($titulo != null) {
+                                    echo $titulo;
+                                }
+                                else {
+                                    echo "Esta playlist no tiene titulo";
+                                }
+                                ?>
+                            </h1>
                         </div>
                         <div class="descripcion">
-                            <p> Descripción de la : esto es una dexripcion fwe ewf eg erergerg errge gergerg egrge egrg egrgregeg ert45t egr 45y45yy4dhre erherht erhhe 45y45yy4dhre erherht erhh45y45yy4dhre erherht erhh45y45yy4dhre erherht erhh SE ACABA LA LINEA LINEA LINEA LINEA LINEA AAAA SIGUEE 45y45yy4dhre erherht erhh45y45yy4dhre erherht erhh45y45yy4dhre erherht erhh45y45yy4dhre erherht erhh 4dhre erherht er 4dhre erherht er 4dhre erherht er 4dhre erherht er</p>
+                            <p>
+                                <?php
+                                $descripcion = $playlists[$indicePlaylistSeleccionada]->getPlaylistDescription();
+                                if ($descripcion != null) {
+                                    echo $descripcion;
+                                }
+                                else {
+                                    echo "No se ha proporcionado ninguna descripción para esta playlist";
+                                }
+                                ?>
+                            </p>
                         </div>
                         <div class="info-adicional">
-                            <p> Usuario propietario
+                            <p> <?php echo $playlists[$indicePlaylistSeleccionada]->getPlaylistOwner()->display_name ?>
                                 <i class="bi bi-heart-fill"></i> 1234 
-                                <i class="bi bi-clock"></i> 1:36
+                                <i class="bi bi-clock"></i>
+                                <?php
+                                $duration_ms = $playlists[$indicePlaylistSeleccionada]->getPlaylistDuration();
+                                $duration_seconds = $duration_ms / 1000;
+                                $mins = floor($duration_seconds / 60);
+                                $secs = $duration_seconds % 60;
+                                $time_formatted = gmdate('i:s', $duration_seconds);
+                                echo "$mins minutos y $secs segundos ($time_formatted)";
+                                ?>
+
                             </p>
                         </div>
                     </div>
@@ -128,156 +174,65 @@
 
                     <!-- Tabla filas -->
                     <div class="tabla-filas">
+                        <?php
+                        $num_fila = 1;
+                        foreach ($playlists[$indicePlaylistSeleccionada]->getPlaylistTracks() as $track):
+                        ?>
                         <div class="fila">
                             <div class="num-fila">
-                                <h5>01</h5>
+                                <h5><h5><?php echo $num_fila++; ?></h5></h5>
                             </div>
 
                             <div class="imagen-fila">
-                                <img src="../../../public/assets/img/img.jpg" alt="Imagen track">
+                                <img src="<?php echo $track->track->album->images[0]->url; ?>" alt="Imagen track">
                             </div>
 
                             <div class="titulo-fila">
                                 <h5>
-                                    Callaita
-                                    <div class="subtitulo">Bad Bunny, Anuel AA</div>
+                                    <?php
+                                    $nombre = $track->track->name;
+                                    echo $nombre;
+                                    ?>
+                                    <div class="subtitulo">
+                                        <?php
+                                        $total_artists = count($track->track->artists);
+                                        $index = 0;
+                                        foreach($track->track->artists as $artist) {
+                                            echo "$artist->name";
+                                            if ($index < $total_artists - 1) {
+                                                echo ", ";
+                                            }
+                                            $index++;
+                                        }
+                                        ?>
+                                    </div>
                                 </h5>
                             </div>
 
                             <div class="album-fila">
                                 <h5 class= "album_duracion">
-                                    Cositas
+                                    <?php
+                                    $album = $track->track->album->name;
+                                    echo $album;
+                                    ?>
                                 </h5>
                             </div>
 
                             <div class="duracion-fila">
                                 <h5 class= "album_duracion">
-                                    3:45
+                                    <?php
+                                    $duracion_ms = $track->track->duration_ms;
+                                    $duration_seconds = $duracion_ms / 1000;
+                                    $mins = floor($duration_seconds / 60);
+                                    $secs = $duration_seconds % 60;
+                                    $time_formatted = gmdate('i:s', $duration_seconds);
+                                    echo "$time_formatted";
+                                    ?>
                                 </h5>
                                 
                             </div>
                         </div>
-
-                        <div class="fila">
-                            <div class="num-fila">
-                                <h5>01</h5>
-                            </div>
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/img.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Callaita
-                                    <div class="subtitulo">Bad Bunny, Anuel AA</div>
-                                </h5>
-                            </div>
-
-                            <div class="album-fila">
-                                <h5 class= "album_duracion">
-                                    Cositas
-                                </h5>
-                            </div>
-
-                            <div class="duracion-fila">
-                                <h5 class= "album_duracion">
-                                    3:45
-                                </h5>
-                                
-                            </div>
-                        </div>
-
-                        <div class="fila">
-                            <div class="num-fila">
-                                <h5>01</h5>
-                            </div>
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/img.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Callaita
-                                    <div class="subtitulo">Bad Bunny, Anuel AA</div>
-                                </h5>
-                            </div>
-
-                            <div class="album-fila">
-                                <h5 class= "album_duracion">
-                                    Cositas
-                                </h5>
-                            </div>
-
-                            <div class="duracion-fila">
-                                <h5 class= "album_duracion">
-                                    3:45
-                                </h5>
-                                
-                            </div>
-                        </div>
-
-                        <div class="fila">
-                            <div class="num-fila">
-                                <h5>01</h5>
-                            </div>
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/img.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Callaita
-                                    <div class="subtitulo">Bad Bunny, Anuel AA</div>
-                                </h5>
-                            </div>
-
-                            <div class="album-fila">
-                                <h5 class= "album_duracion">
-                                    Cositas
-                                </h5>
-                            </div>
-
-                            <div class="duracion-fila">
-                                <h5 class= "album_duracion">
-                                    3:45
-                                </h5>
-                                
-                            </div>
-                        </div>
-
-                        <div class="fila">
-                            <div class="num-fila">
-                                <h5>01</h5>
-                            </div>
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/img.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    ULTIMAAAAAA
-                                    <div class="subtitulo">Bad Bunny, Anuel AA</div>
-                                </h5>
-                            </div>
-
-                            <div class="album-fila">
-                                <h5 class= "album_duracion">
-                                    Cositas
-                                </h5>
-                            </div>
-
-                            <div class="duracion-fila">
-                                <h5 class= "album_duracion">
-                                    3:45
-                                </h5>
-                                
-                            </div>
-                        </div>
-                    
+                        <?php endforeach; ?>
                     <br><br>
 
                     </div>
@@ -289,22 +244,31 @@
         </div>
 
     </body>
+
     <script>
         const links = document.querySelectorAll('.playlist_enlaces');
-        
+
         links.forEach(link => {
             link.addEventListener('click', function(event) {
-            event.preventDefault(); // para prevenir el comportamiento por defecto del enlace
-            
-            // eliminar la clase "active" de todos los enlaces
-            links.forEach(link => {
-                link.querySelector('h4').classList.remove('active');
-            });
-            
-            // agregar la clase "active" al enlace que se ha hecho clic
-            this.querySelector('h4').classList.add('active');
+                event.preventDefault(); // para prevenir el comportamiento por defecto del enlace
+                
+                /* ESTO ES LO DEL ICONO EN LA PLAYLIST SELECCIONADA (NO FUNCIONA DE MOMENTO)
+                // eliminar la clase "active" de todos los enlaces
+                links.forEach(link => {
+                    link.querySelector('h4').classList.remove('active');
+                });
+                // agregar la clase "active" al enlace que se ha hecho clic
+                this.querySelector('h4').classList.add('active');
+                */
+
+                // obtener el índice de la playlist seleccionada
+                const index = Array.from(links).indexOf(this);
+                
+                // redirigir a la página con el índice de la playlist seleccionada como parámetro en la URL
+                window.location.href = `displayPlaylists.php?playlist=${index}`;
             });
         });
     </script>
+
 
 </html>
