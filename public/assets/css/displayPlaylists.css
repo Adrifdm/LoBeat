@@ -41,6 +41,11 @@ body {
     padding-right: 24px;
 }
 
+.mensaje-inicial {
+    background-color: #1a4de9;
+    height: 520px;
+}
+
 .lista-playlists {
     background-color: #263254;
     margin: 20px 0px 0px 0px;
