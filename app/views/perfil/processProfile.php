@@ -70,13 +70,21 @@
                             </div>       
                     <?php
                 }
+                
+                //$descNot = 'Hola ' + $usuarioExistente->getNombre();
 
-                $finalNotifications = [];
-                $newNotification = array(
+                $finalNotifications = [];  
+                $newNotification = array( //modificar en la sigueinte entrega
                     'id' => rand(),
-                    'nombre' => 'Manolo',
+                    
+
+                    'nombre' => $usuarioExistente->getNombre(), 
+
+                    //'nombre' => 'Manolo',
                     'icono' => 'logoLB.png',
-                    'descripcion' => 'Está cerca de tí',
+                    'descripcion' => 'Has modificado tu perfil',
+                    
+                    //'descripcion' => 'Está cerca de tí',
                     'leido' => false
                 );
             
@@ -86,7 +94,7 @@
                 array_push($finalNotifications, $newNotification);
 
 
-                if ($usuarioExistente !== null){
+                if ($usuarioExistente !== null){ 
                     $datos = array(
                         'nombre' => $nombre,
                         'correo' => $correo,
@@ -95,7 +103,7 @@
                         'spotify_refresh_token' => $usuarioExistente->getSpotify_refresh_token(),
                         'fsa_creacion' => $usuarioExistente->getFecha_creacion(),
                         'fecha_actualizacion' => date('Y-m-d H:i:s'),
-                        'role' => $role,
+                        'role' => $role, 
                         'genero' => $genero,
                         'descripcion' => $sobreMi,
                         'fotoPerfil' => $nombreFoto,
@@ -106,7 +114,7 @@
 
                     $resultado = $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $datos);
                     //$resultado = $usuarioController->actualizarUsuarioPorCorreo($correo, $datos);
-
+ 
                     // Si se ha insertado correctamente, redirigir a la página de login
                     if ($resultado !== null) {
                         ?>
