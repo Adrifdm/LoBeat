@@ -26,8 +26,8 @@
         // Crear una instancia de UsuarioController
         $usuarioController = new UsuarioController();
 
-        // Comprobamos si existe algún usuario con ese correo
-        //TODO cuando funciona el id en login cambiar esto a buscar por id con la variable de sesion logged_user_id
+        // Comprobamos si existe algún usuario con ese correo  
+        //TODO cuando funciona el id en login cambiar esto a buscar por id con la variable de sesion logged_user_id 
 
         $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
     ?>
@@ -39,7 +39,7 @@
       <!-- Introducción -->
       <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../../public/assets/img/fondoLogin.png); background-size: cover; background-position: center top;">
         <!-- Máscara -->
-       
+        
         <span class="mask bg-gradient-default opacity-8"></span> 
         <!-- Contenido introducción -->
         <div class="container-fluid d-flex align-items-center">
@@ -51,7 +51,7 @@
               <a href="../registro/login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Log Out</a>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
       <!-- Page content --> 
       <div class="container-fluid mt--7">
@@ -64,17 +64,17 @@
                     <a href="#">
                       <img src=<?php echo "../../../public/assets/img/profilePhotos/".$usuarioExistente->getFotoPerfil(); ?> class="rounded-circle">
                     </a>
-                  </div> 
+                  </div>  
                 </div>
                 
               </div>
               <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
-                  <!--<a href="#" class="btn btn-sm btn-info mr-4">Connect</a>-->
+                  <!--<a href="#" class="btn btn-sm btn-info mr-4">Connect</a>--> 
                   <!--<a href="#" class="btn btn-sm btn-default float-right">Message</a>-->
                 </div>
               </div>
-              <div class="card-body pt-0 pt-md-4">
+              <div class="card-body pt-0 pt-md-4"> 
                 <div class="row">
                   <div class="col">
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5">
@@ -85,7 +85,7 @@
                             ?>
                         </span>
                         <span class="description fuente">Matches</span>
-                      </div>
+                      </div> 
                       <div>
                         <span class="heading fuente">
                             <?php
@@ -94,10 +94,10 @@
                         </span>
                         <span class="description fuente">Playlists</span>
                       </div>
-                      <div>
+                      <div> 
                         <span class="heading fuente">
                             <?php
-                              echo $usuarioExistente->getnChats(); 
+                              echo $usuarioExistente->getnChats();  
                             ?>
                         </span>
                         <span class="description fuente">Chats</span>
@@ -105,10 +105,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="text-center">
+                <div class="text-center"> 
                   <h3 class="fuente"> </h3>
                   <div class="h5 font-weight-300 fuente">
-                    <!--<i class="ni location_pin mr-2"></i>Asturias, España-->
+                    <!--<i class="ni location_pin mr-2"></i>Asturias, España--> 
                   </div>
                   <div class="h5 mt-4 fuente">
                     <!--<i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho-->
@@ -121,7 +121,7 @@
                   <!--<a href="#">Mostrar más</a>-->
                 </div>
               </div>
-            </div>
+            </div> 
           </div>
           <div class="col-xl-8 order-xl-1">
             <div class="card bg-secondary shadow">
@@ -130,7 +130,7 @@
                   <div class="col-8">
                     <h3 class="mb-0 fuente">Mi cuenta</h3>
                   </div>
-                  <div class="col-4 text-right">
+                  <div class="col-4 text-right"> 
                     <!--<a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
                   </div>
                 </div>
@@ -139,7 +139,7 @@
                 <form method="post" enctype="multipart/form-data">
                   <h6 class="heading-small text-muted mb-4 fuente">Información usuario</h6>
                   <div class="pl-lg-4">
-                    <div class="row">
+                    <div class="row"> 
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label fuente" for="input-username">Nombre de usuario</label>
@@ -157,7 +157,7 @@
                             ?>">
                         </div>
                       </div>
-                    </div>
+                    </div> 
                     <div class="row">
                       <div class="col-lg-6"> 
                         <div class="form-group focused">
@@ -171,7 +171,7 @@
                         </div>
                       </div> 
                       <div class="col-lg-6">
-                        <div class="form-group focused"> 
+                        <div class="form-group focused">  
                           <label class="form-control-label fuente" for="input-last-name">Género</label> 
                           <br>
                             <select  class="form-control" name="genero" id="genero" required="">
@@ -182,7 +182,7 @@
 
                         </div>
                       </div>
-                    </div>
+                    </div> 
                   </div>
                   <hr class="my-4">
                   <!-- Address
@@ -195,7 +195,7 @@
                           <input id="input-address" class="form-control form-control-alternative fuente" placeholder="Dirección" value="Calle, nº, piso, puerta" type="text">
                         </div>
                       </div>
-                    </div>
+                    </div> 
                     <div class="row">
                       <div class="col-lg-4">
                         <div class="form-group focused">
@@ -216,7 +216,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> 
                   <hr class="my-4">
                    -->
                   <!-- Description -->
@@ -228,7 +228,7 @@
                       echo $usuarioExistente->getDescripcion();
                       ?></textarea>
                     </div>
-                  </div>
+                  </div> 
 
                   <input type="file" name="foto">
 
@@ -243,7 +243,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
     <?php
         include("processProfile.php")
