@@ -42,8 +42,12 @@ body {
 }
 
 .mensaje-inicial {
-    background-color: #1a4de9;
     height: 520px;
+    color: rgb(255, 255, 255);
+    /* Esto es para centrar el texto horiz y vert */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 520px;     /* Debe coincidir con la altura del div */
 }
 
 .lista-playlists {

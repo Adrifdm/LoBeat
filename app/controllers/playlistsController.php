@@ -98,9 +98,12 @@ class PlaylistsController {
         try {
             // llamar al método de buscar playlist por campo del servicio
             $playlists = $this->buscarPlaylistsPorCampo('owner.id', $idUsuario);
-            foreach($playlists as $doc){
-                $this->eliminarPlaylist($doc->getId());
+            if ($playlists != null) {
+                foreach($playlists as $doc){
+                    $this->eliminarPlaylist($doc->getId());
+                }                
             }
+
             $datosPlaylistsRefrescadas = $this->playlistService->refrescarPlaylists($idUsuario);
             $datos = array(
                 'nPlaylists' => $datosPlaylistsRefrescadas->total

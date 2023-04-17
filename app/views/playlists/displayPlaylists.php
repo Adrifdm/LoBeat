@@ -71,26 +71,30 @@ else {
                 <hr>
                 
                 <div class="lista-playlists">
-                    <ul>
-                        <?php foreach ($playlists as $index => $playlist): ?>
-                        <li>
-                            <a class = "playlist_enlaces" href="displayPlaylists.php?playlist=<?php echo $index ?>">
-                                <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>
-                                    <?php
-                                    $titulo = $playlist->getPlaylistName();
-                                    if ($titulo != null) {
-                                        echo $titulo;
-                                    }
-                                    else {
-                                        echo "SIN TITULO";
-                                    }
-                                    ?>
-                                </h4>
-                            </a>
-                        </li>
-                        <br>
-                        <?php endforeach; ?>
-                    </ul>
+                    <?php if ($sinPlaylists == false): ?>
+
+                        <ul>
+                            <?php foreach ($playlists as $index => $playlist): ?>
+                            <li>
+                                <a class = "playlist_enlaces" href="displayPlaylists.php?playlist=<?php echo $index ?>">
+                                    <h4> <span> </span> <i class="bi bi-music-note-beamed"></i>
+                                        <?php
+                                        $titulo = $playlist->getPlaylistName();
+                                        if ($titulo != null) {
+                                            echo $titulo;
+                                        }
+                                        else {
+                                            echo "SIN TITULO";
+                                        }
+                                        ?>
+                                    </h4>
+                                </a>
+                            </li>
+                            <br>
+                            <?php endforeach; ?>
+                        </ul>
+
+                    <?php endif; ?>
                 </div>
 
             </div>
@@ -100,10 +104,10 @@ else {
                 <br>
                 <?php if ($sinPlaylists == true): ?>
                     <div class="mensaje-inicial">
-                            <h1>
-                                No tienes playlists
-                            </h1>
-                        </div>
+                        <h1>
+                            Vaya! Parece que no tienes ninguna playlist
+                        </h1>
+                    </div>
                 <?php else: ?>
                     <?php if ($algunaSeleccionada == false): ?>
                         <div class="mensaje-inicial">
