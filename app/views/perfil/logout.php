@@ -10,6 +10,6 @@
 
     session_destroy();
 
-    header('Location: ../../../public/index.html');       
+    header('Location: ../registro/login.php');       
     
 ?>
