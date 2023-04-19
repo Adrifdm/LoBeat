@@ -2,16 +2,42 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-image: url("../../../public/assets/img/indexWallpaper.png");
-	background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
 	font-family: 'Lexend', sans-serif;
+
+	background: linear-gradient(-180deg, #000000, #000000, #000000, #87067d);
+	background-size: 150% 150%;
+	animation: gradient 5s ease infinite;
+	height: 100vh;
+
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 100%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+	/* Nueva etapa que hace que aprox la animacion termina donde empieza */
+	99.99% {
+		background-position: 0% 100%;
+	}
 }
 
 button {
 	transition: background-color 0.2s linear;
 	border: none;
+	outline: 0 solid transparent;
+	word-break: break-word;
+	cursor: pointer;
+	border-radius: 999px;
 }
 
 .slogan {
@@ -25,18 +51,21 @@ button {
 }
 
 .crear-cuenta {
+	/* Posicion */
 	position: absolute;
 	top: 60%;
 	left: 50%;
 	transform: translateX(-50%);
+	padding: 15px 30px;
+	/* Estilo */
 	background-color: #e21ba0;
 	color: white;
+	box-shadow: #00000080 0 10px 20px -10px;
+	/* Contenido */
 	font-size: 30px;
-	font-weight: bolder;
-	cursor: pointer;
 	text-align: center;
-	border-radius: 40px;
-	padding: 15px 30px;
+	font-weight: bolder;
+	/* Varios */
 	transition: transform 0.2s ease-in-out;
 }
 
@@ -54,9 +83,7 @@ button {
 	padding: 10px 20px;
 	font-size: 18px;
 	font-weight: bolder;
-	cursor: pointer;
 	text-align: center;
-	border-radius: 40px;
 }
 
 .iniciar-sesion:hover {
