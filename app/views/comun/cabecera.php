@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <title>CodePen - Responsive Mega Menu - Navigation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-<link rel="stylesheet" href="../../../public/assets/css/notifications.css">
+  <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../../public/assets/css/notifications.css">
 
-<script src="https://kit.fontawesome.com/e2e2d067dc.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/e2e2d067dc.js" crossorigin="anonymous"></script>
 
 
 </head>

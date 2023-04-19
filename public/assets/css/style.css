@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@700&display=swap');
+body {
+	margin: 0;
+	padding: 0;
+	background-image: url("../../../public/assets/img/indexWallpaper.png");
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	font-family: 'Lexend', sans-serif;
+}
+
+button {
+	transition: background-color 0.2s linear;
+	border: none;
+}
+
+.slogan {
+	position: absolute;
+	top: 40%;
+	width: 100%;
+	color: rgb(255, 255, 255);
+	font-size: 90px;
+	font-weight: 800;
+	text-align: center;
+}
+
+.crear-cuenta {
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #e21ba0;
+	color: white;
+	font-size: 30px;
+	font-weight: bolder;
+	cursor: pointer;
+	text-align: center;
+	border-radius: 40px;
+	padding: 15px 30px;
+}
+
+.crear-cuenta:hover {
+	background-color: #ff52f3;
+}
+
+.iniciar-sesion {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background-color: #ffffff;
+	color: rgb(0, 0, 0);
+	padding: 10px 20px;
+	font-size: 18px;
+	font-weight: bolder;
+	cursor: pointer;
+	text-align: center;
+	border-radius: 40px;
+}
+
+.iniciar-sesion:hover {
+	background-color: #ff52f3;
+	color: white;
+}
+
+.LoBeat {
+	position: absolute;
+	top: 15px;
+	left: 30px;
+	color: white;
+	font-size: 30px;
+	text-align: left;
+}
