@@ -5,6 +5,8 @@
   <title>CodePen - Responsive Mega Menu - Navigation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
+<link rel="stylesheet" href="../../../public/assets/css/adminActions.css">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 <link rel="stylesheet" href="../../../public/assets/css/notifications.css">
 
@@ -23,6 +25,7 @@
     //mas adelante se cambiara por el id
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
     
+    $rolUsuario =  $usuarioExistente->getRole();
   ?>
 
 <!-- partial:index.partial.html -->
@@ -39,6 +42,38 @@
           <i class="fa fa-home"></i>
           <span class= "tooltip-box">Inicio</span>
       
+        </a>
+
+    </li>
+
+    <li>
+        <a id="admin-button" class="tooltip visible4admins" href="../admins/manageUsers.php">
+          
+          <i class="fa fa-cogs"></i>
+
+          <span class= "tooltip-box">Administrador</span>
+
+          <script>
+
+            // Obtener el botón de administrador
+            var adminButton = document.getElementById('admin-button');
+
+            //obtener la variable del rol del php de arriba donde se coge el usuario por correo
+            var miVariable = "<?= $rolUsuario ?>";
+
+            // Verificar si el usuario es administrador
+            
+            if (miVariable == "Admin") {
+
+              // Si el usuario es administrador, mostrar el botón
+              adminButton.style.display = 'block';
+            } else {
+              // Si el usuario no es administrador, ocultar el botón
+              adminButton.style.display = 'none';
+            }
+            
+          </script>
+
         </a>
 
     </li>

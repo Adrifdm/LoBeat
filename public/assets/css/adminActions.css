@@ -1,0 +1,8 @@
+
+/*para el boton de la cabecera que tiene visibilidad segun el rol*/
+
+.visible4admins{
+
+    display: none;
+
+}
