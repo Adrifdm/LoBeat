@@ -40,7 +40,7 @@
         </div>
     </main>
     <?php
-		require("../comun/rep.php");
+		//require("../comun/rep.php");
 	?>
 
     <script type="text/javascript">
