@@ -95,6 +95,9 @@
           <ul>
             <li><a href="../../views/playlists/displayPlaylists.php">Playlists</a></li>
           </ul>
+          <ul>
+            <li><a href="../../views/chat/chatlist.php">Chat</a></li>
+          </ul>
       </li>
       <li class="dropdown">
 
