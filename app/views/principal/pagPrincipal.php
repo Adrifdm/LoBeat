@@ -29,20 +29,11 @@
     <?php
 		require("../comun/cabecera.php");
 	?>
-    <main role="main" class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-              <!--  <h1 class="titulo">Conoce a gente cerca de ti</h1> -->
-            </div>
-            <div class="col-12">
-                <div id="mapa"></div>
-            </div>
-        </div>
-    </main>
+    <div id="mapa"></div> 
     <?php
 		//require("../comun/rep.php");
 	?>
-
+</body>
     <script type="text/javascript">
         const LATITUD = <?php echo $_SESSION["logged_latitud"]; ?>;
         const LONGITUD = <?php echo $_SESSION["logged_longitud"]; ?>;
@@ -50,5 +41,5 @@
 
     <script type="text/javascript" src="../../../public/assets/js/mapa.js"></script>
     <script type="text/javascript" src="../../../public/assets/js/marcador.js"></script>
-</body>
+
 </html>
