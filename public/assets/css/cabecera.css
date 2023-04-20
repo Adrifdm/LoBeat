@@ -129,7 +129,7 @@ nav li li a:hover{
 /*para que aparezca algo distinto si tienes notificaciones sin leer*/
 
 .badge{
-  display: block;
+  display: none;
   position: absolute;
   width: 20px;
   height: 20px;

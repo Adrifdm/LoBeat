@@ -26,6 +26,19 @@
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
     
     $rolUsuario =  $usuarioExistente->getRole();
+
+    $notisPendientes = false;
+
+    foreach($usuarioExistente->getNotifications() as $notification){
+
+      //pongo el booleano a true para llevarmelo al icono de notificaciones y mostrar un * si hay notif pendientes
+
+      if (!$notification["leido"]){
+      
+        $notisPendientes = true;
+      
+      }
+    }
   ?>
 
 <!-- partial:index.partial.html -->
@@ -91,23 +104,37 @@
 
           <script>
               
-            var adminButton = document.getElementById('hayNotis');
+            //cojo elemento del boton
+            var notiButton = document.getElementById('hayNotis');
+
+            //var php booleana
+            var hay = "<?= $notisPendientes ?>";
 
             // Ver si el usuario tiene alguna notificacion  sin leer
-            /*
-            if () {
+            
+            if (hay) {
+              notiButton.style.display = 'block';
 
             } else {
-             
-            }*/
+              
+              notiButton.style.display = 'none';
+            }
+            
           </script>
         
       </a>
           <ul>
             <?php
 
+            $notisPendientes = false;
+
             //Se muestra cada notificación con los datos de la base de datos y solo mostrando las que no están leídas ya
             foreach($usuarioExistente->getNotifications() as $notification){
+
+              //pongo el booleano a true para llevarmelo al icono de notificaciones y mostrar un * si hay notif pendientes
+
+              $notisPendientes = true;
+
               if (!$notification["leido"]){
                 echo "<li>
                   <div>
