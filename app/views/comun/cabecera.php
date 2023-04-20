@@ -62,7 +62,6 @@
             var miVariable = "<?= $rolUsuario ?>";
 
             // Verificar si el usuario es administrador
-            
             if (miVariable == "Admin") {
 
               // Si el usuario es administrador, mostrar el botón
@@ -71,7 +70,7 @@
               // Si el usuario no es administrador, ocultar el botón
               adminButton.style.display = 'none';
             }
-            
+
           </script>
 
         </a>
@@ -85,7 +84,25 @@
           </ul>
       </li>
       <li class="dropdown">
-        <a href=""><i class="bi bi-bell-fill"></i></a>
+
+        <a href=""><i class="bi bi-bell-fill notiButt"></i>
+        
+        <span id = "hayNotis" class="badge">*</span>
+
+          <script>
+              
+            var adminButton = document.getElementById('hayNotis');
+
+            // Ver si el usuario tiene alguna notificacion  sin leer
+            /*
+            if () {
+
+            } else {
+             
+            }*/
+          </script>
+        
+      </a>
           <ul>
             <?php
 
