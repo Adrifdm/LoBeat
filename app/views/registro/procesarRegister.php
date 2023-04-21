@@ -2,6 +2,7 @@
 require_once '../../../app/controllers/usuarioController.php';
 require_once '../../../app/controllers/spotifyController.php';
 require_once '../../../app/controllers/playlistsController.php';
+require_once '../../../app/services/notificationService.php';
 
 session_start();
 if (isset($_GET['registered'])){
@@ -77,7 +78,7 @@ else if ($registered === true){
         'nChats' => 0,
         'nMatches' => 0,
         'nPlaylists' => 0,
-        'notifications' => array()
+        'notifications' => new notificationService()
     );
 
     // Creamos el usuario con la información anterior
