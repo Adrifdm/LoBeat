@@ -266,10 +266,6 @@ body[data-theme=dark] {
   opacity: 0.6;
 }
 
-
-
-
-
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -281,7 +277,7 @@ body[data-theme=dark] {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: var(--scrollbar-thumb);
+  background: linear-gradient(to top, rgba(131, 164, 212, .5), rgb(182, 188 ,255 , 0.4));;
 }
 
 @media screen and (max-width: 680px) {
