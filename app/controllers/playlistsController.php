@@ -29,7 +29,10 @@ class PlaylistsController {
                     $duracionTotal_ms = $duracionTotal_ms + $infoTrack->track->duration_ms;
                     array_push($tracksArray, $infoTrack);
                 }
-
+                
+                // TAGS AUTOMATICOS
+                $tagsAutomaticos = $this->playlistService->generarTagsAutomaticos($datosTracks);
+                
                 // Construimos la playlist a insertar en nuestra base de datos
                 $playlistBaseDeDatos = array(
                     'playlist_id' => $playlistID,
@@ -39,7 +42,8 @@ class PlaylistsController {
                     'playlist_images' => $playlist->images,
                     'playlist_duration' => $duracionTotal_ms,
                     'playlist_owner' => $playlist->owner,
-                    'playlist_tracks' => $tracksArray
+                    'playlist_tracks' => $tracksArray,
+                    'playlist_tags' => $tagsAutomaticos
                 );
 
                 // La insertamos
@@ -62,6 +66,19 @@ class PlaylistsController {
             // devolver la lista de playlists en formato JSON
             //echo json_encode($playlists);
             return $playlists;
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function generarGeneros($playlist) {
+        try {
+            // llamar al método de listar playlists del servicio
+            $generos = $this->playlistService->generarGeneros($playlist);
+            // devolver la lista de playlists en formato JSON
+            //echo json_encode($playlists);
+            return $generos;
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente
             echo json_encode(['error' => $e->getMessage()]);

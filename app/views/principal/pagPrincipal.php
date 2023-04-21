@@ -27,17 +27,9 @@
 <body>
     <?php
 		require("../comun/cabecera.php");
+        require("../comun/mapa.php")
 	?>
-    <main role="main" class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-              <!--  <h1 class="titulo">Conoce a gente cerca de ti</h1> -->
-            </div>
-            <div class="col-12">
-                <div id="mapa"></div>
-            </div>
-        </div>
-    </main>
+    
     <?php
 		//require("../comun/rep.php");
 
@@ -84,4 +76,5 @@
     <script type="text/javascript" src="../../../public/assets/js/marcador.js"></script>
 
 </body>
+
 </html>

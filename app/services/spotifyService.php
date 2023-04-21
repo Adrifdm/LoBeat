@@ -153,6 +153,8 @@ class SpotifyService {
         return $playlists_data;
     }
 
+    
+
     public function obtenerPlaylistsPorUsuario($userSpotifyID) {
         require '../../../vendor/autoload.php';
         if (session_status() == PHP_SESSION_NONE) {
@@ -170,6 +172,24 @@ class SpotifyService {
         $playlists_data = $api->getUserPlaylists($userSpotifyID);
 
         return $playlists_data;
+    }
+
+    public function obtenerArtista($artistSpotifyID) {
+        require '../../../vendor/autoload.php';
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }  
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $collection = (new MongoDB\Client)->LoBeat->usuarios;
+        $result = $collection->findOne([
+            '_id' => new MongoDB\BSON\ObjectID($_SESSION['logged_user_id'])
+        ]);
+        // Fetch the saved access token from somewhere. A session for example.
+        $api->setAccessToken($result['spotify_access_token']);
+
+        $artist_data = $api->getArtist($artistSpotifyID);
+
+        return $artist_data;
     }
 
     public function obtenerPlaylist($playlistSpotifyID) {

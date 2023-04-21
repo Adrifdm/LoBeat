@@ -83,6 +83,15 @@ class SpotifyController {
         }
     }
 
+    public function obtenerArtista($artistSpotifyID) {
+        try {
+            // llamar al método de obtención de playlist
+            return $this->spotifyService->obtenerArtista($artistSpotifyID);
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
     /*
     public function obtenerCancionesPlaylist($idPlayList, $idUsuario) {
         try {

@@ -1,22 +1,23 @@
 body{
     font-family: sans-serif;
-    background-image:url("../img/fondoLogin.png") ;  
-    
-    margin:0;
-    padding:0;
-}
+    background: linear-gradient(-300deg, #36e2ec, #000000,#000000, #000000,#000000, #36e2ec) ;
+    margin: 0;
+	padding: 0;
+	background-position: center center;
+	background-attachment: fixed;
+	font-family: 'Lexend', sans-serif;
 
-h1{
-    margin-left: 13%;
-    font-size: 30px;
-    color: black;
+    
 }
 
 #mapa{
-    min-height: 450px;
-    height: 80%;
+    margin-top: 3%;
+    min-height: 550px;
+    height:50%;
     width: 50%;
-    border: rgb(86, 3, 86) 8px solid;
-    margin-left: 5%;
+    border: #36e2ec 4px solid;
+    margin-left: 2%;
+    margin-right: 3%;
     border-radius: 5px;
+    float:left;
 }
