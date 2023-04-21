@@ -22,7 +22,8 @@ class PlaylistService {
       $datos['playlist_images'],
       $datos['playlist_duration'],
       $datos['playlist_owner'],
-      $datos['playlist_tracks']
+      $datos['playlist_tracks'],
+      $datos['playlist_tags']
   );
 
     $result = $this->collection->insertOne([
@@ -33,7 +34,8 @@ class PlaylistService {
       'images' => $playlist->getPlaylistImages(),
       'duration' => $playlist->getPlaylistDuration(),
       'owner' => $playlist->getPlaylistOwner(),
-      'canciones' => $playlist->getPlaylistTracks()
+      'canciones' => $playlist->getPlaylistTracks(),
+      'tags' =>  $playlist->getPlaylistTags()
     ]);
 
     return $result->getInsertedId();
@@ -51,7 +53,8 @@ class PlaylistService {
         $doc['playlist_images'],
         $doc['playlist_duration'],
         $doc['playlist_owner'],
-        $doc['playlist_tracks']
+        $doc['playlist_tracks'],
+        $doc['playlist_tags']
       );
       $playlists[] = $playlist;
     }
@@ -69,12 +72,89 @@ class PlaylistService {
         $result['playlist_images'],
         $result['playlist_duration'],
         $result['playlist_owner'],
-        $result['playlist_tracks']
+        $result['playlist_tracks'],
+        $result['playlist_tags']
       );
       return $playlist;
     } else {
       return null;
     }
+  }
+
+  public function generarTagsAutomaticos($datos){
+    // Inicializamos los arrays que vamos a utilizar
+    $popularidades = [];
+    $artistas = [];
+
+    // Iteramos sobre los tracks
+    foreach ($datos->tracks->items as $item) {
+
+      // Obtenemos la popularidad del track y la agregamos al array
+      $popularidades[] = $item->track->popularity;
+
+      foreach ($item->track->artists as $dataArtist) {
+        // Obtenemos el artista del track y lo agregamos al array
+        $artista = $dataArtist->name;
+        if (array_key_exists($artista, $artistas)) {
+            $artistas[$artista]++;
+        } else {
+            $artistas[$artista] = 1;
+        } 
+      } 
+    }
+
+    // Calculamos la popularidad media de la playlist
+    if(count($popularidades) > 0){
+      $popularidad_media = array_sum($popularidades) / count($popularidades);
+    } else {
+      $popularidad_media = 0;
+    }
+
+    // Obtenemos el artista más frecuente en la playlist
+    arsort($artistas);
+    $artista_mas_frecuente = key($artistas);
+
+    $generos_mas_presentes = "Escribe el género que mejor describa tu matchlist o si lo prefieres deja que se generen por defecto";
+
+    $playlist_tags = array(
+      'popularidadMedia' => $popularidad_media,
+      'artistaMasEscuchado' => $artista_mas_frecuente,
+      'generosMasEscuchados' => $generos_mas_presentes,
+    );
+
+    return $playlist_tags;
+
+  }
+
+  public function generarGeneros($playlist) {
+    $tracks = $playlist->getPlaylistTracks();
+    $generos = [];
+
+    foreach ($tracks->track->artist as $trackArtist) {
+
+      //Lo necesitamos para obtener el género
+
+      $fullArtistData = $this->spotifyController->obtenerArtista($trackArtist->id);
+
+
+      if ($fullArtistData !== null && property_exists($fullArtistData, 'genres')){
+        foreach ($fullArtistData->genres as $genero) {
+            if (array_key_exists($genero, $generos)) {
+                $generos[$genero]++;
+            } else {
+                $generos[$genero] = 1;
+            }
+        } 
+      }
+      // Obtenemos los géneros del album del track y los agregamos al array
+   } 
+
+    // Obtenemos los géneros más presentes en la playlist
+    arsort($generos);
+    $generos_mas_presentes = array_slice(array_keys($generos), 0, 3);
+
+    return $generos_mas_presentes;
+
   }
 
   public function buscarPlaylistsPorCampo($campo, $valor) {
@@ -91,7 +171,8 @@ class PlaylistService {
           $docArray['images'],
           $docArray['duration'],
           $docArray['owner'],
-          $docArray['canciones']
+          $docArray['canciones'],
+          $docArray['tags']
         );
         $playlists[] = $playlist;
       } 
