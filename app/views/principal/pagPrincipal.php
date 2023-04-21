@@ -63,17 +63,9 @@
         }
 	?>
 
-    <script type="text/javascript">
-        const LATITUD = <?php echo $_SESSION["logged_latitud"]; ?>;
-        const LONGITUD = <?php echo $_SESSION["logged_longitud"]; ?>;
-    </script>
-
     <form action="" method="post">
         <button type="submit" name="crearChat">Crear Chat</button>
     </form>
-
-    <script type="text/javascript" src="../../../public/assets/js/mapa.js"></script>
-    <script type="text/javascript" src="../../../public/assets/js/marcador.js"></script>
 
 </body>
 
