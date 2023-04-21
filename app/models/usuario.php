@@ -15,12 +15,11 @@ class Usuario {
   private $latitud; 
   private $longitud;
   private $spotify_ID;
-
   private $nMatches;
   private $nChats;
   private $nPlaylists;
-
   private $notifications;
+  //private $chatsList; lista de chats de cada usuario (para no estar buscando en la coleccion chats los de este usuario en concreto y directamente usar esta lista)
 
   public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID, $nChats, $nPlaylists, $nMatches, $notifications) {
     $this->id = $id;

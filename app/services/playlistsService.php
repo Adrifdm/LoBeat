@@ -44,14 +44,14 @@ class PlaylistService {
     $playlists = [];
     foreach ($result as $doc) {
       $playlist = new Playlist(
-        $doc['playlist_id'],
-        $doc['playlist_name'],
-        $doc['playlist_description'],
-        $doc['playlist_url'],
-        $doc['playlist_images'],
-        $doc['playlist_duration'],
-        $doc['playlist_owner'],
-        $doc['playlist_tracks']
+        $doc['spotifyId'],
+        $doc['nombre'],
+        $doc['descripcion'],
+        $doc['url'],
+        $doc['images'],
+        $doc['duration'],
+        $doc['owner'],
+        $doc['canciones']
       );
       $playlists[] = $playlist;
     }

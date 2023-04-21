@@ -14,7 +14,7 @@ class UsuarioService {
     $fecha_creacion = new DateTime();
     $fecha_actualizacion = new DateTime();
     $usuario = new Usuario(
-      "",
+      "",       //crear un atributo id en cualquier modelo es innecesario (nunca lo llegamos a usar. El id de mongo es el que usamos)
       $datos['nombre'],
       $datos['correo'],
       $datos['contrasenya'],
