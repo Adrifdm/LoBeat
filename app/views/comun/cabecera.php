@@ -91,16 +91,18 @@
     </li>
 
       <li class="dropdown">
-        <a href=""><i class="bi bi-list"></i>
-        </a>
+
+        <a href=""><i class="bi bi-list"></i></a>
+
         <ul>
-          <li><a href="../../views/playlists/displayPlaylists.php">Playlists</a></li>
+          <li><a href="../../views/playlists/displayPlaylists.php">Playlists</a></li> <!-- TODO: por alguna razon no se ve la pestaña de playlists -->
         </ul>
         <ul>
-           <li><a href="../../views/chat/chatlist.php">Chat</a></li>
+          <li><a href="../../views/chat/chatlist.php">Chat</a></li>
         </ul>
           
       </li>
+
       <li class="dropdown">
 
         <a href=""><i class="bi bi-bell-fill notiButt"></i>

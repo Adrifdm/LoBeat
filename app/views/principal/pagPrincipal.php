@@ -32,40 +32,7 @@
     
     <?php
 		//require("../comun/rep.php");
-
-        if (isset($_POST['crearChat'])) {
-            require_once '../../../app/services/chatService.php';
-            $chatService = new ChatService();
-            $datos = array(
-                'chat_participante1' => 'juanito',
-                'chat_participante2' => 'pepito'
-            );
-            $chatID = $chatService->crearChat($datos);
-            $chatDATOS1 = array(
-                'content' => 'hola guapa',
-                'remitente' => 'aaaa',
-                'destinatario' => 'bbbb'
-            );
-            $chatDATOS2 = array(
-                'content' => 'eeeyyy',
-                'remitente' => 'aaaaAA',
-                'destinatario' => 'bbbbBB'
-            );
-            $chatService->crearMensaje($chatID, $chatDATOS1);
-            $chatService->crearMensaje($chatID, $chatDATOS2);
-            //
-            $chatID = $chatService->crearChat($datos);
-
-            $chatService->crearMensaje($chatID, $chatDATOS1);
-            $hhh = $chatService->crearMensaje($chatID, $chatDATOS2);
-
-            $chatService->eliminarMensaje($chatID, $hhh['id']);
-        }
 	?>
-
-    <form action="" method="post">
-        <button type="submit" name="crearChat">Crear Chat</button>
-    </form>
 
 </body>
 
