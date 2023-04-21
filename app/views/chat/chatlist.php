@@ -39,14 +39,15 @@
     <div class="app-right">
       <div class="chat-list-wrapper">
         <ul class="chat-list active">
-          <li class="chat-list-item">
+          <a href ="chat.php">
+          <li class="chat-list-item" href ="chat.php">
             <img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
             <span class="chat-list-name">Roberto
             <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
               pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
             </span>
-            
           </li>
+          </a>
           <li class="chat-list-item">
             <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
             <span class="chat-list-name">Roberto
