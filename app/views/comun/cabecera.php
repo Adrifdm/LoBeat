@@ -17,6 +17,7 @@
 <body>
   <?php
     require_once '../../controllers/usuarioController.php';
+    require_once '../../controllers/notificationController.php';
 
     // Crear una instancia de UsuarioController
     $usuarioController = new UsuarioController();
@@ -24,16 +25,17 @@
     // Comprobamos si existe algún usuario con ese correo
     //mas adelante se cambiara por el id
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
+    $notificationController = new NotificationController();
     
     $rolUsuario =  $usuarioExistente->getRole();
 
     $notisPendientes = false;
 
-    foreach($usuarioExistente->getNotifications() as $notification){
+    foreach($notificationController->listarNotificacionesPorUserId($usuarioExistente->getId()) as $notification){
 
       //pongo el booleano a true para llevarmelo al icono de notificaciones y mostrar un * si hay notif pendientes
 
-      if (!$notification["leido"]){
+      if (!$notification->getRead()){
       
         $notisPendientes = true;
       
