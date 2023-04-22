@@ -10,10 +10,12 @@
     <body>
         <?php
         require_once '../../controllers/usuarioController.php';
+        require_once '../../controllers/notificationController.php';
 
         // Crear una instancia de UsuarioController
 
         $usuarioController = new UsuarioController();
+        $notificationController = new NotificationController();
 
         // Comprobamos si el formulario ha sido enviado 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -70,29 +72,14 @@
                             </div>       
                     <?php
                 }
-                
-                //$descNot = 'Hola ' + $usuarioExistente->getNombre();
 
-                $finalNotifications = [];  
-                $newNotification = array( //modificar en la sigueinte entrega
-                    'id' => rand(),
-                    
-
-                    'nombre' => $usuarioExistente->getNombre(), 
-
-                    //'nombre' => 'Manolo',
-                    'icono' => 'logoLB.png',
-                    'descripcion' => 'Has modificado tu perfil',
-                    
-                    //'descripcion' => 'Está cerca de tí',
-                    'leido' => false
+                $datosNotificacion = array(
+                    'userId' => $usuarioExistente->getId(),
+                    'name' => 'Manolo',
+                    'description' => 'Está cerca de tí',
+                    'icon' => 'LogoLB.png',
+                    'read' => false
                 );
-            
-                foreach($usuarioExistente->getNotifications() as $not){
-                    array_push($finalNotifications, $not);
-                }
-                array_push($finalNotifications, $newNotification);
-
 
                 if ($usuarioExistente !== null){ 
                     $datos = array(
@@ -106,14 +93,15 @@
                         'role' => $role, 
                         'genero' => $genero,
                         'descripcion' => $sobreMi,
-                        'fotoPerfil' => $nombreFoto,
-                        'notifications' => $finalNotifications
+                        'fotoPerfil' => $nombreFoto
                     );
                     
                     //actualizar por id
 
                     $resultado = $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $datos);
                     //$resultado = $usuarioController->actualizarUsuarioPorCorreo($correo, $datos);
+
+                    $resultado2 = $notificationController->crearNotificacion($datosNotificacion);
  
                     // Si se ha insertado correctamente, redirigir a la página de login
                     if ($resultado !== null) {

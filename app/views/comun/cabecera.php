@@ -52,30 +52,7 @@
       <li class="dropdown">
         <a href=""><i class="bi bi-bell-fill"></i></a>
           <ul>
-            <?php
-
-            //Se muestra cada notificación con los datos de la base de datos y solo mostrando las que no están leídas ya
-            foreach($usuarioExistente->getNotifications() as $notification){
-              if (!$notification["leido"]){
-                echo "<li>
-                  <div>
-                    <div class='notification'>
-                      <div class='icon-container'>
-                          <img src= '../../../public/assets/img/".$notification["icono"]."' alt='Icono de notificación'>
-                      </div>
-                      <div class='info-container'>
-                          <p class='sender'>".$notification['nombre']."</p>
-                          <p class='type'>".$notification["descripcion"]."</p>
-                      </div>
-                      <div class='button-container'>
-                          <button onclick='deleteNotification(".$notification["id"].")' class='view-button'>Marcar como vista</button>
-                      </div>
-                    </div>
-                  </div>
-                </li>";
-              }
-            }
-            ?>
+            <li><a href="../../views/notificaciones/displayNotifications.php">Notificaciones</a></li>
           </ul>        
       </li>
           

@@ -2,13 +2,15 @@
 class Notification{
 
     private $id;
+    private $userId;
     private $name;
     private $description;
     private $icon;
     private $read;
 
-    public function __construct($id, $name, $description, $icon, $read) {
+    public function __construct($id, $userId, $name, $description, $icon, $read) {
     $this->id = $id;
+    $this->userId = $userId;
     $this->name = $name;
     $this->description = $description;
     $this->icon = $icon;
@@ -21,6 +23,14 @@ class Notification{
 
     public function setid($id){
         $this->id = $id;
+    }
+
+    public function getUserId(){
+        return $this->userId;
+    }
+
+    public function setUserId($userId){
+        $this->userId = $userId;
     }
 
     public function getName(){
