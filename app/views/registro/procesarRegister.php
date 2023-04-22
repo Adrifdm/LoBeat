@@ -76,8 +76,7 @@ else if ($registered === true){
         'spotify_ID' => '',     // Inicialmente el spotifyID de la base de datos se inicializa vacío (al llamar a obtenerSpotifyID necesitamos $_SESSION["logged_user_id"], y no podemos inicializarlo hasta crear el usuario en la bd)
         'nChats' => 0,
         'nMatches' => 0,
-        'nPlaylists' => 0,
-        'notifications' => array()
+        'nPlaylists' => 0
     );
 
     // Creamos el usuario con la información anterior

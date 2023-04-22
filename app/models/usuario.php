@@ -18,10 +18,9 @@ class Usuario {
   private $nMatches;
   private $nChats;
   private $nPlaylists;
-  private $notifications;
   //private $chatsList; lista de chats de cada usuario (para no estar buscando en la coleccion chats los de este usuario en concreto y directamente usar esta lista)
 
-  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID, $nChats, $nPlaylists, $nMatches, $notifications) {
+  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID, $nChats, $nPlaylists, $nMatches) {
     $this->id = $id;
     $this->nombre = $nombre;
     $this->correo = $correo;
@@ -41,17 +40,7 @@ class Usuario {
     $this->nMatches = $nMatches;
     $this->nPlaylists = $nPlaylists;
     $this->nChats = $nChats;
-
-    $this->notifications = $notifications;
   
-  }
-
-  public function getNotifications(){
-    return $this->notifications;
-  }
-
-  public function setNotifications($notifications){
-    $this->notifications = $notifications;
   }
 
   public function getnMatches(){

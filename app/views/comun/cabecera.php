@@ -131,37 +131,7 @@
         
       </a>
           <ul>
-            <?php
-
-            $notisPendientes = false;
-
-            //Se muestra cada notificación con los datos de la base de datos y solo mostrando las que no están leídas ya
-            foreach($usuarioExistente->getNotifications() as $notification){
-
-              //pongo el booleano a true para llevarmelo al icono de notificaciones y mostrar un * si hay notif pendientes
-
-              $notisPendientes = true;
-
-              if (!$notification["leido"]){
-                echo "<li>
-                  <div>
-                    <div class='notification'>
-                      <div class='icon-container'>
-                          <img src= '../../../public/assets/img/".$notification["icono"]."' alt='Icono de notificación'>
-                      </div>
-                      <div class='info-container'>
-                          <p class='sender'>".$notification['nombre']."</p>
-                          <p class='type'>".$notification["descripcion"]."</p>
-                      </div>
-                      <div class='button-container'>
-                          <button onclick='deleteNotification(".$notification["id"].")' class='view-button'>Marcar como vista</button>
-                      </div>
-                    </div>
-                  </div>
-                </li>";
-              }
-            }
-            ?>
+            <li><a href="../../views/notificaciones/displayNotifications.php">Notificaciones</a></li>
           </ul>        
       </li>
           
