@@ -6,28 +6,34 @@ a{
   z-index: 1000;
 }
 #header{
+  height: 70px !important;
   background:rgb(0,0,0,0.7);
   width:100%;
   position:relative}
+
 #header:after{
   content:"";
   clear:both;
   display:block}
+
 .search{
   float:right;
   padding:30px}
+
 input{
   border:none;
   padding:10px;
   border-radius:20px}
+
 .logo{
   float:left;
   padding-left:2%;
   padding-bottom: 1%;
-  height:100px;
+  height:60px;
   margin:10px auto;
   display:block;
   text-align :center ;}
+
 .logo a{
   font-size:30px;
   display:block;

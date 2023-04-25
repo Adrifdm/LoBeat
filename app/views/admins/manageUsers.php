@@ -74,6 +74,11 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 </head>
 
 <body>
+    
+    <?php
+      require("../comun/cabecera.php");
+    ?> 
+    
     <!--
         <div class="side-menu">
             <div class="brand-name">
@@ -90,6 +95,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
         -->
     <div class="containerAdmin">
 
+        <!--
         <div class="headerAdmin">
             <div class="nav">
                 <div class="search">
@@ -98,11 +104,13 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 
                     </button>
                 </div>
+
                 <div class="usuInfo">
                     <a href="#" class="btnn"> Crear Usuario </a>
                 </div>
             </div>
         </div>
+        -->
 
         <div class="contenidoPag">
             <div class="cardss">
@@ -112,6 +120,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                         <h1>21234</h1>
                         <h3>Usuarios</h3>
                     </div>
+
                     <div class="iconCas">
                         <img src="../../../public/assets/img/rating.png" alt="">
                     </div>
@@ -122,6 +131,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                         <h1>21234</h1>
                         <h3>Administradores</h3>
                     </div>
+
                     <div class="iconCas">
                         <img src="../../../public/assets/img/rating.png" alt="">
                     </div>
@@ -132,6 +142,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                         <h1>21234</h1>
                         <h3> Playlists</h3>
                     </div>
+
                     <div class="iconCas">
                         <img src="../../../public/assets/img/rating.png" alt="">
                     </div>
@@ -142,6 +153,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                         <h1>21234</h1>
                         <h3>Students</h3>
                     </div>
+
                     <div class="iconCas">
                         <img src="../../../public/assets/img/rating.png" alt="">
                     </div>
@@ -150,8 +162,64 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 
             </div>
             <div class="content-2">
+                <div class="usersp">
+                    <div class="titulodiv">
+                        <h2>Usuarios</h2>
+                        <a href="#" class="btnn"> View all</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>
+                                Foto
+                            </th>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Correo
+                            </th>
+                            <th>
+                                Rol
+                            </th>
+                            <th>
+                                Género
+                            </th>
+                            <th>
+                                Opción
+                            </th>
 
+                        </tr>
 
+                        <tr>
+                            <td>
+                                <img src="../../../public/assets/img/rating.png" alt="">
+                            </td>
+                            <td>
+                                john dei
+                            </td>
+                            <td>
+                                johndei@mail.com
+                            </td>
+                            <td>
+                                Admin
+                            </td>
+                            <td>
+                                Hombre
+                            </td>
+                            <td>
+                                <a href="#" class="btnn"> View </a>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="new-users">
+                    <div class="titulodiv">
+                        <h2>Crear usuario</h2>
+                        <a href="#" class="btnn"> Crear</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
