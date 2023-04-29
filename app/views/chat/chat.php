@@ -1,12 +1,14 @@
 <?php
 	session_start();
+  $chatController = new ChatController();
 
     if($_SESSION["is_logged"] != true){
     
         header('Location: ../perfil/logout.php'); 
         
         exit;
-    } 
+    }
+    
 ?>
 
 <!doctype html>

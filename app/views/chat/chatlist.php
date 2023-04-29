@@ -1,12 +1,34 @@
 <?php
+require_once '../../controllers/chatController.php';
+require_once '../../controllers/usuarioController.php';
 	session_start();
+  $chatController = new ChatController();
+  $userController = new UsuarioController();
 
     if($_SESSION["is_logged"] != true){
     
         header('Location: ../perfil/logout.php'); 
         
         exit;
-    } 
+    }else{
+      $chats = $chatController->buscarChatPorCampo('owner.id', $_SESSION['logged_user_id']);
+      //$chats = $chatController->listarChats();
+    }
+    
+?>
+<?php
+if (isset($_POST['crearChat'])) {
+  $p1 = '643bda7e621ceff0d9064c54';
+  $p2 = '64441f6001e06de257011ebe';
+  $datosChat = array('chat_participante1' => $p1, 'chat_participante2' => $p2);
+  $chatController->crearChat($datosChat);
+}
+if (isset($_POST['crearChat2'])) {
+  $p1 = '643bda7e621ceff0d9064c54';
+  $p2 = '644cefbca2c5f2acb3008854';
+  $datosChat = array('chat_participante1' => $p1, 'chat_participante2' => $p2);
+  $chatController->crearChat($datosChat);
+}
 ?>
 
 <!doctype html>
@@ -39,94 +61,58 @@
     <div class="app-right">
       <div class="chat-list-wrapper">
         <ul class="chat-list active">
-          <a href ="chat.php">
-          <li class="chat-list-item" href ="chat.php">
+        <?php foreach ($chats as $index => $chat): ?>
+          <a class = "chat_index" href="chat.php?chat=<?php echo $index ?>">
+          <li class="chat-list-item" >
             <img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-            <span class="chat-list-name">Roberto
+            <span class="chat-list-name"> 
+              <?php
+                 $participante2 = $chat->getParticipants()[1];
+                 $usuario = $usuarioController->obtenerUsuarioPorId($participante2);
+                 echo $usuario.getNombre();
+              ?>
             <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
               pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
             </span>
           </li>
           </a>
-          <li class="chat-list-item">
-            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-            <span class="chat-list-name">Roberto
-            <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
-              pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
-            </span>
-            
-          </li>
-          <li class="chat-list-item">
-            <img src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2552&q=80" alt="chat">
-            <span class="chat-list-name">Roberto
-            <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
-              pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
-            </span>
-            
-          </li>
-          <li class="chat-list-item">
-            <img src="https://images.unsplash.com/photo-1604004555489-723a93d6ce74?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=934&q=80" alt="chat">
-            <span class="chat-list-name">Roberto
-            <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
-              pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
-            </span>
-            
-          </li>
-          <li class="chat-list-item">
-            <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60" alt="chat">
-            <span class="chat-list-name">Roberto
-            <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
-              pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
-            </span>
-            
-             <li class="chat-list-item">
-            <img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-            <span class="chat-list-name">Roberto
-            <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
-              pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
-            </span>
-            
-          </li>
-          <li class="chat-list-item">
-            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-       
-            <span class="chat-list-name">Roberto
-            <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
-              pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
-            </span>
-            
-          </li>
-          <li class="chat-list-item">
-            <img src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2552&q=80" alt="chat">
-            <span class="chat-list-name">Roberto
-            <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
-              pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
-            </span>
-          </li>
-          <li class="chat-list-item">
-            <img src="https://images.unsplash.com/photo-1604004555489-723a93d6ce74?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=934&q=80" alt="chat">
-            <span class="chat-list-name">Roberto
-            <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
-              pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
-            </span>
-            
-          </li>
-          <li class="chat-list-item">
-            <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60" alt="chat">
-            <span class="chat-list-name">Roberto
-            <p class = "subtitulo">  quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que
-              pues el otro dia no se quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se que  </p>
-            </span>
-            
-          </li>
-          </li>
+          <?php endforeach; ?>
         </ul>
       </div>
     </div>
-    
+    <form action="chatlist.php" method="POST">
+        <button type="submit" name="crearChat">Crear chat</button>
+    </form>
+    <form action="chatlist.php" method="POST">
+        <button type="submit" name="crearChat2">Crear chat 2</button>
+    </form>
     <?php
 		//require("../comun/rep.php");
 	?>
 </body>
+<script>
+        const links = document.querySelectorAll('.chat_index');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // para prevenir el comportamiento por defecto del enlace
+                
+                /* ESTO ES LO DEL ICONO EN LA PLAYLIST SELECCIONADA (NO FUNCIONA DE MOMENTO)
+                // eliminar la clase "active" de todos los enlaces
+                links.forEach(link => {
+                    link.querySelector('h4').classList.remove('active');
+                });
+                // agregar la clase "active" al enlace que se ha hecho clic
+                this.querySelector('h4').classList.add('active');
+                */
+
+                // obtener el índice de la playlist seleccionada
+                const index = Array.from(links).indexOf(this);
+                
+                // redirigir a la página con el índice de la playlist seleccionada como parámetro en la URL
+                window.location.href = `chat.php?chat=${index}`;
+            });
+        });
+    </script>
 
 </html>
