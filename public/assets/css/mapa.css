@@ -1,23 +1,26 @@
 body{
     font-family: sans-serif;
-    background: linear-gradient(-300deg, #36e2ec, #000000,#000000, #000000,#000000, #36e2ec) ;
+    background: linear-gradient(0deg, #87067d, #000000, #000000);
+    background-size: 100% 100%;
     margin: 0;
 	padding: 0;
 	background-position: center center;
 	background-attachment: fixed;
-	font-family: 'Lexend', sans-serif;
-
-    
+	font-family: 'Lexend', sans-serif;   
 }
 
 #mapa{
-    margin-top: 3%;
-    min-height: 550px;
-    height:50%;
-    width: 50%;
-    border: #36e2ec 4px solid;
-    margin-left: 2%;
-    margin-right: 3%;
+    margin: 15px 0 0 20px;
+    height: 600px;
+    width: 700px;
+    border: #ffffff 2px solid;
     border-radius: 5px;
     float:left;
+}
+
+.seccionDer {
+    background-color: aqua;
+    float: right;
+    width: 750px;
+    font-size: 40px;
 }

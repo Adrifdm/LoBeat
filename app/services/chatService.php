@@ -108,6 +108,8 @@ class ChatService {
         }
     }
 
+    //hacer buscarChatsPorUsuario()
+
     public function crearMensaje($id, $message) {
 
         $datos = null;

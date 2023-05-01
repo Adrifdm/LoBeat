@@ -2,13 +2,10 @@
 /*para el boton de la cabecera que tiene visibilidad segun el rol*/
 
 .visible4admins{
-
     display: none;
-
 }
 
 .error{
-
     color: red;
     font-weight: bold;
     margin-bottom: 10px;
@@ -20,7 +17,6 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     /*color: black;*/
-
 }
 
 body{
