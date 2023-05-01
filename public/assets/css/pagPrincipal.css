@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
 body{
     font-family: sans-serif;
     background: linear-gradient(180deg, #30087c, #000000, #87067d);
@@ -21,7 +22,7 @@ body{
 
 /* Sección derecha */
 .seccionDer {
-    /* background-color: aqua; */
+    background-color: aqua;
     margin-left: 750px;
     margin-top: 15px;
     width: 760px;
@@ -30,7 +31,7 @@ body{
 
 /* Sección cuando no hay nada seleccionado */
 .seccionDer .seccionVacia {
-    /* background-color: #87067d; */
+    background-color: #87067d;
     color:#ffffff;
     text-align: center;
     vertical-align: middle;
@@ -43,7 +44,12 @@ body{
     border-radius: 2%;
 }
 
-.seccionDer .visualizacionUsuario img{
+.seccionDer .visualizacionUsuario .infoUsuario {
+    overflow-y: auto;
+    height: 553px;
+}
+
+.seccionDer .visualizacionUsuario .infoUsuario img{
     /* background-color: bisque; */
     width: 220px;
     height: auto;
@@ -52,21 +58,21 @@ body{
     padding-top: 10px;
 }
 
-.seccionDer .visualizacionUsuario h1{
+.seccionDer .visualizacionUsuario .infoUsuario h1{
     /* background-color: rgb(193, 121, 33); */
     text-align: center;
     font-size: 30px;
     color:#ffffff;
 }
 
-.seccionDer .visualizacionUsuario h2{
+.seccionDer .visualizacionUsuario .infoUsuario h2{
     /* background-color: rgb(33, 60, 158); */
     text-align: center;
     font-size: 20px;
     color:#ffffff;
 }
 
-.seccionDer .visualizacionUsuario p{
+.seccionDer .visualizacionUsuario .infoUsuario p{
     /* background-color: rgb(84, 187, 19); */
     height: 155px;
     font-size: 15px;
@@ -75,12 +81,54 @@ body{
     color:#ffffff;
 }
 
+.seccionDer .visualizacionUsuario .infoUsuario h3{
+    background-color: rgb(84, 187, 19);
+    margin:  20px 0 0 20px;
+}
+
+.seccionDer .visualizacionUsuario .infoUsuario .tabla-filas {
+    /* background-color: rgb(174, 185, 20); */
+    overflow: hidden;
+    width: 100%;
+    color:white;
+    font-size: 18px;
+}
+
+.seccionDer .visualizacionUsuario .infoUsuario .tabla-filas .fila {
+    background-color: rgb(212, 17, 144);
+    overflow: hidden;
+}
+
+.seccionDer .visualizacionUsuario .infoUsuario .tabla-filas .fila .imagen-fila{
+    background-color: #30087c;
+    float: left;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.seccionDer .visualizacionUsuario .infoUsuario .tabla-filas .fila .imagen-fila img{
+    width: 50px;
+    height: auto;
+    padding-top: 0px;
+}
+
+.seccionDer .visualizacionUsuario .infoUsuario .tabla-filas .fila .titulo-fila{
+    background-color: #1be282;
+    font-family: 'Poppins', sans-serif;
+    float: left;
+    margin-left: 10px;
+}
+
+.seccionDer .visualizacionUsuario .infoUsuario .tabla-filas .fila .titulo-fila .subtitulo{
+    font-size: 11px;
+    color: #ffbae1;
+    overflow: hidden;
+}
+
 .seccionDer .visualizacionUsuario .botonesUsuario {
-    /* background-color: #e21b43; */
+    background-color: #e21b43;
     width: auto;
     text-align: center;
-    margin-top: 38px;
-    padding-bottom: 10px;
 }
 
 .seccionDer .visualizacionUsuario button {

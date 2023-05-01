@@ -41,10 +41,170 @@
             </div> -->
 
             <div class="visualizacionUsuario">
-                <img src="../../../public/assets/img/profilePhotos/profileAvatar.png" alt="Imagen usuario">
-                <h1>Nombre del usuario</h1>
-                <h2>Hombre</h2>
-                <p>quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se el otro d otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se ev otro dia no se e otro e hjhj hjgjgj hgfjia no se que pFINNNNN AAAAAAAL</p>
+
+                <div class="infoUsuario">
+                    <img src="../../../public/assets/img/profilePhotos/profileAvatar.png" alt="Imagen usuario">
+                    <h1>Nombre del usuario</h1>
+                    <h2>Hombre</h2>
+                    <p>quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se el otro d otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se ev otro dia no se e otro e hjhj hjgjgj hgfjia no se que pFINNNNN AAAAAAAL</p>
+                    <h3>Matchlist<hr></h3>
+                    <div class="tabla-filas">
+                        <div class="fila">
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Titulo1
+                                    <div class="subtitulo">
+                                        hhguyuygug, uyfuugg
+                                    </div>
+                                </h5>
+                            </div>
+
+                        </div>
+
+                        <div class="fila">
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Titulo1
+                                    <div class="subtitulo">
+                                        hhguyuygug, uyfuugg
+                                    </div>
+                                </h5>
+                            </div>
+
+                        </div>
+
+                        <div class="fila">
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Titulo1
+                                    <div class="subtitulo">
+                                        hhguyuygug, uyfuugg
+                                    </div>
+                                </h5>
+                            </div>
+
+                        </div>
+
+                        <div class="fila">
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Titulo1
+                                    <div class="subtitulo">
+                                        hhguyuygug, uyfuugg
+                                    </div>
+                                </h5>
+                            </div>
+
+                        </div>
+
+                        <div class="fila">
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Titulo1
+                                    <div class="subtitulo">
+                                        hhguyuygug, uyfuugg
+                                    </div>
+                                </h5>
+                            </div>
+
+                        </div>
+
+                        <div class="fila">
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Titulo1
+                                    <div class="subtitulo">
+                                        hhguyuygug, uyfuugg
+                                    </div>
+                                </h5>
+                            </div>
+
+                        </div>
+
+                        <div class="fila">
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Titulo1
+                                    <div class="subtitulo">
+                                        hhguyuygug, uyfuugg
+                                    </div>
+                                </h5>
+                            </div>
+
+                        </div>
+
+                        <div class="fila">
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Titulo1
+                                    <div class="subtitulo">
+                                        hhguyuygug, uyfuugg
+                                    </div>
+                                </h5>
+                            </div>
+
+                        </div>
+
+                        <div class="fila">
+
+                            <div class="imagen-fila">
+                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
+                            </div>
+
+                            <div class="titulo-fila">
+                                <h5>
+                                    Titulo1
+                                    <div class="subtitulo">
+                                        hhguyuygug, uyfuugg
+                                    </div>
+                                </h5>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
                 <div class="botonesUsuario">
                     <button class="cerrarUsuario"><i class="bi bi-x"></i></button>
                     <button class="abrirChat"><i class="bi bi-chat-dots"></i></button>
