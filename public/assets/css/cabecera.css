@@ -81,11 +81,9 @@ nav li a {
 
 nav .dropdown {
   position: absolute;
-  top: 100%;
-  left: 0;
+ 
   background-color: black;
-  padding: 0;
-  margin: 0;
+ 
   border: 1px solid #ccc;
   z-index: 1;
   display: none;
