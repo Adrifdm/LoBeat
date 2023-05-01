@@ -3,14 +3,13 @@ html {
      
 }
 body{
-    font-family: sans-serif;
-    background-image:url(../img/fondoLogin.png) ;  
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin:0;
-    padding:0;
+  font-family: sans-serif;
+  background-image:url(../img/fondoLogin.png) ;  
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin:0;
+  padding:0;
 }
-
 
 .next{
   position: absolute;

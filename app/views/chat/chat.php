@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
     <link rel="stylesheet" href=" https://unpkg.com/openlayers@4.6.5/dist/ol.css">
-    <link rel="stylesheet" href="../../../public/assets/css/mapa.css">
+    <link rel="stylesheet" href="../../../public/assets/css/pagPrincipal.css">
     <link rel="stylesheet" href="../../../public/assets/css/chat.css">
     
     <script type="text/javascript" src="https://unpkg.com/openlayers@4.6.5/dist/ol.js"></script>

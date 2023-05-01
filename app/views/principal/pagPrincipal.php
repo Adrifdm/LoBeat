@@ -45,6 +45,10 @@
                 <h1>Nombre del usuario</h1>
                 <h2>Hombre</h2>
                 <p>quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se el otro d otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se ev otro dia no se e otro e hjhj hjgjgj hgfjia no se que pFINNNNN AAAAAAAL</p>
+                <div class="botonesUsuario">
+                    <button class="cerrarUsuario"><i class="bi bi-x"></i></button>
+                    <button class="abrirChat"><i class="bi bi-chat-dots"></i></button>
+                </div>
             </div>
 
             <div class="listaChats">

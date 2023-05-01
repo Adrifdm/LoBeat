@@ -60,7 +60,9 @@ body {
 .cabeceraDerecha a:hover{
 	color: #ff52f3;
 }
-nav ul {
+
+/* Caja que se despliega (ul es cada elemento en ella) */
+.cabeceraDerecha ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -68,19 +70,19 @@ nav ul {
   justify-content: flex-end;
 }
 
-nav li {
+.cabeceraDerecha li {
   position: relative;
 }
 
-nav li a {
+.cabeceraDerecha ul li a {
   display: block;
   padding: 1em;
   text-decoration: none;
-  color: #333;
 }
 
-nav .dropdown {
+.cabeceraDerecha .dropdown {
   position: absolute;
+
  
   background-color: black;
  
@@ -89,10 +91,18 @@ nav .dropdown {
   display: none;
 }
 
-nav .dropdown li {
+.cabeceraDerecha .dropdown li {
   display: block;
 }
 
-nav li:hover > .dropdown {
+.cabeceraDerecha .dropdown li a {
+  color: #6c6c6c;
+}
+
+.cabeceraDerecha .dropdown li a:hover{
+	color: #ff52f3;
+}
+
+.cabeceraDerecha li:hover > .dropdown {
   display: block;
 }

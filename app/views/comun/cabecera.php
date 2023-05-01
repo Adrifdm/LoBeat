@@ -23,25 +23,33 @@
       // Crear una instancia de UsuarioController
       $usuarioController = new UsuarioController();
 
-      // Comprobamos si existe algún usuario con ese correo
-      //mas adelante se cambiara por el id
-      $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
-      $notificationController = new NotificationController();
-      
-      $rolUsuario =  $usuarioExistente->getRole();
+      $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
 
-      $notisPendientes = false;
-
-      foreach($notificationController->listarNotificacionesPorUserId($usuarioExistente->getId()) as $notification){
-
-        //pongo el booleano a true para llevarmelo al icono de notificaciones y mostrar un * si hay notif pendientes
-
-        if (!$notification->getRead()){
-        
-          $notisPendientes = true;
-        
-        }
+      if ($usuarioExistente->getRole() == 'Admin') {
+        $rolAdmin = true;
+      } else {
+        $rolAdmin = false;
       }
+
+      // // Comprobamos si existe algún usuario con ese correo
+      // // mas adelante se cambiara por el id
+      // $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
+      // $notificationController = new NotificationController();
+      
+      // $rolUsuario = $usuarioExistente->getRole();
+
+      // $notisPendientes = false;
+
+      // foreach($notificationController->listarNotificacionesPorUserId($usuarioExistente->getId()) as $notification){
+
+      //   //pongo el booleano a true para llevarmelo al icono de notificaciones y mostrar un * si hay notif pendientes
+
+      //   if (!$notification->getRead()){
+        
+      //     $notisPendientes = true;
+        
+      //   }
+      // }
     ?>
 
     <!-- partial:index.partial.html -->
@@ -54,24 +62,9 @@
       </div>
 
       <nav class="cabeceraDerecha">
-        <li>
-          <a class="opcionMenu" href="#"> 
-            <i class="bi bi-list"></i>
-            <span class= "tooltip-box">Menu</span>
-           </a>
-          <ul class="dropdown">
-            <li><a href="../../views/playlists/displayPlaylists.php">
-            <i class="bi bi-music-note-list"></i>
-              <span class= "tooltip-box">Playlists</span>
-            </a></li>
-            <li><a href="../../views/chat/chatlist.php">
-              <i class="bi bi-chat-dots"></i>
-              <br>
-              <span class= "tooltip-box">Chat</span>
-            </a></li>
-          </ul>
-      </li>
 
+        <ul>
+          <?php if ($rolAdmin == true): ?>
           <li>
             <a class="opcionAdmins" href="../admins/manageUsers.php">
               
@@ -101,22 +94,38 @@
 
             </a>
           </li>
-          <!--
-          <li class="dropdown">
+          <?php endif; ?>
 
-            <a href=""><i class="bi bi-list"></i></a>
+          <li>
+            <a class="opcionMenu"> 
+              <i class="bi bi-list"></i>
+              <span class= "tooltip-box">Menu</span>
+            </a>
 
-            <ul>
-              <li><a href="../../views/playlists/displayPlaylists.php">Playlists</a></li>
+            <ul class="dropdown">
+
+              <li>
+
+                <a href="../../views/playlists/displayPlaylists.php">
+                  <i class="bi bi-music-note-list"></i>
+                  <span class= "tooltip-box">Playlists</span>
+                </a>
+                
+              </li>
+
+              <li>
+                <a href="../../views/chat/chatlist.php">
+                  <i class="bi bi-chat-dots"></i>
+                  <br>
+                  <span class= "tooltip-box">Chat</span>
+                </a>
+              </li>
+
             </ul>
 
-            <ul>
-              <li><a href="../../views/chat/chatlist.php">Chat</a></li>
-            </ul>
-              
           </li>
 
-          <li class="dropdown">
+          <!-- <li>
 
             <a href=""><i class="bi bi-bell-fill notiButt"></i>
             
@@ -128,7 +137,7 @@
                 var notiButton = document.getElementById('hayNotis');
 
                 //var php booleana
-                var hay = "<?= $notisPendientes ?>";
+                var hay = "<//?=$notisPendientes ?>";
 
                 // Ver si el usuario tiene alguna notificacion  sin leer
                 
@@ -148,8 +157,7 @@
               <li><a href="../../views/notificaciones/displayNotifications.php">Notificaciones</a></li>
             </ul>
 
-          </li>
-          -->
+          </li> -->
 
           <li>
           
@@ -170,8 +178,9 @@
 
             </a>
           </li>
-      
+        
         </ul>
+
       </nav>
     
     </div>

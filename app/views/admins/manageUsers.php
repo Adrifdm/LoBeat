@@ -4,25 +4,7 @@ require_once '../../controllers/spotifyController.php';
 
 session_start();
 
-$usuarioController = new UsuarioController();
-
-$rolAdmin = false;
-
-//$spotifyController = new SpotifyController();
-if (($_SESSION["is_logged"] == true)) {
-
-    $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
-
-    if ($usuarioExistente->getRole() == 'Admin') {
-
-        $rolAdmin = true;
-    } else {
-
-        $rolAdmin = false;
-    }
-}
-
-if (($_SESSION["is_logged"] != true) || ($rolAdmin == false)) {
+if ($_SESSION["is_logged"] != true) {
 
     header('Location: ../perfil/logout.php');
 
