@@ -35,8 +35,6 @@
 
         <div class="seccionDer">
 
-            <p>Hola</p>
-
         </div>
 
     </body>

@@ -20,7 +20,8 @@ body{
 
 .seccionDer {
     background-color: aqua;
-    float: right;
-    width: 750px;
-    font-size: 40px;
+    margin-left: 750px;
+    margin-top: 15px;
+    width: 760px;
+    height: 600px;
 }
