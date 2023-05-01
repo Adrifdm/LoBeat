@@ -66,7 +66,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
     <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="../../../public/assets/css/notifications.css">
+    <!--<link rel="stylesheet" href="../../../public/assets/css/notifications.css">-->
 
     <script src="https://kit.fontawesome.com/e2e2d067dc.js" crossorigin="anonymous"></script>
 

@@ -60,3 +60,41 @@ body {
 .cabeceraDerecha a:hover{
 	color: #ff52f3;
 }
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav li {
+  position: relative;
+}
+
+nav li a {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+  color: #333;
+}
+
+nav .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: black;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  z-index: 1;
+  display: none;
+}
+
+nav .dropdown li {
+  display: block;
+}
+
+nav li:hover > .dropdown {
+  display: block;
+}
