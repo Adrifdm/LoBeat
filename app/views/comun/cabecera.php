@@ -54,7 +54,23 @@
       </div>
 
       <nav class="cabeceraDerecha">
-        <ul>
+        <li>
+          <a class="opcionMenu" href="#"> 
+            <i class="bi bi-list"></i>
+            <span class= "tooltip-box">Menu</span>
+           </a>
+          <ul class="dropdown">
+            <li><a href="../../views/playlists/displayPlaylists.php">
+            <i class="bi bi-music-note-list"></i>
+              <span class= "tooltip-box">Playlists</span>
+            </a></li>
+            <li><a href="../../views/chat/chatlist.php">
+              <i class="bi bi-chat-dots"></i>
+              <br>
+              <span class= "tooltip-box">Chat</span>
+            </a></li>
+          </ul>
+      </li>
 
           <li>
             <a class="opcionAdmins" href="../admins/manageUsers.php">
@@ -134,6 +150,7 @@
 
           </li>
           -->
+
           <li>
           
             <a class="opcionPerfil" href="../perfil/profile.php"> 
