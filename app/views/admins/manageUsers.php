@@ -4,6 +4,8 @@ require_once '../../controllers/spotifyController.php';
 
 session_start();
 
+$usuarioController = new UsuarioController();
+
 if ($_SESSION["is_logged"] != true) {
 
     header('Location: ../perfil/logout.php');
@@ -26,7 +28,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 
     //logica si conseguiste entrar en la pagina
 
-
+    $users = $usuarioController->listarUsuarios();
 
 }
 
@@ -167,10 +169,58 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                                 Género
                             </th>
                             <th>
-                                Opción
+                                Acción
                             </th>
 
                         </tr>
+
+                        <?php
+                            
+                            $users = $usuarioController->listarUsuarios();
+                            foreach ($users as $user) {
+                                $foto = false;
+
+                                if($user->getFotoPerfil() != null){
+                                    $foto = true;
+                                    //echo "../../../public/assets/img/profilePhotos/".$usuarioExistente->getFotoPerfil();
+                                    }
+                                else{
+                                    $foto = false;
+                                    //echo "../../../public/assets/img/profilePhotos/profileAvatar.png";
+                                }
+                                    
+                               
+                                // imagen 
+                                if($foto){
+                                    
+                                    echo "<td>" ;
+                                    echo "<img src="; 
+                                    echo "../../../public/assets/img/profilePhotos/". $usuarioExistente->getFotoPerfil();
+                                    echo "alt=''>";
+                                    echo "</td>";
+                                    
+                                }
+                                else{
+                                    echo "<td>" ;
+                                    echo "<img src="; 
+                                    echo "../../../public/assets/img/profilePhotos/profileAvatar.png";
+                                    echo "alt=''>";
+
+                                    echo "</td>";
+                                }
+                                
+                                //Resto de info
+                                echo "<td>" . $user->getNombre() . "</td>";
+                                echo "<td>" . $user->getCorreo() . "</td>";
+                                echo "<td>" . $user->getRole() . "</td>";
+                                echo "<td>" . $user->getGenero() . "</td>";
+                                
+                                //boton editar
+                                echo "<td><button class='btnn' onclick=\"mostrarPopup('" . $user->getId() . "')\">Editar</button></td>";
+                                echo "</tr>";
+                            }
+
+                        ?>
 
                         <tr>
                             <td>
