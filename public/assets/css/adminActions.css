@@ -1,6 +1,7 @@
 
 /*para el boton de la cabecera que tiene visibilidad segun el rol*/
 
+
 .visible4admins{
     display: none;
 }
@@ -38,6 +39,59 @@ h2{
 
 h3{
     color: #999;
+}
+
+
+
+.modalcont{
+    box-sizing: border-box;
+    background-color: rgb(157, 255, 255);
+    
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+
+    font-family: 'Lexend', sans-serif !important;
+    display: none !important;
+    
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.closeBt{
+
+    font-family: 'Lexend', sans-serif !important;
+    background: #f05462;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    border: 2px solid #f05462;
+    
+    transition: 0.6s;
+    
+    border-radius: 20px;
+}
+
+.modal{
+
+    width: 600px;
+    max-width: 100%;
+    padding: 30px 50px;
+
+    border-radius: 7px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+.popupvis{
+    display: none;
+    width: 300px;
+    height: 500px;
 }
 
 .btnn{

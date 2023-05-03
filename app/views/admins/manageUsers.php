@@ -216,10 +216,50 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                                 echo "<td>" . $user->getGenero() . "</td>";
                                 
                                 //boton editar
-                                echo "<td><button class='btnn' onclick=\"mostrarPopup('" . $user->getId() . "')\">Editar</button></td>";
+
+                                echo "<td><a class='btnn' id='open'>Editar</a></td>";
+
+                                /*
+                                echo "<td><a class='btnn' onclick=\"mostrarPopup('" . $user->getId() . "')\">Editar</a></td>";
+                                */
                                 echo "</tr>";
                             }
+                            
+                        ?>
 
+                        <div id="popup" class="popupvis">
+
+                            <form>
+                                <label>Nombre:</label>
+                                <input type="text" name="nombre" value="">
+                                <br>
+
+                                <label>Apellido:</label>
+                                <input type="text" name="apellido" value="">
+                                <br>
+
+                                <label>Edad:</label>
+                                <input type="number" name="edad" value="">
+                                <br>
+
+                                <input type="submit" value="Guardar cambios">
+                            </form>
+
+                        </div>
+
+                        
+
+                        <?php
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                $id = $_POST['id'];
+                                $nombre = $_POST['nombre'];
+                                $apellido = $_POST['apellido'];
+                                $edad = $_POST['edad'];
+
+                                //actulizar usuario
+
+                                
+                            }
                         ?>
 
                         <tr>
@@ -249,13 +289,44 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                 <div class="new-users">
                     <div class="titulodiv">
                         <h2>Crear usuario</h2>
+
                         <a href="#" class="btnn"> Crear</a>
                     </div>
                 </div>
+
+            </div>
+            
+            <!-- el popup -->
+
+            <div class="modalcont" id="modalContainer">
+            
+                <div class="modal">
+                    <h1>
+                        Editar Ususario
+                        
+                    </h1>
+
+                    <button id="closeBt"> Guardar </button>
+                </div>
+            
             </div>
         </div>
     </div>
+    <script src="../../../public/assets/js/mapa.js">
+        const open = document.getElementById("open");
+        const close = document.getElementById("closeBt");
+        const popup = document.getElementById("modalContainer");
+        
+        
+        /*
+        function mostrarPopup(id) {
+            var popup = document.getElementById("modalContainer");
+            popup.style.display = "flex";
+            popup.style.opacity = 1;
 
+            // Aquí puedes utilizar AJAX para obtener la información del usuario utilizando el id
+        }*/
+    </script>
 </body>
 
 </html>
