@@ -18,9 +18,10 @@ class Usuario {
   private $nMatches;
   private $nChats;
   private $nPlaylists;
+  private $matchlist;
   //private $chatsList; lista de chats de cada usuario (para no estar buscando en la coleccion chats los de este usuario en concreto y directamente usar esta lista)
 
-  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID, $nChats, $nPlaylists, $nMatches) {
+  public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID, $nChats, $nPlaylists, $nMatches, $matchlist) {
     $this->id = $id;
     $this->nombre = $nombre;
     $this->correo = $correo;
@@ -36,13 +37,19 @@ class Usuario {
     $this->latitud = $latitud;
     $this->longitud = $longitud;
     $this->spotify_ID = $spotify_ID;
-    
+    $this->$matchlist = $matchlist;
     $this->nMatches = $nMatches;
     $this->nPlaylists = $nPlaylists;
     $this->nChats = $nChats;
   
   }
+  public function getMatchlist(){
+    return $this->matchlist;
+  }
 
+  public function setMatchlist($matchlist){
+    $this->matchlist = $matchlist;
+  }
   public function getnMatches(){
     return $this->nMatches;
   }

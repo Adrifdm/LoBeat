@@ -92,6 +92,16 @@ class SpotifyController {
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+
+    public function obtenerRecentlyPlayed() {
+        try {
+            // llamar al método de obtención de playlist
+            return $this->spotifyService->obtenerRecentlyPlayed();
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
     /*
     public function obtenerCancionesPlaylist($idPlayList, $idUsuario) {
         try {
