@@ -72,6 +72,18 @@ class PlaylistsController {
         }
     }
 
+    public function returnGenreTags() {
+        try {
+            // llamar al método de listar playlists del servicio
+            $playlists = $this->playlistService->returnGenreTags();
+            // devolver la lista de playlists en formato JSON
+            //echo json_encode($playlists);
+            return $playlists;
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
     public function generarGeneros($playlist) {
         try {
             // llamar al método de listar playlists del servicio
