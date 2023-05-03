@@ -199,6 +199,46 @@ class PlaylistService {
 
     return $result->getDeletedCount() > 0;
   }
+
+  public function returnGenreTags() {
+    $genres = array(
+      "Rock",
+      "Pop",
+      "Hip Hop",
+      "R&B",
+      "Country",
+      "Jazz",
+      "Blues",
+      "Electronic",
+      "Reggae",
+      "Classical",
+      "Folk",
+      "Heavy Metal",
+      "Punk",
+      "Latin",
+      "World Music",
+      "Funk",
+      "Soul",
+      "Indie",
+      "Alternative",
+      "Gospel",
+      "New Age",
+      "Ambient",
+      "Disco",
+      "Techno",
+      "Trance",
+      "House",
+      "Dubstep",
+      "Trap",
+      "K-Pop",
+      "Reggaeton",
+      "Ska",
+      "Opera",
+      "Musical Theatre"
+    );
+    return $genres;
+  }
+  
 }
 
 ?>
