@@ -138,7 +138,7 @@ body[data-theme=dark] {
 
 .chat-wrapper {
   overflow: auto;
-  max-height: 510px;
+  max-height: 530px;
 }
 
 .chat-input {

@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
         <link rel="stylesheet" href=" https://unpkg.com/openlayers@4.6.5/dist/ol.css">
         <link rel="stylesheet" href="../../../public/assets/css/pagPrincipal.css">
+        <link rel="stylesheet" href="../../../public/assets/css/chat.css">
         <!-- <link rel="stylesheet" href="../../../public/assets/css/chatlist.css"> -->
         
         <!-- Scripts mapa -->
@@ -361,8 +362,8 @@
             </div>
             
             <?php elseif ($_SESSION["vista"] == 'chat'): ?>
-
-            <div class="chatConcreto">
+            <div class = "chatConcreto">
+            <div class="app-main">
                 <div class="chat-wrapper">
                     <div class="message-wrapper reverse">
                         <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic">
@@ -453,6 +454,7 @@
                 </div>
                 <button class="chat-send-btn">Send</button>
                 </div>
+            </div>
             </div>
 
             <?php endif; ?>
