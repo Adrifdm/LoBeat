@@ -51,6 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //para ver si el usuario puede acceder a pestañas dedicadas de roles especiales
         $_SESSION["logged_user_role"] = $usuarioExistente->getRole();
 
+        //para que la vista por defecto de la sección derecha en la pag principal sea 'lista' 
+        $_SESSION["vista"] = 'usuario';
+
         // Refrescamos tokens
         $spotifyController->refrescarTokens($usuarioExistente->getId());
         $playlistsController->refrescarPlaylists($usuarioExistente->getSpotifyID());

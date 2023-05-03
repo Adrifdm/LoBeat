@@ -13,11 +13,37 @@ body{
 /* Mapa */
 #mapa{
     margin: 15px 0 0 20px;
-    height: 625px;
+    height: 600px;
     width: 700px;
     border: #ffffff 2px solid;
     border-radius: 5px;
     float:left;
+}
+
+.matching {
+    position: absolute;
+    margin: 30px 0 0 580px;
+}
+
+.matching button {
+    transition: background-color 0.2s linear;
+	border: none;
+	outline: 0 solid transparent;
+	word-break: break-word;
+	cursor: pointer;
+	border-radius: 999px;
+
+    padding: 15px 15px;
+    background-color: #e21ba0;
+	color: white;
+	box-shadow: #00000080 0 10px 20px -10px;
+	font-size: 15px;
+	text-align: center;
+	font-weight: bolder;
+}
+
+.matching button:hover {
+	background-color: #ff52f3;
 }
 
 /* Sección derecha */
@@ -29,16 +55,75 @@ body{
     height: 600px;
 }
 
-/* Sección cuando no hay nada seleccionado */
-.seccionDer .seccionVacia {
-    background-color: #87067d;
-    color:#ffffff;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 500px;
+/* SECCION PARA VER LA LISTA DE CHATS */
+.seccionDer .listaChats {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 2%;
+    height: 600px;
+    width: 760px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
-/* Sección al seleccionar un usuario */
+.seccionDer .listaChats .enlace{
+    text-decoration: none;
+}
+
+.seccionDer .chat-list-item {
+    background-color: #718daa51;
+    width: 717px;
+    transition: 0.3s;
+    border-radius: 6px;
+    margin-left: -22px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.seccionDer .chat-list-item:hover {
+    background-color: #9880bf81;
+}
+
+.seccionDer .chat-list-item .contenedor-imagen {
+    width: 80px;
+    height: 80px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 10px 10px 10px 10px;
+
+    /* Para centrar horiz y vert la imagen de dentro */ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seccionDer .chat-list-item img {
+    width: 80px;
+}
+
+.seccionDer .chat-list-name {
+    color: white;
+    font-size: 25px;
+    line-height: 15px;
+    width: 597px;
+    padding: 15px 0px 0px 10px;
+    overflow: hidden;
+    color: white;
+}
+
+.seccionDer .subtitulo{
+    font-size: 15px;
+    color: #ffadd2;
+    /* overflow: hidden; */
+    /* float: left; */
+}
+
+/* SECCION AL SELECCIONAR UN USUARIO */
 .seccionDer .visualizacionUsuario {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 2%;
