@@ -46,10 +46,12 @@
         ?>
 
         <div class="matching">
-            <button>
-                <i class="bi bi-music-note"></i>
-                CONNECT
-            </button>
+            <a href="../../../app/matching/matchAlgorithm.php">
+                <button>
+                    <i class="bi bi-music-note"></i>
+                    CONNECT
+                </button>
+            </a>
         </div>
 
         <div class="seccionDer">
