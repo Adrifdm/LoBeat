@@ -18,6 +18,17 @@
     if (isset($_POST['abrirChat'])) {
         $_SESSION['vista'] = 'chat';
     }
+
+    $nombre = null;
+    $genero = null;
+    $descripcion = null;
+    if (isset($_GET['nombre']) && isset($_GET['nombre']) && isset($_GET['nombre'])) {
+        $nombre = $_GET['nombre'];
+        $genero = $_GET['genero'];
+        $descripcion = $_GET['descripcion'];
+        
+
+    }
 ?>
 
 <!doctype html>
@@ -63,9 +74,30 @@
 
                 <div class="infoUsuario">
                     <img src="../../../public/assets/img/profilePhotos/profileAvatar.png" alt="Imagen usuario">
-                    <h1>Nombre del usuario</h1>
-                    <h2>Hombre</h2>
-                    <p>quepues el otro dia no se que pues el otro dia no se que pues el otro dia no se que pues el otro dia no se el otro d otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se e otro dia no se ev otro dia no se e otro e hjhj hjgjgj hgfjia no se que pFINNNNN AAAAAAAL</p>
+                    <h1>
+                        <?php            
+                            if ($nombre != null) {
+                                
+                                echo $nombre;
+
+                            }          
+                         ?>
+                    </h1>
+                    <h2>
+                        <?php                
+                            if ($genero != null) {
+                                echo $genero;
+                            }                         
+                        ?>
+                    </h2>
+                    <p>
+                        <?php
+                                        
+                            if ($descripcion != null) {
+                                echo $descripcion;
+                            }          
+                        ?>
+                    </p>
                     <h3>Matchlist<hr></h3>
                     <div class="tabla-filas">
                         <div class="fila">

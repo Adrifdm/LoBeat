@@ -6,7 +6,6 @@ const refrescarMapaConCategoria = categoria => {
     fetch(`coordenadas.php?categoria=resto`)
         .then(datos => datos.json())
         .then(coordenadasConIcono => {
-            console.log(coordenadasConIcono);
            dibujarMarcadoresEnMapaResto(coordenadasConIcono);
         });
         
@@ -14,6 +13,7 @@ const refrescarMapaConCategoria = categoria => {
     fetch(`coordenadas.php?categoria=current_user`)
         .then(datos => datos.json())
         .then(coordenadasConIcono => {
+            console.log(coordenadasConIcono);
             dibujarMarcadoresEnMapa(coordenadasConIcono);
         });
 
@@ -105,7 +105,7 @@ const dibujarMarcadoresEnMapaResto = coordenadasConIcono => {
     
     
 };
-
+/*
 mapa.on('click', function(evt) {
     var feature = mapa.forEachFeatureAtPixel(evt.pixel, function(feature) {
         return feature;
@@ -123,6 +123,22 @@ mapa.on('click', function(evt) {
             confirmButtonText: 'OK'
         });
     }
-});
+});*/
+
+mapa.on('click', function(evt) {
+    var feature = mapa.forEachFeatureAtPixel(evt.pixel, function(feature) {
+      return feature;
+    });
+    if (feature) {
+        var propiedades = feature.getProperties();
+
+        fetch(`pagPrincipal.php?nombre=` + encodeURIComponent(propiedades.nombre) + '&genero=' + encodeURIComponent(propiedades.genero) + '&descripcion=' + encodeURIComponent(propiedades.descripcion))
+        .catch(error => {
+          console.error('Error al enviar datos:', error);
+        });
+       
+    }
+  });
+  
 
 refrescarMapaConCategoria();
