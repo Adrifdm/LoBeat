@@ -192,6 +192,47 @@ class SpotifyService {
         return $artist_data;
     }
 
+    public function obtenerRecentlyPlayed() {
+        require '../../../vendor/autoload.php';
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }  
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $collection = (new MongoDB\Client)->LoBeat->usuarios;
+        $result = $collection->findOne([
+            '_id' => new MongoDB\BSON\ObjectID($_SESSION['logged_user_id'])
+        ]);
+        // Fetch the saved access token from somewhere. A session for example.
+        $api->setAccessToken($result['spotify_access_token']);
+
+        $recentlyPlayedRaw = $api->getMyRecentTracks(5);
+        $genres = [];
+        $names = [];
+
+        foreach ($recentlyPlayedRaw->items->track as $track) {
+
+            foreach($track->album->genres as $genre){
+                if (array_key_exists($genre, $genres)) {
+                    $genres[$genre]++;
+                } else {
+                    $genres[$genre] = 1;
+                } 
+            } 
+
+            $names = $track->name;
+        }
+    
+        arsort($genres);
+        $genero_mas_frecuente = key($genres);
+
+        $recently_played_info = array(
+            'artistas' => $names,
+            'generoMasEscuchado' => $genero_mas_frecuente
+        );
+
+        return $recently_played_info;
+    }
+
     public function obtenerPlaylist($playlistSpotifyID) {
         require '../../../vendor/autoload.php';
         if (session_status() == PHP_SESSION_NONE) {
