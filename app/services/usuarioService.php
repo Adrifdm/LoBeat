@@ -59,6 +59,37 @@ class UsuarioService {
     return $result->getInsertedId();
   }
 
+  public function getUsuariosCercanos($latitud, $longitud){
+  // Radio de la Tierra en km
+  $radio = 6371;
+
+  // Convertir a radianes
+  $latitud = deg2rad($latitud);
+  $longitud = deg2rad($longitud);
+
+  $usuariosCercanos = [];
+
+  $usuarios = $this->collection->find();
+
+  foreach ($usuarios as $usuario) {
+    if ($usuario['latitud'] != $_SESSION["logged_latitud"] && $usuario['longitud'] != $_SESSION["logged_longitud"]) {
+      // Convertir a radianes
+      $latitudUsuario = deg2rad($usuario['latitud']);
+      $longitudUsuario = deg2rad($usuario['longitud']);
+
+      // Calcular la distancia entre los dos puntos
+      $distancia = $radio * 2 * asin(sqrt(pow(sin(($latitudUsuario - $latitud) / 2), 2) + cos($latitud) * cos($latitudUsuario) * pow(sin(($longitudUsuario - $longitud) / 2), 2)));
+
+      // Agregar el usuario a la lista si está a menos de 5 km
+      if ($distancia <= 5) {
+        $usuariosCercanos[] = $usuario;
+      }
+    }
+  }
+
+  return $usuariosCercanos;
+}
+
   public function actualizarUsuario($id, $datos) {
     
     // Comprobamos campo a campo si $datos lo tiene
