@@ -32,7 +32,8 @@ class UsuarioService {
       $datos['nMatches'],
       $datos['nPlaylists'],
       $datos['nChats'],
-      null
+      null,
+      $datos['status']
     );
 
     $result = $this->collection->insertOne([
@@ -51,7 +52,8 @@ class UsuarioService {
       'nMatches' => $usuario->getnMatches(),
       'nPlaylists' => $usuario->getnPlaylists(),
       'nChats' => $usuario->getnChats(),
-      'matchlist' => null
+      'matchlist' => null,
+      'status' => $usuario->getStatus()
     ]);
 
     return $result->getInsertedId();
@@ -135,6 +137,10 @@ class UsuarioService {
 
     if (isset($datos['matchlist'])) {
       $set['matchlist'] = $datos['matchlist'];
+    }
+
+    if (isset($datos['status'])) {
+      $set['status'] = $datos['status'];
     }
     
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
