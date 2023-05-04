@@ -73,6 +73,19 @@ class UsuarioController {
         }
     }
 
+    public function getUsuariosCercanos($latitud, $longitud) {
+        try {
+            // llamar al método de listar usuarios del servicio
+            $usuarios = $this->usuarioService->getUsuariosCercanos($latitud, $longitud);
+            // devolver la lista de usuarios en formato JSON
+            //echo json_encode($usuarios);
+            return $usuarios;
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
     public function buscarUsuarioPorCampo($campo, $valor) {
         try {
             // llamar al método de buscar usuario por campo del servicio
@@ -85,5 +98,7 @@ class UsuarioController {
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+
+
 }
 ?>
