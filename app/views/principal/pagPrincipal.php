@@ -15,12 +15,32 @@
         $matchist = null;
 
         // Obtención información usuario seleccionado
-        if (isset($_GET['nombre']) && isset($_GET['nombre']) && isset($_GET['nombre'])) {
+        if (isset($_GET['nombre']) && isset($_GET['genero']) && isset($_GET['descripcion'])) {
             //TODO: foto
-            $nombre = $_GET['nombre'];
-            $genero = $_GET['genero'];
-            $descripcion = $_GET['descripcion'];
+            // $nombre = $_GET['nombre'];
+            // $genero = $_GET['genero'];
+            // $descripcion = $_GET['descripcion'];
             //TODO: matchlist
+
+            //NUEVO CACHO DENTRO DEL IF
+            $_SESSION["nombre"] = $_GET['nombre'];
+            $_SESSION["genero"] = $_GET['genero'];
+            $_SESSION["descripcion"] = $_GET['descripcion'];
+            $_SESSION["refrescar"] = 'si';
+        }
+        //NUEVO IF
+        if (isset($_SESSION["refrescar"]) && $_SESSION["refrescar"] === 'si') {
+            $_SESSION["refrescar"] = 'no';
+            ?>
+            <script>
+                setTimeout(function() {
+                    document.write("hola1");
+                    location.reload(true);
+                    document.write("hola2");
+                }, 1000); // espera 1 segundo antes de recargar
+            </script>
+            <?php
+            exit;
         }
         
         // Lógica de los botones de la visualización de un usuario
@@ -76,7 +96,8 @@
 
         <div class="seccionDer">
             
-            <?php if ($_SESSION["vista"] == 'usuario'): ?>
+            <?php if ($_SESSION["vista"] == 'usuario') { ?>
+            <?php if ($_SESSION["nombre"] != null) { ?>
 
             <div class="visualizacionUsuario">
 
@@ -84,23 +105,17 @@
                     <img src="../../../public/assets/img/profilePhotos/profileAvatar.png" alt="Imagen usuario">
                     <h1>
                         <?php            
-                            if ($nombre != null) {
-                                echo $nombre;
-                            }          
+                            echo $_SESSION["nombre"]
                         ?>
                     </h1>
                     <h2>
                         <?php                
-                            if ($genero != null) {
-                                echo $genero;
-                            }                         
+                            echo $_SESSION["genero"]                       
                         ?>
                     </h2>
                     <p>
                         <?php         
-                            if ($descripcion != null) {
-                                echo $descripcion;
-                            }          
+                            echo $_SESSION["descripcion"]         
                         ?>
                     </p>
                     <h3>Matchlist<hr></h3>
@@ -269,10 +284,27 @@
                 </div>
             </div>
             
-            <?php elseif ($_SESSION["vista"] == 'lista'): ?>
+            <?php }} elseif ($_SESSION["vista"] == 'lista') { ?>
 
             <div class="listaChats">
 
+                <!-- Información del propio usuario -->
+                <!-- <div class="content">
+                    <img src=""<?php echo $row['img']; ?>" alt="">
+                    <div class="details">
+                        <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
+                        <p><?php echo $row['status']; ?></p>
+                    </div>
+                </div> -->
+
+                <!-- Input para buscar un chat de la lista -->
+                <div class="search">
+                    <span class="text">Selecciona un usuario para hablar</span>
+                    <input type="text" placeholder="Introduce un nombre...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+
+                <!-- Lista de chats disponibles -->
                 <ul>
                     
                     <a class="enlace" href ="chat.php">
@@ -400,7 +432,7 @@
 
             </div>
             
-            <?php elseif ($_SESSION["vista"] == 'chat'): ?>
+            <?php } elseif ($_SESSION["vista"] == 'chat') { ?>
 
             <div class = "chatConcreto">
 
@@ -450,7 +482,7 @@
                 </div>
             </div>
 
-            <?php endif; ?>
+            <?php } ?>
 
         </div>
 

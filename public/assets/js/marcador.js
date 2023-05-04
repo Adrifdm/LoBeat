@@ -132,11 +132,17 @@ mapa.on('click', function(evt) {
     if (feature) {
         var propiedades = feature.getProperties();
 
-        fetch(`pagPrincipal.php?nombre=` + encodeURIComponent(propiedades.nombre) + '&genero=' + encodeURIComponent(propiedades.genero) + '&descripcion=' + encodeURIComponent(propiedades.descripcion))
+        console.log("NATESSS");
+        location.reload(true);
+        console.log("DESPUEEES");
+
+        fetch(`pagPrincipal.php?nombre=` + encodeURIComponent(propiedades.nombre) + '&genero=' + encodeURIComponent(propiedades.genero) + '&descripcion=' + encodeURIComponent(propiedades.descripcion) + '&mostrar=si')
         .catch(error => {
           console.error('Error al enviar datos:', error);
         });
        
+        location.reload(true);
+
     }
   });
   
