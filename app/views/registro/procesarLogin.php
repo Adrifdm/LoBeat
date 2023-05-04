@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION["logged_user_role"] = $usuarioExistente->getRole();
 
         //para que la vista por defecto de la sección derecha en la pag principal sea 'lista' 
-        $_SESSION["vista"] = 'usuario';
+        $_SESSION["vista"] = 'lista';
 
         // Refrescamos tokens
         $spotifyController->refrescarTokens($usuarioExistente->getId());
