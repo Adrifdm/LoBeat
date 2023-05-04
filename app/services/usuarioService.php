@@ -184,7 +184,8 @@ class UsuarioService {
         $doc['nMatches'], 
         $doc['nPlaylists'], 
         $doc['nChats'],
-        $doc['matchlist']
+        $doc['matchlist'],
+        $doc['status']
       );
       $usuario->setId($doc['_id']->__toString());   //mirar si lo del _id aqui funciona
       array_push($usuarios, $usuario);
@@ -217,7 +218,8 @@ class UsuarioService {
       $result['nMatches'], 
       $result['nPlaylists'], 
       $result['nChats'],
-      $result['matchlist']
+      $result['matchlist'],
+      $result['status']
     );
     $usuario->setId($result['_id']->__toString());    //mirar si lo del _id aqui funciona,
 
@@ -246,7 +248,8 @@ class UsuarioService {
         $resultado['nMatches'], 
         $resultado['nPlaylists'], 
         $resultado['nChats'],
-        $resultado['matchlist']
+        $resultado['matchlist'],
+        $resultado['status']
       );
     } else {
       return null;

@@ -58,6 +58,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $spotifyController->refrescarTokens($usuarioExistente->getId());
         $playlistsController->refrescarPlaylists($usuarioExistente->getSpotifyID());
 
+        // Ponemos el status de la bd del usuario en activo 
+        $datos = array(
+            'status' => true
+        );
+        $usuarioController->actualizarUsuario($_SESSION["logged_user_id"] ,$datos);
+
         header('Location: ../principal/Ubicacion.php');
         exit;
 
