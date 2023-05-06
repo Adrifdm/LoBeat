@@ -72,6 +72,19 @@ class PlaylistsController {
         }
     }
 
+    public function actualizarPlaylist($id, $datos) {
+        try {
+            // llamar al método de actualizar playlist del servicio
+            $resultado = $this->playlistService->actualizarPlaylist($id, $datos);
+            // devolver la respuesta en formato JSON
+            //echo json_encode($resultado);
+            return $resultado;
+        } catch (Exception $e) {
+            // capturar cualquier excepción y devolver un mensaje de error al cliente
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
     public function returnGenreTags() {
         try {
             // llamar al método de listar playlists del servicio

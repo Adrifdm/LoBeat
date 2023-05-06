@@ -172,7 +172,7 @@ body{
 
 .seccionDer .visualizacionUsuario .infoUsuario p{
     /* background-color: rgb(84, 187, 19); */
-    height: 155px;
+    max-height: 155px;
     font-size: 15px;
     padding: 0 40px 0 40px;
     overflow: hidden;
@@ -225,7 +225,8 @@ body{
 }
 
 .seccionDer .visualizacionUsuario .botonesUsuario {
-    /* background-color: #e21b43; */
+    background-color: #00000078;
+    border-radius: 12px;
     width: auto;
     text-align: center;
 }

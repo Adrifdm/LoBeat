@@ -80,6 +80,24 @@ class PlaylistService {
     }
   }
 
+  public function actualizarPlaylist($id, $datos) {
+    
+    if (isset($datos['tags'])) {
+      $set['tags.generosMasEscuchados'] = $datos['tags'];
+    }
+    
+    // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
+    $result = $this->collection->updateOne(
+      ['_id' => new MongoDB\BSON\ObjectId($id)],
+      [
+        '$set' => $set,
+      ],
+      //['upsert' => true] esta opcion hace que si no se encuentra el usuario que hay que actualizar, se crea uno nuevo (mejor no lo activamos)
+    );
+
+    return $result->getModifiedCount() > 0;
+  }
+
   public function generarTagsAutomaticos($datos){
     // Inicializamos los arrays que vamos a utilizar
     $popularidades = [];
@@ -113,7 +131,7 @@ class PlaylistService {
     arsort($artistas);
     $artista_mas_frecuente = key($artistas);
 
-    $generos_mas_presentes = "Escribe el género que mejor describa tu matchlist o si lo prefieres deja que se generen por defecto";
+    $generos_mas_presentes = null;
 
     $playlist_tags = array(
       'popularidadMedia' => $popularidad_media,

@@ -1,16 +1,38 @@
-html {
-    height: 150%;
-     
-}
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@700&display=swap');
+
 body{
-  font-family: sans-serif;
-  background-image:url(../img/fondoLogin.png) ;  
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin:0;
-  padding:0;
+  margin: 0;
+	padding: 0;
+	background-position: center center;
+	background-attachment: fixed;
+	font-family: 'Lexend', sans-serif;
+
+	background: linear-gradient(-180deg, #000000, #000000, #000000, #87067d);
+	background-size: 150% 150%;
+	animation: gradient 5s ease infinite;
+	height: 100vh;
+
+  user-select: none;
+	-webkit-user-select: none;
 }
 
+@keyframes gradient {
+	0% {
+		background-position: 0% 100%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+	/* Nueva etapa que hace que aprox la animacion termina donde empieza */
+	99.99% {
+		background-position: 0% 100%;
+	}
+}
+
+/* Botón de Login */
 .next{
   position: absolute;
   width: 100%;
@@ -19,36 +41,31 @@ body{
   left: 0;
   opacity: 0;
 }
+
 .login-box {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
-  padding: 40px;
+  width: 500px;
+  padding: 30px;
   transform: translate(-50%, -50%);
-  background: rgba(0,0,0,.5);
+  background: rgb(44, 25, 41);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
 }
 
 .login-box h2 {
-  margin: 0 0 30px;
+  margin: 0 0 15px;
   padding: 0;
   color: #fff;
   text-align: center;
 }
 .login-box h3 {
-  margin: 0 0 1opx;
+  margin: 0 0 10px;
   padding: 0;
   color: #fff;
   text-align: center;
-}
-.login-box .logo{
-  height: 200px;
-  margin:10px auto;
-  display:block;
-  text-align :center ;
 }
 
 .login-box .user-box {
@@ -57,11 +74,11 @@ body{
 
 .login-box .user-box input {
   width: 100%;
-  padding: 10px 0;
+  padding: 8px 0;
   font-size: 16px;
   color: #ffffff;
 
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;
@@ -72,12 +89,8 @@ body{
   
   width: 50%;
   padding: 10px 0px;
-  
-  align-self: flex-end;
   font-size: 16px;
   color: #ffffff;
-
-  margin-left: 160px;
 
   margin-bottom: 30px;
   border: none;
@@ -95,7 +108,6 @@ body{
 }
 
 .login-box .user-box select option:hover{
-  
   background: rgba(255, 255, 255, 0.521)!important;
 }
 
@@ -119,7 +131,7 @@ body{
   font-size: 12px;
 }
 .login-box form .noreg{
-  color:#9e2657;
+  color:#cd4a7e;
 
 }
 .login-box form p{
@@ -129,14 +141,15 @@ body{
 .login-box form .sig {
   position: relative;
   display: inline-block;
-  padding: 10px 20px;
-  color: #01a0cc;
+  color: #01a3cc;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
   transition: .5s;
-  margin-top: 40px;
+  margin-top: 10px;
+  padding: 8px;
+  margin-left: 150px;
   letter-spacing: 4px
 }
 
@@ -241,4 +254,20 @@ body{
   background: #ff6860;
   border: 2px solid #dc1818;
   color: #3d0818;
+}
+
+.LoBeat {
+	position: absolute;
+	top: 15px;
+	left: 30px;
+	color: white;
+	font-size: 30px;
+	text-align: left;
+}
+
+.LoBeat a {
+	color: white;
+	font-size: 30px;
+	text-align: center;
+  text-decoration:none;
 }

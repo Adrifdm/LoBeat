@@ -1,11 +1,13 @@
 <?php
 require_once '../../controllers/playlistsController.php';
 require_once '../../controllers/spotifyController.php';
+require_once '../../controllers/usuarioController.php';
 
 session_start();
 
 $playlistsController = new PlaylistsController();
 $spotifyController = new SpotifyController();
+$usuarioController = new UsuarioController();
 
 if($_SESSION["is_logged"] != true){
     header('Location: ../perfil/logout.php'); 
@@ -33,6 +35,48 @@ else {
         }
     }
 
+    // Obtención datos pop up
+    if (isset($_POST['submit'])) {
+        // Almacenamos la matchlist en la bd del usuario
+        $matchlist = $playlists[$_POST['indicePlaylistSeleccionada']];
+        $matchlistArray = array(
+            'nombreMatchlist' => $matchlist->getPlaylistName(),
+            'tracks' => array()
+        );
+
+        foreach ($matchlist->getPlaylistTracks() as $matchlistTrack) {
+            $total_artists = count($matchlistTrack->track->artists);
+            $index = 0;
+            $artistsString = null;
+            foreach($matchlistTrack->track->artists as $artist) {
+                $artistsString = $artistsString.$artist->name;
+                if ($index < $total_artists - 1) {
+                    $artistsString = $artistsString.', ';
+                }
+                $index++;
+            }
+
+            $trackData = array(
+                'title' => $matchlistTrack->track->name,
+                'artists' => $artistsString
+            );
+            $matchlistArray['tracks'][] = $trackData;
+        }
+
+        $usuarioAct = array(
+            'matchlist' => $matchlistArray
+        );
+        $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $usuarioAct);
+
+        // Almacenamos el tag seleccionado en esa playlist
+        // $id = $playlists[$_POST['indicePlaylistSeleccionada']]->getPlaylistSpotifyId();
+        // $datos = array(
+        //     'tags' => $_POST['etiquetas']
+        // );
+
+        // $playlistsController->actualizarPlaylist($id, $datos);
+    }
+      
 }
 ?>
 
@@ -161,7 +205,6 @@ else {
                                 </div>
                                 <div class="info-adicional">
                                     <p> <?php echo $playlists[$indicePlaylistSeleccionada]->getPlaylistOwner()->display_name ?>
-                                        <i class="bi bi-heart-fill"></i> 1234 
                                         <i class="bi bi-clock"></i>
                                         <?php
                                         $duration_ms = $playlists[$indicePlaylistSeleccionada]->getPlaylistDuration();
@@ -179,18 +222,32 @@ else {
                         </div>
                         <br>
 
-                        <div class="boton-play">
-                            <i class="bi bi-play-circle-fill"></i>
-                        </div>
-
                         <div class="boton-matchlist">
-                            <h5>
-                                Marcar como Matchlist
-                            </h5>
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider round"></span>
-                            </label>
+                            <h5>Marcar como Matchlist</h5>
+                            <button onclick="mostrarPopup()"><i class="bi bi-suit-heart-fill"></i></button>
+                        </div>
+                        
+                        <div id="miPopup">
+                            <div id="miPopup-contenido">
+                                <h1>¿Cómo definirías tu Matchlist?</h1>
+                                
+                                <label for="etiqueta">Selecciona una opción:</label>
+
+                                <form id="formularioMatchlist" action="../../../app/views/playlists/displayPlaylists.php" method="post">
+                                    <input type="hidden" name="indicePlaylistSeleccionada" value="<?php echo $indicePlaylistSeleccionada; ?>">
+                                    <select name="etiquetas">
+                                        <?php
+                                        $tags = $playlistsController->returnGenreTags();
+                                        foreach ($tags as $tag) { ?>
+                                            <option value="<?php echo $tag; ?>"><?php echo $tag; ?></option>
+                                        <?php } ?>
+                                    </select>
+
+                                    <button type="submit" name="submit" value="submit" id="matchlistMarcada" onclick="cerrarPopup()">Marcar Matchlist</button>
+                                </form>
+
+                                <button onclick="cerrarPopup()">Cerrar</button>
+                            </div>
                         </div>
 
                         <br>
@@ -282,7 +339,7 @@ else {
                             </div>
                             
                         </div>
-                        <br><br><br><br><br><br><br>
+                        <br><br><br><br>
                     <?php endif; ?>
                 <?php endif; ?>
                 
@@ -316,5 +373,18 @@ else {
         });
     </script>
 
+    <script>
+        function mostrarPopup() {
+            var popup = document.getElementById("miPopup");
+            popup.classList.remove("cerrar");
+            popup.classList.add("mostrar");
+        }
+
+        function cerrarPopup() {
+            var popup = document.getElementById("miPopup");
+            popup.classList.remove("mostrar");
+            popup.classList.add("cerrar");
+        }
+    </script>
 
 </html>
