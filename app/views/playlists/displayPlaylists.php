@@ -243,10 +243,10 @@ else {
                                         <?php } ?>
                                     </select>
 
-                                    <button type="submit" name="submit" value="submit" id="matchlistMarcada" onclick="cerrarPopup()">Marcar Matchlist</button>
+                                    <br><button type="submit" name="submit" value="submit" id="matchlistMarcada" onclick="cerrarPopup()">Marcar Matchlist</button>
                                 </form>
 
-                                <button onclick="cerrarPopup()">Cerrar</button>
+                                <button id="cerrarMarcarMatchlist" onclick="cerrarPopup()">Cerrar</button>
                             </div>
                         </div>
 

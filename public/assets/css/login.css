@@ -134,6 +134,7 @@ body{
   color: #9e2657;
   font-size: 12px;
 }
+
 .login-box form .noreg{
   color:#cd4a7e;
 
@@ -153,7 +154,7 @@ body{
   transition: .5s;
   margin-top: 40px;
   padding: 8px;
-  margin-left: 120px;
+  margin-left: 95px;
   letter-spacing: 4px
 }
 

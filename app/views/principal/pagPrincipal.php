@@ -297,11 +297,11 @@
                 </div> -->
 
                 <!-- Input para buscar un chat de la lista -->
-                <div class="search">
+                <!-- <div class="search">
                     <span class="text">Selecciona un usuario para hablar</span>
                     <input type="text" placeholder="Introduce un nombre...">
                     <button><i class="fas fa-search"></i></button>
-                </div>
+                </div> -->
 
                 <!-- Lista de chats disponibles -->
                 <ul>

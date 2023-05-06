@@ -75,6 +75,10 @@
         
         <a class="sig" type= "submit">
           <input type="submit" class = "next">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
           Siguiente
         </a>
       </form>

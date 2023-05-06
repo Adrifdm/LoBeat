@@ -51,7 +51,7 @@
           <span></span>
           <span></span>
           <span></span>
-          Login
+          Siguiente
         </a>
       </form>
     </div>
