@@ -104,7 +104,6 @@ class Usuario {
     $this->descripcion = $descripcion;
   }
 
-
   public function getId() {
     return $this->id;
   }

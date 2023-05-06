@@ -147,13 +147,23 @@ body{
     background:#ac0d97;
 }
 
+.seccionDer .visualizacionUsuario .infoUsuario .contenedor-imagen-usuario {
+    background-color: #484e6dbb;
+    width: 220px;
+    height: 220px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 30px auto;
+
+    /* Para centrar horiz y vert la imagen de dentro */ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .seccionDer .visualizacionUsuario .infoUsuario img{
     /* background-color: bisque; */
-    width: 220px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    padding-top: 10px;
+    width: 300px;
 }
 
 .seccionDer .visualizacionUsuario .infoUsuario h1{

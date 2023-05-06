@@ -38,6 +38,7 @@
         $_SESSION["nombre"] = $_GET['nombre'];
         $_SESSION["genero"] = $_GET['genero'];
         $_SESSION["descripcion"] = $_GET['descripcion'];
+        $_SESSION["foto"] = $_GET['foto'];
         $_SESSION["refrescar"] = 'si';
     }
     
@@ -101,7 +102,13 @@
             <div class="visualizacionUsuario">
 
                 <div class="infoUsuario">
-                    <img src="../../../public/assets/img/profilePhotos/profileAvatar.png" alt="Imagen usuario">
+                    <div class="contenedor-imagen-usuario">
+                        <img src=
+                        <?php
+                        echo "../../../public/assets/img/profilePhotos/".$_SESSION["foto"];
+                        ?>
+                        alt="Imagen usuario">
+                    </div>
                     <h1>
                         <?php            
                             echo $_SESSION["nombre"]

@@ -22,7 +22,7 @@ const refrescarMapaConCategoria = categoria => {
 
 const dibujarMarcadoresEnMapa = coordenadasConIcono => {
 
-    const { icono, coordenadas, nombre, genero, descripcion } = coordenadasConIcono;
+    const { icono, coordenadas, nombre, genero, descripcion, foto } = coordenadasConIcono;
 
     let capa; 
 
@@ -44,6 +44,7 @@ const dibujarMarcadoresEnMapa = coordenadasConIcono => {
             'nombre': nombre,
             'genero' : genero,
             'descripcion' : descripcion,
+            'foto' : foto,
         });
 
         marcadores.push(marcador);
@@ -62,7 +63,7 @@ const dibujarMarcadoresEnMapaResto = coordenadasConIcono => {
     const marcadores = [];
 
     coordenadasConIcono.forEach(usuario => {
-        const { icono, coordenadas, nombre, genero, descripcion } = usuario;
+        const { icono, coordenadas, nombre, genero, descripcion, foto } = usuario;
 
         coordenadas.forEach(coordenada => {
             let marcador = new ol.Feature({
@@ -81,6 +82,7 @@ const dibujarMarcadoresEnMapaResto = coordenadasConIcono => {
                 'nombre': nombre,
                 'genero' : genero,
                 'descripcion' : descripcion,
+                'foto' : foto,
             });
             
             marcadores.push(marcador);
@@ -136,7 +138,7 @@ mapa.on('click', function(evt) {
         location.reload(true);
         console.log("DESPUEEES");
 
-        fetch(`pagPrincipal.php?nombre=` + encodeURIComponent(propiedades.nombre) + '&genero=' + encodeURIComponent(propiedades.genero) + '&descripcion=' + encodeURIComponent(propiedades.descripcion) + '&mostrar=si')
+        fetch(`pagPrincipal.php?nombre=` + encodeURIComponent(propiedades.nombre) + '&genero=' + encodeURIComponent(propiedades.genero) + '&descripcion=' + encodeURIComponent(propiedades.descripcion) + '&foto=' + encodeURIComponent(propiedades.foto) + '&mostrar=si')
         .catch(error => {
           console.error('Error al enviar datos:', error);
         });
