@@ -114,10 +114,9 @@
               </li>
 
               <li>
-                <a href="../../views/chat/chatlist.php">
-                  <i class="bi bi-chat-dots"></i>
-                  <br>
-                  <span class= "tooltip-box">Chat</span>
+                <a href="../../views/notificaciones/displayNotifications.php">
+                  <i class="bi bi-bell-fill"></i>
+                  <span class= "tooltip-box">Notificaciones</span>
                 </a>
               </li>
 
@@ -154,10 +153,6 @@
             
             </a>
               -->
-
-            <ul>
-              <li><a href="../../views/notificaciones/displayNotifications.php">Notificaciones</a></li>
-            </ul>
 
           </li>
 
