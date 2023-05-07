@@ -1,4 +1,5 @@
 <?php
+use MongoDB\Tests\GridFS\BucketFunctionalTest;
 session_start();
 
 if($_SESSION["is_logged"] != true){
@@ -53,8 +54,13 @@ if($_SESSION["is_logged"] != true){
             <div class="right-section">
 
                 <?php
+
                     $notifications = $notificationController->listarNotificacionesPorUserId($usuarioExistente->getId());
+
+                    $notificationIds = [];
+
                     foreach($notifications as $notification){
+                        array_push($notificationIds, $notification->getId());
                         if (!$notification->getRead()){
                         ?>
                             
@@ -75,6 +81,13 @@ if($_SESSION["is_logged"] != true){
                         <?php
                         }
                     }
+                    ?>
+
+                    <div id="deleteAll" class="button-container">
+                        <button onclick="deleteNotifications('<?php echo htmlspecialchars(json_encode($notificationIds)); ?>')" class="view-button">Marcar todas como vistas</button>
+                    </div>
+
+                    <?php
                 ?>
 
             </div>
@@ -88,6 +101,18 @@ if($_SESSION["is_logged"] != true){
                 url: '../comun/readNotification.php',
                 type: 'POST',
                 data: {id: id},
+                success: function(response) {
+                    location.reload();
+                }
+                });
+            }
+
+            function deleteNotifications(idList){
+                var notificationsArray = JSON.parse(idList);
+                $.ajax({
+                url: '../comun/readNotification.php',
+                type: 'POST',
+                data: {id: notificationsArray},
                 success: function(response) {
                     location.reload();
                 }

@@ -125,8 +125,9 @@
 
           </li>
 
-          <!-- <li>
+          <li>
 
+            <!--
             <a href=""><i class="bi bi-bell-fill notiButt"></i>
             
               <span id = "hayNotis" class="badge">*</span>
@@ -152,12 +153,13 @@
               </script>
             
             </a>
+              -->
 
             <ul>
               <li><a href="../../views/notificaciones/displayNotifications.php">Notificaciones</a></li>
             </ul>
 
-          </li> -->
+          </li>
 
           <li>
           

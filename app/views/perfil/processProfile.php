@@ -75,9 +75,9 @@
 
                 $datosNotificacion = array(
                     'userId' => $usuarioExistente->getId(),
-                    'name' => 'Manolo',
-                    'description' => 'Está cerca de tí',
-                    'icon' => 'LogoLB.png',
+                    'name' => 'Tú',
+                    'description' => 'Has modificado el perfil',
+                    'icon' => 'correct_operation.png',
                     'read' => false
                 );
 
