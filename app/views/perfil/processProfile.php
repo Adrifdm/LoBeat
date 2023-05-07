@@ -31,8 +31,11 @@
 
             //Comprobamos que se ha cogido bien la foto
             if (isset($_FILES['foto'])){
-                // Cogemos la información de la imagen
-                $nombreFoto = $_FILES['foto']['name'];
+                // Cogemos la información de la imagen (si no se ha seleccionado imagen se deja la que estaba antes)
+                if ($_FILES['foto']['name'] != "")
+                    $nombreFoto = $_FILES['foto']['name'];
+                else
+                    $nombreFoto = $usuarioExistente->getFotoPerfil();
                 $tipoFoto = $_FILES['foto']['type'];
                 $tamanoFoto = $_FILES['foto']['size'];
                 $tempFoto = $_FILES['foto']['tmp_name'];
@@ -41,7 +44,7 @@
                 if (($tipoFoto == 'image/jpeg' || $tipoFoto == 'image/png' || $tipoFoto == 'image/gif') && $tamanoFoto <= 5000000) {
                     // Movemos la foto a la carpeta con todas las fotos de perfiles
                     $ruta = $_SERVER['DOCUMENT_ROOT'].'/LoBeat/public/assets/img/profilePhotos/'.$nombreFoto;
-                    move_uploaded_file($tempFoto, $ruta);
+                    copy($tempFoto, $ruta);
                 }
 
             }else{
@@ -73,6 +76,7 @@
                     <?php
                 }
 
+                //Creamos los datos para la notificación de modificación de perfil
                 $datosNotificacion = array(
                     'userId' => $usuarioExistente->getId(),
                     'name' => 'Tú',

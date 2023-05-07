@@ -57,37 +57,49 @@ if($_SESSION["is_logged"] != true){
 
                     $notifications = $notificationController->listarNotificacionesPorUserId($usuarioExistente->getId());
 
+                    //Para revisar si hay notificaciones y si no hay mostrar mensaje
+                    $hayNotificaciones = false;
+
                     $notificationIds = [];
 
                     foreach($notifications as $notification){
                         array_push($notificationIds, $notification->getId());
                         if (!$notification->getRead()){
-                        ?>
-                            
-                              <div>
-                                <div class="notification">
-                                  <div class="icon-container">
-                                      <img src= "../../../public/assets/img/<?php echo $notification->getIcon(); ?>" alt="Icono de notificación">
-                                  </div>
-                                  <div class="info-container">
-                                      <p class="sender"> <?php echo $notification->getName(); ?></p>
-                                      <p class="type"> <?php echo $notification->getDescription(); ?></p>
-                                  </div>
-                                  <div class="button-container">
-                                    <button onclick="deleteNotification('<?php echo $notification->getId(); ?>')" class="view-button">Marcar como vista</button>
-                                  </div>
+                            $hayNotificaciones = true;
+                            ?>
+                                
+                                <div>
+                                    <div class="notification">
+                                    <div class="icon-container">
+                                        <img src= "../../../public/assets/img/<?php echo $notification->getIcon(); ?>" alt="Icono de notificación">
+                                    </div>
+                                    <div class="info-container">
+                                        <p class="sender"> <?php echo $notification->getName(); ?></p>
+                                        <p class="type"> <?php echo $notification->getDescription(); ?></p>
+                                    </div>
+                                    <div class="button-container">
+                                        <button onclick="deleteNotification('<?php echo $notification->getId(); ?>')" class="view-button">Marcar como vista</button>
+                                    </div>
+                                    </div>
                                 </div>
-                              </div>
-                        <?php
+                            <?php
                         }
                     }
+
+                    if (!$hayNotificaciones): ?>
+                        <div class="mensaje-inicial">
+                            <h1>
+                                Vaya! Parece que no tienes ninguna notificación
+                            </h1>
+                        </div>
+                    <?php else: 
                     ?>
 
-                    <div id="deleteAll" class="button-container">
-                        <button onclick="deleteNotifications('<?php echo htmlspecialchars(json_encode($notificationIds)); ?>')" class="view-button">Marcar todas como vistas</button>
-                    </div>
+                        <div id="deleteAll" class="button-container">
+                            <button onclick="deleteNotifications('<?php echo htmlspecialchars(json_encode($notificationIds)); ?>')" class="view-button">Marcar todas como vistas</button>
+                        </div>
 
-                    <?php
+                    <?php endif;
                 ?>
 
             </div>
