@@ -88,7 +88,7 @@ class PlaylistService {
     
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
     $result = $this->collection->updateOne(
-      ['_id' => new MongoDB\BSON\ObjectId($id)],
+      ['spotifyId' => $id],
       [
         '$set' => $set,
       ],

@@ -69,12 +69,12 @@ else {
         $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $usuarioAct);
 
         // Almacenamos el tag seleccionado en esa playlist
-        // $id = $playlists[$_POST['indicePlaylistSeleccionada']]->getPlaylistSpotifyId();
-        // $datos = array(
-        //     'tags' => $_POST['etiquetas']
-        // );
+        $id = $playlists[$_POST['indicePlaylistSeleccionada']]->getId();
+        $datos = array(
+            'tags' => $_POST['etiquetas']
+        );
 
-        // $playlistsController->actualizarPlaylist($id, $datos);
+        $playlistsController->actualizarPlaylist($id, $datos);
     }
       
 }
