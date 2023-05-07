@@ -21,6 +21,13 @@ $notificationController = new NotificationController();
 
 $id = $_POST['id'];
 
-$notificationController->leerNotificacion($id);
+if (is_array($id)){
+    foreach($id as $notification){
+        $notificationController->leerNotificacion($notification);
+    }
+}
+else{
+    $notificationController->leerNotificacion($id);
+}
 
 ?>
