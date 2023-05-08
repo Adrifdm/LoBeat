@@ -51,7 +51,7 @@ if($_SESSION["is_logged"] != true){
             </div>
 
             <!-- Sección derecha de la página -->
-            <div class="right-section">
+            <div class="right-section right-section-notification">
 
                 <?php
 
