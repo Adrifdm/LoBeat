@@ -270,12 +270,12 @@ $("#input-username").change(function(){
     } else { 
         // correo invalido: ponemos una marca y nos quejamos
         // Añadimos el html del icono y lo ponemos en color rojo
-        $("#iconoUsername").html("&#x26a0;");
+        $("#iconoUsername").html("&#x26a0; Mínimo 4 caracteres");
         $("#iconoUsername").css("color", "red");
 
         // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
         // y pongo un mensaje como no-válido
-        campo[0].setCustomValidity("El nombre de usuario debe tener mínimo 4 letras");
+        campo[0].setCustomValidity("El nombre de usuario debe tener mínimo 4 caracteres");
     }
 });
 

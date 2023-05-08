@@ -39,9 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    // Comprobamos si la contraseña coincide con la del campo "Repetir contraseña"
+    // Comprobamos si la contraseña coincide con la del campo "Repetir contraseña" y si coincide encriptamos la contraseña antes de meterla a la bd
     if ($_SESSION['constrasenya'] == $_SESSION['reconstrasenya']){
-        //$hash = password_hash($password, PASSWORD_DEFAULT);  esto esta bien pensado pero lo dejamos comentado de momento
+        $_SESSION['constrasenya'] = password_hash($_SESSION['constrasenya'], PASSWORD_DEFAULT);
+        $_SESSION['reconstrasenya'] = $_SESSION['constrasenya'];
     } else {
         ?>
         <div class = "error">

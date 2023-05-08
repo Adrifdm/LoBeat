@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Comprobamos si se ha introducido la contraseña correcta
         $contrasenyaCorrecta = $usuarioExistente->getContrasenya();
 
-        if ($contrasenya != $contrasenyaCorrecta) {
+        //Comprobamos que el hash de la contraseña introducida es igual que el de la contraseña para ese usuario
+        if (!password_verify($contrasenya, $contrasenyaCorrecta)) {
             ?>
             <div class = "error">
                 <p>La contraseña introducida no es correcta </p>

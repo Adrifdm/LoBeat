@@ -109,7 +109,7 @@ $("#name").change(function(){
     } else { 
         // correo invalido: ponemos una marca y nos quejamos
         // Añadimos el html del icono y lo ponemos en color rojo
-        $("#iconoNombre").html("&#x26a0; Mínimo 4 letras");
+        $("#iconoNombre").html("&#x26a0; Mínimo 4 caracteres");
         $("#iconoNombre").css("color", "red");
 
         // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
@@ -139,7 +139,7 @@ $("#password").change(function(){
     } else { 
         // correo invalido: ponemos una marca y nos quejamos
         // Añadimos el html del icono y lo ponemos en color rojo
-        $("#passwordIcon").html("&#x26a0; Mínimo 8 letras");
+        $("#passwordIcon").html("&#x26a0; Mínimo 8 caracteres");
         $("#passwordIcon").css("color", "red");
 
         // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
