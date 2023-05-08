@@ -132,7 +132,8 @@ h3{
     opacity: 0;
     
     font-family: 'Lexend', sans-serif !important;
-    display: flex;
+    
+    display: none;
     
     position: fixed;
     /*pointer-events: none !important;*/
@@ -146,7 +147,7 @@ h3{
 .modalcont2{
     display: flex;
     background-color: rgba(0, 0, 0, 0.71) !important;
-    pointer-events: none;
+    
     opacity: 0;
 }
 

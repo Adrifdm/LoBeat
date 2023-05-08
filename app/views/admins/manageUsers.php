@@ -315,8 +315,6 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                                 
                                 //boton editar
 
-                                
-
                                 echo "<td><a class='btnn' onclick=\"mostrarPopup('" . $user->getId() . "')\">Editar</a></td>";
                                 /*
                                 echo "<td><a class='btnn' id='open'>Editar</a></td>";
@@ -412,7 +410,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
         
         function mostrarPopup(id) {
             var popup = document.getElementById("modalContainer");
-            
+            popup.style.display = none;
             popup.style.opacity = 1;
             //popup.style.pointerEvents = none;
             
