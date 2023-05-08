@@ -80,7 +80,7 @@ else if ($registered === true){
         'nPlaylists' => 0,
         'matchlist'=> null,
         'status' => false
-    );
+    );                                                                                                          
 
     // Creamos el usuario con la información anterior
     $resultado = $usuarioController->crearUsuario($datos);

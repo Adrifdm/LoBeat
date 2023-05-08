@@ -15,7 +15,7 @@
 *{
     margin: 0;
     padding: 0;
-
+    
     /*color: black;*/
 }
 
@@ -41,27 +41,142 @@ h3{
     color: #999;
 }
 
+.equis{
+    border: 1px solid #444;
+    border-radius: 50%;
+    background-color: #444;
+    position: absolute;
 
+    color: white;
+    font-size: 15px;
+
+    padding-top: 5px;
+    padding-left: 9px;
+    padding-right: 10px;
+    padding-bottom: 5px !important;
+
+    align-items: center;
+    justify-content: center;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.equis:hover{
+    border: 1px solid #444;
+    background-color: #7b7b7b;
+    transition: 0.3s;
+}
+
+.ttt{
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.formm{
+   
+    width: 100%;
+}
+
+.form_cont{
+    display: grid;
+    gap: 2.5em;
+}
+
+.form__g{
+    position: relative;
+    --color: #5757577e;
+
+}
+
+.form__inp{
+    width: 100%;
+    background: none;
+    font-family: 'Lexend', sans-serif !important;
+    color: #444;
+    font-size: 1rem;
+    padding: .1em .1em;
+    border: none;
+    outline: none;
+
+    margin-top: 6px;
+    border-bottom: 1px solid var(--color);
+
+}
+
+.form__lab{
+    color: var(--color);
+    cursor: pointer;
+    
+    top: 0;
+   
+    left: 5px;
+    
+    
+}
+
+.form__line{
+
+}
 
 .modalcont{
     box-sizing: border-box;
-    background-color: rgb(157, 255, 255);
+    background-color: rgba(1, 1, 1, 0.592);
     
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     margin: 0;
 
+    opacity: 0;
+    
     font-family: 'Lexend', sans-serif !important;
-    display: none !important;
+    
+    display: none;
     
     position: fixed;
-    pointer-events: none;
+    /*pointer-events: none !important;*/
     top: 0;
     left: 0;
     height: 100vh;
     width: 100vw;
 
+}
+
+.modalcont2{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.71) !important;
+    
+    opacity: 0;
+}
+
+.modal{
+    box-sizing: border-box;
+    background-color: rgb(157, 255, 255);
+    
+    /*align-items: center;*/
+    justify-content: center;
+    min-height: 30vh;
+
+    font-family: 'Lexend', sans-serif !important;
+    display: flex;
+    
+    pointer-events: all;
+    
+    width: 500px;
+    height: 75%;
+
+    padding: 30px 50px;
+
+    border-radius: 7px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
 }
 
 .closeBt{
@@ -78,16 +193,13 @@ h3{
     border-radius: 20px;
 }
 
-.modal{
-
-    width: 600px;
-    max-width: 100%;
-    padding: 30px 50px;
-
-    border-radius: 7px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
+.closeBt:hover{
+    color: #f05462;
+    background: white;
+    /*padding: 3px 8px;*/
+    border: 2px solid #f05462;
 }
+
 .popupvis{
     display: none;
     width: 300px;
@@ -95,6 +207,7 @@ h3{
 }
 
 .btnn{
+
     font-family: 'Lexend', sans-serif !important;
     background: #f05462;
     color: white;
@@ -102,6 +215,7 @@ h3{
     text-align: center;
     border: 2px solid #f05462;
     
+    cursor: pointer;
     transition: 0.6s;
     
     border-radius: 20px;
@@ -112,7 +226,6 @@ h3{
     background: white;
     /*padding: 3px 8px;*/
     border: 2px solid #f05462;
-
 }
 
 .titulodiv{
@@ -146,13 +259,19 @@ th,td{
 
 }
 
-.containerAdmin{
+.contenidoPag{
+    background: linear-gradient(180deg, #30087c, #000000, #87067d);
+    position: relative;
+}
 
+.containerAdmin{
+    
+    background: linear-gradient(180deg, #30087c, #000000, #87067d);
     position: absolute;
     right: 0;
     width: 100vw;
     height: 100vh;
-    background: white;
+    /*background: white;*/
 
 }
 
@@ -222,11 +341,11 @@ th,td{
 
 
 .containerAdmin .contenidoPag{
-    position: relative;
+    position: relative !important;
     margin-top: 0vh;
     min-height: 90vh;
 
-    background: #f1f1f1;
+    /*background: #f1f1f1;*/
 }
 
 .containerAdmin .contenidoPag .cardss{
@@ -310,8 +429,6 @@ th,td{
     .containerAdmin .contenidoPag .content-2 .usersp .new-users table td:nth-child(3){
         display: none;
     }
-
-   
 }
 
 

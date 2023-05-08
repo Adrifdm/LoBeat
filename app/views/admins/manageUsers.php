@@ -76,24 +76,24 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 
             </ul>
         </div>
-        -->
+    -->
     <div class="containerAdmin">
 
         <!--
-        <div class="headerAdmin">
-            <div class="nav">
-                <div class="search">
-                    <input type="text" placeholder="Buscar..">
-                    <button type="submit" class="fa fa-search">
+            <div class="headerAdmin">
+                <div class="nav">
+                    <div class="search">
+                        <input type="text" placeholder="Buscar..">
+                        <button type="submit" class="fa fa-search">
 
-                    </button>
-                </div>
+                        </button>
+                    </div>
 
-                <div class="usuInfo">
-                    <a href="#" class="btnn"> Crear Usuario </a>
+                    <div class="usuInfo">
+                        <a href="#" class="btnn"> Crear Usuario </a>
+                    </div>
                 </div>
             </div>
-        </div>
         -->
 
         <div class="contenidoPag">
@@ -143,8 +143,106 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                     </div>
                 </div>
 
-
             </div>
+
+            <!-- el popup -->
+            <div class="modalcont" id="modalContainer">
+                
+                <div class="modal">
+
+                    <a href="#" class="equis">
+                        X
+                    </a>
+
+                    <form class="formm">
+
+                        <h1 class="ttt">
+                            Editar Ususario
+                        </h1>
+
+                        <div class="form_cont">
+
+                            <div class="form__g">
+
+                                <label for="email" class="form__lab">Email:</label>
+                                <input type="text" id="email" class="form__inp" placeholder="">
+                                <span class="form__line"></span>
+
+                            </div>
+
+                            <div class="form__g">
+
+                                <label for="nombre" class="form__lab">Nombre:</label>
+                                <input type="text" id="nombre" class="form__inp" placeholder="">
+                                <span class="form__line"></span>
+
+                            </div>
+
+                            <div class="form__g">
+
+                                <label for="passw" class="form__lab">Contraseña:</label>
+                                <input type="text" id="passw" class="form__inp" placeholder="">
+                                <span class="form__line"></span>
+
+                            </div>
+
+                            <div class="form__g">
+
+                                <label for="rol" class="form__lab">Rol:</label>
+
+                                <select  class="form__inp" name="role" id="rol" required="">
+                                    <option value="Admin" <?php /*if ($usuarioEdit->getRole() == "Admin")*/ echo " selected"; ?>>Administrador</option>
+                                    <option value="User" <?php //if ($usuarioEdit->getRole() == "User") echo " selected"; ?>>Usuario</option>
+                                    <option value="Empresa" <?php //if ($usuarioEdit->getRole() == "Empresa") echo " selected"; ?>>Empresa</option>
+                                </select>
+
+                                <span class="form__line"></span>
+
+                            </div>
+
+                            <div class="form__g">
+
+                                <label for="genero" class="form__lab">Género:</label>
+
+                                <select  class="form__inp" name="genero" id="genero" required="">
+                                    <option value="Hombre" <?php /*if ($usuarioEdit->getGenero() == "Admin")*/ echo " selected"; ?>>Hombre</option>
+                                    <option value="Mujer" <?php //if ($usuarioEdit->getGenero() == "User") echo " selected"; ?>>Mujer</option>
+                                    <option value="Otro" <?php //if ($usuarioEdit->getGenero() == "Empresa") echo " selected"; ?>>Otros</option>
+                                </select>
+
+                                <span class="form__line"></span>
+
+                            </div>
+
+                            <input type="submit" class="closeBt" value="Guardar">
+
+                        </div>
+
+                    </form>
+                    <!--
+                    <h1>
+                        Editar Ususario
+                    </h1>
+
+                    <form>
+                        <label for="nombre">Nombre:</label>
+
+                        <input type="text" id="nombre" name="nombre" value="Nombre del usuario">
+
+                        <label for="email">Email:</label>
+
+                        <input type="email" id="email" name="email" value="email@del.usuario">
+
+                        <button type="button" class="closeBt" id="guardar">Guardar</button>
+                    </form>
+                    -->
+                    <!--
+                    <button id="closeBt"> Guardar </button>
+                    -->
+                </div>
+        
+            </div>
+
             <div class="content-2">
                 <div class="usersp">
                     <div class="titulodiv">
@@ -217,16 +315,16 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                                 
                                 //boton editar
 
-                                echo "<td><a class='btnn' id='open'>Editar</a></td>";
-
-                                /*
                                 echo "<td><a class='btnn' onclick=\"mostrarPopup('" . $user->getId() . "')\">Editar</a></td>";
+                                /*
+                                echo "<td><a class='btnn' id='open'>Editar</a></td>";
                                 */
                                 echo "</tr>";
                             }
                             
                         ?>
 
+                        <!-- 
                         <div id="popup" class="popupvis">
 
                             <form>
@@ -242,12 +340,18 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                                 <input type="number" name="edad" value="">
                                 <br>
 
+                                <label>Rol:</label>
+                                <input type="number" name="rol" value="">
+                                <br>
+
+                                <label>Genero:</label>
+                                <input type="number" name="genero" value="">
+                                <br>
+
                                 <input type="submit" value="Guardar cambios">
                             </form>
 
-                        </div>
-
-                        
+                        </div>-->
 
                         <?php
                             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -293,23 +397,10 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                         <a href="#" class="btnn"> Crear</a>
                     </div>
                 </div>
-
+                
             </div>
             
-            <!-- el popup -->
-
-            <div class="modalcont" id="modalContainer">
-            
-                <div class="modal">
-                    <h1>
-                        Editar Ususario
-                        
-                    </h1>
-
-                    <button id="closeBt"> Guardar </button>
-                </div>
-            
-            </div>
+           
         </div>
     </div>
     <script src="../../../public/assets/js/mapa.js">
@@ -317,15 +408,14 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
         const close = document.getElementById("closeBt");
         const popup = document.getElementById("modalContainer");
         
-        
-        /*
         function mostrarPopup(id) {
             var popup = document.getElementById("modalContainer");
-            popup.style.display = "flex";
+            popup.style.display = none;
             popup.style.opacity = 1;
-
+            //popup.style.pointerEvents = none;
+            
             // Aquí puedes utilizar AJAX para obtener la información del usuario utilizando el id
-        }*/
+        }
     </script>
 </body>
 
