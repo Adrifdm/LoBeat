@@ -271,3 +271,9 @@ body{
 	text-align: center;
   text-decoration:none;
 }
+
+.restrictionIcon {
+  position: absolute;
+  top: 10px;
+  right: 5px; /* ajusta este valor según sea necesario */
+}

@@ -142,7 +142,7 @@
                     <div class="row"> 
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-username">Nombre de usuario</label>
+                          <label class="form-control-label fuente" for="input-username">Nombre de usuario</label><span id="iconoUsername"></span>
                           <input type="text" id="input-username" name="username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario" value="<?php
                             
                             echo $usuarioExistente->getNombre();
@@ -250,3 +250,36 @@
     ?>
 </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$("#input-username").change(function(){
+    const campo = $("#input-username"); // referencia jquery al campo
+    campo[0].setCustomValidity(""); // limpia validaciones previas 
+
+    // validación html5, porque el campo es <input type="email" ...>
+    const usernameValido = campo[0].checkValidity();
+    if (usernameValido && usernameValidation(campo.val())) {
+        // el correo es válido y acaba por @ucm.es
+        //Añanimos el html del icono y lo ponemos en color verde
+        $("#iconoUsername").html("&#x2714;");
+        $("#iconoUsername").css("color", "green");
+
+        campo[0].setCustomValidity("");
+    } else { 
+        // correo invalido: ponemos una marca y nos quejamos
+        // Añadimos el html del icono y lo ponemos en color rojo
+        $("#iconoUsername").html("&#x26a0;");
+        $("#iconoUsername").css("color", "red");
+
+        // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
+        // y pongo un mensaje como no-válido
+        campo[0].setCustomValidity("El nombre de usuario debe tener mínimo 4 letras");
+    }
+});
+
+function usernameValidation(username) {
+  return (username.length >= 4);
+}
+</script>
