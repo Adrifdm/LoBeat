@@ -150,7 +150,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                 
                 <div class="modal">
 
-                    <a href="#" class="equis">
+                    <a href="#" class="equis" onclick="quitarPopup()">
                         X
                     </a>
 
@@ -314,8 +314,11 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                                 echo "<td>" . $user->getGenero() . "</td>";
                                 
                                 //boton editar
+                                
+                                echo "<td><a class='btnn' onclick='mostrarPopup(\"" . $user->getId() . "\")'>Editar</a></td>";
 
-                                echo "<td><a class='btnn' onclick=\"mostrarPopup('" . $user->getId() . "')\">Editar</a></td>";
+                                //echo "<td><a class='btnn' onclick=\"mostrarPopup('" . $user->getId() . "')\">Editar</a></td>";
+                                
                                 /*
                                 echo "<td><a class='btnn' id='open'>Editar</a></td>";
                                 */
@@ -403,15 +406,24 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
            
         </div>
     </div>
-    <script src="../../../public/assets/js/mapa.js">
-        const open = document.getElementById("open");
-        const close = document.getElementById("closeBt");
-        const popup = document.getElementById("modalContainer");
-        
+    <script>
+
+
         function mostrarPopup(id) {
             var popup = document.getElementById("modalContainer");
-            popup.style.display = none;
+            popup.style.display = 'block';
             popup.style.opacity = 1;
+            
+            //popup.style.pointerEvents = none;
+            
+            // Aquí puedes utilizar AJAX para obtener la información del usuario utilizando el id
+        }
+
+        function quitarPopup() {
+            var popup2 = document.getElementById("modalContainer");
+            popup2.style.display = 'none';
+            popup2.style.opacity = 0;
+            
             //popup.style.pointerEvents = none;
             
             // Aquí puedes utilizar AJAX para obtener la información del usuario utilizando el id
