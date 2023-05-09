@@ -292,11 +292,18 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                                     
                                
                                 // imagen 
+
+                                if($foto){
+                                    echo "<td><img src='../../../public/assets/img/profilePhotos/".$user->getFotoPerfil()."' alt=''></td>";
+                                } else{
+                                    echo "<td><img src='../../../public/assets/img/profilePhotos/profileAvatar.png' alt=''></td>";
+                                }
+                                /*
                                 if($foto){
                                     
                                     echo "<td>" ;
                                     echo "<img src="; 
-                                    echo "../../../public/assets/img/profilePhotos/". $user->getFotoPerfil();
+                                    echo "../../../public/assets/img/profilePhotos/".$user->getFotoPerfil();
                                     echo "alt=''>";
                                     echo "</td>";
                                     
@@ -308,7 +315,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                                     echo "alt=''>";
 
                                     echo "</td>";
-                                }
+                                }*/
                                 
                                 //Resto de info
                                 echo "<td>" . $user->getNombre() . "</td>";
@@ -378,6 +385,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                             }
                         ?>
 
+                        <!-- 
                         <tr>
                             <td>
                                 <img src="../../../public/assets/img/rating.png" alt="">
@@ -399,6 +407,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                             </td>
 
                         </tr>
+                        -->
                     </table>
                 </div>
 
