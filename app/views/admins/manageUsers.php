@@ -415,8 +415,79 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                     <div class="titulodiv">
                         <h2>Crear usuario</h2>
 
-                        <a href="#" class="btnn"> Crear</a>
+                        <!--<a href="#" class="btnn"> Crear</a>-->
+
                     </div>
+
+                    <form class="formm" action="crearUsuarioA.php" method="POST">
+
+                        <div class="form_cont">
+
+                            <!--
+                            <div class="form__g">
+
+                            <input type="text" id="idd2" name="id2" class="form__inp" placeholder="" readonly>
+
+                            </div> -->
+
+                            <div class="form__g">
+
+                                <label for="email2" class="form__lab">Email:</label>
+                                <input type="text" id="email2" name="email2" class="form__inp" placeholder="">
+                                <span class="form__line"></span>
+
+                            </div>
+
+                            <div class="form__g">
+
+                                <label for="nombre2" class="form__lab">Nombre:</label>
+                                <input type="text" id="nombre2" name="nombre2" class="form__inp" placeholder="">
+                                <span class="form__line"></span>
+
+                            </div>
+
+                            <div class="form__g">
+
+                                <label for="passw2" class="form__lab">Contraseña:</label>
+                                <input type="text" id="passw2" name="pass2" class="form__inp" placeholder="">
+                                <span class="form__line"></span>
+
+                            </div>
+
+                            <div class="form__g">
+
+                                <label for="rol2" class="form__lab">Rol:</label>
+
+                                <select  class="form__inp" name="role2" id="rol2" required="">
+                                    <option value="Admin" <?php /*if ($usuarioEdit->getRole() == "Admin")*/ echo " selected"; ?>>Administrador</option>
+                                    <option value="User" <?php //if ($usuarioEdit->getRole() == "User") echo " selected"; ?>>Usuario</option>
+                                    <option value="Empresa" <?php //if ($usuarioEdit->getRole() == "Empresa") echo " selected"; ?>>Empresa</option>
+                                </select>
+
+                                <span class="form__line"></span>
+
+                            </div>
+
+                            <div class="form__g">
+
+                                <label for="genero2" class="form__lab">Género:</label>
+
+                                <select  class="form__inp" name="genero2" id="genero2" required="">
+                                    <option value="Hombre" <?php /*if ($usuarioEdit->getGenero() == "Admin")*/ echo " selected"; ?>>Hombre</option>
+                                    <option value="Mujer" <?php //if ($usuarioEdit->getGenero() == "User") echo " selected"; ?>>Mujer</option>
+                                    <option value="Otro" <?php //if ($usuarioEdit->getGenero() == "Empresa") echo " selected"; ?>>Otros</option>
+                                </select>
+
+                                <span class="form__line"></span>
+
+                            </div>
+
+                            <input type="submit" class="closeBt" value="Crear">
+
+                        </div>
+
+                    </form>
+
                 </div>
                 
             </div>
