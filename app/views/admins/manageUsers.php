@@ -155,7 +155,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                         X
                     </a>
 
-                    <form class="formm">
+                    <form class="formm" action="actualizaUsuario.php" method="POST">
 
                         <h1 class="ttt">
                             Editar Ususario
@@ -165,8 +165,14 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 
                             <div class="form__g">
 
+                            <input type="text" id="idd" name="id" class="form__inp" placeholder="" readonly>
+
+                            </div>
+
+                            <div class="form__g">
+
                                 <label for="email" class="form__lab">Email:</label>
-                                <input type="text" id="email" class="form__inp" placeholder="">
+                                <input type="text" id="email" name="email" class="form__inp" placeholder="">
                                 <span class="form__line"></span>
 
                             </div>
@@ -174,7 +180,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                             <div class="form__g">
 
                                 <label for="nombre" class="form__lab">Nombre:</label>
-                                <input type="text" id="nombre" class="form__inp" placeholder="">
+                                <input type="text" id="nombre" name="nombre" class="form__inp" placeholder="">
                                 <span class="form__line"></span>
 
                             </div>
@@ -182,7 +188,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                             <div class="form__g">
 
                                 <label for="passw" class="form__lab">Contraseña:</label>
-                                <input type="text" id="passw" class="form__inp" placeholder="">
+                                <input type="text" id="passw" name="pass" class="form__inp" placeholder="">
                                 <span class="form__line"></span>
 
                             </div>
@@ -220,6 +226,11 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                         </div>
 
                     </form>
+
+                    <?php
+                        
+                    ?>
+
                     <!--
                     <h1>
                         Editar Ususario
@@ -372,18 +383,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 
                         </div>-->
 
-                        <?php
-                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                $id = $_POST['id'];
-                                $nombre = $_POST['nombre'];
-                                $apellido = $_POST['apellido'];
-                                $edad = $_POST['edad'];
-
-                                //actulizar usuario
-
-                                
-                            }
-                        ?>
+                       
 
                         <!-- 
                         <tr>
@@ -442,6 +442,9 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
             var inputGe = document.getElementById("genero");
             var inputRo = document.getElementById("rol");
             var inputPs = document.getElementById("passw");
+            var idd = document.getElementById("idd");
+
+            idd.value = id;
 
             inputEmail.value = correo;
             inputNo.value = nombre;
@@ -461,6 +464,11 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
             // Aquí puedes utilizar AJAX para obtener la información del usuario utilizando el id
         }
     </script>
+
+    
+    <?php
+        include("actualizaUsuario.php")
+    ?>
 </body>
 
 </html>
