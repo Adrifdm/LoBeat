@@ -81,7 +81,7 @@ h3{
 
 .form_cont{
     display: grid;
-    gap: 2.5em;
+    gap: 2em;
 }
 
 .form__g{
@@ -155,7 +155,7 @@ h3{
 
 .modal{
     box-sizing: border-box;
-    background-color: rgb(157, 255, 255);
+    background-color: rgb(225, 221, 221);
     
     /*align-items: center;*/
     justify-content: center;
@@ -167,7 +167,7 @@ h3{
     pointer-events: all;
     
     width: 500px;
-    height: 75%;
+    height: 80%;
 
     padding: 30px 50px;
 
@@ -236,7 +236,7 @@ h3{
     justify-content: space-around;
     padding: 15px 10px;
     border-bottom: 2px solid #999;
-
+    margin-bottom: 15px;
 }
 
 table{
@@ -418,6 +418,10 @@ th,td{
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+    padding-top: 3px;
+    padding-left: 20px;
+    padding-right: 20px;  
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
 
