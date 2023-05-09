@@ -5,6 +5,7 @@ require_once '../../controllers/spotifyController.php';
 session_start();
 
 $usuarioController = new UsuarioController();
+$usuarioEdit = new UsuarioController();
 
 if ($_SESSION["is_logged"] != true) {
 
@@ -276,6 +277,8 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                             
                             $users = $usuarioController->listarUsuarios();
                             foreach ($users as $user) {
+
+                                
                                 $foto = false;
 
                                 if($user->getFotoPerfil() != null){
@@ -293,7 +296,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                                     
                                     echo "<td>" ;
                                     echo "<img src="; 
-                                    echo "../../../public/assets/img/profilePhotos/". $usuarioExistente->getFotoPerfil();
+                                    echo "../../../public/assets/img/profilePhotos/". $user->getFotoPerfil();
                                     echo "alt=''>";
                                     echo "</td>";
                                     
@@ -314,14 +317,20 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                                 echo "<td>" . $user->getGenero() . "</td>";
                                 
                                 //boton editar
+                               
+                                //echo "<td><a class='btnn' onclick='mostrarPopup(\"" . $user->getId(), $user->nombre(), $user->getCorreo(), $user->getRole(), $user->getGenero(), $user->getContrasenya() . "\")'>Editar</a></td>";
+                                echo sprintf("<td><a class='btnn' onclick='mostrarPopup(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")'>Editar</a></td>", $user->getId(), $user->getNombre(), $user->getCorreo(), $user->getRole(), $user->getGenero(), $user->getContrasenya());
+                               
+                                /*echo sprintf(
+                                    "<td><a class='btnn' onclick='mostrarPopup(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")'>Editar</a></td>",
+                                    $user->getId(),
+                                    $user->nombre(),
+                                    $user->getCorreo(),
+                                    $user->getRole(),
+                                    $user->getGenero(),
+                                    $user->getContrasenya()
+                                );*/
                                 
-                                echo "<td><a class='btnn' onclick='mostrarPopup(\"" . $user->getId() . "\")'>Editar</a></td>";
-
-                                //echo "<td><a class='btnn' onclick=\"mostrarPopup('" . $user->getId() . "')\">Editar</a></td>";
-                                
-                                /*
-                                echo "<td><a class='btnn' id='open'>Editar</a></td>";
-                                */
                                 echo "</tr>";
                             }
                             
@@ -408,15 +417,29 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
     </div>
     <script>
 
+        var idUsuario;
 
-        function mostrarPopup(id) {
+        
+        function mostrarPopup(id, nombre, correo, rol, genero, pw) {
+            idUsuario = id;
+            
             var popup = document.getElementById("modalContainer");
             popup.style.display = 'block';
             popup.style.opacity = 1;
             
             //popup.style.pointerEvents = none;
-            
-            // Aquí puedes utilizar AJAX para obtener la información del usuario utilizando el id
+            var inputEmail = document.getElementById("email");
+            var inputNo = document.getElementById("nombre");
+            var inputGe = document.getElementById("genero");
+            var inputRo = document.getElementById("rol");
+            var inputPs = document.getElementById("passw");
+
+            inputEmail.value = correo;
+            inputNo.value = nombre;
+            inputGe.value = genero;
+            inputRo.value = rol;
+            inputPs.value = pw;
+
         }
 
         function quitarPopup() {
