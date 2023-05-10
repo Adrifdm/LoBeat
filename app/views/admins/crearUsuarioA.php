@@ -16,7 +16,7 @@
         // Comprobamos si el formulario ha sido enviado 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            
-            var_dump($_POST);
+            //var_dump($_POST);
             
             $nombre = $_POST['nombre2'];
             $email = $_POST['email2'];
@@ -31,17 +31,14 @@
             if($email != ""){
                 $usuE = $usuC->buscarUsuarioPorCampo('correo', $email);
                 if($usuE != null){
-                    ?>
-                    <div class = "error">
-                        <p> Ha ocurrido un error al crear el usuario </p> 
-                    </div>       
-                    <?php
-                    header('Location: manageUsers.php');
+                    $_SESSION['error_message'] = 'El usuario ya existe';
+                    
+                    //header('Location: manageUsers.php');
                     exit;
                 }
             }
 
-            if($nombre!='' && $email!='' && $pass!=''){
+            if($nombre!='' || $email!='' || $pass!=''){
                 //$accessToken = $_SESSION['spotify_access_token'];
                 //$refreshToken = $_SESSION['spotify_refresh_token'];
 
@@ -72,21 +69,8 @@
                 $resultado = $usuC->crearUsuario($datos);
                 
                 if ($resultado !== null) {
-                    ?>
-                    <div class = "success">
-                        <p> El nuevo usuario ha sido completado con exito</p>
-                    </div>
-                    <?php
-            
-            
-                } else {
-                    ?>
-                    <div class = "error">
-                        <p> Ha ocurrido un error al crear el usuario </p> 
-                    </div>       
-                    <?php
-                    
-                }
+
+                    $_SESSION['error_message'] = 'El nuevo usuario ha sido completado con exito';
 
                     $usuarioExistente = $usuC->buscarUsuarioPorCampo('correo', $email);
                     $idww = $usuarioExistente->getId();
@@ -99,16 +83,19 @@
                 
                     $usuC->actualizarUsuario($idww, $datoss);
 
+                } else {
+
+                    $_SESSION['error_message'] = 'Ha ocurrido un error al crear el usuario';
+
+                    
+                } 
+
                 header('Location: manageUsers.php');
                 exit;
             }
             else{
                 
-                ?>
-                <div class = "error">
-                    <p> Los campos no estan completos </p> 
-                </div>       
-                <?php
+                $_SESSION['error_message'] = 'Los campos no están completos';
                 
                 header('Location: manageUsers.php');
                 exit;
