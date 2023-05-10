@@ -29,8 +29,9 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 
     //logica si conseguiste entrar en la pagina
 
-    $users = $usuarioController->listarUsuarios();
+    
 
+    
 }
 
 ?>
@@ -62,6 +63,18 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
     
     <?php
       require("../comun/cabecera.php");
+        
+        
+        if (isset($_SESSION['error_message'])) {
+            //echo $_SESSION['error_message'];
+            
+            //echo '<div class="modal2323">' . $_SESSION['error_message'] . '</div>';
+            
+            // Eliminar el mensaje de error de la variable de sesión
+            unset($_SESSION['error_message']);
+        }
+
+    $users = $usuarioController->listarUsuarios();
     ?> 
     
     <!--
@@ -78,6 +91,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
             </ul>
         </div>
     -->
+    
     <div class="containerAdmin">
 
         <!--
@@ -155,7 +169,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                         X
                     </a>
 
-                    <form class="formm" action="actualizaUsuario.php" method="POST">
+                    <form class="formm" name="formulario2" action="actualizaUsuario.php" method="POST">
 
                         <h1 class="ttt">
                             Editar Ususario
@@ -224,11 +238,11 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                             <input type="submit" class="closeBt" value="Guardar">
 
                         </div>
-
+                        
                     </form>
 
                     <?php
-                        
+                        echo '<div class="error">' . "holi" . '</div>';
                     ?>
 
                     <!--
@@ -259,7 +273,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                 <div class="usersp">
                     <div class="titulodiv">
                         <h2>Usuarios</h2>
-                        <a href="#" class="btnn"> View all</a>
+                        <!--<a href="#" class="btnn"> View all</a>-->
                     </div>
                     <table>
                         <tr>
@@ -419,7 +433,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 
                     </div>
 
-                    <form class="formm" action="crearUsuarioA.php" method="POST">
+                    <form class="formm" name="formulario1" action="crearUsuarioA.php" method="POST">
 
                         <div class="form_cont">
 
@@ -532,13 +546,17 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
             
             //popup.style.pointerEvents = none;
             
-            // Aquí puedes utilizar AJAX para obtener la información del usuario utilizando el id
+        
         }
     </script>
 
+    <?php
+        echo '<div class="error">' . "holi" . '</div>';
+    ?>
     
     <?php
-        include("actualizaUsuario.php")
+        include("actualizaUsuario.php");
+        include("crearUsuarioA.php");
     ?>
 </body>
 
