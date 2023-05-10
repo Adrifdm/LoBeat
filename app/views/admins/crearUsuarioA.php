@@ -33,7 +33,7 @@
                 if($usuE != null){
                     $_SESSION['error_message'] = 'El usuario ya existe';
                     
-                    //header('Location: manageUsers.php');
+                    header('Location: manageUsers.php');
                     exit;
                 }
             }

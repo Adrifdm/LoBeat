@@ -65,9 +65,34 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
       require("../comun/cabecera.php");
         
         
-       
+      $_SESSION['NNplaylists']= 0;
+      $_SESSION['NNusers']= 0;
+      $_SESSION['NNadmins']= 0;
+      $_SESSION['NNmatches']= 0;
 
-    $users = $usuarioController->listarUsuarios();
+        
+
+        $NNplaylists = 0;
+        $NNusers = 0;
+        $NNadmins = 0;
+        $NNmatches = 0;
+
+        $users = $usuarioController->listarUsuarios();
+foreach ($users as $user) {
+    $NNusers++;
+    $NNplaylists = $NNplaylists + strval($user->getnPlaylists());
+
+    if ($user->getRole() == "Admin") {
+        $NNadmins++;
+    }
+
+    $NNmatches = $NNmatches +  strval($user->getnMatches());
+
+    $_SESSION['NNplaylists']= $NNplaylists;
+    $_SESSION['NNusers']= $NNusers;
+    $_SESSION['NNadmins']= $NNadmins;
+    $_SESSION['NNmatches']= $NNmatches;
+}
     ?> 
     
     <!--
@@ -108,46 +133,47 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
             <div class="cardss">
 
                 <div class="cardD">
-                    <div class="boxx">
-                        <h1>21234</h1>
-                        <h3>Usuarios</h3>
+                    <div class="boxx">     
+                                
+                        <h1 class="blancor"><?php echo $_SESSION['NNusers']; ?></h1>
+                        <h3 class="blancor">Usuarios</h3>
                     </div>
 
                     <div class="iconCas">
-                        <img src="../../../public/assets/img/rating.png" alt="">
+                        <img src="../../../public/assets/img/icons8-user-64.png" alt="">
                     </div>
                 </div>
 
                 <div class="cardD">
                     <div class="boxx">
-                        <h1>21234</h1>
-                        <h3>Administradores</h3>
+                        <h1 class="blancor"><?php echo $_SESSION['NNadmins']; ?></h1>
+                        <h3 class="blancor">Administradores</h3>
                     </div>
 
                     <div class="iconCas">
-                        <img src="../../../public/assets/img/rating.png" alt="">
+                        <img src="../../../public/assets/img/icons8-admin-48.png" alt="">
                     </div>
                 </div>
 
                 <div class="cardD">
                     <div class="boxx">
-                        <h1>21234</h1>
-                        <h3> Playlists</h3>
+                        <h1 class="blancor"><?php echo $_SESSION['NNmatches']; ?></h1>
+                        <h3 class="blancor"> Matches</h3>
                     </div>
 
                     <div class="iconCas">
-                        <img src="../../../public/assets/img/rating.png" alt="">
+                        <img src="../../../public/assets/img/icons8-heart-64.png" alt="">
                     </div>
                 </div>
 
                 <div class="cardD">
                     <div class="boxx">
-                        <h1>21234</h1>
-                        <h3>Students</h3>
+                        <h1 class="blancor"><?php echo $_SESSION['NNplaylists']; ?></h1>
+                        <h3 class="blancor">Playlists</h3>
                     </div>
 
                     <div class="iconCas">
-                        <img src="../../../public/assets/img/rating.png" alt="">
+                        <img src="../../../public/assets/img/icons8-playlist-64.png" alt="">
                     </div>
                 </div>
 
@@ -293,10 +319,29 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 
                         <?php
                             
+
+                            $NNplaylists = 0;
+                            $NNusers = 0;
+                            $NNadmins = 0;
+                            $NNmatches = 0;
+
                             $users = $usuarioController->listarUsuarios();
                             foreach ($users as $user) {
 
+                                $NNusers++;
+                                $NNplaylists = $NNplaylists + strval($user->getnPlaylists());
                                 
+                                if($user->getRole() == "Admin"){
+                                    $NNadmins++;
+                                }
+                                
+                                $NNmatches = $NNmatches +  strval($user->getnMatches());
+
+                                $_SESSION['NNplaylists']= $NNplaylists;
+                                $_SESSION['NNusers']= $NNusers;
+                                $_SESSION['NNadmins']= $NNadmins;
+                                $_SESSION['NNmatches']= $NNmatches;
+
                                 $foto = false;
 
                                 if($user->getFotoPerfil() != null){

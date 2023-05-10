@@ -303,11 +303,11 @@ h3{
 .closeBt{
 
     font-family: 'Lexend', sans-serif !important;
-    background: #f05462;
+    background: #30087c;
     color: white;
     padding: 5px 10px;
     text-align: center;
-    border: 2px solid #f05462;
+    border: 2px solid #30087c;
     
     transition: 0.6s;
     
@@ -315,10 +315,10 @@ h3{
 }
 
 .closeBt:hover{
-    color: #f05462;
-    background: white;
+    color: #30087c;
+    background: rgba(255, 255, 255, 0.686);
     /*padding: 3px 8px;*/
-    border: 2px solid #f05462;
+    border: 2px solid #30087c;
 }
 
 .popupvis{
@@ -330,11 +330,11 @@ h3{
 .btnn{
 
     font-family: 'Lexend', sans-serif !important;
-    background: #f05462;
+    background: #30087c;
     color: white;
     padding: 5px 10px;
     text-align: center;
-    border: 2px solid #f05462;
+    border: 2px solid #30087c;
     
     cursor: pointer;
     transition: 0.6s;
@@ -343,10 +343,10 @@ h3{
 }
 
 .btnn:hover{
-    color: #f05462;
+    color: #30087c;
     background: white;
     /*padding: 3px 8px;*/
-    border: 2px solid #f05462;
+    border: 2px solid #30087c;
 }
 
 .titulodiv{
@@ -483,15 +483,24 @@ th,td{
 .containerAdmin .contenidoPag .cardss .cardD{
     width: 250px;
     height: 150px;
-    background: rgba(225, 221, 221, 0.724) !important;
+    
+    /*background: rgba(225, 221, 221, 0.724) !important;*/
+    background:  #c75bbe00;
+   
     margin: 20px 10px;
-
+    
+    color: white !important;
     display: flex;
     align-items: center;
     justify-content: space-around;
 
-    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow:  0 4px 8px 0 rgba(255, 255, 255, 0.434), 
+    0 6px 20px 0 rgba(255, 255, 255, 0.398);
+}
+
+
+.blancor{
+    color: white !important;
 }
 
 .iconCas img{
