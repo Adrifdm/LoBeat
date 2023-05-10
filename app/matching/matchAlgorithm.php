@@ -1,13 +1,11 @@
 <?php
 require_once '../../../app/controllers/spotifyController.php';
-require_once '../../../app/controllers/playlistController.php';
 require_once '../../../app/controllers/usuarioController.php';
 
 session_start();
 
 $usuarioController = new UsuarioController();
-$spotifyController = new SpotifyController(); 
-$playlistsController = new PlaylistsController();
+$spotifyController = new SpotifyController();
 
 //Obtenemos la lista de usuarios sobre la que aplicaremos el algoritmo
 $user = $usuarioController->obtenerUsuarioPorId($_SESSION['logged_user_id']);
@@ -15,6 +13,9 @@ $listaUsuarios = $usuarioController->getUsuariosCercanos($user->getLatitud(),$us
 
 //Funcion para recopilar los datos que utilizaremos para realizar el algoritmo, se aplicara para recopilar la info de los diferentes usuarios
 function matchData($userId) {
+
+    $usuarioController = new UsuarioController();
+    $spotifyController = new SpotifyController();   
    
     //Obtenemos el usuario
     $user = $usuarioController->obtenerUsuarioPorId($userId);
@@ -24,8 +25,7 @@ function matchData($userId) {
     
     //Obtenemos los datos de los tags
     $matchlistUserData = $user->getMatchlist();
-    $matchlist = $playlistsController->obtenerPlaylist($matchlistUserData['spotifyId']);
-    $tagInfo = $matchlist->getPlaylistTags();
+    $tagInfo = $matchlistUserData['tags'];
 
     //Creamos un array con los datos
     $matchlistData = array(

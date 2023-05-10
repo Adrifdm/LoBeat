@@ -37,11 +37,23 @@ else {
 
     // Obtención datos pop up
     if (isset($_POST['submit'])) {
+
+        // Almacenamos el tag seleccionado en esa playlist
+        $id = $playlists[$_POST['indicePlaylistSeleccionada']]->getId();
+        $datos = array(
+            'tags' => $_POST['etiquetas']
+        );
+
+        $playlistsController->actualizarPlaylist($id, $datos);
+
+        $playlists = $playlistsController->buscarPlaylistsPorCampo('owner.id', $_SESSION["logged_user_spotifyID"]);
+        
         // Almacenamos la matchlist en la bd del usuario
         $matchlist = $playlists[$_POST['indicePlaylistSeleccionada']];
         $matchlistArray = array(
             'nombreMatchlist' => $matchlist->getPlaylistName(),
             'tracks' => array(),
+            'tags' => $matchlist->getPlaylistTags(),
             'spotifyId'=> $matchlist->getId()
         );
 
@@ -69,14 +81,6 @@ else {
             'matchlist' => $matchlistArray
         );
         $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $usuarioAct);
-
-        // Almacenamos el tag seleccionado en esa playlist
-        $id = $playlists[$_POST['indicePlaylistSeleccionada']]->getId();
-        $datos = array(
-            'tags' => $_POST['etiquetas']
-        );
-
-        $playlistsController->actualizarPlaylist($id, $datos);
     }
       
 }

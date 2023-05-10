@@ -218,7 +218,7 @@ class SpotifyService {
                 } 
             } 
 
-            $names = $track->name;
+            $names[] = $track->name;
         }
     
         arsort($genres);

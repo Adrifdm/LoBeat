@@ -92,10 +92,10 @@ class SpotifyController {
         }
     }
 
-    public function obtenerRecentlyPlayed() {
+    public function obtenerRecentlyPlayed($userId) {
         try {
             // llamar al método de obtención de playlist
-            return $this->spotifyService->obtenerRecentlyPlayed();
+            return $this->spotifyService->obtenerRecentlyPlayed($userId);
         } catch (Exception $e) {
             // capturar cualquier excepción y devolver un mensaje de error al cliente
             echo json_encode(['error' => $e->getMessage()]);
