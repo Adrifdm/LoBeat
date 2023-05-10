@@ -41,7 +41,8 @@ else {
         $matchlist = $playlists[$_POST['indicePlaylistSeleccionada']];
         $matchlistArray = array(
             'nombreMatchlist' => $matchlist->getPlaylistName(),
-            'tracks' => array()
+            'tracks' => array(),
+            'spotifyId'=> $matchlist->getId()
         );
 
         foreach ($matchlist->getPlaylistTracks() as $matchlistTrack) {
