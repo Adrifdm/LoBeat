@@ -65,14 +65,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
       require("../comun/cabecera.php");
         
         
-        if (isset($_SESSION['error_message'])) {
-            //echo $_SESSION['error_message'];
-            
-            //echo '<div class="modal2323">' . $_SESSION['error_message'] . '</div>';
-            
-            // Eliminar el mensaje de error de la variable de sesión
-            unset($_SESSION['error_message']);
-        }
+       
 
     $users = $usuarioController->listarUsuarios();
     ?> 
@@ -548,10 +541,37 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
             
         
         }
+
+        function quitarPopup2() {
+            var popup3 = document.getElementById("modalCrear");
+            popup3.style.display = 'none';
+            popup3.style.opacity = 0;
+            
+            //popup.style.pointerEvents = none;
+            
+        
+        }
+
+
     </script>
 
-    <?php
-        echo '<div class="error">' . "holi" . '</div>';
+    <?php          
+
+        if (isset($_SESSION['error_message'])) {
+            
+            echo '<div class="modalconterrorMSG" id="modalCrear"> 
+                <div class="modal12">
+
+                    <a href="#" class="equis2" onclick="quitarPopup2()">
+                        X
+                    </a>
+                    ' . $_SESSION['error_message']. '
+                </div>
+            </div>';
+            // Eliminar el mensaje de error de la variable de sesión
+            unset($_SESSION['error_message']);
+        }
+        
     ?>
     
     <?php

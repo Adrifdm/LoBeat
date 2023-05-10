@@ -6,10 +6,24 @@
     display: none;
 }
 
-.error{
+.errorcito{
+     /*
     color: red;
     font-weight: bold;
     margin-bottom: 10px;
+    */
+
+    display:flex;
+    position:absolute;
+    min-width: 300px;
+    min-height: 30px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    bottom: 70px;
+    right: 30px;
+    background: #ff6860;
+    border: 2px solid #dc1818;
+    color: #3d0818;
 }
 
 *{
@@ -85,6 +99,34 @@ h3{
 .equis:hover{
     border: 1px solid #444;
     background-color: #7b7b7b;
+    transition: 0.3s;
+}
+
+.equis2{
+    border: 1px solid #1e1e1e;
+    border-radius: 50%;
+    background-color: rgb(149, 177, 214);
+    position: absolute;
+
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+
+    padding-top: 5px;
+    padding-left: 9px;
+    padding-right: 10px;
+    padding-bottom: 5px !important;
+
+    align-items: center;
+    justify-content: center;
+    right: -10px;
+    top: -15px;
+    width: 30px;
+    height: 30px;
+}
+
+.equis2:hover{
+    border: 1px solid rgb(119, 159, 211);
+    background-color: rgb(119, 159, 211);
     transition: 0.3s;
 }
 
@@ -165,6 +207,33 @@ h3{
 
 }
 
+.modalconterrorMSG{
+    box-sizing: border-box;
+    /*background-color: rgba(1, 1, 1, 0.592);*/
+    background-color: rgba(1, 1, 1, 0);
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+
+    opacity: 1;
+    display: flex;
+
+    font-family: 'Lexend', sans-serif !important;
+    
+    
+    
+    position: fixed;
+    /*pointer-events: none !important;*/
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+
+    transition: opacity 2s !important;
+
+}
+
 .modalcont2{
     display: flex;
     background-color: rgba(0, 0, 0, 0.71) !important;
@@ -202,21 +271,22 @@ h3{
 
 .modal12{
     box-sizing: border-box;
-    background-color: rgb(225, 221, 221);
+    background-color: rgb(149, 177, 214);
     
     /*align-items: center;*/
     justify-content: center;
-    min-height: 30vh;
+    /*min-height: 30vh;*/
 
     font-family: 'Lexend', sans-serif !important;
     display: flex;
     
     pointer-events: all;
     
-    width: 500px;
-    height: 80%;
+    width: 400px;
+    height: fit-content !important;
 
-    padding: 30px 50px;
+    padding-top: 10px !important;
+    padding: 10px;
 
     border-radius: 7px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -225,7 +295,7 @@ h3{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 999;
+    z-index: 9999;
 }
 
 .closeBt{
@@ -383,8 +453,8 @@ th,td{
 .containerAdmin .headerAdmin .nav .usuInfo{
     
     flex: 1;
-    /*background: hotpink;*/
-
+    /*background: hotpink;
+    margin-left: 20px;*/
 
 }
 
@@ -440,7 +510,7 @@ th,td{
     
     min-height: 50vh;
     flex: 5;
-    background: rgb(225, 221, 221);
+    background: rgba(225, 221, 221, 0.518);
     margin: 0 25px 25px 25px;
 
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 
@@ -461,6 +531,7 @@ th,td{
     flex: 2;
     background: rgb(225, 221, 221);
     min-height: 50vh;
+    
     margin: 0 25px;
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
