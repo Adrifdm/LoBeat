@@ -155,7 +155,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                         X
                     </a>
 
-                    <form class="formm" action="actualizaUsuario.php" method="POST">
+                    <form class="formm" name="formulario2" action="actualizaUsuario.php" method="POST">
 
                         <h1 class="ttt">
                             Editar Ususario
@@ -419,7 +419,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 
                     </div>
 
-                    <form class="formm" action="crearUsuarioA.php" method="POST">
+                    <form class="formm" name="formulario1" action="crearUsuarioA.php" method="POST">
 
                         <div class="form_cont">
 
