@@ -67,11 +67,13 @@ li{
 
 h1,
 h2{
-    color: #444;
+    /*color: #444;*/
+    color: black ;
 }
 
 h3{
-    color: #999;
+    /*color: #999;*/
+    color: black ;
 }
 
 .equis{
@@ -147,7 +149,7 @@ h3{
 
 .form__g{
     position: relative;
-    --color: #5757577e;
+    --color: rgba(0, 0, 0, 0.572);
 
 }
 
@@ -155,7 +157,7 @@ h3{
     width: 100%;
     background: none;
     font-family: 'Lexend', sans-serif !important;
-    color: #444;
+    color: black;
     font-size: 1rem;
     padding: .1em .1em;
     border: none;
@@ -349,6 +351,7 @@ h3{
 
 .titulodiv{
     display: flex;
+    color: black !important;
     align-items: center;
     justify-content: space-around;
     padding: 15px 10px;
@@ -480,7 +483,7 @@ th,td{
 .containerAdmin .contenidoPag .cardss .cardD{
     width: 250px;
     height: 150px;
-    background: rgb(225, 221, 221) !important;
+    background: rgba(225, 221, 221, 0.724) !important;
     margin: 20px 10px;
 
     display: flex;
@@ -529,9 +532,9 @@ th,td{
 .containerAdmin .contenidoPag .content-2 .new-users{
     
     flex: 2;
-    background: rgb(225, 221, 221);
+    background: rgba(225, 221, 221, 0.518);
     min-height: 50vh;
-    
+    color: black !important;
     margin: 0 25px;
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
