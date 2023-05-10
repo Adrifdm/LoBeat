@@ -1,5 +1,4 @@
 <?php
-
 require_once '../../../app/controllers/usuarioController.php';
 
 class SpotifyService {
@@ -192,7 +191,7 @@ class SpotifyService {
         return $artist_data;
     }
 
-    public function obtenerRecentlyPlayed() {
+    public function obtenerRecentlyPlayed($userId) {
         require '../../../vendor/autoload.php';
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -200,7 +199,7 @@ class SpotifyService {
         $api = new SpotifyWebAPI\SpotifyWebAPI();
         $collection = (new MongoDB\Client)->LoBeat->usuarios;
         $result = $collection->findOne([
-            '_id' => new MongoDB\BSON\ObjectID($_SESSION['logged_user_id'])
+            '_id' => new MongoDB\BSON\ObjectID($userId)
         ]);
         // Fetch the saved access token from somewhere. A session for example.
         $api->setAccessToken($result['spotify_access_token']);
