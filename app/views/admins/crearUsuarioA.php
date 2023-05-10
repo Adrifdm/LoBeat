@@ -51,20 +51,22 @@
                     'contrasenya' => $pass, 
                     'spotify_access_token' => 'BQBa2RNAwrKg',
                     'spotify_refresh_token' => 'AQBWKtdAt9S1Hs',
-                    'fsa_creacion' => date('Y-m-d H:i:s'),
+                    'fecha_creacion' => date('Y-m-d H:i:s'),
                     'fecha_actualizacion' => date('Y-m-d H:i:s'),
                     'role' =>  $rol,
                     'genero' => $genero,
                     'descripcion' => 'Unas palabras sobre tí',
                     'fotoPerfil' => 'profileAvatar.png',
+                    'latitud' => 2234234,
+                    'longitud' => 22344,
                     'spotify_ID' => '31yh7daz4uvqrliwyrgm',    // Inicialmente el spotifyID de la base de datos se inicializa vacío (al llamar a obtenerSpotifyID necesitamos $_SESSION["logged_user_id"], y no podemos inicializarlo hasta crear el usuario en la bd)
-                    'nChats' => 0,
                     'nMatches' => 0,
+                    'nChats' => 0,
                     'nPlaylists' => 0,
                     'matchlist'=> null,
                     'status' => false
-                );            
-                
+                );                       
+
                 // Creamos el usuario con la información anterior
                 $resultado = $usuC->crearUsuario($datos);
                 

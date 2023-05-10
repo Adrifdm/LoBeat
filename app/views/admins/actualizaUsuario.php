@@ -26,7 +26,7 @@
                 'contrasenya' => $pass,
                 //'spotify_access_token' => $usuarioExistente->getSpotify_access_token(),
                 //'spotify_refresh_token' => $usuarioExistente->getSpotify_refresh_token(),
-                //'fsa_creacion' => $usuarioExistente->getFecha_creacion(),
+                //'fecha_creacion' => $usuarioExistente->getFecha_creacion(),
                 //'fecha_actualizacion' => date('Y-m-d H:i:s'),
                 'role' => $rol, 
                 'genero' => $genero,

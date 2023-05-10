@@ -22,7 +22,7 @@ const refrescarMapaConCategoria = categoria => {
 
 const dibujarMarcadoresEnMapa = coordenadasConIcono => {
 
-    const { icono, coordenadas, nombre, genero, descripcion, foto } = coordenadasConIcono;
+    const { icono, coordenadas, id } = coordenadasConIcono;
 
     let capa; 
 
@@ -41,10 +41,7 @@ const dibujarMarcadoresEnMapa = coordenadasConIcono => {
         }));
 
         marcador.setProperties({
-            'nombre': nombre,
-            'genero' : genero,
-            'descripcion' : descripcion,
-            'foto' : foto,
+            'id' : id,
         });
 
         marcadores.push(marcador);
@@ -63,7 +60,7 @@ const dibujarMarcadoresEnMapaResto = coordenadasConIcono => {
     const marcadores = [];
 
     coordenadasConIcono.forEach(usuario => {
-        const { icono, coordenadas, nombre, genero, descripcion, foto } = usuario;
+        const { icono, coordenadas, id } = usuario;
 
         coordenadas.forEach(coordenada => {
             let marcador = new ol.Feature({
@@ -79,10 +76,7 @@ const dibujarMarcadoresEnMapaResto = coordenadasConIcono => {
             }));
 
             marcador.setProperties({
-                'nombre': nombre,
-                'genero' : genero,
-                'descripcion' : descripcion,
-                'foto' : foto,
+                'id' : id,
             });
             
             marcadores.push(marcador);
@@ -134,11 +128,9 @@ mapa.on('click', function(evt) {
     if (feature) {
         var propiedades = feature.getProperties();
 
-        console.log("NATESSS");
         location.reload(true);
-        console.log("DESPUEEES");
 
-        fetch(`pagPrincipal.php?nombre=` + encodeURIComponent(propiedades.nombre) + '&genero=' + encodeURIComponent(propiedades.genero) + '&descripcion=' + encodeURIComponent(propiedades.descripcion) + '&foto=' + encodeURIComponent(propiedades.foto) + '&mostrar=si')
+        fetch(`pagPrincipal.php?id=` + encodeURIComponent(propiedades.id) + '&mostrar=si')
         .catch(error => {
           console.error('Error al enviar datos:', error);
         });

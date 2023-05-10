@@ -6,53 +6,40 @@
         exit;
     }
 
-    //NUEVO IF
-    if (isset($_SESSION["refrescar"]) && $_SESSION["refrescar"] === 'si') {
-        $_SESSION["refrescar"] = 'no';
+    // Obtención información usuario seleccionado
+    if (isset($_GET['id'])) {
+        $_SESSION["id"] = $_GET['id'];
+        $_SESSION["refrescar"] = true;
+    }
+
+    // Comprobamos si se ha hecho click en algún usuario del mapa
+    if (isset($_SESSION["refrescar"]) && $_SESSION["refrescar"] == true) {
+        $_SESSION["refrescar"] = false;
         ?>
         <script>
             setTimeout(function() {
                 location.reload(true);
-            }, 10); // espera 1 segundo antes de recargar
+            }, 100);
         </script>
         <?php
         $_SESSION["vista"] = 'usuario';
         exit;
     }
 
-    // $foto = null;
-    // $nombre = null;
-    // $genero = null;
-    // $descripcion = null;
-    // $matchist = null;
+    if ($_SESSION['vista'] == 'usuario') {
 
-    // Obtención información usuario seleccionado
-    if (isset($_GET['nombre']) && isset($_GET['genero']) && isset($_GET['descripcion'])) {
-        //TODO: foto
-        // $nombre = $_GET['nombre'];
-        // $genero = $_GET['genero'];
-        // $descripcion = $_GET['descripcion'];
-        //TODO: matchlist
-
-        //NUEVO CACHO DENTRO DEL IF
-        $_SESSION["nombre"] = $_GET['nombre'];
-        $_SESSION["genero"] = $_GET['genero'];
-        $_SESSION["descripcion"] = $_GET['descripcion'];
-        $_SESSION["foto"] = $_GET['foto'];
-        $_SESSION["refrescar"] = 'si';
+        // Lógica de los botones de la visualización de un usuario
+        if (isset($_POST['cerrarUsuario'])) {
+            $_SESSION['vista'] = 'lista';
+            header('Location: ' . $_SERVER['PHP_SELF']);
+            exit;
+        }
+        if (isset($_POST['abrirChat'])) {
+            $_SESSION['vista'] = 'chat';
+            header('Location: ' . $_SERVER['PHP_SELF']);
+            exit;
+        }
     }
-    
-    
-    // Lógica de los botones de la visualización de un usuario
-    if (isset($_POST['cerrarUsuario'])) {
-        $_SESSION['vista'] = 'lista';
-        header('Location: ' . $_SERVER['PHP_SELF']);
-        exit;
-    }
-    if (isset($_POST['abrirChat'])) {
-        $_SESSION['vista'] = 'chat';
-    }
-
     if ($_SESSION['vista'] == 'lista') {
         //TODO
     }
@@ -97,189 +84,66 @@
         <div class="seccionDer">
             
             <?php if ($_SESSION["vista"] == 'usuario') { ?>
-            <?php if ($_SESSION["nombre"] != null) { ?>
 
             <div class="visualizacionUsuario">
+
+                <?php
+                $usuarioEncontrado = $usuarioController->obtenerUsuarioPorId($_SESSION["id"]);
+                $foto = $usuarioEncontrado->getFotoPerfil();
+                $nombre = $usuarioEncontrado->getNombre();
+                $genero = $usuarioEncontrado->getGenero();
+                $descripcion = $usuarioEncontrado->getDescripcion();
+                $matchlist = $usuarioEncontrado->getMatchlist();
+                ?>
 
                 <div class="infoUsuario">
                     <div class="contenedor-imagen-usuario">
                         <img src=
-                        <?php
-                        echo "../../../public/assets/img/profilePhotos/".$_SESSION["foto"];
-                        ?>
+                        <?php echo "../../../public/assets/img/profilePhotos/".$foto; ?>
                         alt="Imagen usuario">
                     </div>
                     <h1>
-                        <?php            
-                            echo $_SESSION["nombre"]
-                        ?>
+                        <?php echo $nombre ?>
                     </h1>
                     <h2>
-                        <?php                
-                            echo $_SESSION["genero"]                       
-                        ?>
+                        <?php echo $genero ?>
                     </h2>
                     <p>
-                        <?php         
-                            echo $_SESSION["descripcion"]         
-                        ?>
+                        <?php echo $descripcion ?>
                     </p>
+
                     <h3>Matchlist<hr></h3>
-                    <div class="tabla-filas">
-                        <div class="fila">
 
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
-                            </div>
+                    <?php if ($matchlist == null) { ?>
 
-                            <div class="titulo-fila">
-                                <h5>
-                                    Titulo1
-                                    <div class="subtitulo">
-                                        hhguyuygug, uyfuugg
+                        <p>Este usuario no tiene actualmente ninguna Matchlist</p>
+
+                    <?php } else { $matchlistArray = $matchlist->bsonSerialize();?>
+                        <p>
+                            <?php echo $matchlistArray->nombreMatchlist; ?>
+                        </p>
+
+                        <div class="tabla-filas">
+                            <?php foreach ($matchlist->tracks as $track) { $track->bsonSerialize(); ?>
+                                <div class="fila">
+
+                                    <div class="imagen-fila">
+                                        <img src="<?php echo $track->image; ?>" alt="Imagen track">
                                     </div>
-                                </h5>
-                            </div>
 
-                        </div>
-
-                        <div class="fila">
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Titulo1
-                                    <div class="subtitulo">
-                                        hhguyuygug, uyfuugg
+                                    <div class="titulo-fila">
+                                        <h5>
+                                            <?php echo $track->title; ?>
+                                            <div class="subtitulo">
+                                                <?php echo $track->artists; ?>
+                                            </div>
+                                        </h5>
                                     </div>
-                                </h5>
-                            </div>
-
+                                </div>
+                            <?php } ?>
                         </div>
+                    <?php } ?>
 
-                        <div class="fila">
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Titulo1
-                                    <div class="subtitulo">
-                                        hhguyuygug, uyfuugg
-                                    </div>
-                                </h5>
-                            </div>
-
-                        </div>
-
-                        <div class="fila">
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Titulo1
-                                    <div class="subtitulo">
-                                        hhguyuygug, uyfuugg
-                                    </div>
-                                </h5>
-                            </div>
-
-                        </div>
-
-                        <div class="fila">
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Titulo1
-                                    <div class="subtitulo">
-                                        hhguyuygug, uyfuugg
-                                    </div>
-                                </h5>
-                            </div>
-
-                        </div>
-
-                        <div class="fila">
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Titulo1
-                                    <div class="subtitulo">
-                                        hhguyuygug, uyfuugg
-                                    </div>
-                                </h5>
-                            </div>
-
-                        </div>
-
-                        <div class="fila">
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Titulo1
-                                    <div class="subtitulo">
-                                        hhguyuygug, uyfuugg
-                                    </div>
-                                </h5>
-                            </div>
-
-                        </div>
-
-                        <div class="fila">
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Titulo1
-                                    <div class="subtitulo">
-                                        hhguyuygug, uyfuugg
-                                    </div>
-                                </h5>
-                            </div>
-
-                        </div>
-
-                        <div class="fila">
-
-                            <div class="imagen-fila">
-                                <img src="../../../public/assets/img/portadaPlaylistPorDefecto.jpg" alt="Imagen track">
-                            </div>
-
-                            <div class="titulo-fila">
-                                <h5>
-                                    Titulo1
-                                    <div class="subtitulo">
-                                        hhguyuygug, uyfuugg
-                                    </div>
-                                </h5>
-                            </div>
-
-                        </div>
-
-                    </div>
                 </div>
 
                 <div class="botonesUsuario">
@@ -290,7 +154,7 @@
                 </div>
             </div>
             
-            <?php }} elseif ($_SESSION["vista"] == 'lista') { ?>
+            <?php } elseif ($_SESSION["vista"] == 'lista') { ?>
 
             <div class="listaChats">
 

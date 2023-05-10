@@ -55,10 +55,11 @@ else {
                 }
                 $index++;
             }
-
+            
             $trackData = array(
                 'title' => $matchlistTrack->track->name,
-                'artists' => $artistsString
+                'artists' => $artistsString,
+                'image' => $matchlistTrack->track->album->images[0]->url
             );
             $matchlistArray['tracks'][] = $trackData;
         }
