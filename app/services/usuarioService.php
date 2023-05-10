@@ -30,8 +30,8 @@ class UsuarioService {
       $datos['longitud'] ?? null,
       $datos['spotify_ID'],
       $datos['nMatches'],
-      $datos['nPlaylists'],
       $datos['nChats'],
+      $datos['nPlaylists'],
       null,
       $datos['status']
     );
@@ -48,11 +48,13 @@ class UsuarioService {
       'genero' => $usuario->getGenero(),
       'descripcion' => $usuario->getDescripcion(),
       'fotoPerfil' => $usuario->getFotoPerfil(),
+      'latitud' => $usuario->getLatitud(),
+      'longitud' => $usuario->getLongitud(),
       'spotify_ID' => $usuario->getSpotifyID(),
       'nMatches' => $usuario->getnMatches(),
-      'nPlaylists' => $usuario->getnPlaylists(),
       'nChats' => $usuario->getnChats(),
-      'matchlist' => null,
+      'nPlaylists' => $usuario->getnPlaylists(),
+      'matchlist' => $usuario->getMatchlist(),
       'status' => $usuario->getStatus()
     ]);
 
@@ -120,7 +122,7 @@ class UsuarioService {
     }
 
     if (isset($datos['fecha_actualizacion'])) {
-      $set['spotify_refresh_token'] = $datos['spotify_refresh_token'];
+      $set['fecha_actualizacion'] = $datos['fecha_actualizacion'];
     } else {
       $fecha_actualizacion = new DateTime();
       $set['fecha_actualizacion'] = $fecha_actualizacion->format('Y-m-d H:i:s');
@@ -158,12 +160,12 @@ class UsuarioService {
       $set['nMatches'] = $datos['nMatches'];
     }
 
-    if (isset($datos['nPlaylists'])) {
-      $set['nPlaylists'] = $datos['nPlaylists'];
-    }
-
     if (isset($datos['nChats'])) {
       $set['nChats'] = $datos['nChats'];
+    }
+
+    if (isset($datos['nPlaylists'])) {
+      $set['nPlaylists'] = $datos['nPlaylists'];
     }
 
     if (isset($datos['matchlist'])) {
@@ -212,9 +214,9 @@ class UsuarioService {
         $doc['latitud'],
         $doc['longitud'],
         $doc['spotify_ID'],
-        $doc['nMatches'], 
-        $doc['nPlaylists'], 
+        $doc['nMatches'],
         $doc['nChats'],
+        $doc['nPlaylists'], 
         $doc['matchlist'],
         $doc['status']
       );
@@ -246,9 +248,9 @@ class UsuarioService {
       $result['latitud'] ?? null,
       $result['longitud'] ?? null,
       $result['spotify_ID'],   //nose si hará falta poner aqui un toString o algo
-      $result['nMatches'], 
-      $result['nPlaylists'], 
+      $result['nMatches'],
       $result['nChats'],
+      $result['nPlaylists'], 
       $result['matchlist'],
       $result['status']
     );
@@ -276,9 +278,9 @@ class UsuarioService {
         $resultado['latitud'] ?? null,
         $resultado['longitud'] ?? null,
         $resultado['spotify_ID'],
-        $resultado['nMatches'], 
-        $resultado['nPlaylists'], 
+        $resultado['nMatches'],
         $resultado['nChats'],
+        $resultado['nPlaylists'], 
         $resultado['matchlist'],
         $resultado['status']
       );

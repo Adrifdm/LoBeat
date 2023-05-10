@@ -25,6 +25,7 @@ if ($categoria === "current_user") {
     $genero = $usuario->getGenero();
     $descripcion = $usuario->getDescripcion();
     $foto = $usuario->getFotoPerfil();
+    $id = $usuario->getId();
     echo json_encode([
         "icono" => "../../../public/assets/img/yo.png",
         "coordenadas" => $current_user,
@@ -32,6 +33,7 @@ if ($categoria === "current_user") {
         "genero" => $genero,
         "descripcion" => $descripcion,
         "foto" => $foto,
+        "id" => $id,
     ]);
 } 
 
@@ -54,6 +56,7 @@ if($categoria === "resto"){
             $genero = $usuario->getGenero();
             $descripcion = $usuario->getDescripcion();
             $foto = $usuario->getFotoPerfil();
+            $id = $usuario->getId();
             $coordenadas = [
                 [
                     "latitud" => $usuario->getLatitud(),
@@ -67,6 +70,7 @@ if($categoria === "resto"){
                 "genero" => $genero,
                 "descripcion" => $descripcion,
                 "foto" => $foto,
+                "id" => $id,
             ];
         }
     }
