@@ -75,7 +75,7 @@ body{
     padding: 50px;
 }
 
-span {
+.seccionDer .listaMatchs .mensaje span {
     display: table-cell;
     vertical-align: middle;
 }
