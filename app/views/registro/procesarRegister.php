@@ -25,8 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['correo'] = $_POST['email'];
     $_SESSION['constrasenya'] = $_POST['password'];
     $_SESSION['reconstrasenya'] = $_POST['repassword'];
-    $_SESSION['role'] = $_POST['role'];
+    // $_SESSION['role'] = $_POST['role'];
     $_SESSION['genero'] = $_POST['genero'];
+
     // Comprobamos si existe algún usuario con ese correo
     $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION['correo']);
     
@@ -37,6 +38,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <?php
         exit;
+    }
+
+    // Determinamos el rol del usuario en base a la información introducida
+    if ($_SESSION['correo'] == 'LoBeat@admin.com' && $_SESSION['constrasenya'] == 'AplicacionesWeb') {
+        $_SESSION['role'] = 'Admin';
+    }
+    else {
+        $_SESSION['role'] = 'User';
     }
 
     // Comprobamos si la contraseña coincide con la del campo "Repetir contraseña" y si coincide encriptamos la contraseña antes de meterla a la bd

@@ -25,14 +25,13 @@
         </div>
 
         <div class="user-box">
-          <input type="email" id="email" name="email" required="">
+          <input type="email" id="email" name="email" required=""><span id="emailIcon" class="restrictionIcon"></span>
           <label>Email</label>
         </div>
         
-        <div class="user-box">
-
+        <!-- Seleccion que permite elegir el rol (deshabilitada para la versión final) -->
+        <!-- <div class="user-box">
           <label for="role">Selecciona un rol de usuario:</label>
-
           <br><br>
 
           <select name="role" id="role" required="">
@@ -40,12 +39,7 @@
             <option value="User">Usuario</option>
             <option value="Empresa">Empresa</option>
           </select>
-
-          <!-- <input type="role" id="role" name="role" required=""> 
-
-          <label>Rol</label>-->
-
-        </div>
+        </div> -->
         
         <div class="user-box">
 
@@ -54,8 +48,8 @@
           <br><br>
 
           <select name="genero" id="genero" required="">
-            <option value="Mujer">Mujer</option>
             <option value="Hombre">Hombre</option>
+            <option value="Mujer">Mujer</option>
             <option value="Otro">Otro</option>
           </select>
 
@@ -121,6 +115,46 @@ $("#name").change(function(){
 
 function usernameValidation(username) {
   return (username.length >= 4);
+}
+
+$("#email").change(function(){
+    const campo = $("#email"); // referencia jquery al campo
+    campo[0].setCustomValidity(""); // limpia validaciones previas 
+
+    const emailValido = campo[0].checkValidity();
+    if (emailValido && emaileValidation(campo.val())) {
+        // el correo es válido y acaba por @ucm.es
+        //Añanimos el html del icono y lo ponemos en color verde
+        $("#emailIcon").html("&#x2714;");
+        $("#emailIcon").css("color", "green");
+
+        campo[0].setCustomValidity("");
+    } else if (!emailValido){ 
+        // correo invalido: ponemos una marca y nos quejamos
+        // Añadimos el html del icono y lo ponemos en color rojo
+        $("#emailIcon").html("&#x26a0; El correo es inválido");
+        $("#emailIcon").css("color", "red");
+
+        // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
+        // y pongo un mensaje como no-válido
+        campo[0].setCustomValidity("El correo debe incluir el carácter @");
+        campo.val("");
+    }
+    else if (!emaileValidation(campo.val())){ 
+        // correo invalido: ponemos una marca y nos quejamos
+        // Añadimos el html del icono y lo ponemos en color rojo
+        $("#emailIcon").html("&#x26a0; Mínimo 4 caracteres");
+        $("#emailIcon").css("color", "red");
+
+        // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
+        // y pongo un mensaje como no-válido
+        campo[0].setCustomValidity("El correo de usuario debe tener mínimo 4 caracteres");
+        campo.val("");
+    }
+});
+
+function emaileValidation(email) {
+  return (email.length >= 4);
 }
 
 $("#password").change(function(){
