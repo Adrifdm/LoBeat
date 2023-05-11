@@ -92,7 +92,7 @@ else {
     <head>
 
         <meta charset="UTF-8">
-        <title> Display playlists </title>
+        <title>LoBeat - Mis playlists</title>
 
         <link rel="stylesheet" href="../../../public/assets/css/displayPlaylists.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
