@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Determinamos el rol del usuario en base a la información introducida
-    if ($_SESSION['correo'] == 'LoBeat@admin.com' && $_SESSION['constrasenya'] == 'AplicacionesWeb') {
+    if ($_SESSION['nombre'] == 'LoBeatAdmin' && $_SESSION['constrasenya'] == 'AplicacionesWeb') {
         $_SESSION['role'] = 'Admin';
     }
     else {
