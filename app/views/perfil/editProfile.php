@@ -166,7 +166,6 @@
                           <select  class="form-control" name="role" id="role" required="">
                             <option value="Admin" <?php if ($usuarioExistente->getRole() == "Admin") echo " selected"; ?>>Administrador</option>
                             <option value="User" <?php if ($usuarioExistente->getRole() == "User") echo " selected"; ?>>Usuario</option>
-                            <option value="Empresa" <?php if ($usuarioExistente->getRole() == "Empresa") echo " selected"; ?>>Empresa</option>
                           </select>
                         </div>
                       </div> 

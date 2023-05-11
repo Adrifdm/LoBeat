@@ -233,7 +233,6 @@ foreach ($users as $user) {
                                 <select  class="form__inp" name="role" id="rol" required="">
                                     <option value="Admin" <?php /*if ($usuarioEdit->getRole() == "Admin")*/ echo " selected"; ?>>Administrador</option>
                                     <option value="User" <?php //if ($usuarioEdit->getRole() == "User") echo " selected"; ?>>Usuario</option>
-                                    <option value="Empresa" <?php //if ($usuarioEdit->getRole() == "Empresa") echo " selected"; ?>>Empresa</option>
                                 </select>
 
                                 <span class="form__line"></span>
@@ -245,9 +244,9 @@ foreach ($users as $user) {
                                 <label for="genero" class="form__lab">Género:</label>
 
                                 <select  class="form__inp" name="genero" id="genero" required="">
-                                    <option value="Hombre" <?php /*if ($usuarioEdit->getGenero() == "Admin")*/ echo " selected"; ?>>Hombre</option>
-                                    <option value="Mujer" <?php //if ($usuarioEdit->getGenero() == "User") echo " selected"; ?>>Mujer</option>
-                                    <option value="Otro" <?php //if ($usuarioEdit->getGenero() == "Empresa") echo " selected"; ?>>Otros</option>
+                                    <option value="Hombre" <?php /*if ($usuarioEdit->getGenero() == "Hombre")*/ echo " selected"; ?>>Hombre</option>
+                                    <option value="Mujer" <?php //if ($usuarioEdit->getGenero() == "Mujer") echo " selected"; ?>>Mujer</option>
+                                    <option value="Otro" <?php //if ($usuarioEdit->getGenero() == "Otro") echo " selected"; ?>>Otros</option>
                                 </select>
 
                                 <span class="form__line"></span>
@@ -513,7 +512,6 @@ foreach ($users as $user) {
                                 <select  class="form__inp" name="role2" id="rol2" required="">
                                     <option value="Admin" <?php /*if ($usuarioEdit->getRole() == "Admin")*/ echo " selected"; ?>>Administrador</option>
                                     <option value="User" <?php //if ($usuarioEdit->getRole() == "User") echo " selected"; ?>>Usuario</option>
-                                    <option value="Empresa" <?php //if ($usuarioEdit->getRole() == "Empresa") echo " selected"; ?>>Empresa</option>
                                 </select>
 
                                 <span class="form__line"></span>
@@ -525,9 +523,9 @@ foreach ($users as $user) {
                                 <label for="genero2" class="form__lab">Género:</label>
 
                                 <select  class="form__inp" name="genero2" id="genero2" required="">
-                                    <option value="Hombre" <?php /*if ($usuarioEdit->getGenero() == "Admin")*/ echo " selected"; ?>>Hombre</option>
-                                    <option value="Mujer" <?php //if ($usuarioEdit->getGenero() == "User") echo " selected"; ?>>Mujer</option>
-                                    <option value="Otro" <?php //if ($usuarioEdit->getGenero() == "Empresa") echo " selected"; ?>>Otros</option>
+                                    <option value="Hombre" <?php /*if ($usuarioEdit->getGenero() == "Hombre")*/ echo " selected"; ?>>Hombre</option>
+                                    <option value="Mujer" <?php //if ($usuarioEdit->getGenero() == "Mujer") echo " selected"; ?>>Mujer</option>
+                                    <option value="Otro" <?php //if ($usuarioEdit->getGenero() == "Otro") echo " selected"; ?>>Otros</option>
                                 </select>
 
                                 <span class="form__line"></span>

@@ -37,7 +37,6 @@
           <select name="role" id="role" required="">
             <option value="Admin">Administrador</option>
             <option value="User">Usuario</option>
-            <option value="Empresa">Empresa</option>
           </select>
         </div> -->
         
