@@ -1,6 +1,7 @@
 <?php
-require_once '../../../vendor/autoload.php';
-require_once '../../../app/models/usuario.php';
+
+require_once PATH1 . '/LoBeat/vendor/autoload.php';
+require_once PATH1 .'/LoBeat/app/models/usuario.php';
 
 class UsuarioService {
 
@@ -179,7 +180,7 @@ class UsuarioService {
     }
 
     if (isset($datos['listaMatchs'])) {
-      $set['status'] = $datos['status'];
+      $set['listaMatchs'] = $datos['listaMatchs'];
     }
     
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos

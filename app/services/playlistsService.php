@@ -1,6 +1,6 @@
 <?php
-require_once '../../../vendor/autoload.php';
-require_once '../../../app/models/playlists.php';
+require_once PATH4 . '/LoBeat/vendor/autoload.php';
+require_once PATH4 . '/LoBeat/app/models/playlists.php';
 
 class PlaylistService {
 
@@ -53,7 +53,8 @@ class PlaylistService {
         $doc['images'],
         $doc['duration'],
         $doc['owner'],
-        $doc['canciones']
+        $doc['canciones'],
+        $doc['tags']
       );
       $playlists[] = $playlist;
     }
@@ -144,10 +145,9 @@ class PlaylistService {
   }
 
   public function generarGeneros($playlist) {
-    $tracks = $playlist->getPlaylistTracks();
     $generos = [];
 
-    foreach ($tracks->track->artist as $trackArtist) {
+    foreach ($playlist->track->album->genres as $trackArtist) {
 
       //Lo necesitamos para obtener el género
 

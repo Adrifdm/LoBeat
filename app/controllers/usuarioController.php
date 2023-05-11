@@ -1,6 +1,7 @@
 <?php
 // incluir el archivo usuarioService.php
-require_once '../../../app/services/usuarioService.php';
+define("PATH1", $_SERVER['DOCUMENT_ROOT']);
+require_once PATH1 . '/LoBeat/app/services/usuarioService.php';
 
 class UsuarioController {
     private $usuarioService;
