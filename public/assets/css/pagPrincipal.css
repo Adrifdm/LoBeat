@@ -56,8 +56,8 @@ body{
     height: 600px;
 }
 
-/* SECCION PARA VER LA LISTA DE CHATS */
-.seccionDer .listaChats {
+/* SECCION PARA VER LA LISTA DE MATCHS */
+.seccionDer .listaMatchs {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 2%;
     height: 600px;
@@ -67,11 +67,24 @@ body{
     overflow-y: auto;
 }
 
-.seccionDer .listaChats .enlace{
+.seccionDer .listaMatchs .mensaje {
+    color: white;
+    height: 100vh;
+    display: table;
+    text-align: center;
+    padding: 50px;
+}
+
+span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.seccionDer .listaMatchs .enlace{
     text-decoration: none;
 }
 
-.seccionDer .chat-list-item {
+.seccionDer .list-item {
     background-color: #718daa51;
     width: 717px;
     transition: 0.3s;
@@ -86,11 +99,11 @@ body{
     overflow: hidden;
 }
 
-.seccionDer .chat-list-item:hover {
+.seccionDer .list-item:hover {
     background-color: #9880bf81;
 }
 
-.seccionDer .chat-list-item .contenedor-imagen {
+.seccionDer .list-item .contenedor-imagen {
     width: 80px;
     height: 80px;
     border-radius: 999px;
@@ -103,11 +116,11 @@ body{
     align-items: center;
 }
 
-.seccionDer .chat-list-item img {
+.seccionDer .list-item img {
     width: 80px;
 }
 
-.seccionDer .chat-list-name {
+.seccionDer .list-item-name {
     color: white;
     font-size: 25px;
     line-height: 15px;
