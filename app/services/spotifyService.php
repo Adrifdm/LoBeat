@@ -1,5 +1,5 @@
 <?php
-require_once '../../../app/controllers/usuarioController.php';
+require_once PATH3 . '/LoBeat/app/controllers/usuarioController.php';
 
 class SpotifyService {
     // Atributos ---------------------------------------

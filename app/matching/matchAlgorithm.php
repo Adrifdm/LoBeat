@@ -1,6 +1,7 @@
 <?php
-require_once '../../../app/controllers/spotifyController.php';
-require_once '../../../app/controllers/usuarioController.php';
+define("PATH2", $_SERVER['DOCUMENT_ROOT']);
+require_once PATH2 . '/LoBeat/app/controllers/spotifyController.php';
+require_once PATH2 . '/LoBeat/app/controllers/usuarioController.php';
 
 session_start();
 
@@ -72,5 +73,6 @@ foreach ($listaUsuarios as $usuario){
     }
 }
 
+$_SESSION['matches'] = $matches;
 
 ?>
