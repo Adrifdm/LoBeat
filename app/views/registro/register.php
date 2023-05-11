@@ -1,7 +1,7 @@
 <html lang="en">
 
   <head>
-    <title>Registro</title>
+    <title>LoBeat - Registro</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="../../../public/assets/css/register.css" rel="stylesheet">

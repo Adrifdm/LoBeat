@@ -12,6 +12,12 @@
 
   // Obtenemos el usuario actual
   $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION['logged_user_id']);
+  $nombre = $usuarioExistente->getNombre();
+  $correo = $usuarioExistente->getCorreo();
+  $genero = $usuarioExistente->getGenero();
+  $descripcion = $usuarioExistente->getDescripcion();
+  $imagen = $usuarioExistente->getFotoPerfil();
+  $matchlist = $usuarioExistente->getMatchlist();
 
 ?> 
 
@@ -50,7 +56,7 @@
           </button>
         </a>
 
-        <a href="../registro/login.php">
+        <a href="../perfil/logout.php">
           <button>
             <i class="bi bi-box-arrow-left"></i> Cerrar sesion
           </button>
@@ -66,13 +72,13 @@
             <h3>Mi cuenta</h3>
             <div class="sub-box">
               <h3>Nombre de Usuario</h3>
-              <p>Juan</p>
+              <p><?php echo $nombre ?></p>
               <h3>Dirección de correo</h3>
-              <p>Juan@Juan.com</p>
+              <p><?php echo $correo ?></p>
               <h3>Género</h3>
-              <p>Juan</p>
+              <p><?php echo $genero ?></p>
               <h3>Sobre mí</h3>
-              <p>Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan Juan </p>
+              <p><?php echo $descripcion ?></p>
             </div>
           
           </div>
@@ -91,7 +97,11 @@
               <i class="bi bi-facebook"></i><span> Sin asignar</span>
 
               <h3>Matchlist:</h3>
+              <?php if($matchlist == null) { ?>
               <p>Sin asignar</p>
+              <?php } else { ?>
+              <p><?php echo $matchlist->nombreMatchlist ?></p>
+              <?php } ?>
             </div>
           </div>
         </div>
