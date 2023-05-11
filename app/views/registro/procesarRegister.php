@@ -90,7 +90,8 @@ else if ($registered === true){
         'nChats' => 0,
         'nPlaylists' => 0,
         'matchlist'=> null,
-        'status' => false
+        'status' => false,
+        'listaMatchs' => null
     );                                                                                                          
 
     // Creamos el usuario con la información anterior

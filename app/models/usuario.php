@@ -20,10 +20,9 @@ class Usuario {
     private $nPlaylists;
     private $matchlist;
     private $status;
-    //private $listaMatchs; lista de usuarios con los que se ha hecho match tras ejecutar el matching
-    //private $chatsList; lista de chats de cada usuario (para no estar buscando en la coleccion chats los de este usuario en concreto y directamente usar esta lista)
+    private $listaMatchs;
 
-    public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID, $nMatches, $nChats, $nPlaylists, $matchlist, $status) {
+    public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID, $nMatches, $nChats, $nPlaylists, $matchlist, $status, $listaMatchs) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->correo = $correo;
@@ -44,6 +43,7 @@ class Usuario {
         $this->nPlaylists = $nPlaylists;
         $this->matchlist = $matchlist;
         $this->status = $status;
+        $this->listaMatchs = $listaMatchs;
     }
 
     public function getId() {
@@ -184,6 +184,13 @@ class Usuario {
     }
     public function setStatus($status) {
         $this->status = $status;
+    }
+
+    public function getListaMatchs() {
+        return $this->listaMatchs;
+    }
+    public function setListaMatchs($listaMatchs) {
+        $this->listaMatchs = $listaMatchs;
     }
 
 }

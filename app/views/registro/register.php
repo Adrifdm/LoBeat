@@ -147,13 +147,13 @@ $("#email").change(function(){
 
         // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
         // y pongo un mensaje como no-válido
-        campo[0].setCustomValidity("El correo de usuario debe tener mínimo 4 caracteres");
+        campo[0].setCustomValidity("El correo de usuario debe tener mínimo 3 caracteres");
         campo.val("");
     }
 });
 
 function emaileValidation(email) {
-  return (email.length >= 4);
+  return (email.length >= 3);
 }
 
 $("#password").change(function(){
