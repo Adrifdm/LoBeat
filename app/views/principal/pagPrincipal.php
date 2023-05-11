@@ -176,18 +176,43 @@
 
                 <!-- Lista de chats disponibles -->
                 <ul>
-                    
-                    <a class="enlace" href ="chat.php">
-                        <li class="chat-list-item">
+                <div class = "chat-element">
+                <a class="enlace" onclick="mostrarContenido(event)">
+                    <li class="chat-list-item">
                             <div class="contenedor-imagen">
-                                <img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">            
+                                <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
                             </div>
                             <span class="chat-list-name">Roberto
-                                <p class = "subtitulo">quepues el e que pues el otro dia no se que es el e que pues el otro dia no sees el e que pues el otro dia no sees el e que pues el otro dia no se </p>
+                                <p class="subtitulo">quepues el otro dia no se quno se que</p>
                             </span>
-                        </li>
-                    </a>
-
+                
+                    </li>
+                 </a>
+                    <li class="redes" >      
+                         <a class="redes-sociales"> <i class="bi bi-facebook"></i>     Facebook</a>
+                         <a class="redes-sociales"> <i class="bi bi-twitter"></i>    Twitter</a>
+                         <a class="redes-sociales"> <i class="bi bi-instagram"></i>  Instagram</a>
+                    </li> 
+            </div>
+            <div class = "chat-element">
+                     <a class="enlace" onclick="mostrarContenido(event)">
+                    <li class="chat-list-item">
+                            <div class="contenedor-imagen">
+                                <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
+                            </div>
+                            <span class="chat-list-name">Roberto
+                                <p class="subtitulo">quepues el otro dia no se quno se que</p>
+                            </span>
+                
+                    </li>
+                 </a>
+                    <li class="redes">
+                       <a class="redes-sociales"> <i class="bi bi-facebook"></i>    Facebook</a>
+                        <a class="redes-sociales"> <i class="bi bi-twitter"></i>    Twitter</a>
+                        <a class="redes-sociales"> <i class="bi bi-instagram"></i>  Instagram</a>
+                    </li>  
+                    </div>                
+                    <!--
                     <li class="chat-list-item">
                         <div class="contenedor-imagen">
                             <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
@@ -287,16 +312,7 @@
                         </span>
                         
                     </li>
-
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
-                        
-                    </li>
+            -->
                     
                 </ul>
 
@@ -359,3 +375,25 @@
     </body>
 
 </html>
+<script>
+function mostrarContenido(event) {
+  // Obtener el elemento padre más cercano del enlace que se hizo clic
+  var elementoPadre = event.target.closest('.chat-element');
+  
+  // Obtener el elemento hijo con la clase "redes" dentro del elemento padre
+  var contenido = elementoPadre.querySelector('.redes');
+
+  // Obtener la altura del elemento hijo
+  var alturaContenido = contenido.scrollHeight;
+
+  // Establecer la altura máxima del elemento hijo para que se muestre con una animación
+  if (contenido.style.maxHeight) {
+    contenido.style.maxHeight = null;
+    contenido.style.padding = "0px";
+  } else {
+    contenido.style.padding = "10px";
+    contenido.style.maxHeight = alturaContenido + 20 + "px";
+    
+  }
+}
+</script>
