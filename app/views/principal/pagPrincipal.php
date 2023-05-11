@@ -168,28 +168,60 @@
                     <div class="mensaje">
                         <span>Parece que aún no has hecho match con nadie. Prueba suerte con el botón Connect sobre el mapa y encuentra gente con tus mismos gustos </span>
                     </div>
-                <?php } else { ?>
-                    <!-- Lista de matchs disponibles -->
+
+                <?php } else { ?>       
                     <ul>
-                        
                         <?php foreach ($listaMatchs as $matchId): ?>
                             <?php $match = $usuarioController->obtenerUsuarioPorId($matchId); ?>
+                            <div class = "chat-element">
+                                <a class="enlace" onclick="mostrarContenido(event)">
+                                    <li class="chat-list-item">
+                                            <div class="contenedor-imagen">
+                                            <img src=
+                                                <?php echo "../../../public/assets/img/profilePhotos/".$match->getFotoPerfil(); ?>
+                                                alt="chat">
+                                            </div>
+                                            <span class="list-item-name"><?php echo $match->getNombre(); ?>
+                                                <p class = "subtitulo"><?php echo $match->getDescripcion(); ?></p>
+                                            </span>
+                                
+                                    </li>
+                                </a>
+                                    <li class="redes" >      
+                                        <a class="redes-sociales"> <i class="bi bi-facebook"></i>     Facebook</a>
+                                        <a class="redes-sociales"> <i class="bi bi-twitter"></i>    Twitter</a>
+                                        <a class="redes-sociales"> <i class="bi bi-instagram"></i>  Instagram</a>
+                                    </li> 
+                            </div>
+                            <?php endforeach; ?>
+                        
+                    </ul>
+                    <?php } ?>
+
+                
+                    <!-- Lista de matchs disponibles 
+                    <ul>
+                        
+                        <?php //foreach ($listaMatchs as $matchId): ?>
+                            <?php //$match = $usuarioController->obtenerUsuarioPorId($matchId); ?>
                             <a class="enlace" href ="#">
                                 <li class="list-item">
                                     <div class="contenedor-imagen">
                                         <img src=
-                                        <?php echo "../../../public/assets/img/profilePhotos/".$match->getFotoPerfil(); ?>
+                                        <?php //echo "../../../public/assets/img/profilePhotos/".$match->getFotoPerfil(); ?>
                                         alt="chat">
                                     </div>
-                                    <span class="list-item-name"><?php echo $match->getNombre(); ?>
-                                        <p class = "subtitulo"><?php echo $match->getDescripcion(); ?></p>
+                                    <span class="list-item-name"><?php //echo $match->getNombre(); ?>
+                                        <p class = "subtitulo"><?php //echo $match->getDescripcion(); ?></p>
                                     </span>
                                 </li>
                             </a>
-                        <?php endforeach; ?>
+                        <?php //endforeach; ?>
 
                     </ul>
-                <?php } ?>
+                <?php// } ?>
+                -->
+
 
             </div>
             
@@ -250,3 +282,25 @@
     </body>
 
 </html>
+<script>
+function mostrarContenido(event) {
+  // Obtener el elemento padre más cercano del enlace que se hizo clic
+  var elementoPadre = event.target.closest('.chat-element');
+  
+  // Obtener el elemento hijo con la clase "redes" dentro del elemento padre
+  var contenido = elementoPadre.querySelector('.redes');
+
+  // Obtener la altura del elemento hijo
+  var alturaContenido = contenido.scrollHeight;
+
+  // Establecer la altura máxima del elemento hijo para que se muestre con una animación
+  if (contenido.style.maxHeight) {
+    contenido.style.maxHeight = null;
+    contenido.style.padding = "0px";
+  } else {
+    contenido.style.padding = "10px";
+    contenido.style.maxHeight = alturaContenido + 20 + "px";
+    
+  }
+}
+</script>

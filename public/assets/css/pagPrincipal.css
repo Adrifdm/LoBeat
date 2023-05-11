@@ -92,9 +92,8 @@ body{
     margin-left: -22px;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
     cursor: pointer;
-
+    
     white-space: nowrap;
     overflow: hidden;
 }
@@ -295,4 +294,35 @@ body{
     border-radius: 2%;
     height: 600px;
     width: 760px;
+}
+
+
+.seccionDer .redes {
+    position: relative;
+    background-color: #9880bf81;
+    width: 700px;
+    margin-left: -15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    margin-bottom: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    
+} 
+.redes-sociales{
+    text-decoration: none;
+    color: white;
+    margin-left: 4%;
+}
+.redes-sociales:hover{
+    color: #ffadd2
+}
+
+.seccionDer .chat-element {
+margin-bottom: 10px;
 }
