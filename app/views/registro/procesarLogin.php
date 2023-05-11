@@ -1,8 +1,9 @@
 <?php
+define("PATH", $_SERVER['DOCUMENT_ROOT']);
 session_start();
-require_once '../../../app/controllers/usuarioController.php';
-require_once '../../../app/controllers/spotifyController.php';
-require_once '../../../app/controllers/playlistsController.php';
+require_once PATH . '/LoBeat/app/controllers/usuarioController.php';
+require_once PATH . '/LoBeat/app/controllers/spotifyController.php';
+require_once PATH . '/LoBeat/app/controllers/playlistsController.php';
 
 // Comprobamos si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

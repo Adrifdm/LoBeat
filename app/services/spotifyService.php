@@ -1,5 +1,5 @@
 <?php
-require_once '../../../app/controllers/usuarioController.php';
+require_once PATH3 . '/LoBeat/app/controllers/usuarioController.php';
 
 class SpotifyService {
     // Atributos ---------------------------------------
@@ -27,6 +27,7 @@ class SpotifyService {
         $options = [
             'scope' => [
                 'user-read-private',
+                'user-read-recently-played',
                 'playlist-read-collaborative',
                 'playlist-modify-public',
                 'playlist-modify-private',
@@ -109,7 +110,7 @@ class SpotifyService {
     // Funciones que realizan llamadas a la API para obtener información sobre USUARIOS
 
     public function obtenerUsuarioActual() {
-        require '../../../vendor/autoload.php';
+        require PATH3 . '/LoBeat/vendor/autoload.php';
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }  
@@ -134,7 +135,7 @@ class SpotifyService {
     // Funciones que realizan llamadas a la API para obtener información sobre PLAYLISTS
 
     public function obtenerPlaylistsUsuarioActual() {
-        require '../../../vendor/autoload.php';
+        require PATH3 . '/LoBeat/vendor/autoload.php';
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }  
@@ -155,7 +156,7 @@ class SpotifyService {
     
 
     public function obtenerPlaylistsPorUsuario($userSpotifyID) {
-        require '../../../vendor/autoload.php';
+        require PATH3 . '/LoBeat/vendor/autoload.php';
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }  
@@ -174,7 +175,7 @@ class SpotifyService {
     }
 
     public function obtenerArtista($artistSpotifyID) {
-        require '../../../vendor/autoload.php';
+        require PATH3 . '/LoBeat/vendor/autoload.php';
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }  
@@ -192,7 +193,7 @@ class SpotifyService {
     }
 
     public function obtenerRecentlyPlayed($userId) {
-        require '../../../vendor/autoload.php';
+        require PATH3 . '/LoBeat/vendor/autoload.php';
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }  
@@ -204,36 +205,28 @@ class SpotifyService {
         // Fetch the saved access token from somewhere. A session for example.
         $api->setAccessToken($result['spotify_access_token']);
 
-        $recentlyPlayedRaw = $api->getMyRecentTracks(5);
-        $genres = [];
+        $recentlyPlayedRaw = $api->getMyRecentTracks([5]);
         $names = [];
 
-        foreach ($recentlyPlayedRaw->items->track as $track) {
+        foreach ($recentlyPlayedRaw->items as $num) {
 
-            foreach($track->album->genres as $genre){
-                if (array_key_exists($genre, $genres)) {
-                    $genres[$genre]++;
+            foreach($num->track->artists as $artist){
+                if (array_key_exists($artist->name, $names)) {
+                    $names[$artist->name]++;
                 } else {
-                    $genres[$genre] = 1;
+                    $names[$artist->name] = 1;
                 } 
             } 
-
-            $names[] = $track->name;
         }
     
-        arsort($genres);
-        $genero_mas_frecuente = key($genres);
+        arsort($names);
+        $artista_mas_frecuente = key($names);
 
-        $recently_played_info = array(
-            'artistas' => $names,
-            'generoMasEscuchado' => $genero_mas_frecuente
-        );
-
-        return $recently_played_info;
+        return  $artista_mas_frecuente;
     }
 
     public function obtenerPlaylist($playlistSpotifyID) {
-        require '../../../vendor/autoload.php';
+        require PATH3 . '/LoBeat/vendor/autoload.php';
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }  
