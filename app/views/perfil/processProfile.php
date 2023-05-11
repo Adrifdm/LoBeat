@@ -92,7 +92,7 @@
                         'contrasenya' => $usuarioExistente->getContrasenya(), // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
                         'spotify_access_token' => $usuarioExistente->getSpotify_access_token(),
                         'spotify_refresh_token' => $usuarioExistente->getSpotify_refresh_token(),
-                        'fecha_creacion' => $usuarioExistente->getFecha_creacion(),
+                        'fecha_creacion' => $usuarioExistente->getFecha_creacion()->format('Y-m-d H:i:s'),
                         'fecha_actualizacion' => date('Y-m-d H:i:s'),
                         'role' => $role, 
                         'genero' => $genero,

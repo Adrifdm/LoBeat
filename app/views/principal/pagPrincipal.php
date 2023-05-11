@@ -152,169 +152,76 @@
                         <button class="abrirChat" name="abrirChat"><i class="bi bi-chat-dots"></i></button>
                     </form>
                 </div>
+            
             </div>
             
             <?php } elseif ($_SESSION["vista"] == 'lista') { ?>
 
-            <div class="listaChats">
+            <div class="listaMatchs">
 
-                <!-- Información del propio usuario -->
-                <!-- <div class="content">
-                    <img src=""<?php// echo $row['img']; ?>" alt="">
-                    <div class="details">
-                        <span><?php// echo $row['fname']. " " . $row['lname'] ?></span>
-                        <p><?php// echo $row['status']; ?></p>
+                <?php
+                $usuarioActual = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
+                $listaMatchs = $usuarioActual->getListaMatchs();
+                ?>
+
+                <?php if ($listaMatchs == null) { ?>
+                    <div class="mensaje">
+                        <span>Parece que aún no has hecho match con nadie. Prueba suerte con el botón Connect sobre el mapa y encuentra gente con tus mismos gustos </span>
                     </div>
-                </div> -->
 
-                <!-- Input para buscar un chat de la lista -->
-                <!-- <div class="search">
-                    <span class="text">Selecciona un usuario para hablar</span>
-                    <input type="text" placeholder="Introduce un nombre...">
-                    <button><i class="fas fa-search"></i></button>
-                </div> -->
-
-                <!-- Lista de chats disponibles -->
-                <ul>
-                <div class = "chat-element">
-                <a class="enlace" onclick="mostrarContenido(event)">
-                    <li class="chat-list-item">
-                            <div class="contenedor-imagen">
-                                <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
+                <?php } else { ?>       
+                    <ul>
+                        <?php foreach ($listaMatchs as $matchId): ?>
+                            <?php $match = $usuarioController->obtenerUsuarioPorId($matchId); ?>
+                            <div class = "chat-element">
+                                <a class="enlace" onclick="mostrarContenido(event)">
+                                    <li class="chat-list-item">
+                                            <div class="contenedor-imagen">
+                                            <img src=
+                                                <?php echo "../../../public/assets/img/profilePhotos/".$match->getFotoPerfil(); ?>
+                                                alt="chat">
+                                            </div>
+                                            <span class="list-item-name"><?php echo $match->getNombre(); ?>
+                                                <p class = "subtitulo"><?php echo $match->getDescripcion(); ?></p>
+                                            </span>
+                                
+                                    </li>
+                                </a>
+                                    <li class="redes" >      
+                                        <a class="redes-sociales"> <i class="bi bi-facebook"></i>     Facebook</a>
+                                        <a class="redes-sociales"> <i class="bi bi-twitter"></i>    Twitter</a>
+                                        <a class="redes-sociales"> <i class="bi bi-instagram"></i>  Instagram</a>
+                                    </li> 
                             </div>
-                            <span class="chat-list-name">Roberto
-                                <p class="subtitulo">quepues el otro dia no se quno se que</p>
-                            </span>
+                            <?php endforeach; ?>
+                        
+                    </ul>
+                    <?php } ?>
+
                 
-                    </li>
-                 </a>
-                    <li class="redes" >      
-                         <a class="redes-sociales"> <i class="bi bi-facebook"></i>     Facebook</a>
-                         <a class="redes-sociales"> <i class="bi bi-twitter"></i>    Twitter</a>
-                         <a class="redes-sociales"> <i class="bi bi-instagram"></i>  Instagram</a>
-                    </li> 
-            </div>
-            <div class = "chat-element">
-                     <a class="enlace" onclick="mostrarContenido(event)">
-                    <li class="chat-list-item">
-                            <div class="contenedor-imagen">
-                                <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                            </div>
-                            <span class="chat-list-name">Roberto
-                                <p class="subtitulo">quepues el otro dia no se quno se que</p>
-                            </span>
-                
-                    </li>
-                 </a>
-                    <li class="redes">
-                       <a class="redes-sociales"> <i class="bi bi-facebook"></i>    Facebook</a>
-                        <a class="redes-sociales"> <i class="bi bi-twitter"></i>    Twitter</a>
-                        <a class="redes-sociales"> <i class="bi bi-instagram"></i>  Instagram</a>
-                    </li>  
-                    </div>                
-                    <!--
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
+                    <!-- Lista de matchs disponibles 
+                    <ul>
                         
-                    </li>
+                        <?php //foreach ($listaMatchs as $matchId): ?>
+                            <?php //$match = $usuarioController->obtenerUsuarioPorId($matchId); ?>
+                            <a class="enlace" href ="#">
+                                <li class="list-item">
+                                    <div class="contenedor-imagen">
+                                        <img src=
+                                        <?php //echo "../../../public/assets/img/profilePhotos/".$match->getFotoPerfil(); ?>
+                                        alt="chat">
+                                    </div>
+                                    <span class="list-item-name"><?php //echo $match->getNombre(); ?>
+                                        <p class = "subtitulo"><?php //echo $match->getDescripcion(); ?></p>
+                                    </span>
+                                </li>
+                            </a>
+                        <?php //endforeach; ?>
 
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
-                        
-                    </li>
+                    </ul>
+                <?php// } ?>
+                -->
 
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
-                        
-                    </li>
-
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
-                        
-                    </li>
-
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
-                        
-                    </li>
-
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
-                        
-                    </li>
-
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
-                        
-                    </li>
-
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
-                        
-                    </li>
-
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
-                        
-                    </li>
-
-                    <li class="chat-list-item">
-                        <div class="contenedor-imagen">
-                            <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-                        </div>
-                        <span class="chat-list-name">Roberto
-                            <p class = "subtitulo">  quepues el otro dia no se quno se que  </p>
-                        </span>
-                        
-                    </li>
-            -->
-                    
-                </ul>
 
             </div>
             
