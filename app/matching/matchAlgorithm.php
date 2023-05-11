@@ -76,10 +76,16 @@ foreach ($listaUsuarios as $usuario){
 
     // Si es igual a 1 incluimos al usuario en la lista de matches
     if($compatibility >= 0.7){
-        $matches[] = $usuario;
+        $usuarioArray = $usuario->bsonSerialize();
+        $matches[] = ($usuarioArray->_id)->__toString();
     }
 }
 
-$_SESSION['matches'] = $matches;
+$datos = array(
+    'listaMatchs' => $matches
+);
 
+$usuarioController->actualizarUsuario($_SESSION['logged_user_id'], $datos);
+
+header('Location: ../views/principal/pagPrincipal.php');
 ?>

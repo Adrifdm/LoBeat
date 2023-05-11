@@ -180,7 +180,7 @@ class UsuarioService {
     }
 
     if (isset($datos['listaMatchs'])) {
-      $set['status'] = $datos['status'];
+      $set['listaMatchs'] = $datos['listaMatchs'];
     }
     
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
