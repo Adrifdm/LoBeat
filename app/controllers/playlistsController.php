@@ -1,6 +1,7 @@
 <?php
-require_once '../../../app/services/playlistsService.php';
-require_once '../../../app/controllers/spotifyController.php';
+define("PATH4", $_SERVER['DOCUMENT_ROOT']);
+require_once PATH4 . '/LoBeat/app/services/playlistsService.php';
+require_once PATH4 . '/LoBeat/app/controllers/spotifyController.php';
 
 class PlaylistsController {
     private $playlistService;
