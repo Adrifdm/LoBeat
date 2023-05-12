@@ -152,6 +152,35 @@ body {
 }
 
 /* Estilos que se aplican sobre editProfile.php  */
+.main-container .cancelar {
+  transition: background-color 0.2s linear;
+  border: none;
+  outline: 0 solid transparent;
+  word-break: break-word;
+  cursor: pointer;
+  border-radius: 999px;
+  margin-right: 20px;
+
+  padding: 15px 15px;
+  background-color: #e21ba0;
+  color: white;
+  box-shadow: #00000080 0 10px 20px -10px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bolder;
+
+  position: absolute;
+  margin: 87.5px 0 0 170px;
+}
+
+.main-container .cancelar:hover {
+  background-color: #ff52f3;
+}
+
+.main-container a {
+  text-decoration: none;
+}
+
 .section2 .izq .window input {
   width: 200px;
   color: #ffffff;

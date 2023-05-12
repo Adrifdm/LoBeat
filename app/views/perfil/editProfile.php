@@ -43,74 +43,82 @@
 
     <div class="main-container">
 
-      <div class="section1">
+      <a href="profile.php">
+        <button class="cancelar">
+          <i class="bi bi-arrow-left"></i> Cancelar
+        </button>
+      </a>
 
-        <h1>Perfil</h1>
+      <form action="processProfile.php" method="POST">
+        <div class="section1">
 
-        <a href="profile.php">
-          <button>
-            <i class="bi bi-arrow-left"></i> Cancelar
-          </button>
-          <button>
-            <i class="bi bi-check-circle"></i> Guardar
-          </button>
-        </a>
+          <h1>Perfil</h1>
+          <a>
+            <button type="submit">
+              <i class="bi bi-check-circle"></i> Guardar
+            </button>
+          </a>
 
         </div>
 
-      <div class="section2">
+        <div class="section2">
 
-        <div class="izq">
-          <div class="window">
+          <div class="izq">
+            <div class="window">
 
-            <h3>Mi cuenta</h3>
-            <div class="sub-box">
-              <h3>Nombre de Usuario</h3>
-              <input type="text" placeholder="Introduce un de usuario" value="<?php echo $nombre;?>">
-              
-              <h3>Dirección de correo</h3>
-              <input type="text" placeholder="Introduce un correo válido" value="<?php echo $correo;?>">
-              
-              <h3>Género</h3>
-              <select>
-                <option value="Hombre">Hombre</option>
-                <option value="Mujer">Mujer</option>
-                <option value="Otro">Otro</option>
-              </select>
-              
-              <h3>Sobre mí</h3>
-              <textarea rows="5" cols="97" maxlength="478" placeholder="Introduce una descripción"><?php echo $descripcion;?></textarea>
-            </div>
-          
-          </div>
-        </div>
-
-        <div class="der">
-          <div class="window">
-            <div class="contenedor-imagen">
-              <img src="../../../public/assets/img/profilePhotos/<?php echo $imagen ?>" alt="Imagen usuario">
-            </div>
-
-            <div class="info">
-              <h3>Mis redes:</h3>
-              <i class="bi bi-instagram"></i><span> Sin asignar</span><br>
-              <i class="bi bi-twitter"></i></i><span> Sin asignar</span><br>
-              <i class="bi bi-facebook"></i><span> Sin asignar</span>
-
-              <h3>Matchlist:</h3>
-              <?php if($matchlist == null) { ?>
-              <p>Sin asignar</p>
-              <?php } else { ?>
-              <p><?php echo $matchlist->nombreMatchlist ?></p>
-              <?php } ?>
+              <h3>Mi cuenta</h3>
+              <div class="sub-box">
+                <h3>Nombre de Usuario</h3>
+                <input type="text" name="name" required="" maxlength="25" placeholder="Introduce un nombre de usuario" value="<?php echo $nombre;?>">
+                
+                <h3>Dirección de correo</h3>
+                <input type="text" name="email" required="" maxlength="25" placeholder="Introduce un correo válido" value="<?php echo $correo;?>">
+                
+                <h3>Género</h3>
+                <select name="genero" required="">
+                  <option value="Hombre">Hombre</option>
+                  <option value="Mujer">Mujer</option>
+                  <option value="Otro">Otro</option>
+                </select>
+                
+                <h3>Sobre mí</h3>
+                <textarea name="descripcion" required="" rows="5" cols="97" maxlength="495" placeholder="Introduce una descripción"><?php echo $descripcion;?></textarea>
+              </div>
+            
             </div>
           </div>
+
+          <div class="der">
+            <div class="window">
+              <div class="contenedor-imagen">
+                <img src="../../../public/assets/img/profilePhotos/<?php echo $imagen ?>" alt="Imagen usuario">
+              </div>
+
+              <div class="info">
+
+                <h3>Mis redes:</h3>
+                <i class="bi bi-instagram"></i><span> Sin asignar</span><br>
+                <i class="bi bi-twitter"></i></i><span> Sin asignar</span><br>
+                <i class="bi bi-facebook"></i><span> Sin asignar</span>
+
+                <h3>Matchlist:</h3>
+                <?php if($matchlist == null) { ?>
+                <p>Sin asignar</p>
+                <?php } else { ?>
+                <p><?php echo $matchlist->nombreMatchlist ?></p>
+                <?php } ?>
+
+              </div>
+            </div>
+          </div>
+
         </div>
-
-      </div>
-
+      </form>
     </div>
-    
+
+    <?php
+      include("processProfile.php")
+    ?>
 
   </body>
 </html>

@@ -1,155 +1,81 @@
-<html lang="en" >
+<?php
+require_once '../../controllers/usuarioController.php';
+require_once '../../controllers/notificationController.php';
 
-    <head>
-        <title>Login</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="../../public/assets/css/reg_log.css" rel="stylesheet">
-    </head>
+session_start();
 
-    <body>
-        <?php
-        require_once '../../controllers/usuarioController.php';
-        require_once '../../controllers/notificationController.php';
+$usuarioController = new UsuarioController();
+$notificationController = new NotificationController();
 
-        // Crear una instancia de UsuarioController
+// Comprobamos si el formulario ha sido enviado 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+    // Obtenemos la informacion introducida
+    $nombre = $_POST['name'];
+    $correo = $_POST['email'];
+    $genero = $_POST['genero'];
+    $descripcion = $_POST['descripcion'];
 
-        $usuarioController = new UsuarioController();
-        $notificationController = new NotificationController();
+    //Comprobamos que se ha cogido bien la foto
+    // if (isset($_FILES['foto'])){
+    //     // Cogemos la información de la imagen (si no se ha seleccionado imagen se deja la que estaba antes)
+    //     if ($_FILES['foto']['name'] != "")
+    //         $nombreFoto = $_FILES['foto']['name'];
+    //     else
+    //         $nombreFoto = $usuarioExistente->getFotoPerfil();
+    //     $tipoFoto = $_FILES['foto']['type'];
+    //     $tamanoFoto = $_FILES['foto']['size'];
+    //     $tempFoto = $_FILES['foto']['tmp_name'];
 
-        // Comprobamos si el formulario ha sido enviado 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
-            // Obtenemos la informacion introducida
-            $nombre = $_POST['username'];
+    //     //Comprobamos que la imagen es válida
+    //     if (($tipoFoto == 'image/jpeg' || $tipoFoto == 'image/png' || $tipoFoto == 'image/gif') && $tamanoFoto <= 5000000) {
+    //         // Movemos la foto a la carpeta con todas las fotos de perfiles
+    //         $ruta = $_SERVER['DOCUMENT_ROOT'].'/LoBeat/public/assets/img/profilePhotos/'.$nombreFoto;
+    //         copy($tempFoto, $ruta);
+    //     }
 
-            //El correo lo cojo de la sesión para que no me deje cambiarlo porque no he puesto control para ver si el correo ya existe
-            $correo = $_SESSION["logged_user_email"];
-            $genero = $_POST['genero'];
-            
-            $sobreMi = $_POST['descripcion'];
+    // }else{
+    //     ?>
+    <!-- //         <div class = "error">
+    //             <p> La foto no se ha guardado bien  </p> 
+    //         </div>        -->
+         <?php
+    //     exit;
+    // }
 
-            //Comprobamos que se ha cogido bien la foto
-            if (isset($_FILES['foto'])){
-                // Cogemos la información de la imagen (si no se ha seleccionado imagen se deja la que estaba antes)
-                if ($_FILES['foto']['name'] != "")
-                    $nombreFoto = $_FILES['foto']['name'];
-                else
-                    $nombreFoto = $usuarioExistente->getFotoPerfil();
-                $tipoFoto = $_FILES['foto']['type'];
-                $tamanoFoto = $_FILES['foto']['size'];
-                $tempFoto = $_FILES['foto']['tmp_name'];
 
-                //Comprobamos que la imagen es válida
-                if (($tipoFoto == 'image/jpeg' || $tipoFoto == 'image/png' || $tipoFoto == 'image/gif') && $tamanoFoto <= 5000000) {
-                    // Movemos la foto a la carpeta con todas las fotos de perfiles
-                    $ruta = $_SERVER['DOCUMENT_ROOT'].'/LoBeat/public/assets/img/profilePhotos/'.$nombreFoto;
-                    copy($tempFoto, $ruta);
-                }
+    $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
 
-            }else{
-                ?>
-                    <div class = "error">
-                        <p> La foto no se ha guardado bien  </p> 
-                    </div>       
-                <?php
-                exit;
-            }
+    if ($usuarioExistente !== null) {
 
-            if (isset($nombre) && isset($correo)){
+        // Creamos los datos para la notificación de modificación de perfil
+        $datosNotificacion = array(
+            'userId' => $usuarioExistente->getId(),
+            'name' => 'Tú',
+            'description' => 'Has modificado el perfil',
+            'icon' => 'correct_operation.png',
+            'read' => false
+        );
 
-                // Comprobamos si existe algún usuario con ese correo
-                //cambiar la busqueda por id cuando funcione
+        $resultado2 = $notificationController->crearNotificacion($datosNotificacion);
 
-                $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
-                //$usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
-                
-                if($usuarioExistente->getRole() == 'Admin'){
-                    $role = $_POST['role'];
-                }
-                else{
-                    $role = $usuarioExistente->getRole();
-                    ?>
-                            <div class = "error"> 
-                                <p> No puedes cambiar el rol si no eres Administrador </p> 
-                            </div>       
-                    <?php
-                }
+        // Actualizamos el usuario con los nuevos datos
+        $datos = array(
+            'nombre' => $nombre,
+            'correo' => $correo,
+            'genero' => $genero,
+            'descripcion' => $descripcion
+            // TODO: 'fotoPerfil' => $nombreFoto
+        );
 
-                //Creamos los datos para la notificación de modificación de perfil
-                $datosNotificacion = array(
-                    'userId' => $usuarioExistente->getId(),
-                    'name' => 'Tú',
-                    'description' => 'Has modificado el perfil',
-                    'icon' => 'correct_operation.png',
-                    'read' => false
-                );
+        $resultado = $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $datos);
 
-                if ($usuarioExistente !== null){ 
-                    $datos = array(
-                        'nombre' => $nombre,
-                        'correo' => $correo,
-                        'contrasenya' => $usuarioExistente->getContrasenya(), // mas alante tendremos que almacenar aqui el hash de la contraseña y no la propia contraseña
-                        'spotify_access_token' => $usuarioExistente->getSpotify_access_token(),
-                        'spotify_refresh_token' => $usuarioExistente->getSpotify_refresh_token(),
-                        'fecha_creacion' => $usuarioExistente->getFecha_creacion()->format('Y-m-d H:i:s'),
-                        'fecha_actualizacion' => date('Y-m-d H:i:s'),
-                        'role' => $role, 
-                        'genero' => $genero,
-                        'descripcion' => $sobreMi,
-                        'fotoPerfil' => $nombreFoto
-                    );
-                    
-                    //actualizar por id
-
-                    $resultado = $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $datos);
-                    //$resultado = $usuarioController->actualizarUsuarioPorCorreo($correo, $datos);
-
-                    $resultado2 = $notificationController->crearNotificacion($datosNotificacion);
- 
-                    // Si se ha insertado correctamente, redirigir a la página de login
-                    if ($resultado !== null) {
-                        ?>
-                            <div class = "success">
-                                <p> El registro ha sido completado con exito</p>
-                            </div>
-                        <?php
-
-                        //header('Location: login.php');
-                        echo "<script>window.location='profile.php';</script>";
-                        exit;
-
-                    } else {
-                        ?>
-                            <div class = "error"> 
-                                <p> Ha ocurrido un error al registrar el usuario </p> 
-                            </div>       
-                        <?php
-                        exit;
-                    }
-
-                    //header('Location: profile.php');
-                    //exit;
-                }
-                else{
-                    ?>
-                        <div class = "error">
-                            <p> El usuario no se ha detectado bien</p> 
-                        </div>       
-                    <?php
-                    exit;    
-                }
-            }
-            else{
-                ?>
-                    <div class = "error">
-                        <p> El nombre no se ha cogido bien   </p> 
-                    </div>       
-                <?php
-                exit;
-            }
-
+        // Si se ha insertado correctamente, redirigir a la página de login
+        if ($resultado !== null) {
+            echo "<script>window.location='profile.php';</script>";
+            exit;
         }
-        ?>
-    </body>
-</html>
+    }
+
+}
+?>
