@@ -199,7 +199,7 @@
                             <?php $match = $usuarioController->obtenerUsuarioPorId($matchId); ?>
                             <div class = "chat-element">
                                 <a class="enlace" onclick="mostrarContenido(event)">
-                                    <li class="chat-list-item">
+                                    <li class="list-item">
                                             <div class="contenedor-imagen">
                                             <img src=
                                                 <?php echo "../../../public/assets/img/profilePhotos/".$match->getFotoPerfil(); ?>
