@@ -147,7 +147,7 @@ mapa.on('click', function(evt) {
     if (feature) {
         var propiedades = feature.getProperties();
 
-        fetch(`pagPrincipal.php?nombre=` + encodeURIComponent(propiedades.nombre) + '&genero=' + encodeURIComponent(propiedades.genero) + '&descripcion=' + encodeURIComponent(propiedades.descripcion))
+        fetch(`pagPrincipal.php?id=` + encodeURIComponent(propiedades.id))
         .catch(error => {
           console.error('Error al enviar datos:', error);
         });
