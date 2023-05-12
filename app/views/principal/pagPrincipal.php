@@ -102,6 +102,12 @@
 
             <div class="visualizacionUsuario">
 
+                <div class="botonUsuario">
+                    <form method="POST">
+                        <button class="cerrarUsuario" name="cerrarUsuario"><i class="bi bi-arrow-left"></i></i></button>
+                    </form>
+                </div>
+
                 <div class="infoUsuario">
                     <div class="contenedor-imagen-usuario">
                         <img src=
@@ -150,13 +156,6 @@
                         </div>
                     <?php } ?>
 
-                </div>
-
-                <div class="botonesUsuario">
-                    <form method="POST">
-                        <button class="cerrarUsuario" name="cerrarUsuario"><i class="bi bi-arrow-left"></i></i></button>
-                        <button class="abrirChat" name="abrirChat"><i class="bi bi-chat-dots"></i></button>
-                    </form>
                 </div>
             
             </div>

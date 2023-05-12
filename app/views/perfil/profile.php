@@ -30,7 +30,6 @@
     <title>LoBeat - Perfil</title>
 
     <link rel="stylesheet" href="../../../public/assets/css/profile.css">
-    <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     
     <script src="https://kit.fontawesome.com/dee2748eb0.js" crossorigin="anonymous"></script>
@@ -87,7 +86,7 @@
         <div class="der">
           <div class="window">
             <div class="contenedor-imagen">
-              <img src="../../../public/assets/img/profilePhotos/profileAvatar.png" alt="Imagen usuario">
+            <img src="../../../public/assets/img/profilePhotos/<?php echo $imagen ?>" alt="Imagen usuario">
             </div>
 
             <div class="info">

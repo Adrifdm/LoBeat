@@ -32,9 +32,6 @@
     <link rel="stylesheet" href="../../../public/assets/css/profile.css">
     <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    
-    <script src="https://kit.fontawesome.com/dee2748eb0.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/select2/dist/js/select2.min.js"></script>
   
   </head>
 
@@ -54,6 +51,9 @@
           <button>
             <i class="bi bi-arrow-left"></i> Cancelar
           </button>
+          <button>
+            <i class="bi bi-check-circle"></i> Guardar
+          </button>
         </a>
 
         </div>
@@ -66,13 +66,20 @@
             <h3>Mi cuenta</h3>
             <div class="sub-box">
               <h3>Nombre de Usuario</h3>
-              <p><?php echo $nombre ?></p>
+              <input type="text" placeholder="Introduce un de usuario" value="<?php echo $nombre;?>">
+              
               <h3>Dirección de correo</h3>
-              <p><?php echo $correo ?></p>
+              <input type="text" placeholder="Introduce un correo válido" value="<?php echo $correo;?>">
+              
               <h3>Género</h3>
-              <p><?php echo $genero ?></p>
+              <select>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+                <option value="Otro">Otro</option>
+              </select>
+              
               <h3>Sobre mí</h3>
-              <p><?php echo $descripcion ?></p>
+              <textarea rows="5" cols="97" maxlength="478" placeholder="Introduce una descripción"><?php echo $descripcion;?></textarea>
             </div>
           
           </div>
@@ -81,7 +88,7 @@
         <div class="der">
           <div class="window">
             <div class="contenedor-imagen">
-              <img src="../../../public/assets/img/profilePhotos/profileAvatar.png" alt="Imagen usuario">
+              <img src="../../../public/assets/img/profilePhotos/<?php echo $imagen ?>" alt="Imagen usuario">
             </div>
 
             <div class="info">

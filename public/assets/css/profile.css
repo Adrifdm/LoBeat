@@ -151,6 +151,40 @@ body {
   font-size: 20px;
 }
 
+/* Estilos que se aplican sobre editProfile.php  */
+.section2 .izq .window input {
+  width: 200px;
+  color: #ffffff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.section2 .izq .window select {
+  width: 150px;
+  color: #ffffff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.section2 .izq .window select option{
+  color: black;
+  background: rgba(214, 155, 235, 0.521);
+}
+
+.section2 .izq .window textarea {
+  resize: none;
+  padding: 8px;
+  border-radius: 7px;
+  color: #ffffff;
+  border: 1px solid white;
+  background: transparent;
+}
+
+
 /* .tit{
   font-size: 30px !important;
 }

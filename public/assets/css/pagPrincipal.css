@@ -150,7 +150,7 @@ body{
 
 .seccionDer .visualizacionUsuario .infoUsuario {
     overflow-y: auto;
-    height: 530px;
+    height: 600px;
 }
 
 /* Estlos barra de desplazamiento */
@@ -254,11 +254,9 @@ body{
     overflow: hidden;
 }
 
-.seccionDer .visualizacionUsuario .botonesUsuario {
-    background-color: #00000078;
-    border-radius: 12px;
-    width: auto;
-    text-align: center;
+.seccionDer .visualizacionUsuario .botonUsuario {
+    position: absolute;
+    margin: 20px 0 0 20px;
 }
 
 .seccionDer .visualizacionUsuario button {
@@ -267,41 +265,18 @@ body{
 	outline: 0 solid transparent;
 	word-break: break-word;
 	cursor: pointer;
-	border-radius: 999px;
-    font-size: 50px;
-    margin: 7px;
+	border-radius: 50%;
+    font-size: 40px;
 }
 
 .seccionDer .visualizacionUsuario .cerrarUsuario {
 	/* Estilo */
-	background-color: #e21b43;
-	color: white;
-	box-shadow: #00000080 0 10px 20px -10px;
+	background-color: #ffffff00;
+	color: rgb(255, 255, 255);
 }
 
 .seccionDer .visualizacionUsuario .cerrarUsuario:hover {
-	background-color: #ffffff;
-    color: #e21b43;
-}
-
-.seccionDer .visualizacionUsuario .abrirChat {
-	/* Estilo */
-	background-color: #1be282;
-	color: white;
-	box-shadow: #00000080 0 10px 20px -10px;
-}
-
-.seccionDer .visualizacionUsuario .abrirChat:hover {
-	background-color: #ffffff;
-    color: #1be282;
-}
-
-/* SECCION PARA VER UN CHAT CONCRETO */
-.seccionDer .chatConcreto {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 2%;
-    height: 600px;
-    width: 760px;
+    color: #ff92eb;
 }
 
 
