@@ -92,7 +92,7 @@ $_SESSION['vista'] = "lista";
 $_SESSION['connect'] = true;
 
 //Se genera notificación
-$personas = count($user->getListaMatchs());
+$personas = count($matches);
 if ($personas == 1) {
     $description = 'Has hecho match con 1 persona.';
 } else {
