@@ -1,6 +1,8 @@
 <?php
 	session_start();
 
+    require_once '../../controllers/usuarioController.php';
+
     if($_SESSION["is_logged"] != true){
         header('Location: ../perfil/logout.php'); 
         exit;
@@ -28,7 +30,26 @@
         exit;
     }*/
 
+    $usuarioController = new UsuarioController();
+
+    // Comrpobamos si el usuario tiene alguna matchlist para permitirle o no pulsar el botoón Connect
+    $usuarioActual = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
+    $matchlist = $usuarioActual->getMatchlist();
+
+    if ($matchlist == null) {
+        $pointer_events = "none";
+    } else {
+        $pointer_events = "all";
+    }
+
     if ($_SESSION['vista'] == 'usuario') {
+
+        $usuarioEncontrado = $usuarioController->obtenerUsuarioPorId($_SESSION["id"]);
+        $foto = $usuarioEncontrado->getFotoPerfil();
+        $nombre = $usuarioEncontrado->getNombre();
+        $genero = $usuarioEncontrado->getGenero();
+        $descripcion = $usuarioEncontrado->getDescripcion();
+        $matchlist = $usuarioEncontrado->getMatchlist();
 
         // Lógica de los botones de la visualización de un usuario
         if (isset($_POST['cerrarUsuario'])) {
@@ -43,7 +64,7 @@
         }
     }
     if ($_SESSION['vista'] == 'lista') {
-        //TODO
+        //TODO:
     }
     else if($_SESSION['vista'] == 'chat') {
         //TODO
@@ -75,8 +96,8 @@
         ?>
 
         <div class="matching">
-            <a href="../../../app/matching/matchAlgorithm.php">
-                <button>
+            <a href="../../../app/matching/matchAlgorithm.php" style="pointer-events: <?php echo $pointer_events?>">
+                <button type="button" class="<?php echo $pointer_events ?>">
                     <i class="bi bi-music-note"></i>
                     CONNECT
                 </button>
@@ -88,15 +109,6 @@
             <?php if ($_SESSION["vista"] == 'usuario') { ?>
 
             <div class="visualizacionUsuario">
-
-                <?php
-                $usuarioEncontrado = $usuarioController->obtenerUsuarioPorId($_SESSION["id"]);
-                $foto = $usuarioEncontrado->getFotoPerfil();
-                $nombre = $usuarioEncontrado->getNombre();
-                $genero = $usuarioEncontrado->getGenero();
-                $descripcion = $usuarioEncontrado->getDescripcion();
-                $matchlist = $usuarioEncontrado->getMatchlist();
-                ?>
 
                 <div class="infoUsuario">
                     <div class="contenedor-imagen-usuario">
@@ -167,10 +179,20 @@
                 ?>
 
                 <?php if ($listaMatchs == null) { ?>
-                    <div class="mensaje">
-                        <span>Parece que aún no has hecho match con nadie. Prueba suerte con el botón Connect sobre el mapa y encuentra gente con tus mismos gustos </span>
-                    </div>
+                    <?php if ($matchlist == null) { ?>
+                        <div class="mensaje">
+                            <span>Bienvenido a LoBeat. Para poder conectar con otras personas primero debes establecer una Matchlist desde la opción Playlists </span>
+                        </div>
+                    <?php } else { ?>
+                        <div class="mensaje">
+                            <span>Pulsa el botón Connect sobre el mapa y encuentra gente con tus mismos gustos </span>
+                        </div>
+                    <?php } ?>
 
+                <?php } elseif (count($listaMatchs) == 0) { ?>
+                    <div class="mensaje">
+                        <span>Vaya, parece que aún no has hecho match con nadie. Vuelve a pruebar suerte con el botón Connect sobre el mapa y encuentra gente con tus mismos gustos </span>
+                    </div>
                 <?php } else { ?>       
                     <ul>
                         <?php foreach ($listaMatchs as $matchId): ?>
