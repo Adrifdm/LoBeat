@@ -1,5 +1,5 @@
 <?php
-require_once '../../../app/models/notification.php';
+require_once PATH5 . '/LoBeat/app/models/notification.php';
 class NotificationService{
 
     private $collection;

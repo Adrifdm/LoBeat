@@ -2,12 +2,15 @@
 require_once '../../controllers/playlistsController.php';
 require_once '../../controllers/spotifyController.php';
 require_once '../../controllers/usuarioController.php';
+require_once '../../controllers/notificationController.php';
+
 
 session_start();
 
 $playlistsController = new PlaylistsController();
 $spotifyController = new SpotifyController();
 $usuarioController = new UsuarioController();
+$notificationController = new NotificationController();
 
 if($_SESSION["is_logged"] != true){
     header('Location: ../perfil/logout.php'); 
@@ -81,6 +84,17 @@ else {
             'matchlist' => $matchlistArray
         );
         $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $usuarioAct);
+
+        //Se genera notificación
+        $user = $usuarioController->obtenerUsuarioPorId($_SESSION['logged_user_id']);
+        $datosNotificacion = array(
+            'userId' => $user->getId(),
+            'name' => 'Tú',
+            'description' => 'Has cambiado la Matchlist a:  '.$user->getMatchlist()['nombreMatchlist'],
+            'icon' => 'matchlist-notification.png',
+            'read' => false
+        );
+        $resultado = $notificationController->crearNotificacion($datosNotificacion);
     }
       
 }
