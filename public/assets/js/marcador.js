@@ -121,7 +121,7 @@ mapa.on('click', function(evt) {
     }
 });*/
 
-mapa.on('click', function(evt) {
+/*mapa.on('click', function(evt) {
     var feature = mapa.forEachFeatureAtPixel(evt.pixel, function(feature) {
       return feature;
     });
@@ -137,6 +137,24 @@ mapa.on('click', function(evt) {
        
         location.reload(true);
 
+    }
+  });*/
+
+  mapa.on('click', function(evt) {
+    var feature = mapa.forEachFeatureAtPixel(evt.pixel, function(feature) {
+      return feature;
+    });
+    if (feature) {
+        var propiedades = feature.getProperties();
+
+        fetch(`pagPrincipal.php?nombre=` + encodeURIComponent(propiedades.nombre) + '&genero=' + encodeURIComponent(propiedades.genero) + '&descripcion=' + encodeURIComponent(propiedades.descripcion))
+        .catch(error => {
+          console.error('Error al enviar datos:', error);
+        });
+
+       window.location.href = "pagPrincipal.php";
+
+       
     }
   });
   

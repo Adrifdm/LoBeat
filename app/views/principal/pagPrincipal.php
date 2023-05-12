@@ -9,10 +9,12 @@
     // Obtención información usuario seleccionado
     if (isset($_GET['id'])) {
         $_SESSION["id"] = $_GET['id'];
-        $_SESSION["refrescar"] = true;
+        $_SESSION["vista"] = 'usuario';
+        //exit;
+        //$_SESSION["refrescar"] = true;
     }
 
-    // Comprobamos si se ha hecho click en algún usuario del mapa
+    /*Comprobamos si se ha hecho click en algún usuario del mapa
     if (isset($_SESSION["refrescar"]) && $_SESSION["refrescar"] == true) {
         $_SESSION["refrescar"] = false;
         ?>
@@ -24,7 +26,7 @@
         <?php
         $_SESSION["vista"] = 'usuario';
         exit;
-    }
+    }*/
 
     if ($_SESSION['vista'] == 'usuario') {
 
