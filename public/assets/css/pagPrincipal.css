@@ -101,7 +101,6 @@ body{
     display: flex;
     align-items: center;
     cursor: pointer;
-    
     white-space: nowrap;
     overflow: hidden;
 }
@@ -307,9 +306,9 @@ body{
 
 .seccionDer .redes {
     position: relative;
-    background-color: #9880bf81;
-    width: 700px;
-    margin-left: -15px;
+    background-color: #718daa51;
+    width: 500px;
+    margin-left: 195px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -325,7 +324,7 @@ body{
 .redes-sociales{
     text-decoration: none;
     color: white;
-    margin-left: 4%;
+    
 }
 .redes-sociales:hover{
     color: #ffadd2
@@ -333,4 +332,9 @@ body{
 
 .seccionDer .chat-element {
 margin-bottom: 10px;
+}
+.seccionDer .redes .r-d{
+    margin-left: 8%;
+    width: 25%;
+    overflow: hidden;
 }
