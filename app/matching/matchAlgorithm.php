@@ -86,6 +86,6 @@ $datos = array(
 );
 
 $usuarioController->actualizarUsuario($_SESSION['logged_user_id'], $datos);
-
+$_SESSION['vista'] = "lista";
 header('Location: ../views/principal/pagPrincipal.php');
 ?>
