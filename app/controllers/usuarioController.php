@@ -22,6 +22,16 @@ class UsuarioController {
         }
     }
 
+    public function usuarioEsMatch($idActual, $idUser){
+        try{
+            $usuarioEsMatch = $this->usuarioService->getUserMatch($idActual, $idUser);
+            return $usuarioEsMatch;
+
+        } catch(Exception $e){
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+    
     public function actualizarUsuario($id, $datos) {
         try {
             // llamar al método de actualizar usuario del servicio

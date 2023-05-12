@@ -101,44 +101,6 @@ const dibujarMarcadoresEnMapaResto = coordenadasConIcono => {
     
     
 };
-/*
-mapa.on('click', function(evt) {
-    var feature = mapa.forEachFeatureAtPixel(evt.pixel, function(feature) {
-        return feature;
-    });
-    if (feature) {
-        var propiedades = feature.getProperties();
-        const contenido = `<p>Nombre: ${propiedades.nombre}</p>
-        <p>Género: ${propiedades.genero}</p>
-        <p>Descripción: ${propiedades.descripcion}</p>`;
-
-        Swal.fire({
-            iconHtml: '<i class="fa fa-user-circle" aria-hidden="true"></i>',            
-            title: 'Información del usuario',
-            html: contenido,
-            confirmButtonText: 'OK'
-        });
-    }
-});*/
-
-/*mapa.on('click', function(evt) {
-    var feature = mapa.forEachFeatureAtPixel(evt.pixel, function(feature) {
-      return feature;
-    });
-    if (feature) {
-        var propiedades = feature.getProperties();
-
-        location.reload(true);
-
-        fetch(`pagPrincipal.php?id=` + encodeURIComponent(propiedades.id) + '&mostrar=si')
-        .catch(error => {
-          console.error('Error al enviar datos:', error);
-        });
-       
-        location.reload(true);
-
-    }
-  });*/
 
   mapa.on('click', function(evt) {
     var feature = mapa.forEachFeatureAtPixel(evt.pixel, function(feature) {

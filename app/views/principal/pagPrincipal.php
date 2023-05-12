@@ -12,23 +12,8 @@
     if (isset($_GET['id'])) {
         $_SESSION["id"] = $_GET['id'];
         $_SESSION["vista"] = 'usuario';
-        //exit;
-        //$_SESSION["refrescar"] = true;
     }
 
-    /*Comprobamos si se ha hecho click en algún usuario del mapa
-    if (isset($_SESSION["refrescar"]) && $_SESSION["refrescar"] == true) {
-        $_SESSION["refrescar"] = false;
-        ?>
-        <script>
-            setTimeout(function() {
-                location.reload(true);
-            }, 100);
-        </script>
-        <?php
-        $_SESSION["vista"] = 'usuario';
-        exit;
-    }*/
 
     $usuarioController = new UsuarioController();
 
@@ -202,10 +187,16 @@
                                 
                                     </li>
                                 </a>
-                                    <li class="redes" >      
-                                        <a class="redes-sociales"> <i class="bi bi-facebook"></i>     Facebook</a>
-                                        <a class="redes-sociales"> <i class="bi bi-twitter"></i>    Twitter</a>
-                                        <a class="redes-sociales"> <i class="bi bi-instagram"></i>  Instagram</a>
+                                    <li class="redes" > 
+                                        <div class= "r-d">     
+                                            <a class="redes-sociales"> <i class="bi bi-tiktok"></i>     Tiktok</a>
+                                        </div>
+                                        <div class= "r-d">
+                                            <a class="redes-sociales"> <i class="bi bi-twitter"></i>    Twitter</a>
+                                        </div>
+                                        <div class= "r-d">
+                                            <a class="redes-sociales"> <i class="bi bi-instagram"></i>  Instagram </a>
+                                        </div>
                                     </li> 
                             </div>
                             <?php endforeach; ?>
@@ -262,10 +253,11 @@ function mostrarContenido(event) {
   if (contenido.style.maxHeight) {
     contenido.style.maxHeight = null;
     contenido.style.padding = "0px";
+    elementoPadre.querySelector('.list-item').style.borderBottomRightRadius = "6px";
   } else {
     contenido.style.padding = "10px";
     contenido.style.maxHeight = alturaContenido + 20 + "px";
-    
+    elementoPadre.querySelector('.list-item').style.borderBottomRightRadius = "0px";
   }
 }
 </script>
