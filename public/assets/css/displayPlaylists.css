@@ -224,14 +224,36 @@ body {
     border-radius: 20px;
     opacity: 0;
 }
+@keyframes aparecer {
+    from {
+      opacity: 0;
+     
+    }
+    to {
+      opacity: 1;
+  
+    }
+  }
+  
+  @keyframes desaparecer {
+    from {
+      opacity: 1;
+  
+    }
+    to {
+      opacity: 0;
 
+    }
+  }
+
+  
 #miPopup.mostrar {
-    opacity: 1;
+    animation: aparecer 1s forwards;
     visibility: visible;
 }
 
 #miPopup.cerrar {
-    opacity: 0;
+    animation: desaparecer 1s forwards;
     visibility: hidden;
 }
 
