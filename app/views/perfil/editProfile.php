@@ -1,284 +1,109 @@
+<?php
+  require_once '../../controllers/usuarioController.php';
+
+	session_start();
+
+  if($_SESSION["is_logged"] !== true){
+    header('Location: logout.php'); 
+    exit;
+  }
+
+  $usuarioController = new UsuarioController();
+
+  // Obtenemos el usuario actual
+  $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION['logged_user_id']);
+  $nombre = $usuarioExistente->getNombre();
+  $correo = $usuarioExistente->getCorreo();
+  $genero = $usuarioExistente->getGenero();
+  $descripcion = $usuarioExistente->getDescripcion();
+  $imagen = $usuarioExistente->getFotoPerfil();
+  $matchlist = $usuarioExistente->getMatchlist();
+
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="stylesheet" href="../../../public/assets/css/bootstrap-argon.css">
+    <title>LoBeat - Perfil</title>
+
     <link rel="stylesheet" href="../../../public/assets/css/profile.css">
+    <link rel="stylesheet" href="../../../public/assets/css/cabecera.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-</head>
-<body>
+    
+    <script src="https://kit.fontawesome.com/dee2748eb0.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/select2/dist/js/select2.min.js"></script>
+  
+  </head>
+
+  <body>
 
     <?php
-        require_once '../../controllers/usuarioController.php';
+      require("../comun/cabecera.php");
+    ?> 
 
-        session_start();
+    <div class="main-container">
 
-        if($_SESSION["is_logged"] !== true){
-    
-          header('Location: logout.php'); 
-          
-          exit;
-        } 
+      <div class="section1">
 
-        // Crear una instancia de UsuarioController
-        $usuarioController = new UsuarioController();
+        <h1>Perfil</h1>
 
-        // Comprobamos si existe algún usuario con ese correo  
-        //TODO cuando funciona el id en login cambiar esto a buscar por id con la variable de sesion logged_user_id 
+        <a href="profile.php">
+          <button>
+            <i class="bi bi-arrow-left"></i> Cancelar
+          </button>
+        </a>
 
-        $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
-    ?>
+        </div>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"> 
+      <div class="section2">
 
-    <div class="main-content">
-    
-      <!-- Introducción -->
-      <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../../public/assets/img/fondoLogin.png); background-size: cover; background-position: center top;">
-        <!-- Máscara -->
-        
-        <span class="mask bg-gradient-default opacity-8"></span> 
-        <!-- Contenido introducción -->
-        <div class="container-fluid d-flex align-items-center">
-          <div class="row">
-            <div class="col-lg-7 col-md-10">
-              <h1 class="display-2 profile-text fuente">Perfil</h1>
-              <p class="profile-text mt-0 mb-5 fuente">Esta es tu página de perfil, desde la que podrás revisar toda la información que has introducido hasta ahora y modificarla en caso de haber algún error.</p>
-              <a href="#!" class="btn btn-info fuente">Editar perfil</a>
-              <a href="../registro/login.php" class="btn btn-info fuente"> <i class="bi bi-box-arrow-left"></i>  Log Out</a>
+        <div class="izq">
+          <div class="window">
+
+            <h3>Mi cuenta</h3>
+            <div class="sub-box">
+              <h3>Nombre de Usuario</h3>
+              <p><?php echo $nombre ?></p>
+              <h3>Dirección de correo</h3>
+              <p><?php echo $correo ?></p>
+              <h3>Género</h3>
+              <p><?php echo $genero ?></p>
+              <h3>Sobre mí</h3>
+              <p><?php echo $descripcion ?></p>
             </div>
+          
           </div>
-        </div> 
-      </div>
-      <!-- Page content --> 
-      <div class="container-fluid mt--7">
-        <div class="row">
-          <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-            <div class="card card-profile shadow">
-              <div class="row justify-content-center">
-                <div class="col-lg-3 order-lg-2">
-                  <div class="card-profile-image">
-                    <a href="#">
-                      <img src=<?php echo "../../../public/assets/img/profilePhotos/".$usuarioExistente->getFotoPerfil(); ?> class="rounded-circle">
-                    </a>
-                  </div>  
-                </div>
-                
-              </div>
-              <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                <div class="d-flex justify-content-between">
-                  <!--<a href="#" class="btn btn-sm btn-info mr-4">Connect</a>--> 
-                  <!--<a href="#" class="btn btn-sm btn-default float-right">Message</a>-->
-                </div>
-              </div>
-              <div class="card-body pt-0 pt-md-4"> 
-                <div class="row">
-                  <div class="col">
-                    <div class="card-profile-stats d-flex justify-content-center mt-md-5">
-                      <div>
-                        <span class="heading fuente">
-                            <?php
-                              echo $usuarioExistente->getnMatches(); 
-                            ?>
-                        </span>
-                        <span class="description fuente">Matches</span>
-                      </div> 
-                      <div>
-                        <span class="heading fuente">
-                            <?php
-                              echo $usuarioExistente->getnPlaylists(); 
-                            ?>
-                        </span>
-                        <span class="description fuente">Playlists</span>
-                      </div>
-                      <div> 
-                        <span class="heading fuente">
-                            <?php
-                              echo $usuarioExistente->getnChats();  
-                            ?>
-                        </span>
-                        <span class="description fuente">Chats</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="text-center"> 
-                  <h3 class="fuente"> </h3>
-                  <div class="h5 font-weight-300 fuente">
-                    <!--<i class="ni location_pin mr-2"></i>Asturias, España--> 
-                  </div>
-                  <div class="h5 mt-4 fuente">
-                    <!--<i class="ni business_briefcase-24 mr-2"></i>Estudiante de derecho-->
-                  </div>
-                  <div class="fuente">
-                    <!--<i class="ni education_hat mr-2"></i>Universidad autónoma de Barcelona-->
-                  </div>
-                  <hr class="my-4">
-                  <!--<p class="fuente">No soy solo una cara bonita; también tengo un cerebro. Soy el tipo bueno de chico malo. Busco a alguien que haga que mi fin de semana sea increíble. ¿Buscas un tipo que literalmente pueda borrar Tinder después de nuestra primera cita?</p>-->
-                  <!--<a href="#">Mostrar más</a>-->
-                </div>
-              </div>
-            </div> 
-          </div>
-          <div class="col-xl-8 order-xl-1">
-            <div class="card bg-secondary shadow">
-              <div class="card-header bg-white border-0">
-                <div class="row align-items-center">
-                  <div class="col-8">
-                    <h3 class="mb-0 fuente">Mi cuenta</h3>
-                  </div>
-                  <div class="col-4 text-right"> 
-                    <!--<a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <form method="post" enctype="multipart/form-data">
-                  <h6 class="heading-small text-muted mb-4 fuente">Información usuario</h6>
-                  <div class="pl-lg-4">
-                    <div class="row"> 
-                      <div class="col-lg-6">
-                        <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-username">Nombre de usuario</label><span id="iconoUsername"></span>
-                          <input type="text" id="input-username" name="username" class="form-control form-control-alternative fuente" placeholder="Nombre de usuario" value="<?php
-                            
-                            echo $usuarioExistente->getNombre();
-                            ?>">
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label fuente" for="input-email">Dirección de correo</label>
-                          <input type="text" id="input-email" name="email" class="form-control form-control-alternative fuente" placeholder="@example.com" value="<?php
-                            echo $usuarioExistente->getCorreo();
-                            ?>">
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="row">
-                      <div class="col-lg-6"> 
-                        <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-first-name">Rol</label>
-                          <br> 
-                          <select  class="form-control" name="role" id="role" required="">
-                            <option value="Admin" <?php if ($usuarioExistente->getRole() == "Admin") echo " selected"; ?>>Administrador</option>
-                            <option value="User" <?php if ($usuarioExistente->getRole() == "User") echo " selected"; ?>>Usuario</option>
-                          </select>
-                        </div>
-                      </div> 
-                      <div class="col-lg-6">
-                        <div class="form-group focused">  
-                          <label class="form-control-label fuente" for="input-last-name">Género</label> 
-                          <br>
-                            <select  class="form-control" name="genero" id="genero" required="">
-                            <option value="Mujer" <?php if ($usuarioExistente->getGenero() == "Mujer") echo " selected"; ?>>Mujer</option>
-                            <option value="Hombre" <?php if ($usuarioExistente->getGenero() == "Hombre") echo " selected"; ?>>Hombre</option>
-                           <option value="Otro" <?php if ($usuarioExistente->getGenero() == "Otro") echo " selected"; ?>>Otro</option>
-                          </select>
+        </div>
 
-                        </div>
-                      </div>
-                    </div> 
-                  </div>
-                  <hr class="my-4">
-                  <!-- Address
-                  <h6 class="heading-small text-muted mb-4 fuente">Información de contacto</h6>
-                  <div class="pl-lg-4">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-address">Dirección</label>
-                          <input id="input-address" class="form-control form-control-alternative fuente" placeholder="Dirección" value="Calle, nº, piso, puerta" type="text">
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="row">
-                      <div class="col-lg-4">
-                        <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-city">Ciudad</label>
-                          <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="" value="">
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group focused">
-                          <label class="form-control-label fuente" for="input-country">País</label>
-                          <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="" value="">
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label fuente" for="input-country">Código Postal</label>
-                          <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="">
-                        </div>
-                      </div>
-                    </div>
-                  </div> 
-                  <hr class="my-4">
-                   -->
-                  <!-- Description -->
-                  <h6 class="heading-small text-muted mb-4 fuente">Sobre mí</h6>
-                  <div class="pl-lg-4">
-                    <div class="form-group focused">
-                      <label class="fuente">Sobre mí</label>
-                      <textarea rows="4" class="form-control form-control-alternative fuente" name="descripcion" placeholder="Unas palabras sobre tí"><?php
-                      echo $usuarioExistente->getDescripcion();
-                      ?></textarea>
-                    </div>
-                  </div> 
+        <div class="der">
+          <div class="window">
+            <div class="contenedor-imagen">
+              <img src="../../../public/assets/img/profilePhotos/profileAvatar.png" alt="Imagen usuario">
+            </div>
 
-                  <input type="file" name="foto">
+            <div class="info">
+              <h3>Mis redes:</h3>
+              <i class="bi bi-instagram"></i><span> Sin asignar</span><br>
+              <i class="bi bi-twitter"></i></i><span> Sin asignar</span><br>
+              <i class="bi bi-facebook"></i><span> Sin asignar</span>
 
-                  <div class="d-flex justify-content-between">
-                    <a type="submit">
-                        <input type="submit" class="btn btn-sm btn-info mr-4" value="Guardar">
-                    </a>
-                  </div>
-                </form>
-              </div>
-              
+              <h3>Matchlist:</h3>
+              <?php if($matchlist == null) { ?>
+              <p>Sin asignar</p>
+              <?php } else { ?>
+              <p><?php echo $matchlist->nombreMatchlist ?></p>
+              <?php } ?>
             </div>
           </div>
         </div>
-      </div> 
+
+      </div>
+
     </div>
-    <?php
-        include("processProfile.php")
-    ?>
-</body>
+    
+
+  </body>
 </html>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-$("#input-username").change(function(){
-    const campo = $("#input-username"); // referencia jquery al campo
-    campo[0].setCustomValidity(""); // limpia validaciones previas 
-
-    // validación html5, porque el campo es <input type="email" ...>
-    const usernameValido = campo[0].checkValidity();
-    if (usernameValido && usernameValidation(campo.val())) {
-        // el correo es válido y acaba por @ucm.es
-        //Añanimos el html del icono y lo ponemos en color verde
-        $("#iconoUsername").html("&#x2714;");
-        $("#iconoUsername").css("color", "green");
-
-        campo[0].setCustomValidity("");
-    } else { 
-        // correo invalido: ponemos una marca y nos quejamos
-        // Añadimos el html del icono y lo ponemos en color rojo
-        $("#iconoUsername").html("&#x26a0; Mínimo 4 caracteres");
-        $("#iconoUsername").css("color", "red");
-
-        // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
-        // y pongo un mensaje como no-válido
-        campo[0].setCustomValidity("El nombre de usuario debe tener mínimo 4 caracteres");
-    }
-});
-
-function usernameValidation(username) {
-  return (username.length >= 4);
-}
-</script>

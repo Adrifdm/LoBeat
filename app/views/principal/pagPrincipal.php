@@ -51,23 +51,15 @@
         $descripcion = $usuarioEncontrado->getDescripcion();
         $matchlist = $usuarioEncontrado->getMatchlist();
 
-        // Lógica de los botones de la visualización de un usuario
+        // Lógica del botón de la visualización de un usuario
         if (isset($_POST['cerrarUsuario'])) {
             $_SESSION['vista'] = 'lista';
-            header('Location: ' . $_SERVER['PHP_SELF']);
-            exit;
-        }
-        if (isset($_POST['abrirChat'])) {
-            $_SESSION['vista'] = 'chat';
             header('Location: ' . $_SERVER['PHP_SELF']);
             exit;
         }
     }
     if ($_SESSION['vista'] == 'lista') {
         //TODO:
-    }
-    else if($_SESSION['vista'] == 'chat') {
-        //TODO
     }
 ?>
 
@@ -162,7 +154,7 @@
 
                 <div class="botonesUsuario">
                     <form method="POST">
-                        <button class="cerrarUsuario" name="cerrarUsuario"><i class="bi bi-x"></i></button>
+                        <button class="cerrarUsuario" name="cerrarUsuario"><i class="bi bi-arrow-left"></i></i></button>
                         <button class="abrirChat" name="abrirChat"><i class="bi bi-chat-dots"></i></button>
                     </form>
                 </div>
@@ -249,56 +241,6 @@
 
             </div>
             
-            <?php } elseif ($_SESSION["vista"] == 'chat') { ?>
-
-            <div class = "chatConcreto">
-
-                <div class="seccionSuperior">
-                    SECCION SUPERIOR
-                </div>
-
-                <div class="chat-wrapper">
-
-                    <div class="message-wrapper reverse">
-                        <!-- <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic"> -->
-                        <div class="message-box-wrapper">
-                            <div class="message-box">
-                                MENSAJE 2
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="message-wrapper reverse">
-                        <!-- <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic"> -->
-                        <div class="message-box-wrapper">
-                            <div class="message-box">
-                                MENSAJE 2
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="message-wrapper">
-                        <!-- <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic"> -->
-                        <div class="message-box-wrapper">
-                            <div class="message-box">
-                                MENSAJE 1
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="chat-input-wrapper">
-                    
-                    <button class="chat-attachment-btn"></button>
-                    <div class="input-wrapper">
-                        <input type="text" class="chat-input" placeholder="Introduzca su mensaje aqui">
-                    </div>
-                    <button class="chat-send-btn">Send</button>
-
-                </div>
-            </div>
-
             <?php } ?>
 
         </div>
