@@ -65,35 +65,35 @@ class UsuarioService {
   }
 
   public function getUsuariosCercanos($latitud, $longitud){
-  // Radio de la Tierra en km
-  $radio = 6371;
-
-  // Convertir a radianes
-  $latitud = deg2rad($latitud);
-  $longitud = deg2rad($longitud);
-
-  $usuariosCercanos = [];
-
-  $usuarios = $this->collection->find();
-
-  foreach ($usuarios as $usuario) {
-    if ($usuario['latitud'] != $_SESSION["logged_latitud"] && $usuario['longitud'] != $_SESSION["logged_longitud"]) {
-      // Convertir a radianes
-      $latitudUsuario = deg2rad($usuario['latitud']);
-      $longitudUsuario = deg2rad($usuario['longitud']);
-
-      // Calcular la distancia entre los dos puntos
-      $distancia = $radio * 2 * asin(sqrt(pow(sin(($latitudUsuario - $latitud) / 2), 2) + cos($latitud) * cos($latitudUsuario) * pow(sin(($longitudUsuario - $longitud) / 2), 2)));
-
-      // Agregar el usuario a la lista si está a menos de 5 km
-      if ($distancia <= 5) {
-        $usuariosCercanos[] = $usuario;
+    // Radio de la Tierra en km
+    $radio = 6371;
+  
+    // Convertir a radianes
+    $latitud = deg2rad($latitud);
+    $longitud = deg2rad($longitud);
+  
+    $usuariosCercanos = [];
+  
+    $usuarios = $this->collection->find();
+  
+    foreach ($usuarios as $usuario) {
+      if ($usuario['latitud'] != $_SESSION["logged_latitud"] && $usuario['longitud'] != $_SESSION["logged_longitud"] && $usuario['matchlist'] != null) {
+        // Convertir a radianes
+        $latitudUsuario = deg2rad($usuario['latitud']);
+        $longitudUsuario = deg2rad($usuario['longitud']);
+  
+        // Calcular la distancia entre los dos puntos
+        $distancia = $radio * 2 * asin(sqrt(pow(sin(($latitudUsuario - $latitud) / 2), 2) + cos($latitud) * cos($latitudUsuario) * pow(sin(($longitudUsuario - $longitud) / 2), 2)));
+  
+        // Agregar el usuario a la lista si está a menos de 5 km
+        if ($distancia <= 5) {
+          $usuariosCercanos[] = $usuario;
+        }
       }
     }
+  
+    return $usuariosCercanos;
   }
-
-  return $usuariosCercanos;
-}
 
   public function actualizarUsuario($id, $datos) {
     
@@ -199,6 +199,18 @@ class UsuarioService {
     $result = $this->collection->deleteOne(['_id' => $id]);
 
     return $result->getDeletedCount() > 0;
+  }
+
+  public function getUserMatch($idActual, $idUser){
+    $user =  $this->obtenerUsuarioPorId($idActual);
+    $lista = $user->getListaMatchs();
+    foreach($lista as $id){
+      if($id === $idUser){
+        return true;
+      }  
+    }
+    return false;
+
   }
 
   public function listarUsuarios() {

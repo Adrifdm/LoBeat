@@ -12,23 +12,8 @@
     if (isset($_GET['id'])) {
         $_SESSION["id"] = $_GET['id'];
         $_SESSION["vista"] = 'usuario';
-        //exit;
-        //$_SESSION["refrescar"] = true;
     }
 
-    /*Comprobamos si se ha hecho click en algún usuario del mapa
-    if (isset($_SESSION["refrescar"]) && $_SESSION["refrescar"] == true) {
-        $_SESSION["refrescar"] = false;
-        ?>
-        <script>
-            setTimeout(function() {
-                location.reload(true);
-            }, 100);
-        </script>
-        <?php
-        $_SESSION["vista"] = 'usuario';
-        exit;
-    }*/
 
     $usuarioController = new UsuarioController();
 
