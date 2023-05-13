@@ -85,9 +85,9 @@ foreach ($users as $user) {
     if ($user->getRole() == "Admin") {
         $NNadmins++;
     }
-
-    $NNmatches = $NNmatches +  strval($user->getnMatches());
-
+    if($user->getMatchlist() != null){
+        $NNmatches = $NNmatches + strval(count($user->getMatchlist())) ;
+    }
     $_SESSION['NNplaylists']= $NNplaylists;
     $_SESSION['NNusers']= $NNusers;
     $_SESSION['NNadmins']= $NNadmins;
