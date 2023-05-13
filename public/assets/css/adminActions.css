@@ -519,12 +519,12 @@ th,td{
 
 .containerAdmin .contenidoPag .content-2 .usersp{
     
-    min-height: 60vh;
+    max-height: 60vh;
     flex: 5;
     background: rgba(225, 221, 221, 0.518);
     margin-left:5%;
     margin-right: 2%;
-
+    overflow-y: scroll;
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex;
@@ -532,7 +532,7 @@ th,td{
     
 }
 .containerAdmin .contenidoPag .content-2 .usersp table{
-    width: 98%;
+    width: 97%;
     margin-left: 3%;
     border-collapse: collapse;
 }
@@ -595,6 +595,19 @@ th,td{
         display: block;
       }
 }
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    display: none;
+}
+  
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(180deg, #87067d, #30087c);
+}
+
 
 
 
