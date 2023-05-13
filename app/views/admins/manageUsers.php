@@ -130,54 +130,7 @@ foreach ($users as $user) {
         -->
 
         <div class="contenidoPag">
-            <div class="cardss">
-
-                <div class="cardD">
-                    <div class="boxx">     
-                                
-                        <h1 class="blancor"><?php echo $_SESSION['NNusers']; ?></h1>
-                        <h3 class="blancor">Usuarios</h3>
-                    </div>
-
-                    <div class="iconCas">
-                        <img src="../../../public/assets/img/icons8-user-64.png" alt="">
-                    </div>
-                </div>
-
-                <div class="cardD">
-                    <div class="boxx">
-                        <h1 class="blancor"><?php echo $_SESSION['NNadmins']; ?></h1>
-                        <h3 class="blancor">Administradores</h3>
-                    </div>
-
-                    <div class="iconCas">
-                        <img src="../../../public/assets/img/icons8-admin-48.png" alt="">
-                    </div>
-                </div>
-
-                <div class="cardD">
-                    <div class="boxx">
-                        <h1 class="blancor"><?php echo $_SESSION['NNmatches']; ?></h1>
-                        <h3 class="blancor"> Matches</h3>
-                    </div>
-
-                    <div class="iconCas">
-                        <img src="../../../public/assets/img/icons8-heart-64.png" alt="">
-                    </div>
-                </div>
-
-                <div class="cardD">
-                    <div class="boxx">
-                        <h1 class="blancor"><?php echo $_SESSION['NNplaylists']; ?></h1>
-                        <h3 class="blancor">Playlists</h3>
-                    </div>
-
-                    <div class="iconCas">
-                        <img src="../../../public/assets/img/icons8-playlist-64.png" alt="">
-                    </div>
-                </div>
-
-            </div>
+            
 
             <!-- el popup -->
             <div class="modalcont" id="modalContainer">
@@ -288,180 +241,230 @@ foreach ($users as $user) {
             </div>
 
             <div class="content-2">
-                <div class="usersp">
-                    <div class="titulodiv">
-                        <h2>Usuarios</h2>
-                        <!--<a href="#" class="btnn"> View all</a>-->
+            
+                <div class="seccionIzq">
+                    <div class="cardss">
+
+                        <div class="cardD">
+                            <div class="boxx">     
+                                        
+                                <h1 class="blancor"><?php echo $_SESSION['NNusers']; ?></h1>
+                                <h3 class="blancor">Usuarios</h3>
+                            </div>
+
+                            <div class="iconCas">
+                                <img src="../../../public/assets/img/icons8-user-64.png" alt="">
+                            </div>
+                        </div>
+
+                        <div class="cardD">
+                            <div class="boxx">
+                                <h1 class="blancor"><?php echo $_SESSION['NNadmins']; ?></h1>
+                                <h3 class="blancor">Admins</h3>
+                            </div>
+
+                            <div class="iconCas">
+                                <img src="../../../public/assets/img/icons8-admin-48.png" alt="">
+                            </div>
+                        </div>
+
+                        <div class="cardD">
+                            <div class="boxx">
+                                <h1 class="blancor"><?php echo $_SESSION['NNmatches']; ?></h1>
+                                <h3 class="blancor"> Matches</h3>
+                            </div>
+
+                            <div class="iconCas">
+                                <img src="../../../public/assets/img/icons8-heart-64.png" alt="">
+                            </div>
+                        </div>
+
+                        <div class="cardD">
+                            <div class="boxx">
+                                <h1 class="blancor"><?php echo $_SESSION['NNplaylists']; ?></h1>
+                                <h3 class="blancor">Playlists</h3>
+                            </div>
+
+                            <div class="iconCas">
+                                <img src="../../../public/assets/img/icons8-playlist-64.png" alt="">
+                            </div>
+                        </div>
+
                     </div>
-                    <table>
-                        <tr>
-                            <th>
-                                Foto
-                            </th>
-                            <th>
-                                Nombre
-                            </th>
-                            <th>
-                                Correo
-                            </th>
-                            <th>
-                                Rol
-                            </th>
-                            <th>
-                                Género
-                            </th>
-                            <th>
-                                Acción
-                            </th>
+                    <div class = "usersp">
+                        <div class="titulodiv">
+                            <h2>Usuarios</h2>
+                            <!--<a href="#" class="btnn"> View all</a>-->
+                        </div>
+                        <table>
+                            <tr>
+                                <th>
+                                    Foto
+                                </th>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Correo
+                                </th>
+                                <th>
+                                    Rol
+                                </th>
+                                <th>
+                                    Género
+                                </th>
+                                <th>
+                                    Acción
+                                </th>
 
-                        </tr>
+                            </tr>
 
-                        <?php
-                            
-
-                            $NNplaylists = 0;
-                            $NNusers = 0;
-                            $NNadmins = 0;
-                            $NNmatches = 0;
-
-                            $users = $usuarioController->listarUsuarios();
-                            foreach ($users as $user) {
-
-                                $NNusers++;
-                                $NNplaylists = $NNplaylists + strval($user->getnPlaylists());
+                            <?php
                                 
-                                if($user->getRole() == "Admin"){
-                                    $NNadmins++;
-                                }
-                                
-                                $NNmatches = $NNmatches +  strval($user->getnMatches());
 
-                                $_SESSION['NNplaylists']= $NNplaylists;
-                                $_SESSION['NNusers']= $NNusers;
-                                $_SESSION['NNadmins']= $NNadmins;
-                                $_SESSION['NNmatches']= $NNmatches;
+                                $NNplaylists = 0;
+                                $NNusers = 0;
+                                $NNadmins = 0;
+                                $NNmatches = 0;
 
-                                $foto = false;
+                                $users = $usuarioController->listarUsuarios();
+                                foreach ($users as $user) {
 
-                                if($user->getFotoPerfil() != null){
-                                    $foto = true;
-                                    //echo "../../../public/assets/img/profilePhotos/".$usuarioExistente->getFotoPerfil();
+                                    $NNusers++;
+                                    $NNplaylists = $NNplaylists + strval($user->getnPlaylists());
+                                    
+                                    if($user->getRole() == "Admin"){
+                                        $NNadmins++;
                                     }
-                                else{
+                                    
+                                    $NNmatches = $NNmatches +  strval($user->getnMatches());
+
+                                    $_SESSION['NNplaylists']= $NNplaylists;
+                                    $_SESSION['NNusers']= $NNusers;
+                                    $_SESSION['NNadmins']= $NNadmins;
+                                    $_SESSION['NNmatches']= $NNmatches;
+
                                     $foto = false;
-                                    //echo "../../../public/assets/img/profilePhotos/profileAvatar.png";
-                                }
-                                    
-                               
-                                // imagen 
 
-                                if($foto){
-                                    echo "<td><img src='../../../public/assets/img/profilePhotos/".$user->getFotoPerfil()."' alt=''></td>";
-                                } else{
-                                    echo "<td><img src='../../../public/assets/img/profilePhotos/profileAvatar.png' alt=''></td>";
-                                }
-                                /*
-                                if($foto){
-                                    
-                                    echo "<td>" ;
-                                    echo "<img src="; 
-                                    echo "../../../public/assets/img/profilePhotos/".$user->getFotoPerfil();
-                                    echo "alt=''>";
-                                    echo "</td>";
-                                    
-                                }
-                                else{
-                                    echo "<td>" ;
-                                    echo "<img src="; 
-                                    echo "../../../public/assets/img/profilePhotos/profileAvatar.png";
-                                    echo "alt=''>";
-
-                                    echo "</td>";
-                                }*/
+                                    if($user->getFotoPerfil() != null){
+                                        $foto = true;
+                                        //echo "../../../public/assets/img/profilePhotos/".$usuarioExistente->getFotoPerfil();
+                                        }
+                                    else{
+                                        $foto = false;
+                                        //echo "../../../public/assets/img/profilePhotos/profileAvatar.png";
+                                    }
+                                        
                                 
-                                //Resto de info
-                                echo "<td>" . $user->getNombre() . "</td>";
-                                echo "<td>" . $user->getCorreo() . "</td>";
-                                echo "<td>" . $user->getRole() . "</td>";
-                                echo "<td>" . $user->getGenero() . "</td>";
+                                    // imagen 
+
+                                    if($foto){
+                                        echo "<td><img src='../../../public/assets/img/profilePhotos/".$user->getFotoPerfil()."' alt=''></td>";
+                                    } else{
+                                        echo "<td><img src='../../../public/assets/img/profilePhotos/profileAvatar.png' alt=''></td>";
+                                    }
+                                    /*
+                                    if($foto){
+                                        
+                                        echo "<td>" ;
+                                        echo "<img src="; 
+                                        echo "../../../public/assets/img/profilePhotos/".$user->getFotoPerfil();
+                                        echo "alt=''>";
+                                        echo "</td>";
+                                        
+                                    }
+                                    else{
+                                        echo "<td>" ;
+                                        echo "<img src="; 
+                                        echo "../../../public/assets/img/profilePhotos/profileAvatar.png";
+                                        echo "alt=''>";
+
+                                        echo "</td>";
+                                    }*/
+                                    
+                                    //Resto de info
+                                    echo "<td>" . $user->getNombre() . "</td>";
+                                    echo "<td>" . $user->getCorreo() . "</td>";
+                                    echo "<td>" . $user->getRole() . "</td>";
+                                    echo "<td>" . $user->getGenero() . "</td>";
+                                    
+                                    //boton editar
                                 
-                                //boton editar
-                               
-                                //echo "<td><a class='btnn' onclick='mostrarPopup(\"" . $user->getId(), $user->nombre(), $user->getCorreo(), $user->getRole(), $user->getGenero(), $user->getContrasenya() . "\")'>Editar</a></td>";
-                                echo sprintf("<td><a class='btnn' onclick='mostrarPopup(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")'>Editar</a></td>", $user->getId(), $user->getNombre(), $user->getCorreo(), $user->getRole(), $user->getGenero(), $user->getContrasenya());
-                               
-                                /*echo sprintf(
-                                    "<td><a class='btnn' onclick='mostrarPopup(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")'>Editar</a></td>",
-                                    $user->getId(),
-                                    $user->nombre(),
-                                    $user->getCorreo(),
-                                    $user->getRole(),
-                                    $user->getGenero(),
-                                    $user->getContrasenya()
-                                );*/
+                                    //echo "<td><a class='btnn' onclick='mostrarPopup(\"" . $user->getId(), $user->nombre(), $user->getCorreo(), $user->getRole(), $user->getGenero(), $user->getContrasenya() . "\")'>Editar</a></td>";
+                                    echo sprintf("<td><a class='btnn' onclick='mostrarPopup(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")'>Editar</a></td>", $user->getId(), $user->getNombre(), $user->getCorreo(), $user->getRole(), $user->getGenero(), $user->getContrasenya());
                                 
-                                echo "</tr>";
-                            }
-                            
-                        ?>
+                                    /*echo sprintf(
+                                        "<td><a class='btnn' onclick='mostrarPopup(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")'>Editar</a></td>",
+                                        $user->getId(),
+                                        $user->nombre(),
+                                        $user->getCorreo(),
+                                        $user->getRole(),
+                                        $user->getGenero(),
+                                        $user->getContrasenya()
+                                    );*/
+                                    
+                                    echo "</tr>";
+                                }
+                                
+                            ?>
 
-                        <!-- 
-                        <div id="popup" class="popupvis">
+                            <!-- 
+                            <div id="popup" class="popupvis">
 
-                            <form>
-                                <label>Nombre:</label>
-                                <input type="text" name="nombre" value="">
-                                <br>
+                                <form>
+                                    <label>Nombre:</label>
+                                    <input type="text" name="nombre" value="">
+                                    <br>
 
-                                <label>Apellido:</label>
-                                <input type="text" name="apellido" value="">
-                                <br>
+                                    <label>Apellido:</label>
+                                    <input type="text" name="apellido" value="">
+                                    <br>
 
-                                <label>Edad:</label>
-                                <input type="number" name="edad" value="">
-                                <br>
+                                    <label>Edad:</label>
+                                    <input type="number" name="edad" value="">
+                                    <br>
 
-                                <label>Rol:</label>
-                                <input type="number" name="rol" value="">
-                                <br>
+                                    <label>Rol:</label>
+                                    <input type="number" name="rol" value="">
+                                    <br>
 
-                                <label>Genero:</label>
-                                <input type="number" name="genero" value="">
-                                <br>
+                                    <label>Genero:</label>
+                                    <input type="number" name="genero" value="">
+                                    <br>
 
-                                <input type="submit" value="Guardar cambios">
-                            </form>
+                                    <input type="submit" value="Guardar cambios">
+                                </form>
 
-                        </div>-->
+                            </div>-->
 
-                       
+                        
 
-                        <!-- 
-                        <tr>
-                            <td>
-                                <img src="../../../public/assets/img/rating.png" alt="">
-                            </td>
-                            <td>
-                                john dei
-                            </td>
-                            <td>
-                                johndei@mail.com
-                            </td>
-                            <td>
-                                Admin
-                            </td>
-                            <td>
-                                Hombre
-                            </td>
-                            <td>
-                                <a href="#" class="btnn"> View </a>
-                            </td>
+                            <!-- 
+                            <tr>
+                                <td>
+                                    <img src="../../../public/assets/img/rating.png" alt="">
+                                </td>
+                                <td>
+                                    john dei
+                                </td>
+                                <td>
+                                    johndei@mail.com
+                                </td>
+                                <td>
+                                    Admin
+                                </td>
+                                <td>
+                                    Hombre
+                                </td>
+                                <td>
+                                    <a href="#" class="btnn"> View </a>
+                                </td>
 
-                        </tr>
-                        -->
-                    </table>
+                            </tr>
+                            -->
+                        </table>
+                    </div>
                 </div>
-
                 <div class="new-users">
                     <div class="titulodiv">
                         <h2>Crear usuario</h2>
@@ -539,11 +542,12 @@ foreach ($users as $user) {
                     </form>
 
                 </div>
-                
             </div>
+                
+        </div>
             
            
-        </div>
+           
     </div>
     <script>
 

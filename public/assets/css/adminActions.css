@@ -392,7 +392,7 @@ th,td{
     position: absolute;
     right: 0;
     width: 100vw;
-    height: 100vh;
+    height: 91.5%;
     /*background: white;*/
 
 }
@@ -465,29 +465,28 @@ th,td{
 .containerAdmin .contenidoPag{
     position: relative !important;
     margin-top: 0vh;
-    min-height: 90vh;
 
     /*background: #f1f1f1;*/
 }
 
 .containerAdmin .contenidoPag .cardss{
-
-    padding: 20px 15px;
+    padding: 15px 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-left: 3%;
 
 }
 
 .containerAdmin .contenidoPag .cardss .cardD{
-    width: 250px;
-    height: 150px;
+    width: 200px;
+    height: 120px;
     
     /*background: rgba(225, 221, 221, 0.724) !important;*/
     background:  #c75bbe00;
    
-    margin: 20px 10px;
+    margin: 3% 3%;
     
     color: white !important;
     display: flex;
@@ -520,16 +519,25 @@ th,td{
 
 .containerAdmin .contenidoPag .content-2 .usersp{
     
-    min-height: 50vh;
+    min-height: 60vh;
     flex: 5;
     background: rgba(225, 221, 221, 0.518);
-    margin: 0 25px 25px 25px;
+    margin-left:5%;
+    margin-right: 2%;
 
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
     display: flex;
     flex-direction: column;
+    
+}
+.containerAdmin .contenidoPag .content-2 .usersp table{
+    width:100%;
+}
+.containerAdmin .contenidoPag .content-2 .seccionIzq{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
 }
 
 .containerAdmin .contenidoPag .content-2 .usersp table td:nth-child(1) img{
@@ -542,9 +550,10 @@ th,td{
     
     flex: 2;
     background: rgba(225, 221, 221, 0.518);
-    min-height: 50vh;
+    min-height: 81vh;
     color: black !important;
-    margin: 0 25px;
+    margin-right: 1.5%;
+    margin-top: 2.8%;
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
