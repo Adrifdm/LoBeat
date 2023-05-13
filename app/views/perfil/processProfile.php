@@ -9,12 +9,17 @@ $notificationController = new NotificationController();
 
 // Comprobamos si el formulario ha sido enviado 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
     
     // Obtenemos la informacion introducida
     $nombre = $_POST['name'];
     $correo = $_POST['email'];
     $genero = $_POST['genero'];
     $descripcion = $_POST['descripcion'];
+    $instagram = $_POST['instagram'];
+    $twitter = $_POST['twitter'];
+    $tiktok = $_POST['tiktok'];
 
     //Comprobamos que se ha cogido bien la foto
     if (isset($_FILES['foto'])){
@@ -49,9 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-
-    $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"]);
-
     if ($usuarioExistente !== null) {
 
         // Creamos los datos para la notificación de modificación de perfil
@@ -71,7 +73,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'correo' => $correo,
             'genero' => $genero,
             'descripcion' => $descripcion,
-            'fotoPerfil' => $nombreFoto
+            'fotoPerfil' => $nombreFoto,
+            'instagram' => $instagram,
+            'twitter' => $twitter,
+            'tiktok' => $tiktok
         );
 
         $resultado = $usuarioController->actualizarUsuario($_SESSION["logged_user_id"], $datos);

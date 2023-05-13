@@ -35,7 +35,10 @@ class UsuarioService {
       $datos['nPlaylists'],
       $datos['matchlist'],
       $datos['status'],
-      $datos['listaMatchs']
+      $datos['listaMatchs'],
+      $datos['instagram'],
+      $datos['twitter'],
+      $datos['tiktok']
     );
 
     $result = $this->collection->insertOne([
@@ -58,7 +61,10 @@ class UsuarioService {
       'nPlaylists' => $usuario->getnPlaylists(),
       'matchlist' => $usuario->getMatchlist(),
       'status' => $usuario->getStatus(),
-      'listaMatchs' => $usuario->getListaMatchs()
+      'listaMatchs' => $usuario->getListaMatchs(),
+      'instagram' => $usuario->getInstagram(),
+      'twitter' => $usuario->getTwitter(),
+      'tiktok' => $usuario->getTiktok()
     ]);
 
     return $result->getInsertedId();
@@ -182,6 +188,18 @@ class UsuarioService {
     if (isset($datos['listaMatchs'])) {
       $set['listaMatchs'] = $datos['listaMatchs'];
     }
+
+    if (isset($datos['instagram'])) {
+      $set['instagram'] = $datos['instagram'];
+    }
+
+    if (isset($datos['twitter'])) {
+      $set['twitter'] = $datos['twitter'];
+    }
+
+    if (isset($datos['tiktok'])) {
+      $set['tiktok'] = $datos['tiktok'];
+    }
     
     // Finalmente, insertamos en el usuario con id $id, los nuevos campos que hay en $datos
     $result = $this->collection->updateOne(
@@ -238,7 +256,10 @@ class UsuarioService {
         $doc['nPlaylists'], 
         $doc['matchlist'],
         $doc['status'],
-        $doc['listaMatchs']
+        $doc['listaMatchs'],
+        $doc['instagram'],
+        $doc['twitter'],
+        $doc['tiktok']
       );
       $usuario->setId($doc['_id']->__toString());   //mirar si lo del _id aqui funciona
       array_push($usuarios, $usuario);
@@ -273,7 +294,10 @@ class UsuarioService {
       $result['nPlaylists'], 
       $result['matchlist'],
       $result['status'],
-      $result['listaMatchs']
+      $result['listaMatchs'],
+      $result['instagram'],
+      $result['twitter'],
+      $result['tiktok']
     );
     $usuario->setId($result['_id']->__toString());    //mirar si lo del _id aqui funciona,
 
@@ -304,7 +328,10 @@ class UsuarioService {
         $resultado['nPlaylists'], 
         $resultado['matchlist'],
         $resultado['status'],
-        $resultado['listaMatchs']
+        $resultado['listaMatchs'],
+        $resultado['instagram'],
+        $resultado['twitter'],
+        $resultado['tiktok']
       );
     } else {
       return null;

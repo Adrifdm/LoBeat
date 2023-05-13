@@ -18,6 +18,9 @@
   $descripcion = $usuarioExistente->getDescripcion();
   $imagen = $usuarioExistente->getFotoPerfil();
   $matchlist = $usuarioExistente->getMatchlist();
+  $instagram = $usuarioExistente->getInstagram();
+  $twitter = $usuarioExistente->getTwitter();
+  $tiktok = $usuarioExistente->getTiktok();
 
 ?> 
 
@@ -91,9 +94,27 @@
 
             <div class="info">
               <h3>Mis redes:</h3>
-              <i class="bi bi-instagram"></i><span> Sin asignar</span><br>
-              <i class="bi bi-twitter"></i></i><span> Sin asignar</span><br>
-              <i class="bi bi-tiktok"></i><span> Sin asignar</span>
+              <i class="bi bi-instagram"></i><span> <?php 
+              if ($instagram == null) {
+                echo "Sin asignar";
+              } else {
+                echo $instagram;
+              }
+              ?></span><br>
+              <i class="bi bi-twitter"></i></i><span> <?php
+              if ($twitter == null) {
+                echo "Sin asignar";
+              } else {
+                echo $twitter;
+              }
+              ?></span><br>
+              <i class="bi bi-tiktok"></i><span> <?php
+              if ($tiktok == null) {
+                echo "Sin asignar";
+              } else {
+                echo $tiktok;
+              }
+              ?></span>
 
               <h3>Matchlist:</h3>
               <?php if($matchlist == null) { ?>

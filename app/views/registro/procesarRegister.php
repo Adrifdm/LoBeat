@@ -91,7 +91,10 @@ else if ($registered === true){
         'nPlaylists' => 0,
         'matchlist'=> null,
         'status' => false,
-        'listaMatchs' => null
+        'listaMatchs' => null,
+        'instagram' => null,
+        'twitter' => null,
+        'tiktok' => null
     );                                                                                                          
 
     // Creamos el usuario con la información anterior

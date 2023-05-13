@@ -43,9 +43,6 @@
             exit;
         }
     }
-    if ($_SESSION['vista'] == 'lista') {
-        //TODO:
-    }
 ?>
 
 <!doctype html>
@@ -194,45 +191,38 @@
                                 </a>
                                     <li class="redes" > 
                                         <div class= "r-d">     
-                                            <a class="redes-sociales"> <i class="bi bi-tiktok"></i>     Tiktok</a>
+                                            <a class="redes-sociales"> <i class="bi bi-tiktok"></i>     <?php
+                                                if ($match->getInstagram() == null || $match->getInstagram() == "") {
+                                                    echo "Sin asignar";
+                                                } else {
+                                                    echo $match->getInstagram();
+                                                }
+                                            ?></a>
                                         </div>
                                         <div class= "r-d">
-                                            <a class="redes-sociales"> <i class="bi bi-twitter"></i>    Twitter</a>
+                                            <a class="redes-sociales"> <i class="bi bi-twitter"></i>    <?php
+                                                if ($match->getTwitter() == null || $match->getTwitter() == "") {
+                                                    echo "Sin asignar";
+                                                } else {
+                                                    echo $match->getTwitter();
+                                                }
+                                            ?></a>
                                         </div>
                                         <div class= "r-d">
-                                            <a class="redes-sociales"> <i class="bi bi-instagram"></i>  Instagram </a>
+                                            <a class="redes-sociales"> <i class="bi bi-instagram"></i>  <?php
+                                                if ($match->getTiktok() == null || $match->getTiktok() == "") {
+                                                    echo "Sin asignar";
+                                                } else {
+                                                    echo $match->getTiktok();
+                                                }
+                                            ?></a>
                                         </div>
                                     </li> 
                             </div>
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                         
                     </ul>
-                    <?php } ?>
-
-                
-                    <!-- Lista de matchs disponibles 
-                    <ul>
-                        
-                        <?php //foreach ($listaMatchs as $matchId): ?>
-                            <?php //$match = $usuarioController->obtenerUsuarioPorId($matchId); ?>
-                            <a class="enlace" href ="#">
-                                <li class="list-item">
-                                    <div class="contenedor-imagen">
-                                        <img src=
-                                        <?php //echo "../../../public/assets/img/profilePhotos/".$match->getFotoPerfil(); ?>
-                                        alt="chat">
-                                    </div>
-                                    <span class="list-item-name"><?php //echo $match->getNombre(); ?>
-                                        <p class = "subtitulo"><?php //echo $match->getDescripcion(); ?></p>
-                                    </span>
-                                </li>
-                            </a>
-                        <?php //endforeach; ?>
-
-                    </ul>
-                <?php// } ?>
-                -->
-
+                <?php } ?>
 
             </div>
             

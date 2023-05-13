@@ -18,7 +18,9 @@
   $descripcion = $usuarioExistente->getDescripcion();
   $imagen = $usuarioExistente->getFotoPerfil();
   $matchlist = $usuarioExistente->getMatchlist();
-
+  $instagram = $usuarioExistente->getInstagram();
+  $twitter = $usuarioExistente->getTwitter();
+  $tiktok = $usuarioExistente->getTiktok();
 ?> 
 
 <!DOCTYPE html>
@@ -99,9 +101,14 @@
               <div class="info">
 
                 <h3>Mis redes:</h3>
-                <i class="bi bi-instagram"></i><span> Sin asignar</span><br>
-                <i class="bi bi-twitter"></i></i><span> Sin asignar</span><br>
-                <i class="bi bi-tiktok"></i><span> Sin asignar</span>
+                <i class="bi bi-instagram"></i>
+                <input type="text" name="instagram" maxlength="25" placeholder="Introduce tu cuenta de Instagram" value="<?php echo $instagram;?>">
+                <br>
+                <i class="bi bi-twitter"></i></i>
+                <input type="text" name="twitter" maxlength="25" placeholder="Introduce tu cuenta de Twitter" value="<?php echo $twitter;?>">
+                <br>
+                <i class="bi bi-tiktok"></i>
+                <input type="text" name="tiktok" maxlength="25" placeholder="Introduce tu cuenta de Tiktok" value="<?php echo $tiktok;?>">
 
                 <h3>Matchlist:</h3>
                 <?php if($matchlist == null) { ?>

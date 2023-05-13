@@ -21,8 +21,11 @@ class Usuario {
     private $matchlist;
     private $status;
     private $listaMatchs;
+    private $instagram;
+    private $twitter;
+    private $tiktok;
 
-    public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID, $nMatches, $nChats, $nPlaylists, $matchlist, $status, $listaMatchs) {
+    public function __construct($id, $nombre, $correo, $contrasenya, $spotify_access_token, $spotify_refresh_token, $fecha_creacion, $fecha_actualizacion, $role, $genero, $descripcion, $fotoPerfil, $latitud, $longitud, $spotify_ID, $nMatches, $nChats, $nPlaylists, $matchlist, $status, $listaMatchs, $instagram, $twitter, $tiktok) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->correo = $correo;
@@ -44,6 +47,9 @@ class Usuario {
         $this->matchlist = $matchlist;
         $this->status = $status;
         $this->listaMatchs = $listaMatchs;
+        $this->instagram = $instagram;
+        $this->twitter = $twitter;
+        $this->tiktok = $tiktok;
     }
 
     public function getId() {
@@ -191,6 +197,27 @@ class Usuario {
     }
     public function setListaMatchs($listaMatchs) {
         $this->listaMatchs = $listaMatchs;
+    }
+
+    public function getInstagram() {
+        return $this->instagram;
+    }
+    public function setInstagram($instagram) {
+        $this->instagram = $instagram;
+    }
+
+    public function getTwitter() {
+        return $this->twitter;
+    }
+    public function setTwitter($twitter) {
+        $this->twitter = $twitter;
+    }
+
+    public function getTiktok() {
+        return $this->tiktok;
+    }
+    public function setTiktok($tiktok) {
+        $this->tiktok = $tiktok;
     }
 
 }

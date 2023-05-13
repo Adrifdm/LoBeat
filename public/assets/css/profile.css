@@ -248,3 +248,12 @@ body {
   font-size: 90px;
   cursor: pointer;
 }
+
+.section2 .der .window .info input {
+  width: 230px;
+  color: #ffffff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
