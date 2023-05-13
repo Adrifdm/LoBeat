@@ -93,7 +93,7 @@
               <h3>Mis redes:</h3>
               <i class="bi bi-instagram"></i><span> Sin asignar</span><br>
               <i class="bi bi-twitter"></i></i><span> Sin asignar</span><br>
-              <i class="bi bi-facebook"></i><span> Sin asignar</span>
+              <i class="bi bi-tiktok"></i><span> Sin asignar</span>
 
               <h3>Matchlist:</h3>
               <?php if($matchlist == null) { ?>

@@ -2,11 +2,13 @@
 define("PATH2", $_SERVER['DOCUMENT_ROOT']);
 require_once PATH2 . '/LoBeat/app/controllers/spotifyController.php';
 require_once PATH2 . '/LoBeat/app/controllers/usuarioController.php';
+require_once PATH2 . '/LoBeat/app/controllers/notificationController.php';
 
 session_start();
 
 $usuarioController = new UsuarioController();
 $spotifyController = new SpotifyController();
+$notificationController = new NotificationController();
 
 //Obtenemos la lista de usuarios sobre la que aplicaremos el algoritmo
 $user = $usuarioController->obtenerUsuarioPorId($_SESSION['logged_user_id']);
@@ -88,5 +90,22 @@ $datos = array(
 $usuarioController->actualizarUsuario($_SESSION['logged_user_id'], $datos);
 $_SESSION['vista'] = "lista";
 $_SESSION['connect'] = true;
+
+//Se genera notificación
+$personas = count($matches);
+if ($personas == 1) {
+    $description = 'Has hecho match con 1 persona.';
+} else {
+    $description = 'Has hecho match con '.$personas.' personas.';
+}
+$datosNotificacion = array(
+    'userId' => $user->getId(),
+    'name' => 'Tú',
+    'description' => $description,
+    'icon' => 'logoLB.png',
+    'read' => false
+);
+$resultado = $notificationController->crearNotificacion($datosNotificacion);
+
 header('Location: ../views/principal/pagPrincipal.php');
 ?>

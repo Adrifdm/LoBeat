@@ -141,6 +141,18 @@ body{
     color: #ffadd2;
 }
 
+.seccionDer .estado-on {
+    font-size: 20px;
+    color: rgb(0, 165, 0);
+    margin-right: 40px;
+}
+
+.seccionDer .estado-off {
+    font-size: 20px;
+    color: rgb(121, 121, 121);
+    margin-right: 40px;
+}
+
 /* SECCION AL SELECCIONAR UN USUARIO */
 .seccionDer .visualizacionUsuario {
     background: rgba(0, 0, 0, 0.3);

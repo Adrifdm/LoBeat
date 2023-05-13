@@ -1,5 +1,6 @@
 <?php
-require_once '../../../app/services/notificationService.php';
+define("PATH5", $_SERVER['DOCUMENT_ROOT']);
+require_once PATH5 . '/LoBeat/app/services/notificationService.php';
 
 class NotificationController {
     private $usuarioController;

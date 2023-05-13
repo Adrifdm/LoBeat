@@ -142,18 +142,21 @@ $("#email").change(function(){
     else if (!emaileValidation(campo.val())){ 
         // correo invalido: ponemos una marca y nos quejamos
         // Añadimos el html del icono y lo ponemos en color rojo
-        $("#emailIcon").html("&#x26a0; Mínimo 4 caracteres");
+        $("#emailIcon").html("&#x26a0; Formato del correo inválido");
         $("#emailIcon").css("color", "red");
 
         // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
         // y pongo un mensaje como no-válido
-        campo[0].setCustomValidity("El correo de usuario debe tener mínimo 3 caracteres");
+        campo[0].setCustomValidity("El correo debe acabar en .es o .com");
         campo.val("");
     }
 });
 
 function emaileValidation(email) {
-  return (email.length >= 3);
+  valid = true;
+  if (!email.endsWith(".es") && !email.endsWith(".com"))
+    valid = false;
+  return valid;
 }
 
 $("#password").change(function(){

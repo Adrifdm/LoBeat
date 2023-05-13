@@ -176,14 +176,19 @@
                             <div class = "chat-element">
                                 <a class="enlace" onclick="mostrarContenido(event)">
                                     <li class="list-item">
-                                            <div class="contenedor-imagen">
+                                        <div class="contenedor-imagen">
                                             <img src=
-                                                <?php echo "../../../public/assets/img/profilePhotos/".$match->getFotoPerfil(); ?>
-                                                alt="chat">
-                                            </div>
-                                            <span class="list-item-name"><?php echo $match->getNombre(); ?>
-                                                <p class = "subtitulo"><?php echo $match->getDescripcion(); ?></p>
-                                            </span>
+                                            <?php echo "../../../public/assets/img/profilePhotos/".$match->getFotoPerfil(); ?>
+                                            alt="chat">
+                                        </div>
+                                        <span class="list-item-name"><?php echo $match->getNombre(); ?>
+                                            <p class = "subtitulo"><?php echo $match->getDescripcion(); ?></p>
+                                        </span>
+                                        <?php if($match->getStatus()) {?>
+                                            <div class="estado-on"><i class="bi bi-circle-fill"></i></div>
+                                        <?php } else {?>
+                                            <div class="estado-off"><i class="bi bi-circle-fill"></i></div>
+                                        <?php } ?>
                                 
                                     </li>
                                 </a>

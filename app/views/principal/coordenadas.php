@@ -43,48 +43,66 @@ if($categoria === "resto"){
 
     foreach ($resultado as $usuario) {
         if ($usuario->getId() != $_SESSION["logged_user_id"]) {
-            if(isset($_SESSION['connect']) && $usuarioController->usuarioEsMatch($usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"])->getId(), $usuario->getId())){
-
-                if($usuario->getGenero() === "Mujer"){
-                    $icono = "mujer.png";
-                }
-                else if($usuario->getGenero() === "Hombre"){
-                    $icono = "hombre.png";
+            if(isset($_SESSION['connect'])){
+                if($usuarioController->usuarioEsMatch($usuarioController->obtenerUsuarioPorId($_SESSION["logged_user_id"])->getId(), $usuario->getId())){
+                    if($usuario->getGenero() === "Mujer"){
+                        $icono = "mujer.png";
+                    }
+                    else if($usuario->getGenero() === "Hombre"){
+                        $icono = "hombre.png";
+                    }
+                    else{
+                        $icono = "neutral.png";
+                    }
+                    $nombre = $usuario->getNombre();
+                    $genero = $usuario->getGenero();
+                    $descripcion = $usuario->getDescripcion();
+                    $foto = $usuario->getFotoPerfil();
+                    $id = $usuario->getId();
+                    $coordenadas = [
+                        [
+                            "latitud" => $usuario->getLatitud(),
+                            "longitud" => $usuario->getLongitud(),
+                        ],
+                    ];
+                    $usuarios[] = [
+                        "icono" => "../../../public/assets/img/" . $icono,
+                        "coordenadas" => $coordenadas,
+                        "nombre" => $nombre,
+                        "genero" => $genero,
+                        "descripcion" => $descripcion,
+                        "foto" => $foto,
+                        "id" => $id,
+                    ];
                 }
                 else{
-                    $icono = "neutral.png";
+                    
+                    $icono = "connect.png";
+                    $nombre = $usuario->getNombre();
+                    $genero = $usuario->getGenero();
+                    $descripcion = $usuario->getDescripcion();
+                    $foto = $usuario->getFotoPerfil();
+                    $id = $usuario->getId();
+                    $coordenadas = [
+                        [
+                            "latitud" => $usuario->getLatitud(),
+                            "longitud" => $usuario->getLongitud(),
+                        ],
+                    ];
+                    $usuarios[] = [
+                        "icono" => "../../../public/assets/img/" . $icono,
+                        "coordenadas" => $coordenadas,
+                        "nombre" => $nombre,
+                        "genero" => $genero,
+                        "descripcion" => $descripcion,
+                        "foto" => $foto,
+                        "id" => $id,
+                    ];
                 }
-                $nombre = $usuario->getNombre();
-                $genero = $usuario->getGenero();
-                $descripcion = $usuario->getDescripcion();
-                $foto = $usuario->getFotoPerfil();
-                $id = $usuario->getId();
-                $coordenadas = [
-                    [
-                        "latitud" => $usuario->getLatitud(),
-                        "longitud" => $usuario->getLongitud(),
-                    ],
-                ];
-                $usuarios[] = [
-                    "icono" => "../../../public/assets/img/" . $icono,
-                    "coordenadas" => $coordenadas,
-                    "nombre" => $nombre,
-                    "genero" => $genero,
-                    "descripcion" => $descripcion,
-                    "foto" => $foto,
-                    "id" => $id,
-                ];
+                
             }
             elseif(!isset($_SESSION['connect'])){
-                if($usuario->getGenero() === "Mujer"){
-                    $icono = "mujer.png";
-                }
-                else if($usuario->getGenero() === "Hombre"){
-                    $icono = "hombre.png";
-                }
-                else{
-                    $icono = "neutral.png";
-                }
+                $icono = "connect.png";
                 $nombre = $usuario->getNombre();
                 $genero = $usuario->getGenero();
                 $descripcion = $usuario->getDescripcion();
