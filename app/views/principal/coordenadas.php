@@ -102,15 +102,7 @@ if($categoria === "resto"){
                 
             }
             elseif(!isset($_SESSION['connect'])){
-                if($usuario->getGenero() === "Mujer"){
-                    $icono = "mujer.png";
-                }
-                else if($usuario->getGenero() === "Hombre"){
-                    $icono = "hombre.png";
-                }
-                else{
-                    $icono = "neutral.png";
-                }
+                $icono = "connect.png";
                 $nombre = $usuario->getNombre();
                 $genero = $usuario->getGenero();
                 $descripcion = $usuario->getDescripcion();
