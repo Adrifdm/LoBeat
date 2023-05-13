@@ -43,12 +43,13 @@
                 //$refreshToken = $_SESSION['spotify_refresh_token'];
 
                 // Insertamos la información del nuevo usuario
+                
                 $datos = array(
                     'nombre' => $nombre,
                     'correo' => $email ,
-                    'contrasenya' => $pass, 
-                    'spotify_access_token' => 'BQBa2RNAwrKg',
-                    'spotify_refresh_token' => 'AQBWKtdAt9S1Hs',
+                    'contrasenya' => password_hash($pass, PASSWORD_DEFAULT), 
+                    'spotify_access_token' => $_SESSION['spotify_access_token'],
+                    'spotify_refresh_token' => $_SESSION['spotify_refresh_token'],
                     'fecha_creacion' => date('Y-m-d H:i:s'),
                     'fecha_actualizacion' => date('Y-m-d H:i:s'),
                     'role' =>  $rol,
@@ -57,7 +58,7 @@
                     'fotoPerfil' => 'profileAvatar.png',
                     'latitud' => 2234234,
                     'longitud' => 22344,
-                    'spotify_ID' => '31yh7daz4uvqrliwyrgm',    // Inicialmente el spotifyID de la base de datos se inicializa vacío (al llamar a obtenerSpotifyID necesitamos $_SESSION["logged_user_id"], y no podemos inicializarlo hasta crear el usuario en la bd)
+                    'spotify_ID' => $spotifyController->obtenerSpotifyIDUsuarioActual(),    // Inicialmente el spotifyID de la base de datos se inicializa vacío (al llamar a obtenerSpotifyID necesitamos $_SESSION["logged_user_id"], y no podemos inicializarlo hasta crear el usuario en la bd)
                     'nMatches' => 0,
                     'nChats' => 0,
                     'nPlaylists' => 0,
@@ -81,8 +82,8 @@
                     
                     
                     $datoss = array(
-                        'latitud' => 37.2038,
-                        'longitud' => 3.6662 
+                        'latitud' => 0,
+                        'longitud' => 0 
                     );
                 
                     $usuC->actualizarUsuario($idww, $datoss);
