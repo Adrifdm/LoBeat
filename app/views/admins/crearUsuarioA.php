@@ -38,11 +38,9 @@
                 }
             }
 
-            if($nombre!='' || $email!='' || $pass!=''){
+            if($nombre!='' && $email!='' && $pass!=''){
                 //$accessToken = $_SESSION['spotify_access_token'];
                 //$refreshToken = $_SESSION['spotify_refresh_token'];
-
-                
 
                 // Insertamos la información del nuevo usuario
                 $datos = array(
