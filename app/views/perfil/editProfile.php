@@ -49,7 +49,7 @@
         </button>
       </a>
 
-      <form action="processProfile.php" method="POST">
+      <form action="processProfile.php" method="POST" enctype="multipart/form-data">
         <div class="section1">
 
           <h1>Perfil</h1>
@@ -90,8 +90,10 @@
 
           <div class="der">
             <div class="window">
-              <div class="contenedor-imagen">
-                <img src="../../../public/assets/img/profilePhotos/<?php echo $imagen ?>" alt="Imagen usuario">
+              <div class="contenedor-editar-imagen">
+                <img src="../../../public/assets/img/profilePhotos/<?php echo $imagen ?>" id="photo" alt="Imagen usuario">
+                <input type="file" id="file" name="foto">
+                <label for="file" id="uploadBtn"><i class="bi bi-pencil"></i></label>              
               </div>
 
               <div class="info">
@@ -121,4 +123,7 @@
     ?>
 
   </body>
+
+  <script src="../../../public/assets/js/changeProfileImage.js"></script>
+
 </html>

@@ -116,7 +116,7 @@ body {
 
 
 .section2 .der .window .contenedor-imagen {
-  background-color: rgb(0, 170, 255);
+  background-color: #5300834a;
   overflow: hidden;
   width: 250px;
   height: 250px;
@@ -213,334 +213,38 @@ body {
   background: transparent;
 }
 
+.section2 .der .window .contenedor-editar-imagen{
+  height: 250px;
+  width: 250px;
+  margin-top: -80px;
+  margin-left: 155px;
+  border-radius: 999px;
+  overflow: hidden;
 
-/* .tit{
-  font-size: 30px !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.normaltxt{
-  font-size: 20px !important;
+.section2 .der .window .contenedor-editar-imagen img {
+  width: 250px;
 }
 
-.normaltxt2{
-  font-size: 15px !important;
-
+.section2 .der .window .contenedor-editar-imagen #file{
+  display: none;
 }
 
-.bg-gradient-default {
-  background: transparent !important;
-}
-  
-.bg-gradient-default {
-  background: transparent !important;
-}
-
-.btn-info {
-  color: #fff;
-  border-color: #e11883;
-  background-color: #e11883;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
-  margin-left: 30px;
-}
-  
-.btn-info:hover {
-  color: #fff;
-  border-color: #4f19cd;
-  background-color: #4f19cd;
-}
-
-.btn-info:focus {
-  box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08), 0 0 0 0 rgba(17, 205, 239, .5);
-}
-
-.btn-info:disabled {
-  color: #fff;
-  border-color: #890a81;
-  background-color: #890a81;
-}
-
-.btn-info:not(:disabled):not(.disabled):active {
-  color: #fff;
-  border-color: #890a81;
-  background-color: #890a81;
-}
-
-.btn-info:not(:disabled):not(.disabled):active:focus {
-  box-shadow: none, 0 0 0 0 rgba(17, 205, 239, .5);
-}
-
-.profile-text{
-  color:rgb(255, 255, 255);
-  margin-left: 30px;
-}
-
-.fuente{
-  font-family: 'Poppins', sans-serif;
-
-}
-
-.bt{
-  margin-top: 20px;
-  font-size: 20px !important;
-}
-
-.f2{
-
-  color: white;
-  padding: 30px;
-  font-size: 25px;
-}
-
-textarea.fuente {
-  background-color: #ffffff;
-  color: #8898aa;
-}
-
-textarea.fuente:disabled{
-  background-color: #ffffff;
-  color: #8898aa;
-}
-
-.sombra{
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 2) !important;
-}
-  
-.margenes{
-  margin: 30px !important;
-  margin-bottom: 50px !important;
-  margin-top: 0px !important;
-
-  margin-right: 90px !important;
-}
-
-.toppart{
-  top: -78px;
-}
-
-.midpart{
-  bottom: 500px;
-}
-
-.margen{
-
-  margin: 30px !important;
-  margin-bottom: 50px !important;
-  margin-top: 0px !important;
-
-}
-
-.contt{
-  width: 350px;
-  height: 320px !important;
-} */
-
-/*cuando pasas el cursor por encima 
-cambia la zombra y se desplaza un poco hacia arriba 
-*/
-
-/* .tarjeta{
-
-  border-radius: 10px !important;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 2) !important;
-
-  transition: all 400ms ease !important;
-
-}
-
-.tarjeta:hover{
-
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 4) !important;
-  transform: translateY(-3%) !important;
-}
-
-.txtalign{
-
-  position: relative !important;
-  top: 80px !important;
-  right: -154px;
-  
-  height: 110px;
-  font-weight: bold;
-  border-radius: 20px;
-
-  padding: 0px;
-}
-
-.th1{
-
-  font-size: 30px;
-  padding-bottom: 30px;
-
-  color: black;
-}
-
-.th2{
-
-  font-size: 20px;
-  color: black;
-}
-
-.inside{
-  margin-top: 15px !important;
-  color: white !important;
-  font-weight: 700 !important;
-}
-
-.rib{
-
-  position: relative;
-
-}
-
-.rib ribbon{
-  
-  position:absolute;
-  
-  top: 10px;
-  width: 380px;
-  height: 50px;
-  
-  left: -177px;
-  background: #890a81;
-  border-radius: 30px;
-  
-  border-radius: 30px;
-  border-bottom-left-radius: 0;
-}
-
-.rib ribbon::before{
-  
-  content:"";
+.section2 .der .window .contenedor-editar-imagen #uploadBtn{
   position: absolute;
-  top: 50px;
-  left: 0px;
-  width: 20px;
-  height: 35px;
-  
-  background: #360633;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-
-  z-index: 2;
+  width: 250px;
+  height: 250px;
+  padding-top: 80px;
+  border-radius: 999px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.635);
+  color: rgb(255, 255, 255);
+  line-height: 30px;
+  font-size: 90px;
+  cursor: pointer;
 }
-
-.rib ribbon::after{
-  
-  content:"";
-  position: absolute;
-  top: 50px;
-  left: 0px;
-  width: 20px;
-  height: 17px;
-  z-index: 1;
-
-  background: #890a81;
-  
-
-} */
-
-/*segundo --------------------------------------------------------*/
-
-/* .rib2{
-
-  position: relative;
-
-}
-
-.rib2 ribbon2{
-  
-  position:absolute;
-  
-  top: 110px;
-  width: 380px;
-  height: 50px;
-  
-  left: -222px;
-  background: #2f9470;
-  border-radius: 30px;
-  
-  border-radius: 30px;
-  border-bottom-left-radius: 0;
-}
-
-.rib2 ribbon2::before{
-  
-  content:"";
-  position: absolute;
-  top: 50px;
-  left: 0px;
-  width: 20px;
-  height: 35px;
-  
-  background: #1a4536;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-
-  z-index: 2;
-}
-
-.rib2 ribbon2::after{
-  
-  content:"";
-  position: absolute;
-  top: 50px;
-  left: 0px;
-  width: 20px;
-  height: 17px;
-  z-index: 1;
-
-  background: #2f9470;
-
-} */
-
-/* tercer------------------------------------------------------*/
-
-/* .rib3{
-  position: relative;
-}
-
-.rib3 ribbon3{
-  
-  position:absolute;
-  
-  top: 210px;
-  width: 380px;
-  height: 50px;
-  
-  left: -265px;
-  background: #5a34ca;
-  border-radius: 30px;
-  
-  border-radius: 30px;
-  border-bottom-left-radius: 0;
-}
-
-.rib3 ribbon3::before{
-  
-  content:"";
-  position: absolute;
-  top: 50px;
-  left: 0px;
-  width: 20px;
-  height: 35px;
-  
-  background: #261950;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-
-  z-index: 2;
-}
-
-.rib3 ribbon3::after{
-  
-  content:"";
-  position: absolute;
-  top: 50px;
-  left: 0px;
-  width: 20px;
-  height: 17px;
-  z-index: 1;
-
-  background: #5a34ca;
-
-} */
