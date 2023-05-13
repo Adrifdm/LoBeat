@@ -7,7 +7,7 @@ session_start();
 $usuarioController = new UsuarioController();
 $usuarioEdit = new UsuarioController();
 
-if ($_SESSION["is_logged"] != true) {
+if ($_SESSION["is_logged"] != true && $_SESSION['role'] == 'Admin') {
 
     header('Location: ../perfil/logout.php');
 
@@ -43,7 +43,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 <head>
 
     <meta charset="UTF-8">
-    <title> Gestión de usuarios </title>
+    <title>LoBeat - Gestión de usuarios</title>
 
     <link rel="stylesheet" href="../../../public/assets/css/adminActions.css">
 
@@ -62,15 +62,13 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
 <body>
     
     <?php
-      require("../comun/cabecera.php");
-        
-        
-      $_SESSION['NNplaylists']= 0;
-      $_SESSION['NNusers']= 0;
-      $_SESSION['NNadmins']= 0;
-      $_SESSION['NNmatches']= 0;
+        require("../comun/cabecera.php");
 
-        
+
+        $_SESSION['NNplaylists']= 0;
+        $_SESSION['NNusers']= 0;
+        $_SESSION['NNadmins']= 0;
+        $_SESSION['NNmatches']= 0;
 
         $NNplaylists = 0;
         $NNusers = 0;
@@ -78,21 +76,21 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
         $NNmatches = 0;
 
         $users = $usuarioController->listarUsuarios();
-foreach ($users as $user) {
-    $NNusers++;
-    $NNplaylists = $NNplaylists + strval($user->getnPlaylists());
+        foreach ($users as $user) {
+            $NNusers++;
+            $NNplaylists = $NNplaylists + strval($user->getnPlaylists());
 
-    if ($user->getRole() == "Admin") {
-        $NNadmins++;
-    }
-    if($user->getMatchlist() != null){
-        $NNmatches = $NNmatches + strval(count($user->getMatchlist())) ;
-    }
-    $_SESSION['NNplaylists']= $NNplaylists;
-    $_SESSION['NNusers']= $NNusers;
-    $_SESSION['NNadmins']= $NNadmins;
-    $_SESSION['NNmatches']= $NNmatches;
-}
+            if ($user->getRole() == "Admin") {
+                $NNadmins++;
+            }
+            if($user->getMatchlist() != null){
+                $NNmatches = $NNmatches + strval(count($user->getListaMatchs())) ;
+            }
+            $_SESSION['NNplaylists']= $NNplaylists;
+            $_SESSION['NNusers']= $NNusers;
+            $_SESSION['NNadmins']= $NNadmins;
+            $_SESSION['NNmatches']= $NNmatches;
+        }
     ?> 
     
     <!--
@@ -151,7 +149,7 @@ foreach ($users as $user) {
 
                             <div class="form__g">
 
-                            <input type="text" id="idd" name="id" class="form__inp" placeholder="" readonly>
+                                <input type="text" id="idd" name="id" class="form__inp" placeholder="" readonly>
 
                             </div>
 
@@ -211,10 +209,6 @@ foreach ($users as $user) {
                         </div>
                         
                     </form>
-
-                    <?php
-                        echo '<div class="error">' . "holi" . '</div>';
-                    ?>
 
                     <!--
                     <h1>
