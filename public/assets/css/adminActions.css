@@ -532,8 +532,14 @@ th,td{
     
 }
 .containerAdmin .contenidoPag .content-2 .usersp table{
-    width:100%;
+    width: 98%;
+    margin-left: 3%;
+    border-collapse: collapse;
 }
+.containerAdmin .contenidoPag .content-2 .usersp table th, td {
+    padding: 10px;
+    text-align: left;
+  }
 .containerAdmin .contenidoPag .content-2 .seccionIzq{
     display: flex;
     flex-direction: column;
@@ -566,7 +572,7 @@ th,td{
 
 }
 
-@media screen and (max-width: 536px){
+@media screen and (max-width: 800px){
     
     .containerAdmin .contenidoPag .cardss{
         justify-content: center;
@@ -574,6 +580,20 @@ th,td{
     .containerAdmin .contenidoPag .content-2 .usersp .new-users table td:nth-child(3){
         display: none;
     }
+    table {
+        display: block;
+      }
+      tbody {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+      }
+      tr {
+        display: block;
+      }
+      th, td {
+        display: block;
+      }
 }
 
 
