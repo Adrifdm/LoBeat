@@ -191,7 +191,7 @@
                                 </a>
                                     <li class="redes" > 
                                         <div class= "r-d">     
-                                            <a class="redes-sociales"> <i class="bi bi-tiktok"></i>     <?php
+                                            <a class="redes-sociales" href="<?php echo ($match->getInstagram() != null && $match->getInstagram() != "") ? 'https://instagram.com/'.urlencode($match->getInstagram()) : '#'; ?>"> <i class="bi bi-instagram"></i>     <?php
                                                 if ($match->getInstagram() == null || $match->getInstagram() == "") {
                                                     echo "Sin asignar";
                                                 } else {
@@ -200,7 +200,8 @@
                                             ?></a>
                                         </div>
                                         <div class= "r-d">
-                                            <a class="redes-sociales"> <i class="bi bi-twitter"></i>    <?php
+                                        <a class="redes-sociales" href="<?php echo ($match->getTwitter() != null && $match->getTwitter() != "") ? 'https://twitter.com/'.urlencode($match->getTwitter()) : '#'; ?>">
+                                        <i class="bi bi-twitter"></i>    <?php
                                                 if ($match->getTwitter() == null || $match->getTwitter() == "") {
                                                     echo "Sin asignar";
                                                 } else {
@@ -209,7 +210,8 @@
                                             ?></a>
                                         </div>
                                         <div class= "r-d">
-                                            <a class="redes-sociales"> <i class="bi bi-instagram"></i>  <?php
+                                        <a class="redes-sociales" href="<?php echo ($match->getTiktok() != null && $match->getTiktok() != "") ? 'https://tiktok.com/@'.urlencode($match->getTiktok()) : '#'; ?>">  
+                                            <i class="bi bi-tiktok"> </i>  <?php
                                                 if ($match->getTiktok() == null || $match->getTiktok() == "") {
                                                     echo "Sin asignar";
                                                 } else {
