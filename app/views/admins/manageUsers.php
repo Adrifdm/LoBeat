@@ -86,7 +86,9 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                 $NNadmins++;
             }
 
-            $NNmatches = $NNmatches +  strval($user->getnMatches());
+            if($user->getMatchlist() != null){
+                $NNmatches = $NNmatches + strval(count($user->getMatchlist())) ;
+            }
 
             $_SESSION['NNplaylists']= $NNplaylists;
             $_SESSION['NNusers']= $NNusers;
