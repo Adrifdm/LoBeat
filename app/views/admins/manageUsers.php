@@ -78,28 +78,19 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
         $users = $usuarioController->listarUsuarios();
     
         foreach ($users as $user) {
-        
             $NNusers++;
             $NNplaylists = $NNplaylists + strval($user->getnPlaylists());
 
             if ($user->getRole() == "Admin") {
                 $NNadmins++;
             }
-
-            $NNmatches = $NNmatches +  strval($user->getnMatches());
-
+            if($user->getMatchlist() != null){
+                $NNmatches = $NNmatches + strval(count($user->getListaMatchs())) ;
+            }
             $_SESSION['NNplaylists']= $NNplaylists;
             $_SESSION['NNusers']= $NNusers;
             $_SESSION['NNadmins']= $NNadmins;
             $_SESSION['NNmatches']= $NNmatches;
-
-            $datos = array(
-                'matchlist'=> null,
-                'status' => false,
-                'listaMatchs' => null
-            );   
-
-            $okkk = $usuarioController->actualizarUsuario($user->getId(), $datos);
         }
     ?> 
     
