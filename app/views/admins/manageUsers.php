@@ -85,7 +85,7 @@ else if($_SESSION["logged_user_role"] != 'Admin'){
                 $NNadmins++;
             }
 
-            if($user->getMatchlist() != null){
+            if($user->getListaMatchs() != null){
                 $NNmatches = $NNmatches + strval(count($user->getListaMatchs())) ;
             }
 
