@@ -35,7 +35,7 @@ if($_SESSION["is_logged"] != true){
             require_once '../../controllers/notificationController.php';
 
             $usuarioController = new UsuarioController();
-            $usuarioExistente = $usuarioController->buscarUsuarioPorCampo('correo', $_SESSION["logged_user_email"]);
+            $usuarioExistente = $usuarioController->obtenerUsuarioPorId($_SESSION['logged_user_id']);
             $notificationController = new NotificationController();
         ?>
 
