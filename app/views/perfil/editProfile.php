@@ -202,10 +202,8 @@
   });
 
   function emaileValidation(email) {
-    valid = true;
-    if (!email.endsWith(".es") && !email.endsWith(".com"))
-      valid = false;
-    return valid;
+    const regex = /^[^\s@]+@[^\s@]+\.(com|es)$/;
+    return regex.test(email);
   }
   </script>
 
