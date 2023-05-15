@@ -71,10 +71,10 @@
               <h3>Mi cuenta</h3>
               <div class="sub-box">
                 <h3>Nombre de Usuario</h3>
-                <input type="text" name="name" required="" maxlength="25" placeholder="Introduce un nombre de usuario" value="<?php echo $nombre;?>">
+                <input type="text" id="input-username" name="name" required="" maxlength="25" placeholder="Introduce un nombre de usuario" value="<?php echo $nombre;?>"><span id="iconoUsername"></span>
                 
                 <h3>Dirección de correo</h3>
-                <input type="text" name="email" required="" maxlength="25" placeholder="Introduce un correo válido" value="<?php echo $correo;?>">
+                <input type="text" id="input-email" name="email" required="" maxlength="25" placeholder="Introduce un correo válido" value="<?php echo $correo;?>"><span id="emailIcon"></span>
                 
                 <h3>Género</h3>
                 <select name="genero" required="">
@@ -132,5 +132,81 @@
   </body>
 
   <script src="../../../public/assets/js/changeProfileImage.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+  $("#input-username").change(function(){
+      const campo = $("#input-username"); // referencia jquery al campo
+      campo[0].setCustomValidity(""); // limpia validaciones previas 
+
+      // validación html5, porque el campo es <input type="email" ...>
+      const usernameValido = campo[0].checkValidity();
+      if (usernameValido && usernameValidation(campo.val())) {
+          // el correo es válido y acaba por @ucm.es
+          //Añanimos el html del icono y lo ponemos en color verde
+          $("#iconoUsername").html("&#x2714;");
+          $("#iconoUsername").css("color", "green");
+
+          campo[0].setCustomValidity("");
+      } else { 
+          // correo invalido: ponemos una marca y nos quejamos
+          // Añadimos el html del icono y lo ponemos en color rojo
+          $("#iconoUsername").html("&#x26a0;");
+          $("#iconoUsername").css("color", "red");
+
+          // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
+          // y pongo un mensaje como no-válido
+          campo[0].setCustomValidity("El nombre de usuario debe tener mínimo 4 letras");
+      }
+  });
+
+  function usernameValidation(username) {
+    return (username.length >= 4);
+  }
+
+  $("#input-email").change(function(){
+    const campo = $("#input-email"); // referencia jquery al campo
+    campo[0].setCustomValidity(""); // limpia validaciones previas 
+
+    const emailValido = campo[0].checkValidity();
+    if (emailValido && emaileValidation(campo.val())) {
+        //El correo es válido
+        //Añanimos el html del icono y lo ponemos en color verde
+        $("#emailIcon").html("&#x2714;");
+        $("#emailIcon").css("color", "green");
+
+        campo[0].setCustomValidity("");
+    } else if (!emailValido){ 
+        // correo invalido: ponemos una marca y nos quejamos
+        // Añadimos el html del icono y lo ponemos en color rojo
+        $("#emailIcon").html("&#x26a0; El correo es inválido");
+        $("#emailIcon").css("color", "red");
+
+        // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
+        // y pongo un mensaje como no-válido
+        campo[0].setCustomValidity("El correo debe incluir el carácter @");
+        campo.val("");
+    }
+    else if (!emaileValidation(campo.val())){ 
+        // correo invalido: ponemos una marca y nos quejamos
+        // Añadimos el html del icono y lo ponemos en color rojo
+        $("#emailIcon").html("&#x26a0; Formato del correo inválido");
+        $("#emailIcon").css("color", "red");
+
+        // <-- aquí pongo la marca apropiada, y quito (si la hay) la otra
+        // y pongo un mensaje como no-válido
+        campo[0].setCustomValidity("El correo debe acabar en .es o .com");
+        campo.val("");
+    }
+  });
+
+  function emaileValidation(email) {
+    valid = true;
+    if (!email.endsWith(".es") && !email.endsWith(".com"))
+      valid = false;
+    return valid;
+  }
+  </script>
 
 </html>
