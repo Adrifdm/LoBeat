@@ -42,6 +42,7 @@ const dibujarMarcadoresEnMapa = coordenadasConIcono => {
 
         marcador.setProperties({
             'id' : id,
+            'icon' : icono,
         });
 
         marcadores.push(marcador);
@@ -77,6 +78,7 @@ const dibujarMarcadoresEnMapaResto = coordenadasConIcono => {
 
             marcador.setProperties({
                 'id' : id,
+                'icon' : icono,
             });
             
             marcadores.push(marcador);
@@ -109,14 +111,14 @@ const dibujarMarcadoresEnMapaResto = coordenadasConIcono => {
     if (feature) {
         var propiedades = feature.getProperties();
 
-        fetch(`pagPrincipal.php?id=` + encodeURIComponent(propiedades.id))
-        .catch(error => {
-          console.error('Error al enviar datos:', error);
-        });
-
-       window.location.href = "pagPrincipal.php";
-
-       
+        
+        if(!propiedades.icon.includes('connect.png')){
+            fetch(`pagPrincipal.php?id=` + encodeURIComponent(propiedades.id))
+            .catch(error => {
+                console.error('Error al enviar datos:', error);
+            });
+            window.location.href = "pagPrincipal.php";
+        }
     }
   });
   
